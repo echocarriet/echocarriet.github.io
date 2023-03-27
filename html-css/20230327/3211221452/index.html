@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="關於圖片使用方式與視差滾動背景效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day2 | img 圖片與背景圖使用方式、視差滾動背景效果">
+<meta property="og:url" content="https://echocarriet.github.io/html-css/20230327/3211221452/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="關於圖片使用方式與視差滾動背景效果">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/gif%2F%E9%90%B5%E4%BA%BA%E8%B3%BD_%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95%E7%A4%BA%E6%84%8F%E5%9C%96.gif?alt=media&token=8de99e63-63f5-43f9-986a-1708cd8cf610">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220917/20119743nnEbSgj6tg.png">
+<meta property="article:published_time" content="2023-03-27T10:16:32.000Z">
+<meta property="article:modified_time" content="2023-03-27T10:37:34.683Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/gif%2F%E9%90%B5%E4%BA%BA%E8%B3%BD_%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95%E7%A4%BA%E6%84%8F%E5%9C%96.gif?alt=media&token=8de99e63-63f5-43f9-986a-1708cd8cf610">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/html-css/20230327/3211221452/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/html-css/20230327/3211221452/","path":"html-css/20230327/3211221452/","title":"Day2 | img 圖片與背景圖使用方式、視差滾動背景效果"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day2 | img 圖片與背景圖使用方式、視差滾動背景效果 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%9C%96%E7%89%87%E4%BD%BF%E7%94%A8%E8%83%8C%E6%99%AF%E5%9C%96%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">❒ 圖片使用背景圖方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%B1%AC%E6%80%A7-background-repeat"><span class="nav-number">1.1.</span> <span class="nav-text">▷ 屬性 background-repeat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%B1%AC%E6%80%A7-background-position"><span class="nav-number">1.2.</span> <span class="nav-text">▷ 屬性 background-position</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%B1%AC%E6%80%A7-background-size"><span class="nav-number">1.3.</span> <span class="nav-text">▷ 屬性 background-size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%B1%AC%E6%80%A7-background-attachment"><span class="nav-number">1.4.</span> <span class="nav-text">▷ 屬性 background-attachment</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E4%BD%BF%E7%94%A8-background-attachment-fixed-%E5%81%9A%E5%87%BA%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95"><span class="nav-number">2.</span> <span class="nav-text">❒ 使用 background-attachment:fixed 做出視差滾動</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%9C%96%E7%89%87%E4%BD%BF%E7%94%A8-img-%E6%A8%99%E7%B1%A4%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">❒ 圖片使用 img 標籤方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%9C%96%E7%89%87%E5%AF%AC%E5%BA%A6%E8%A8%AD%E5%AE%9A%E4%B8%AD-max-width-%E8%88%87-width-%E5%B7%AE%E7%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">▷ 圖片寬度設定中 max-width 與 width 差異</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E9%9F%BF%E6%87%89%E5%BC%8F%E5%9C%96%E7%89%87-Reset"><span class="nav-number">3.2.</span> <span class="nav-text">▷ 響應式圖片 Reset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%B1%AC%E6%80%A7-object-fit"><span class="nav-number">3.3.</span> <span class="nav-text">▷ 屬性 object-fit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">4.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/html-css/20230327/3211221452/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day2 | img 圖片與背景圖使用方式、視差滾動背景效果 | Hi, I'm Carrie">
+      <meta itemprop="description" content="關於圖片使用方式與視差滾動背景效果">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day2 | img 圖片與背景圖使用方式、視差滾動背景效果
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 18:16:32 / 修改時間：18:37:34" itemprop="dateCreated datePublished" datetime="2023-03-27T18:16:32+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html-css/" itemprop="url" rel="index"><span itemprop="name">HTML&CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">關於圖片使用方式與視差滾動背景效果</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-圖片使用背景圖方式"><a href="#❒-圖片使用背景圖方式" class="headerlink" title="❒ 圖片使用背景圖方式"></a>❒ 圖片使用背景圖方式</h2><h3 id="▷-屬性-background-repeat"><a href="#▷-屬性-background-repeat" class="headerlink" title="▷ 屬性 background-repeat"></a>▷ 屬性 <code>background-repeat</code></h3><ul>
+<li>為了確保背景圖正確顯示，需搭配 <code>background-repeat:no-repeat;</code> 告訴瀏覽器背景圖片不要重覆顯示。</li>
+</ul>
+<h3 id="▷-屬性-background-position"><a href="#▷-屬性-background-position" class="headerlink" title="▷ 屬性 background-position"></a>▷ 屬性 <code>background-position</code></h3><ul>
+<li><code>background-position: 水平方向 垂直方向;</code><ul>
+<li>水平方向：方向方式 ( left、center、right )、百分比方式。</li>
+<li>垂直方向：方向方式 ( top、center、bottom )、百分比方式。</li>
+</ul>
+</li>
+<li>注意：如果 <code>background-position</code> 使用了簡化寫法，只寫一個屬性值，另一個屬性值將會自動取中間值，為了將來管理方便，建議兩個方向的屬性值都寫上去比較好。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-position</span><span class="selector-pseudo">:right</span> <span class="attribute">bottom</span>;　// 靠右靠下對齊</span><br><span class="line"><span class="attribute">background-position</span>:<span class="number">30px</span> <span class="number">60px</span>;　//靠左 <span class="number">30px</span> 靠上 <span class="number">60</span> px 的位置</span><br><span class="line"><span class="attribute">background-position</span>:<span class="number">10%</span> <span class="number">50%</span>;　// 靠左 <span class="number">10%</span> 靠上 <span class="number">50%</span> 的位置</span><br><span class="line"><span class="attribute">background-position</span>:<span class="number">10%</span>;　// 效果同上一行，靠左 <span class="number">10%</span> 靠上 <span class="number">50%</span> 的位置</span><br></pre></td></tr></table></figure>
+
+<h3 id="▷-屬性-background-size"><a href="#▷-屬性-background-size" class="headerlink" title="▷ 屬性 background-size"></a>▷ 屬性 <code>background-size</code></h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/JjvXwpg">CodePen 範例</a></p>
+<ul>
+<li><code>contain</code>：如果背景圖有設定寬高，會自適應在設定的寬高內，但當背景圖尺寸小於設定的寬高時，不會填滿設定的寬高。</li>
+<li><code>cover</code>：背景圖會依設定個寬度做縮放並填滿。<ul>
+<li>因為使用 <code>backgrounf-size: cover</code> 時，可能會裁切到原圖片，可搭配 <code>background-position</code> 調整圖片位置。</li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-屬性-background-attachment"><a href="#▷-屬性-background-attachment" class="headerlink" title="▷ 屬性 background-attachment"></a>▷ 屬性 <code>background-attachment</code></h3><p>屬性主要是設定背景圖片位置在設定的區塊內捲動時會個著捲動或固定，可使用 <code>fixed</code> 做出視差滾動的效果。<br><strong>屬性值</strong></p>
+<ul>
+<li><code>scroll</code> 預設，在區塊內卷軸捲動時，背景會跟著移動。<a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/xxjrRMJ">CodePen 範例</a><ul>
+<li>需注意，如果子區塊也使用 <code>scroll</code> ，子區塊的卷軸捲動時背景圖會固定不動，不會跟著被捲走。<a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/VwxWmgR">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>fixed</code> 在區塊內卷軸捲動時，背景會固定不動。 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/mdLwRyd">CodePen 範例</a><ul>
+<li>注意：如果子區塊也使用 <code>fixed</code> ，子區塊的卷軸捲動時背景圖不個著被捲走，會固定。但父區塊捲動卷軸時，子區塊的背景會個著動。 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/ExLXZVe">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>local</code> 類似 <code>scroll</code> ，在區塊內滾動卷軸時背景圖會跟著動。<a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/PoejWGN">CodePen 範例</a></li>
+</ul>
+<h2 id="❒-使用-background-attachment-fixed-做出視差滾動"><a href="#❒-使用-background-attachment-fixed-做出視差滾動" class="headerlink" title="❒ 使用 background-attachment:fixed 做出視差滾動"></a>❒ 使用 background-attachment:fixed 做出視差滾動</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 架構 */</span></span><br><span class="line"><span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&quot;圖片路徑&quot;</span>);</span><br><span class="line"><span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line"><span class="attribute">background-attachment</span>: fixed;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/gif%2F%E9%90%B5%E4%BA%BA%E8%B3%BD_%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95%E7%A4%BA%E6%84%8F%E5%9C%96.gif?alt=media&token=8de99e63-63f5-43f9-986a-1708cd8cf610" alt="// 視差滾動示意圖"><br><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/rNvwjwZ">CodePen 範例</a></p>
+<h2 id="❒-圖片使用-img-標籤方式"><a href="#❒-圖片使用-img-標籤方式" class="headerlink" title="❒ 圖片使用 img 標籤方式"></a>❒ 圖片使用 img 標籤方式</h2><h3 id="▷-圖片寬度設定中-max-width-與-width-差異"><a href="#▷-圖片寬度設定中-max-width-與-width-差異" class="headerlink" title="▷ 圖片寬度設定中 max-width 與 width 差異"></a>▷ 圖片寬度設定中 <code>max-width</code> 與 <code>width</code> 差異</h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/LYPOozq">CodePen 範例</a></p>
+<p><code>max-width:100%;</code> ( 建議使用此方式 )</p>
+<ul>
+<li>會跟隨父層做自適應縮放，但會保有圖片原始寬度。如果父層寬度超出圖片寬度，則圖片會停止延伸。</li>
+</ul>
+<p><code>width:100%;</code></p>
+<ul>
+<li>隨父層做自適應縮放，父層大於圖片原始尺寸，圖片會跟著變大。</li>
+<li>缺點 : 如果圖片解析度不夠會糊掉。</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220917/20119743nnEbSgj6tg.png" alt="// 圖片寬度設定中 max-width 與 width 差異"></p>
+<h3 id="▷-響應式圖片-Reset"><a href="#▷-響應式圖片-Reset" class="headerlink" title="▷ 響應式圖片 Reset"></a>▷ 響應式圖片 Reset</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* img reset */</span></span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line"> <span class="attribute">max-width</span>:<span class="number">100%</span>;</span><br><span class="line"> <span class="attribute">height</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>理解上方 <code>max-width</code> 與 <code>width</code> 差異後可以把上方 img reset 設定方式加入 CSS Reset 中，就不需要重覆設定也可避免因圖片解析度太高出現 x 軸或破版問題囉！</li>
+</ul>
+<h3 id="▷-屬性-object-fit"><a href="#▷-屬性-object-fit" class="headerlink" title="▷ 屬性 object-fit"></a>▷ 屬性 <code>object-fit</code></h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/jOxbpdz">CodePen 範例</a></p>
+<ul>
+<li><code>fill</code>：預設值，圖片在填滿容器時可能會產生變形。</li>
+<li><code>contain</code> : 會保持圖片原本比例，呈現在容器中，但與容器尺寸不依時不會填滿整個容器。</li>
+<li><code>cover</code> : 保持圖片比例，填滿容器，但與容器尺寸不依時會裁切到圖片以填滿整個容器。<ul>
+<li>因為使用 <code>object-fit: cover</code> 時，可能會裁切到原圖片，如果想要移動可視範圍位置，可搭配 <code>object-position</code>，效果就類似於 <code>background-position</code>。</li>
+<li>關於 <code>object-position</code> 用法可參考「 <a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/pr-object-position.html">CSS object-position 属性</a> ****」。</li>
+</ul>
+</li>
+<li><code>none</code> : 不調整圖片比例。</li>
+<li><code>scale-down</code> : 等比縮小，與 none 或 contain 中的一個相同，取決於它們兩個之間誰得到的對象尺寸更小。</li>
+</ul>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://tzuhui.github.io/2020/03/26/CSS/css-object-fit/">HTML img 也能有 bg-image 的 cover 效果</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-position">MDN - object-position</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/pr-object-fit.html">CSS object-fit 属性</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10249759">Background-attchment 金魚都能懂的CSS必學屬性</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/2449098139/" rel="prev" title="Day1 | CSS 選擇器與權重">
+                  <i class="fa fa-chevron-left"></i> Day1 | CSS 選擇器與權重
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/3395657913/" rel="next" title="Day3 | Form 表單">
+                  Day3 | Form 表單 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="關於 Flex 排版的外層屬性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day4 | 淺談 Flex 排版外層屬性">
+<meta property="og:url" content="https://echocarriet.github.io/html-css/20230327/3023895147/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="關於 Flex 排版的外層屬性">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220919/20119743tHXBnC7LKU.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220919/2011974308Ic34K7NV.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220919/20119743ftCyxP7Cav.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220919/20119743xtbsAYFE1x.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220919/20119743UBIcdXYsZY.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220919/201197438zIUS8ESqL.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220919/20119743cOgZuwLbGN.jpg">
+<meta property="article:published_time" content="2023-03-27T10:22:17.000Z">
+<meta property="article:modified_time" content="2023-03-27T10:37:48.080Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="flex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20220919/20119743tHXBnC7LKU.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/html-css/20230327/3023895147/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/html-css/20230327/3023895147/","path":"html-css/20230327/3023895147/","title":"Day4 | 淺談 Flex 排版外層屬性"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day4 | 淺談 Flex 排版外層屬性 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Flex-%E7%9A%84%E5%A4%96%E5%B1%A4%E8%88%87%E5%85%A7%E5%B1%A4%E5%B1%AC%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">❒ Flex 的外層與內層屬性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E4%B8%8D%E8%A6%81%E8%AB%87-XY-%E8%BB%B8%EF%BC%8C%E8%AB%87%E8%B3%87%E6%96%99%E6%B5%81%E5%90%91"><span class="nav-number">2.</span> <span class="nav-text">❒ 不要談 XY 軸，談資料流向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%A4%96%E5%B1%A4%E5%B1%AC%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">❒ 外層屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-flex-direction-%E6%96%B9%E5%90%91"><span class="nav-number">3.1.</span> <span class="nav-text">▷ flex-direction 方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-flex-wrap-%E6%8F%9B%E8%A1%8C"><span class="nav-number">3.2.</span> <span class="nav-text">▷ flex-wrap 換行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-flex-flow"><span class="nav-number">3.3.</span> <span class="nav-text">▷ flex-flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-justify-content-%E4%B8%BB%E8%BB%B8%E5%B0%8D%E9%BD%8A%E6%96%B9%E5%BC%8F"><span class="nav-number">3.4.</span> <span class="nav-text">▷ justify-content 主軸對齊方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-align-items-%E6%AC%A1%E8%BB%B8%E5%B0%8D%E9%BD%8A%E6%96%B9%E5%BC%8F"><span class="nav-number">3.5.</span> <span class="nav-text">▷ align-items 次軸對齊方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-align-content-%E6%AC%A1%E8%BB%B8%E5%B0%8D%E9%BD%8A%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%BD%86%E9%A0%88%E5%A4%9A%E8%A1%8C%E6%89%8D%E6%9C%89%E6%95%88"><span class="nav-number">3.6.</span> <span class="nav-text">▷ align-content 次軸對齊方式，但須多行才有效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Flex-%E6%A8%A1%E6%93%AC%E5%99%A8%E8%88%87%E9%81%8A%E6%88%B2"><span class="nav-number">4.</span> <span class="nav-text">❒ Flex 模擬器與遊戲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E4%BD%BF%E7%94%A8-Flex-%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%95%8F%E9%A1%8C%E7%B5%B1%E6%95%B4"><span class="nav-number">5.</span> <span class="nav-text">❒ 使用 Flex 遇到的一些問題統整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B6-flex-%E4%B8%AD%E5%9C%96%E7%89%87%E8%AE%8A%E5%9E%8B%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">5.1.</span> <span class="nav-text">❶ flex 中圖片變型的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B7-align-items-baseline-%E6%98%AF%E5%81%9A%E4%BB%80%E9%BA%BC%E7%9A%84"><span class="nav-number">5.2.</span> <span class="nav-text">❷ align-items:baseline; 是做什麼的 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B8-%E5%A6%82%E4%BD%95%E8%BE%A8%E5%88%A5%E3%80%8C-align-items-baseline-%E3%80%8D%E8%88%87%E3%80%8C-align-items-flex-start-%E3%80%8D"><span class="nav-number">5.3.</span> <span class="nav-text">❸ 如何辨別「 align-items:baseline; 」與「 align-items:flex-start; 」 ?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">6.</span> <span class="nav-text">❒ 參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/html-css/20230327/3023895147/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day4 | 淺談 Flex 排版外層屬性 | Hi, I'm Carrie">
+      <meta itemprop="description" content="關於 Flex 排版的外層屬性">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day4 | 淺談 Flex 排版外層屬性
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 18:22:17 / 修改時間：18:37:48" itemprop="dateCreated datePublished" datetime="2023-03-27T18:22:17+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html-css/" itemprop="url" rel="index"><span itemprop="name">HTML&CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">關於 Flex 排版的外層屬性</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-Flex-的外層與內層屬性"><a href="#❒-Flex-的外層與內層屬性" class="headerlink" title="❒ Flex 的外層與內層屬性"></a>❒ Flex 的外層與內層屬性</h2><p><img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743tHXBnC7LKU.png" alt="// 左方為外層屬性，右方為內層屬性。  圖片出處 : 六角學院 ▲"></p>
+<ul>
+<li>外層 ( 外層 )<ul>
+<li>外層會用到的屬性：<ul>
+<li><code>display</code>、<code>flex-flow</code> ( <code>flex-direction</code> 與 <code>flex-wrap</code> 的組合 )、<code>flex-direction</code>、<code>flex-wrap</code>、<code>justify-content</code>、<code>align-items</code>。</li>
+</ul>
+</li>
+<li>如果想要區塊元素作並排，可於父層使用 <code>display:flex;</code> 。</li>
+<li>flex 都是設定在父層上，讓子層元素有 flex 的效果。</li>
+</ul>
+</li>
+<li>內層 ( 子層 )<ul>
+<li>內層會用到的屬性：<ul>
+<li><code>flex-grow</code>、<code>flex-shrink</code>、<code>flex-basis</code>、<code>order</code>、<code>align-self</code>。</li>
+</ul>
+</li>
+<li>子元素們會依照比例做伸縮調整，不會超出父層寬度。  ( <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/BajgNZw">CodePen 範例</a> )</li>
+<li>子元素會自動延伸與同層內最高元素的高度。 ( <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/jOWjbPR">CodePen 範例</a> )<ul>
+<li>範例中 <code>.box 2</code> 沒有設定高度，但它會自動延伸與子元素中高度最高的 <code>.box3</code> 同高。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Flex 與 Float 差異在於不用做清除浮動，父層還是抓的到子層的高度。</li>
+</ul>
+<h2 id="❒-不要談-XY-軸，談資料流向"><a href="#❒-不要談-XY-軸，談資料流向" class="headerlink" title="❒ 不要談 XY 軸，談資料流向"></a>❒ 不要談 XY 軸，談資料流向</h2><blockquote>
+<p><strong>先判斷主軸方向再進行主軸與次軸設定</strong></p>
+</blockquote>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220919/2011974308Ic34K7NV.jpg" alt="// flex 資料流向"></p>
+<ul>
+<li>資料流走直向主軸就是直，資料流走橫向主軸就是橫的</li>
+<li>資料流向 &#x3D; 主軸；交叉軸 &#x3D; 次軸</li>
+<li>以上方圖示為例，資料流向 ( 主軸 ) 橫向，交叉軸 ( 次軸 ) 就會是直向。如果資料流向 ( 主軸 ) 為直向，交叉軸 ( 次軸 ) 就會變橫向。</li>
+<li>資料流向 ( 主軸 ) 橫向預設為橫向 <code>row</code>。</li>
+</ul>
+<h2 id="❒-外層屬性"><a href="#❒-外層屬性" class="headerlink" title="❒ 外層屬性"></a>❒ 外層屬性</h2><blockquote>
+<p><strong>先判斷「 主軸方向 <code>flex-direction</code> 」，再進行「 主軸 <code>flex-wrap</code>、<code>justify-content</code> 」與「 次軸 <code>align-items</code> 」設定。</strong></p>
+</blockquote>
+<h3 id="▷-flex-direction-方向"><a href="#▷-flex-direction-方向" class="headerlink" title="▷ flex-direction 方向"></a>▷ flex-direction 方向</h3><p><strong>屬性值：</strong></p>
+<ul>
+<li><code>row</code> ( 預設 ) ，左至右。</li>
+<li><code>column</code>，上至下。</li>
+<li><code>row-reverse</code>  左至右反向。</li>
+<li><code>column-reverse</code>  上至下反向。</li>
+</ul>
+<h3 id="▷-flex-wrap-換行"><a href="#▷-flex-wrap-換行" class="headerlink" title="▷ flex-wrap 換行"></a>▷ <code>flex-wrap</code> 換行</h3><p><strong>屬性值：</strong></p>
+<ul>
+<li><code>nowrap</code>  ( 預設 )，不換行。</li>
+<li><code>wrap</code>，換行。</li>
+<li><code>wrapwrap-reverse</code>，依主軸決定直或橫的反向換行。</li>
+</ul>
+<h3 id="▷-flex-flow"><a href="#▷-flex-flow" class="headerlink" title="▷ flex-flow"></a>▷ flex-flow</h3><ul>
+<li><code>flex-flow</code> 為 <code>flex-direction</code> 與 <code>flex-wrap</code> 縮寫，依序寫入 <code>flex-direction</code> 與 <code>flex-wrap</code>。 例如： <code>flex-flow:row wrap;</code>。</li>
+</ul>
+<h3 id="▷-justify-content-主軸對齊方式"><a href="#▷-justify-content-主軸對齊方式" class="headerlink" title="▷ justify-content 主軸對齊方式"></a>▷ <code>justify-content</code> 主軸對齊方式</h3><blockquote>
+<p><strong>主軸對齊使用 <code>justify-content</code> ，次軸對齊使用 <code>align-items</code> 。</strong><br><img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743ftCyxP7Cav.png" alt="// 圖片來源 : 六角學院 ▲"></p>
+</blockquote>
+<p><strong>屬性值：</strong></p>
+<ul>
+<li><code>flex-start</code> : 對齊主軸起點</li>
+<li><code>flex-end</code> : 對齊主軸終點</li>
+<li><code>center</code> : 對齊主軸水平線</li>
+<li><code>space-between</code> : 平均分配每個元素，首元素與末元素會分別對齊主軸起點與終點。</li>
+<li><code>space-around</code>：與 <code>space-around</code> 很像，但中間留白與左右邊線距離不一樣 。</li>
+<li><code>space-evenly</code> : 與 <code>space-around</code> 很像，但中間留白與左右邊線距離一樣 。</li>
+</ul>
+<h3 id="▷-align-items-次軸對齊方式"><a href="#▷-align-items-次軸對齊方式" class="headerlink" title="▷ align-items 次軸對齊方式"></a>▷ align-items 次軸對齊方式</h3><blockquote>
+<p><strong>主軸對齊使用 <code>justify-content</code> ，次軸對齊使用 <code>align-items</code> 。</strong></p>
+</blockquote>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743xtbsAYFE1x.png" alt="// 圖片來源 : 六角學院 ▲"></p>
+<ul>
+<li><code>flex-start</code></li>
+<li><code>flex-end</code></li>
+<li><code>center</code></li>
+<li><code>strech</code> : 延伸 100% 交錯軸。( 預設 )</li>
+<li><code>baseline</code> : 讓並排元素的文字照<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E7%B7%9A">基線</a>做對齊。</li>
+</ul>
+<h3 id="▷-align-content-次軸對齊方式，但須多行才有效"><a href="#▷-align-content-次軸對齊方式，但須多行才有效" class="headerlink" title="▷ align-content 次軸對齊方式，但須多行才有效"></a>▷ align-content 次軸對齊方式，但須多行才有效</h3><ul>
+<li><code>align-content</code> 決定行之間的間隔，而 <code>align-items</code> 決定元素整體在容器的什麼位置。</li>
+<li>只有一行時 <code>align-content</code>  是無效的。</li>
+</ul>
+<h2 id="❒-Flex-模擬器與遊戲"><a href="#❒-Flex-模擬器與遊戲" class="headerlink" title="❒ Flex 模擬器與遊戲"></a>❒ Flex 模擬器與遊戲</h2><p>關於 Flex 屬性運用，可搭配下方模擬器與遊戲：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/peiqun/pen/WYzzYX">Flex 六角線上模擬器</a></li>
+<li><a target="_blank" rel="noopener" href="https://hexschool.github.io/flexbox-pirate/index.html#/">Flex pirate 新手關卡</a></li>
+<li><a target="_blank" rel="noopener" href="https://flexboxfroggy.com/#zh-tw">Flex 青蛙</a></li>
+</ul>
+<h2 id="❒-使用-Flex-遇到的一些問題統整"><a href="#❒-使用-Flex-遇到的一些問題統整" class="headerlink" title="❒ 使用 Flex 遇到的一些問題統整"></a>❒ 使用 Flex 遇到的一些問題統整</h2><h3 id="❶-flex-中圖片變型的原因"><a href="#❶-flex-中圖片變型的原因" class="headerlink" title="❶ flex 中圖片變型的原因"></a>❶ flex 中圖片變型的原因</h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/GRqQKXd">Codepen 範例</a></p>
+<p>區塊設定 <code>flex</code>， 而 <code>align-items</code> 預設會是 <code>stretch</code>，會自動延伸與同層內最高元素<br>的高度 ，如果遇到隔壁排內容比圖片還多，圖片會因此產生變形。<br>可加上 <code>align-items: center</code> 就可讓圖片恢復原比例。</p>
+<h3 id="❷-align-items-baseline-是做什麼的"><a href="#❷-align-items-baseline-是做什麼的" class="headerlink" title="❷ align-items:baseline; 是做什麼的 ?"></a>❷ align-items:baseline; 是做什麼的 ?</h3><p>此出處於六角學院課程中問與答。</p>
+<ul>
+<li><p>Baseline 是英文或其他西方文字會有的文字基線，讓英文字母能夠依照此基準線對齊，可以參考此<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E7%B7%9A">連結</a>。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743UBIcdXYsZY.png" alt="// 示意圖">  </p>
+</li>
+<li><p><code>align-items: baseline</code> 就是讓並排的元素的交錯軸依照 baseline 對齊，因此可以看到若有元素中有文字內容看起來就會是下圖二這樣。<br> <img src="https://ithelp.ithome.com.tw/upload/images/20220919/201197438zIUS8ESqL.png" alt="// align-items - CSS Reference"></p>
+<p>  ▲ 來源：<a target="_blank" rel="noopener" href="https://cssreference.io/property/align-items/">align-items - CSS Reference</a> ▲</p>
+</li>
+</ul>
+<h3 id="❸-如何辨別「-align-items-baseline-」與「-align-items-flex-start-」"><a href="#❸-如何辨別「-align-items-baseline-」與「-align-items-flex-start-」" class="headerlink" title="❸ 如何辨別「 align-items:baseline; 」與「 align-items:flex-start; 」 ?"></a>❸ 如何辨別「 align-items:baseline; 」與「 align-items:flex-start; 」 ?</h3><p><strong>父層使用 row &amp; <code>align-items:baseline;</code>   ( <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/oNdLYZY">CodePen 範例</a> ) :</strong></p>
+<ul>
+<li><code>font-size</code> 相同 :  範例 ❶ 中看起來和 <code>align-items:flex-start;</code> 很像，都是靠上對齊。</li>
+<li><code>font-size</code> 不同 :<ul>
+<li>使用 <code>baseline</code>：和範例 ❶ 相比，範例 ❷ 中就會比較明顯看到，<code>.box</code> 們依內容文字基準線對齊。 boxC 高度是最高的，其他 <code>.box</code> 會用自己的 baseline 去對齊最高的 boxC 。</li>
+<li>使用 <code>flex-start</code>：和範例 ❷ 相比，範例❸ 中可見對齊基準依次軸的起點位置。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743cOgZuwLbGN.jpg" alt="// font-size 不同使用 baseline 與 flex-start 差異"></p>
+<hr>
+<p>下篇繼續關於 Flex 內層屬性，<code>flex-grow</code>、<code>flex-shrink</code>、<code>flex-basis</code>、<code>order</code>、<code>align-self</code>。</p>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li>六角學院 : 使用 HTML、CSS 開發一個網站</li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/peiqun/pen/WYzzYX">Flex 六角線上模擬器</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/_nCBQ6AIzDU">Css coke - 玩轉 CSS Flex</a></li>
+<li>Flex 遊戲<ul>
+<li><a target="_blank" rel="noopener" href="https://hexschool.github.io/flexbox-pirate/index.html#/">Flex pirate 新手關卡</a></li>
+<li><a target="_blank" rel="noopener" href="https://flexboxfroggy.com/#zh-tw">Flex 青蛙</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/flex/" rel="tag"># flex</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/3395657913/" rel="prev" title="Day3 | Form 表單">
+                  <i class="fa fa-chevron-left"></i> Day3 | Form 表單
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/1352471116/" rel="next" title="Day5 | 淺談 Flex 排版內層屬性">
+                  Day5 | 淺談 Flex 排版內層屬性 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

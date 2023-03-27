@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="CSS 選擇器與權重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day1 | CSS 選擇器與權重">
+<meta property="og:url" content="https://echocarriet.github.io/html-css/20230327/2449098139/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="CSS 選擇器與權重">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220915/20119743e3xEfsK9IC.png">
+<meta property="article:published_time" content="2023-03-27T10:14:09.000Z">
+<meta property="article:modified_time" content="2023-03-27T10:37:20.520Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="權重">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20220915/20119743e3xEfsK9IC.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/html-css/20230327/2449098139/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/html-css/20230327/2449098139/","path":"html-css/20230327/2449098139/","title":"Day1 | CSS 選擇器與權重"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day1 | CSS 選擇器與權重 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E4%BB%80%E9%BA%BC%E6%98%AF-CSS-%E9%81%B8%E6%93%87%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">❒ 什麼是 CSS 選擇器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E9%81%B8%E6%93%87%E5%99%A8%E5%88%86%E9%A1%9E"><span class="nav-number">2.</span> <span class="nav-text">❒ 選擇器分類</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E8%A4%87%E5%90%88%E9%81%B8%E6%93%87%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">❒ 複合選擇器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%A0%BF-%E7%9B%B4%E5%B1%AC%E9%81%B8%E6%93%87%E5%99%A8-X-gt-Y"><span class="nav-number">3.1.</span> <span class="nav-text">⠿ 直屬選擇器 X &gt; Y</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%A0%BF-%E5%BE%8C%E4%BB%A3%E9%81%B8%E6%93%87%E5%99%A8-X-Y"><span class="nav-number">3.2.</span> <span class="nav-text">⠿ 後代選擇器 X Y</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%A0%BF-%E7%9B%B8%E9%84%B0%E5%85%84%E5%BC%9F%E9%81%B8%E6%93%87%E5%99%A8-X-Y"><span class="nav-number">3.3.</span> <span class="nav-text">⠿ 相鄰兄弟選擇器 X + Y</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%A0%BF-%E9%80%9A%E7%94%A8%E5%85%84%E5%BC%9F%E9%81%B8%E6%93%87%E5%99%A8-X-Y"><span class="nav-number">3.4.</span> <span class="nav-text">⠿ 通用兄弟選擇器 X ~ Y</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%A0%BF-X-nth-child-n"><span class="nav-number">3.5.</span> <span class="nav-text">⠿ X:nth-child(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%A0%BF-X-nth-last-child-n"><span class="nav-number">3.6.</span> <span class="nav-text">⠿ X:nth-last-child(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%A0%BF-X-first-child-%E8%88%87-X-last-child"><span class="nav-number">3.7.</span> <span class="nav-text">⠿ X:first-child 與 X:last-child</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%81%BD%E5%85%83%E7%B4%A0"><span class="nav-number">4.</span> <span class="nav-text">❒ 偽元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%A0%BF-not"><span class="nav-number">4.1.</span> <span class="nav-text">⠿ :not</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E5%9C%A8%E5%A4%9A%E5%80%8B-p-%E6%AE%B5%E8%90%BD%E4%B8%AD%EF%BC%8C%E6%8E%92%E9%99%A4%E7%AC%AC%E4%B8%80%E5%80%8B-p-%E6%AE%B5%E8%90%BD%E6%96%87%E5%AD%97%E8%AE%8A%E7%B4%85%E8%89%B2"><span class="nav-number">4.2.</span> <span class="nav-text">範例 1. 在多個 p 段落中，排除第一個 p 段落文字變紅色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-CSS-%E6%AC%8A%E9%87%8D"><span class="nav-number">5.</span> <span class="nav-text">❒ CSS 權重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%AC%8A%E9%87%8D%E5%88%86%E6%95%B8%E9%81%8B%E7%AE%97"><span class="nav-number">6.</span> <span class="nav-text">❒ 權重分數運算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-CSS-%E6%AC%8A%E9%87%8D%E7%9B%B8%E9%97%9C%E7%AF%84%E4%BE%8B"><span class="nav-number">7.</span> <span class="nav-text">❒ CSS 權重相關範例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1-h1-%E6%96%87%E5%AD%97%E9%A1%8F%E8%89%B2%E7%82%BA"><span class="nav-number">7.1.</span> <span class="nav-text">Q1. h1 文字顏色為 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q2-%E8%9E%A2%E5%B9%95%E8%A7%A3%E6%9E%90%E5%BA%A6%E5%9C%A8-769px-%E6%99%82%EF%BC%8Ch1-%E6%96%87%E5%AD%97%E9%A1%8F%E8%89%B2%E7%82%BA"><span class="nav-number">7.2.</span> <span class="nav-text">Q2. 螢幕解析度在 769px 時，h1 文字顏色為 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q3-%E8%9E%A2%E5%B9%95%E8%A7%A3%E6%9E%90%E5%BA%A6%E5%9C%A8-568px-%E6%99%82%EF%BC%8Ch1-%E6%96%87%E5%AD%97%E9%A1%8F%E8%89%B2%E7%82%BA"><span class="nav-number">7.3.</span> <span class="nav-text">Q3. 螢幕解析度在 568px 時，h1 文字顏色為 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q4-%E8%9E%A2%E5%B9%95%E8%A7%A3%E6%9E%90%E5%BA%A6%E5%9C%A8-320px-%E6%99%82%EF%BC%8C%E5%B9%BE%E5%80%8B-title-%E6%9C%83%E8%A2%AB%E9%96%8B%E5%95%9F"><span class="nav-number">7.4.</span> <span class="nav-text">Q4. 螢幕解析度在 320px 時，幾個 .title 會被開啟 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q5-%E6%A0%B9%E6%93%9A%E4%BB%A5%E4%B8%8B-CSS%EF%BC%8C%E5%9C%A8%E8%9E%A2%E5%B9%95%E8%A7%A3%E6%9E%90%E5%BA%A6-600px-%E6%99%82%E6%96%87%E5%AD%97%E7%9A%84%E9%A1%8F%E8%89%B2%E7%82%BA%E4%BD%95"><span class="nav-number">7.5.</span> <span class="nav-text">Q5. 根據以下 CSS，在螢幕解析度 600px 時文字的顏色為何 ?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">8.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/html-css/20230327/2449098139/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day1 | CSS 選擇器與權重 | Hi, I'm Carrie">
+      <meta itemprop="description" content="CSS 選擇器與權重">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day1 | CSS 選擇器與權重
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 18:14:09 / 修改時間：18:37:20" itemprop="dateCreated datePublished" datetime="2023-03-27T18:14:09+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html-css/" itemprop="url" rel="index"><span itemprop="name">HTML&CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">CSS 選擇器與權重</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-什麼是-CSS-選擇器"><a href="#❒-什麼是-CSS-選擇器" class="headerlink" title="❒ 什麼是 CSS 選擇器"></a>❒ 什麼是 CSS 選擇器</h2><p>CSS 選擇器可調整元素樣式。如下程式碼中，<code>p</code> 為選擇器，括號 <code>&#123;&#125;</code> 內為想要調整成的樣式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line"> <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-選擇器分類"><a href="#❒-選擇器分類" class="headerlink" title="❒ 選擇器分類"></a>❒ 選擇器分類</h2><ol>
+<li>基本選擇器<ol>
+<li>類別選擇器</li>
+<li>class 選擇器</li>
+<li>ID 選擇器</li>
+<li>通用選擇器</li>
+<li>屬性選擇器</li>
+<li>狀態選擇器</li>
+</ol>
+</li>
+<li>複合選擇器<ol>
+<li>子選擇器 ( 直屬選擇器 ) <code>X &gt; Y</code></li>
+<li>後代選擇器 <code>X Y</code></li>
+<li>相鄰兄弟選擇器 ( 鄰接同層選擇器 ) <code>X + Y</code></li>
+<li>通用兄弟選擇器 <code>X ~ Y</code></li>
+</ol>
+</li>
+<li>偽元素</li>
+<li>虛擬類別</li>
+</ol>
+<p>下方只針對幾個比較常用的做整理。</p>
+<h2 id="❒-複合選擇器"><a href="#❒-複合選擇器" class="headerlink" title="❒ 複合選擇器"></a>❒ 複合選擇器</h2><h3 id="⠿-直屬選擇器-X-gt-Y"><a href="#⠿-直屬選擇器-X-gt-Y" class="headerlink" title="⠿ 直屬選擇器 X &gt; Y"></a>⠿ 直屬選擇器 X &gt; Y</h3><p>只有 X 直屬子層 Y 會有作用。</p>
+<p><strong>實作 1. 讓 li.item 直屬子層的 p 段落文字變紅色 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/vYjNZqX">CodePen 程式碼</a></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>item<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!--紅色文字--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;inList&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;inItem&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>inItem<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>item<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="comment">&lt;!--紅色文字--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inbox&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>item<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⠿-後代選擇器-X-Y"><a href="#⠿-後代選擇器-X-Y" class="headerlink" title="⠿ 後代選擇器 X Y"></a>⠿ 後代選擇器 X Y</h3><p>X 不管到第幾代的子層 Y 都會有作用</p>
+<p><strong>實作 1. 與直屬選擇器相同範例，使用後代選擇器則子層的文字皆會變紅色 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/JjvYyGd">CodePen 程式碼</a></strong></p>
+<h3 id="⠿-相鄰兄弟選擇器-X-Y"><a href="#⠿-相鄰兄弟選擇器-X-Y" class="headerlink" title="⠿ 相鄰兄弟選擇器 X + Y"></a>⠿ 相鄰兄弟選擇器 X + Y</h3><p>需與 X 相鄰的下一個同層 Y 才會吃到 CSS 樣式。</p>
+<p><strong>實作 1. 讓 333 文字變藍色 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/VwxvWxY">CodePen 程式碼</a></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text1&quot;</span>&gt;</span>111<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text2&quot;</span>&gt;</span>222<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text3&quot;</span>&gt;</span>333<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⠿-通用兄弟選擇器-X-Y"><a href="#⠿-通用兄弟選擇器-X-Y" class="headerlink" title="⠿ 通用兄弟選擇器 X ~ Y"></a>⠿ 通用兄弟選擇器 X ~ Y</h3><p>於 X 同層且在後方的 Y 元素皆會執行 CSS 設定。</p>
+<p><strong>實作 1. 從文字３至文字６皆為紅色 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/oNdjwVX">CodePen 程式碼</a></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text1&quot;</span>&gt;</span>文字１<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text2&quot;</span>&gt;</span>文字２<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text3&quot;</span>&gt;</span>文字３<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text4&quot;</span>&gt;</span>文字４<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text5&quot;</span>&gt;</span>文字５<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text6&quot;</span>&gt;</span>文字６<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⠿-X-nth-child-n"><a href="#⠿-X-nth-child-n" class="headerlink" title="⠿ X:nth-child(n)"></a>⠿ X:nth-child(n)</h3><ul>
+<li><code>X:nth-child(n)</code>  參數 n 從 1 開始，如果要指向第一個元素  <code>nth-child(1)</code> 。</li>
+<li><code>X:nth-child(數字n)</code> 參數中數字的倍數皆會執行 css 效果。</li>
+</ul>
+<p><strong>實作範例 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/pogwKzd">CodePen 程式碼</a></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"> <span class="comment">&lt;!--括號中的參數從1開始--&gt;</span></span></span><br><span class="line"><span class="language-xml"> li:nth-child(3)&#123;</span></span><br><span class="line"><span class="language-xml">   color:red;</span></span><br><span class="line"><span class="language-xml"> &#125;</span></span><br><span class="line"><span class="language-xml"> <span class="comment">&lt;!--2n 即2的倍數的li皆會執行效果--&gt;</span></span></span><br><span class="line"><span class="language-xml"> li:nth-child(2n)&#123;</span></span><br><span class="line"><span class="language-xml">   color:green;</span></span><br><span class="line"><span class="language-xml"> &#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 01<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 02<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--green--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 03<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--redn--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 04<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--green--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 05<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 06<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--green--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 07<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--red--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 08<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--green--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⠿-X-nth-last-child-n"><a href="#⠿-X-nth-last-child-n" class="headerlink" title="⠿ X:nth-last-child(n)"></a>⠿ X:nth-last-child(n)</h3><ul>
+<li><code>X:nth-last-child(n)</code> 倒數參數 n 開始執行 CSS 樣式。</li>
+</ul>
+<h3 id="⠿-X-first-child-與-X-last-child"><a href="#⠿-X-first-child-與-X-last-child" class="headerlink" title="⠿ X:first-child 與 X:last-child"></a>⠿ X:first-child 與 X:last-child</h3><ul>
+<li><code>X:first-child</code> 指向 X 第一個元素</li>
+<li><code>X:last-child</code> 指向 X 最後一個元素</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/OJZyjjv">CodePen 程式碼 01</a></p>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/qBbjKgO">CodePen 程式碼 02 - 選單下底線範例</a></p>
+<h2 id="❒-偽元素"><a href="#❒-偽元素" class="headerlink" title="❒ 偽元素"></a>❒ 偽元素</h2><h3 id="⠿-not"><a href="#⠿-not" class="headerlink" title="⠿ :not"></a>⠿ <code>:not</code></h3><p><code>:not</code> : 為 CSS 偽類，可排除特定的元素被選中。</p>
+<h3 id="範例-1-在多個-p-段落中，排除第一個-p-段落文字變紅色"><a href="#範例-1-在多個-p-段落中，排除第一個-p-段落文字變紅色" class="headerlink" title="範例 1. 在多個 p 段落中，排除第一個 p 段落文字變紅色"></a>範例 1. 在多個 p 段落中，排除第一個 p 段落文字變紅色</h3><p><a target="_blank" rel="noopener" href="https://www.notion.so/CSS-not-e4e44072fb79496fa2917fafe42f8e16">CodePen 範例程式</a><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/WNMGeWv">碼</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:not</span>(<span class="selector-pseudo">:first</span>-child) &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-CSS-權重"><a href="#❒-CSS-權重" class="headerlink" title="❒ CSS 權重"></a>❒ CSS 權重</h2><blockquote>
+<p><strong>先看權重，再看先後</strong></p>
+</blockquote>
+<ul>
+<li>任何元素選擇符 <code>*</code> : 0 分 ，沒有權級。</li>
+<li><code>HTML</code> 標籤 ( 元素選擇器 )、偽元素選擇器：1 分。<ul>
+<li><code>h1</code>、<code>p</code>、<code>ul</code>、<code>li</code> 等。</li>
+</ul>
+</li>
+<li><code>class</code> 選擇器、偽類選擇器：10 分。<ul>
+<li><code>.title</code> ，前方以點開頭。</li>
+</ul>
+</li>
+<li><code>ID</code> 選擇器：100 分。<ul>
+<li><code>#title</code> ，前方以 # 開頭。</li>
+<li>因為 ID 選擇器權重較高為 100 分，在寫文件會有樣式覆蓋上的麻煩，所以不建議於 CSS 使用，除非 js 操作。</li>
+</ul>
+</li>
+<li><code>inline style</code>：1000 分。<ul>
+<li><code>&lt;h1 style=&quot; &quot;&gt;title&lt;/h1&gt;</code> ，直接在 HTML 標籤內寫 style。</li>
+</ul>
+</li>
+<li><code>!important</code>：10000 分。<ul>
+<li><code>.title2&#123; color:red; &#125; !important</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-權重分數運算"><a href="#❒-權重分數運算" class="headerlink" title="❒ 權重分數運算"></a>❒ 權重分數運算</h2><ul>
+<li><code>.title h1 &#123;&#125;</code> →  10+1&#x3D;11 ( class 選擇器 + HTML 標籤 )</li>
+<li><code>.qa-lost__title-link</code> → 10 ( class 選擇器 )</li>
+<li><code>#Stencil .Pos-r</code>→ 100+10&#x3D;110 ( ID 選擇器 + class 選擇器  )</li>
+<li><code>#atomic .Py , #atomic .Pt</code> → 100+10&#x3D;110 (  <strong>逗號不會有加分作用</strong>； ID 選擇器 + class 選擇器 )</li>
+<li><code>.on_sale li a , .sale_category li a , .sale_news li a</code> → 10+1+1&#x3D;12 ( class 選擇器 + HTML 標籤 + HTML 標籤 )</li>
+<li>眾多一分的權重是會壓過一個十分的權重的。<ul>
+<li><code>.h2 .h2 .h2 .h2 .h2 .h2 .h2 .h2 .h2 .h2</code> &gt; <code>.h2</code></li>
+</ul>
+</li>
+<li>權重相同時，後方會蓋掉前方設定。</li>
+</ul>
+<h2 id="❒-CSS-權重相關範例"><a href="#❒-CSS-權重相關範例" class="headerlink" title="❒ CSS 權重相關範例"></a>❒ CSS 權重相關範例</h2><h3 id="Q1-h1-文字顏色為"><a href="#Q1-h1-文字顏色為" class="headerlink" title="Q1. h1 文字顏色為 ?"></a>Q1. h1 文字顏色為 ?</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title title2&quot;</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">h1</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.title2</span>&#123;</span><br><span class="line"> <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.title</span>&#123;</span><br><span class="line"> <span class="attribute">color</span>:blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>答案： 1. 藍色 ( 這邊不管 HTML 的先後順序，以 CSS 先後順序為優先。)</p>
+<h3 id="Q2-螢幕解析度在-769px-時，h1-文字顏色為"><a href="#Q2-螢幕解析度在-769px-時，h1-文字顏色為" class="headerlink" title="Q2. 螢幕解析度在 769px 時，h1 文字顏色為 ?"></a>Q2. 螢幕解析度在 769px 時，h1 文字顏色為 ?</h3><h3 id="Q3-螢幕解析度在-568px-時，h1-文字顏色為"><a href="#Q3-螢幕解析度在-568px-時，h1-文字顏色為" class="headerlink" title="Q3. 螢幕解析度在 568px 時，h1 文字顏色為 ?"></a>Q3. 螢幕解析度在 568px 時，h1 文字顏色為 ?</h3><h3 id="Q4-螢幕解析度在-320px-時，幾個-title-會被開啟"><a href="#Q4-螢幕解析度在-320px-時，幾個-title-會被開啟" class="headerlink" title="Q4. 螢幕解析度在 320px 時，幾個 .title 會被開啟 ?"></a>Q4. 螢幕解析度在 320px 時，幾個 .title 會被開啟 ?</h3><p>Q2 ~ Q4 程式碼 ↓</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">h1</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.title</span>&#123;</span><br><span class="line"> <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span>(max-width:768px&#123;</span><br><span class="line"> <span class="selector-class">.title</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:blue;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span>(max-width:375px&#123;</span><br><span class="line"> <span class="selector-class">.title</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:yellow;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>答案：Q2. 紅色<br>答案：Q3. 藍色<br>答案：Q4. 三個 .title 都會被開啟，只是上方第一個與第二個會被 <code>@media(max-width:375px&#123; &#125;</code> 的覆蓋掉。<br><img src="https://ithelp.ithome.com.tw/upload/images/20220915/20119743e3xEfsK9IC.png" alt="// 圖片來源 : 六角學院 ▲"></p>
+<h3 id="Q5-根據以下-CSS，在螢幕解析度-600px-時文字的顏色為何"><a href="#Q5-根據以下-CSS，在螢幕解析度-600px-時文字的顏色為何" class="headerlink" title="Q5. 根據以下 CSS，在螢幕解析度 600px 時文字的顏色為何 ?"></a>Q5. 根據以下 CSS，在螢幕解析度 600px 時文字的顏色為何 ?</h3><p>A. 紅色  B. 黑色  C. 黃色  D. 藍色</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">576px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">p</span> &#123; </span><br><span class="line">        <span class="attribute">color</span>: red;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">p</span> &#123; </span><br><span class="line">        <span class="attribute">color</span>: black; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: yellow; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>答案： C 黃色 ( <strong>先看權重再看先後</strong>，上方權重皆為 1 ，所以後方的 <code>p</code> 會覆蓋掉斷點中的 <code>p</code> 設定。)</p>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/CSS_Selector">MDN - CSS 選擇器</a></li>
+<li>偽元素選擇器<ul>
+<li><a target="_blank" rel="noopener" href="https://www.delftstack.com/zh-tw/howto/css/css-not-first-child/">在 CSS 中選擇非第一個子元素的方法</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not">MDN - :not()</a></li>
+</ul>
+</li>
+<li>六角學院</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/%E6%AC%8A%E9%87%8D/" rel="tag"># 權重</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/tdxtransportdata/20230327/1344071855/" rel="prev" title="TDX 註冊流程">
+                  <i class="fa fa-chevron-left"></i> TDX 註冊流程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/3211221452/" rel="next" title="Day2 | img 圖片與背景圖使用方式、視差滾動背景效果">
+                  Day2 | img 圖片與背景圖使用方式、視差滾動背景效果 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

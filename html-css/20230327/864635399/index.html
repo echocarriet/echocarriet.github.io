@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="關於 grid 排版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day6 | 淺談 Grid 排版">
+<meta property="og:url" content="https://echocarriet.github.io/html-css/20230327/864635399/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="關於 grid 排版">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220921/201197431ZLxggarJG.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220921/20119743uuUzrRE5ai.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220921/20119743jDEUPEpQJb.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220921/20119743r9k8M6DHbd.png">
+<meta property="article:published_time" content="2023-03-27T10:36:34.000Z">
+<meta property="article:modified_time" content="2023-03-27T10:45:47.157Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="grid">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20220921/201197431ZLxggarJG.jpg">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/html-css/20230327/864635399/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/html-css/20230327/864635399/","path":"html-css/20230327/864635399/","title":"Day6 | 淺談 Grid 排版"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day6 | 淺談 Grid 排版 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%A4%96%E5%B1%A4%E5%B1%AC%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">❒ 外層屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-grid-%E6%A0%BC%E7%B7%9A%E5%96%AE%E4%BD%8D-fr"><span class="nav-number">1.1.</span> <span class="nav-text">▷ grid 格線單位 fr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E7%B8%AE%E5%AF%AB"><span class="nav-number">1.2.</span> <span class="nav-text">▷ 縮寫</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%85%A7%E5%B1%A4%E5%B1%AC%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">❒ 內層屬性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%AF%A6%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">❒ 實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%AF%A6%E4%BD%9C-1-grid-template-rows-columns-%E6%90%AD%E9%85%8D-grid-area"><span class="nav-number">3.1.</span> <span class="nav-text">▷ 實作 1. grid-template-rows|columns 搭配 grid-area</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%AF%A6%E4%BD%9C-2-grid-auto-rows-columns-%E6%90%AD%E9%85%8D-grid-row-column"><span class="nav-number">3.2.</span> <span class="nav-text">▷ 實作 2. grid-auto-rows|columns 搭配 grid-row|column</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%AF%A6%E4%BD%9C-2-2-%E9%81%87%E5%88%B0%E5%BE%88%E5%A4%9A%E6%AC%84%E5%88%97%E7%9A%84%E7%B5%84%E5%90%88"><span class="nav-number">3.3.</span> <span class="nav-text">▷ 實作 2-2. 遇到很多欄列的組合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E4%BD%BF%E7%94%A8-grid-auto-rows-columns-%E6%B2%92%E6%9C%89%E6%8C%87%E5%AE%9A%E6%AC%84%E5%88%97%E6%95%B8%EF%BC%8C%E6%80%8E%E9%BA%BC%E6%9C%83%E7%94%A2%E7%94%9F%E6%A0%BC%E7%B7%9A%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">❒ 使用 grid-auto-rows|columns 沒有指定欄列數，怎麼會產生格線？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">5.</span> <span class="nav-text">❒ 參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/html-css/20230327/864635399/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day6 | 淺談 Grid 排版 | Hi, I'm Carrie">
+      <meta itemprop="description" content="關於 grid 排版">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day6 | 淺談 Grid 排版
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 18:36:34 / 修改時間：18:45:47" itemprop="dateCreated datePublished" datetime="2023-03-27T18:36:34+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html-css/" itemprop="url" rel="index"><span itemprop="name">HTML&CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">關於 grid 排版</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>grid 排版上類似表格，先於外層使用 row 與 column 畫出所需數量的列與欄格線，內層設定好區塊後再放置外層的格子中。</p>
+<h2 id="❒-外層屬性"><a href="#❒-外層屬性" class="headerlink" title="❒ 外層屬性"></a>❒ 外層屬性</h2><ul>
+<li>「 <code>grid-template-rows|columns</code> 」與「 <code>grid-auto-rows|columns</code> 」擇一使用。</li>
+</ul>
+<p><strong>屬性：</strong></p>
+<ul>
+<li><code>display</code><ul>
+<li>屬性值為 <code>grid</code>。</li>
+</ul>
+</li>
+<li><code>grid-template-rows</code> 設定格線列<ul>
+<li>屬性值可為<code>百分比</code>、<code>px</code>、<code>fr</code>。</li>
+</ul>
+</li>
+<li><code>grid-template-columns</code> 設定格線欄<ul>
+<li>屬性值可為<code>百分比</code>、<code>px</code>、<code>fr</code>。</li>
+</ul>
+</li>
+<li><code>grid-auto-rows</code></li>
+<li><code>grid-auto-columns</code></li>
+<li><code>grid-template-area</code> ：需搭配內層屬性 <code>grid-area</code>。<ul>
+<li>屬性值：設定區塊位置，把內層自訂名稱 <code>grid-area</code> 屬性值帶入，像排格子一樣。</li>
+<li>屬性值中如果要產生空白也可使用 <code>.</code>。<a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/NWMdqZY">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>grid-auto-flow</code> 可控制主軸為平行或垂直。<ul>
+<li>屬性值：<code>row</code>、<code>column</code>。</li>
+</ul>
+</li>
+<li><code>justify-items</code>、<code>justify-content</code>、<code>align-content</code>：與 flex 用法一樣。</li>
+<li><code>grid-gap</code>、<code>grid-column-gap</code>、<code>grid-row-gap</code> : 格線水平與垂直間隔。</li>
+</ul>
+<h3 id="▷-grid-格線單位-fr"><a href="#▷-grid-格線單位-fr" class="headerlink" title="▷ grid 格線單位 fr"></a>▷ grid 格線單位 fr</h3><ul>
+<li><code>fr</code> 為 grid 的格線單位，分數的部分需使用 <code>fr</code> 為單位。</li>
+<li><code>grid-template-columns: 2fr 2fr 1fr 1fr;</code> 為 2&#x2F;6 2&#x2F;6 1&#x2F;6 1&#x2F;6 ( 分母 6 為 2+2+1+1 )。</li>
+</ul>
+<h3 id="▷-縮寫"><a href="#▷-縮寫" class="headerlink" title="▷ 縮寫"></a>▷ 縮寫</h3><ul>
+<li><code>grid-template-rows|columns</code> 列欄屬性值相同時可使用 repeat，為 <code>repeat(次數, 格線)</code>。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 等同於 25% 25% 25% 25% */</span></span><br><span class="line"><span class="attribute">grid-template-rows</span>: <span class="built_in">repeate</span>(<span class="number">4</span>, <span class="number">25%</span>);</span><br><span class="line"><span class="attribute">grid-template-columns</span>: <span class="built_in">repeate</span>(<span class="number">4</span>, <span class="number">25%</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 同於 25% 25% 25% 100px */</span></span><br><span class="line"><span class="attribute">grid-template-rows</span>: <span class="built_in">repeate</span>(<span class="number">3</span>, <span class="number">25%</span>) <span class="number">100px</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-內層屬性"><a href="#❒-內層屬性" class="headerlink" title="❒ 內層屬性"></a>❒ 內層屬性</h2><ul>
+<li>「 <code>grid-area</code> 」與 「 <code>grid-row</code>、<code>grid-column</code> 」擇一使用，遇到多欄位可使用「 <code>grid-row</code>、<code>grid-column</code> 」比較方便，下方會有範例。</li>
+</ul>
+<p><strong>屬性：</strong></p>
+<ul>
+<li><code>grid-area</code> ：需搭配外層屬性 <code>grid-template-area</code> 。命名好自訂名稱後，帶入「 外層 <code>grid-template-area</code> 」 的中，也就是看內層的區塊要放到外層的哪些格子內。<ul>
+<li>屬性值：自訂名，例 <code>grid-area: A1</code>，A1 為自訂名。</li>
+</ul>
+</li>
+<li><code>grid-row</code><ul>
+<li>屬性值：<code>從第幾條線開始/從第幾條線結束;</code>，例 <code>1/3</code> 即從第一條線開始到第三條線結束的區塊。</li>
+<li>屬性值也可為負數 ( 倒數的意思 )，在外層沒有設定幾欄幾列時也可使用，例 <code>2/-3</code> 即從第二條線開始至倒數第三條線結束的區塊。</li>
+<li>為 <code>grid-row-start</code>、<code>gird-row-end</code> 縮寫</li>
+</ul>
+</li>
+<li><code>grid-column</code><ul>
+<li>屬性值與 <code>grid-row</code> 一樣。</li>
+<li>為 <code>grid-column-start</code>、<code>gird-column-end</code> 縮寫</li>
+</ul>
+</li>
+<li><code>justify-self</code>、<code>align-self</code>：與 flex 用法一樣。</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220921/201197431ZLxggarJG.jpg" alt="// grid-row|column 屬性值，線的概念"></p>
+<h2 id="❒-實作"><a href="#❒-實作" class="headerlink" title="❒ 實作"></a>❒ 實作</h2><h3 id="▷-實作-1-grid-template-rows-columns-搭配-grid-area"><a href="#▷-實作-1-grid-template-rows-columns-搭配-grid-area" class="headerlink" title="▷ 實作 1. grid-template-rows|columns 搭配 grid-area"></a>▷ 實作 1. grid-template-rows|columns 搭配 grid-area</h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/QWrdwXd">CodePen 範例</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;AA&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;BB&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;CC&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">800px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">800px</span>;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="number">2px</span> solid gray;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">25%</span> <span class="number">25%</span> <span class="number">25%</span> <span class="number">25%</span>;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">25%</span> <span class="number">25%</span> <span class="number">25%</span> <span class="number">25%</span>;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: </span><br><span class="line">  <span class="string">&#x27;B3 B3 B3 B1&#x27;</span></span><br><span class="line">  <span class="string">&#x27;B3 B3 B3 B1&#x27;</span></span><br><span class="line">  <span class="string">&#x27;B2 B2 B2 B1&#x27;</span></span><br><span class="line">  <span class="string">&#x27;B2 B2 B2 B1&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.AA</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#9dd3a8</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: B1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.BB</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ffad60</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: B2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.CC</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#d9d9f3</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: B3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220921/20119743uuUzrRE5ai.jpg" alt="// 圖層拆解"></p>
+<ul>
+<li>外層使用 <code>grid-template-rows|columns</code> 分別設定要幾欄幾列。</li>
+<li>內層自行命名要哪些區塊，這邊設定三個區塊 <code>.AA</code> <code>.BB</code> <code>.CC</code> 分別命名為 <code>B1</code> <code>B2</code> <code>B3</code>。</li>
+<li>把命名的區塊帶回外層的 <code>grid-template-areas</code> 空間中，如上圖。<ul>
+<li><p>注意：外層 <code>grid-template-areas</code> 中「 空間是不能分離的 」不然會無法顯示。如下，把列中第二排第三個 B3 改成 B1，就無法正常顯示囉！</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x27;B3 B3 B3 B1&#x27;</span><br><span class="line">&#x27;B3 B3 B1 B1&#x27;</span><br><span class="line">&#x27;B2 B2 B2 B1&#x27;</span><br><span class="line">&#x27;B2 B2 B2 B1&#x27;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-實作-2-grid-auto-rows-columns-搭配-grid-row-column"><a href="#▷-實作-2-grid-auto-rows-columns-搭配-grid-row-column" class="headerlink" title="▷ 實作 2. grid-auto-rows|columns 搭配 grid-row|column"></a>▷ 實作 2. grid-auto-rows|columns 搭配 grid-row|column</h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/WNJGdqZ">Codepen 範例</a></p>
+<ul>
+<li>內層使用 <code>grid-row|column</code>，外層就可以不使用 <code>grid-template-areas</code>。</li>
+<li>內層使用 <code>grid-row|column</code> 是可以讓內層區塊重疊的，如範例中 C 與 D 。</li>
+<li>如果不想要使用 <code>grid-auto-rows|columns</code> 也可以使用 <code>grid-template-rows|columns</code> 自己先設定好要幾欄幾列。</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220921/20119743jDEUPEpQJb.jpg" alt="// 示意圖"></p>
+<h3 id="▷-實作-2-2-遇到很多欄列的組合"><a href="#▷-實作-2-2-遇到很多欄列的組合" class="headerlink" title="▷ 實作 2-2. 遇到很多欄列的組合"></a>▷ 實作 2-2. 遇到很多欄列的組合</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20220921/20119743r9k8M6DHbd.png" alt="示意圖"><br>&#x2F;&#x2F; 圖片出處：<a target="_blank" rel="noopener" href="https://youtu.be/fYcz3FUqv7M">CSS GRID &#x2F; CSS格線好好玩【完整版】 | CSS教學 | CSS格線</a> ↑</p>
+<ul>
+<li>遇到很多欄列的組合，使用 「 <code>grid-template-rows|columns</code> 、<code>grid-template-area</code> 」搭配 <code>grid-area</code> 就會呈現上圖中密密麻麻的 <code>grid-template-area</code>，這時就可以改用 「 <code>grid-auto-rows|columns</code> 搭配 <code>grid-row|column</code> 」。</li>
+</ul>
+<h2 id="❒-使用-grid-auto-rows-columns-沒有指定欄列數，怎麼會產生格線？"><a href="#❒-使用-grid-auto-rows-columns-沒有指定欄列數，怎麼會產生格線？" class="headerlink" title="❒ 使用 grid-auto-rows|columns 沒有指定欄列數，怎麼會產生格線？"></a>❒ 使用 grid-auto-rows|columns 沒有指定欄列數，怎麼會產生格線？</h2><p>父層欄列都使用 <code>grid-auto-rows|columns</code> 屬性值為 1fr，沒有指定欄數，怎麼會產出格線？</p>
+<ul>
+<li>這是個<strong>隱形格線的概念：</strong>設定的格位<strong>超過</strong>既定格位，他就會自動產生新的格子。也就是父層欄列都設定了 auto，子層開始到結束的欄列如果超過父層的欄列，就會自動生成新的格子。</li>
+</ul>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/fYcz3FUqv7M">CSS GRID &#x2F; CSS格線好好玩【完整版】 | CSS教學 | CSS格線</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2017/03/22/css-grid-layout/#grid-gap-grid-column-gap-grid-row-gap">卡斯伯 - CSS Grid 屬性介紹</a></li>
+<li>Grid 遊戲<ul>
+<li><a target="_blank" rel="noopener" href="https://codepip.com/games/grid-garden/">Grid 花園遊戲</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/grid/" rel="tag"># grid</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/1352471116/" rel="prev" title="Day5 | 淺談 Flex 排版內層屬性">
+                  <i class="fa fa-chevron-left"></i> Day5 | 淺談 Flex 排版內層屬性
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

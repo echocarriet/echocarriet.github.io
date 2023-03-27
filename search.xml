@@ -365,7 +365,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>HTML &amp; CSS</category>
+        <category>HTML&amp;CSS</category>
       </categories>
       <tags>
         <tag>Box Model</tag>
@@ -442,7 +442,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>HTML &amp; CSS</category>
+        <category>HTML&amp;CSS</category>
       </categories>
       <tags>
         <tag>font-face</tag>
@@ -1079,7 +1079,7 @@
   </entry>
   <entry>
     <title>tilt.js 套件 - 3D 互動效果</title>
-    <url>/plugin/20230327/3538132004/</url>
+    <url>/plugins/20230327/3538132004/</url>
     <content><![CDATA[<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/gif%2Ftilt.js%E5%A5%97%E4%BB%B63D%20%E4%BA%92%E5%8B%95%E6%95%88%E6%9E%9C_01.gif?alt=media&token=671dbfac-d395-4789-b09d-5d54e271072e" alt=" // 2022 The F2E 官網互動效果"></p>
 <h2 id="套件版本"><a href="#套件版本" class="headerlink" title="套件版本"></a>套件版本</h2><p>該套件有兩種版本：</p>
 <ol>
@@ -1132,7 +1132,7 @@
 </ul>
 ]]></content>
       <categories>
-        <category>plugin</category>
+        <category>Plugins</category>
       </categories>
       <tags>
         <tag>vanilla-tilt.js</tag>
@@ -1367,6 +1367,591 @@
       </categories>
       <tags>
         <tag>TDX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day1 | CSS 選擇器與權重</title>
+    <url>/html-css/20230327/2449098139/</url>
+    <content><![CDATA[<h2 id="❒-什麼是-CSS-選擇器"><a href="#❒-什麼是-CSS-選擇器" class="headerlink" title="❒ 什麼是 CSS 選擇器"></a>❒ 什麼是 CSS 選擇器</h2><p>CSS 選擇器可調整元素樣式。如下程式碼中，<code>p</code> 為選擇器，括號 <code>&#123;&#125;</code> 內為想要調整成的樣式。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line"> <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-選擇器分類"><a href="#❒-選擇器分類" class="headerlink" title="❒ 選擇器分類"></a>❒ 選擇器分類</h2><ol>
+<li>基本選擇器<ol>
+<li>類別選擇器</li>
+<li>class 選擇器</li>
+<li>ID 選擇器</li>
+<li>通用選擇器</li>
+<li>屬性選擇器</li>
+<li>狀態選擇器</li>
+</ol>
+</li>
+<li>複合選擇器<ol>
+<li>子選擇器 ( 直屬選擇器 ) <code>X &gt; Y</code></li>
+<li>後代選擇器 <code>X Y</code></li>
+<li>相鄰兄弟選擇器 ( 鄰接同層選擇器 ) <code>X + Y</code></li>
+<li>通用兄弟選擇器 <code>X ~ Y</code></li>
+</ol>
+</li>
+<li>偽元素</li>
+<li>虛擬類別</li>
+</ol>
+<p>下方只針對幾個比較常用的做整理。</p>
+<h2 id="❒-複合選擇器"><a href="#❒-複合選擇器" class="headerlink" title="❒ 複合選擇器"></a>❒ 複合選擇器</h2><h3 id="⠿-直屬選擇器-X-gt-Y"><a href="#⠿-直屬選擇器-X-gt-Y" class="headerlink" title="⠿ 直屬選擇器 X &gt; Y"></a>⠿ 直屬選擇器 X &gt; Y</h3><p>只有 X 直屬子層 Y 會有作用。</p>
+<p><strong>實作 1. 讓 li.item 直屬子層的 p 段落文字變紅色 <a href="https://codepen.io/echocarriet/pen/vYjNZqX">CodePen 程式碼</a></strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>item<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!--紅色文字--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;inList&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;inItem&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>inItem<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>item<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="comment">&lt;!--紅色文字--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inbox&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>item<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⠿-後代選擇器-X-Y"><a href="#⠿-後代選擇器-X-Y" class="headerlink" title="⠿ 後代選擇器 X Y"></a>⠿ 後代選擇器 X Y</h3><p>X 不管到第幾代的子層 Y 都會有作用</p>
+<p><strong>實作 1. 與直屬選擇器相同範例，使用後代選擇器則子層的文字皆會變紅色 <a href="https://codepen.io/echocarriet/pen/JjvYyGd">CodePen 程式碼</a></strong></p>
+<h3 id="⠿-相鄰兄弟選擇器-X-Y"><a href="#⠿-相鄰兄弟選擇器-X-Y" class="headerlink" title="⠿ 相鄰兄弟選擇器 X + Y"></a>⠿ 相鄰兄弟選擇器 X + Y</h3><p>需與 X 相鄰的下一個同層 Y 才會吃到 CSS 樣式。</p>
+<p><strong>實作 1. 讓 333 文字變藍色 <a href="https://codepen.io/echocarriet/pen/VwxvWxY">CodePen 程式碼</a></strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text1&quot;</span>&gt;</span>111<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text2&quot;</span>&gt;</span>222<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text3&quot;</span>&gt;</span>333<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⠿-通用兄弟選擇器-X-Y"><a href="#⠿-通用兄弟選擇器-X-Y" class="headerlink" title="⠿ 通用兄弟選擇器 X ~ Y"></a>⠿ 通用兄弟選擇器 X ~ Y</h3><p>於 X 同層且在後方的 Y 元素皆會執行 CSS 設定。</p>
+<p><strong>實作 1. 從文字３至文字６皆為紅色 <a href="https://codepen.io/echocarriet/pen/oNdjwVX">CodePen 程式碼</a></strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text1&quot;</span>&gt;</span>文字１<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text2&quot;</span>&gt;</span>文字２<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text3&quot;</span>&gt;</span>文字３<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text4&quot;</span>&gt;</span>文字４<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text5&quot;</span>&gt;</span>文字５<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text6&quot;</span>&gt;</span>文字６<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⠿-X-nth-child-n"><a href="#⠿-X-nth-child-n" class="headerlink" title="⠿ X:nth-child(n)"></a>⠿ X:nth-child(n)</h3><ul>
+<li><code>X:nth-child(n)</code>  參數 n 從 1 開始，如果要指向第一個元素  <code>nth-child(1)</code> 。</li>
+<li><code>X:nth-child(數字n)</code> 參數中數字的倍數皆會執行 css 效果。</li>
+</ul>
+<p><strong>實作範例 <a href="https://codepen.io/echocarriet/pen/pogwKzd">CodePen 程式碼</a></strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"> <span class="comment">&lt;!--括號中的參數從1開始--&gt;</span></span></span><br><span class="line"><span class="language-xml"> li:nth-child(3)&#123;</span></span><br><span class="line"><span class="language-xml">   color:red;</span></span><br><span class="line"><span class="language-xml"> &#125;</span></span><br><span class="line"><span class="language-xml"> <span class="comment">&lt;!--2n 即2的倍數的li皆會執行效果--&gt;</span></span></span><br><span class="line"><span class="language-xml"> li:nth-child(2n)&#123;</span></span><br><span class="line"><span class="language-xml">   color:green;</span></span><br><span class="line"><span class="language-xml"> &#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 01<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 02<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--green--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 03<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--redn--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 04<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--green--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 05<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 06<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--green--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 07<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--red--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>tex 08<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!--green--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="⠿-X-nth-last-child-n"><a href="#⠿-X-nth-last-child-n" class="headerlink" title="⠿ X:nth-last-child(n)"></a>⠿ X:nth-last-child(n)</h3><ul>
+<li><code>X:nth-last-child(n)</code> 倒數參數 n 開始執行 CSS 樣式。</li>
+</ul>
+<h3 id="⠿-X-first-child-與-X-last-child"><a href="#⠿-X-first-child-與-X-last-child" class="headerlink" title="⠿ X:first-child 與 X:last-child"></a>⠿ X:first-child 與 X:last-child</h3><ul>
+<li><code>X:first-child</code> 指向 X 第一個元素</li>
+<li><code>X:last-child</code> 指向 X 最後一個元素</li>
+</ul>
+<p><a href="https://codepen.io/echocarriet/pen/OJZyjjv">CodePen 程式碼 01</a></p>
+<p><a href="https://codepen.io/echocarriet/pen/qBbjKgO">CodePen 程式碼 02 - 選單下底線範例</a></p>
+<h2 id="❒-偽元素"><a href="#❒-偽元素" class="headerlink" title="❒ 偽元素"></a>❒ 偽元素</h2><h3 id="⠿-not"><a href="#⠿-not" class="headerlink" title="⠿ :not"></a>⠿ <code>:not</code></h3><p><code>:not</code> : 為 CSS 偽類，可排除特定的元素被選中。</p>
+<h3 id="範例-1-在多個-p-段落中，排除第一個-p-段落文字變紅色"><a href="#範例-1-在多個-p-段落中，排除第一個-p-段落文字變紅色" class="headerlink" title="範例 1. 在多個 p 段落中，排除第一個 p 段落文字變紅色"></a>範例 1. 在多個 p 段落中，排除第一個 p 段落文字變紅色</h3><p><a href="https://www.notion.so/CSS-not-e4e44072fb79496fa2917fafe42f8e16">CodePen 範例程式</a><a href="https://codepen.io/echocarriet/pen/WNMGeWv">碼</a></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:not</span>(<span class="selector-pseudo">:first</span>-child) &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-CSS-權重"><a href="#❒-CSS-權重" class="headerlink" title="❒ CSS 權重"></a>❒ CSS 權重</h2><blockquote>
+<p><strong>先看權重，再看先後</strong></p>
+</blockquote>
+<ul>
+<li>任何元素選擇符 <code>*</code> : 0 分 ，沒有權級。</li>
+<li><code>HTML</code> 標籤 ( 元素選擇器 )、偽元素選擇器：1 分。<ul>
+<li><code>h1</code>、<code>p</code>、<code>ul</code>、<code>li</code> 等。</li>
+</ul>
+</li>
+<li><code>class</code> 選擇器、偽類選擇器：10 分。<ul>
+<li><code>.title</code> ，前方以點開頭。</li>
+</ul>
+</li>
+<li><code>ID</code> 選擇器：100 分。<ul>
+<li><code>#title</code> ，前方以 # 開頭。</li>
+<li>因為 ID 選擇器權重較高為 100 分，在寫文件會有樣式覆蓋上的麻煩，所以不建議於 CSS 使用，除非 js 操作。</li>
+</ul>
+</li>
+<li><code>inline style</code>：1000 分。<ul>
+<li><code>&lt;h1 style=&quot; &quot;&gt;title&lt;/h1&gt;</code> ，直接在 HTML 標籤內寫 style。</li>
+</ul>
+</li>
+<li><code>!important</code>：10000 分。<ul>
+<li><code>.title2&#123; color:red; &#125; !important</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-權重分數運算"><a href="#❒-權重分數運算" class="headerlink" title="❒ 權重分數運算"></a>❒ 權重分數運算</h2><ul>
+<li><code>.title h1 &#123;&#125;</code> →  10+1&#x3D;11 ( class 選擇器 + HTML 標籤 )</li>
+<li><code>.qa-lost__title-link</code> → 10 ( class 選擇器 )</li>
+<li><code>#Stencil .Pos-r</code>→ 100+10&#x3D;110 ( ID 選擇器 + class 選擇器  )</li>
+<li><code>#atomic .Py , #atomic .Pt</code> → 100+10&#x3D;110 (  <strong>逗號不會有加分作用</strong>； ID 選擇器 + class 選擇器 )</li>
+<li><code>.on_sale li a , .sale_category li a , .sale_news li a</code> → 10+1+1&#x3D;12 ( class 選擇器 + HTML 標籤 + HTML 標籤 )</li>
+<li>眾多一分的權重是會壓過一個十分的權重的。<ul>
+<li><code>.h2 .h2 .h2 .h2 .h2 .h2 .h2 .h2 .h2 .h2</code> &gt; <code>.h2</code></li>
+</ul>
+</li>
+<li>權重相同時，後方會蓋掉前方設定。</li>
+</ul>
+<h2 id="❒-CSS-權重相關範例"><a href="#❒-CSS-權重相關範例" class="headerlink" title="❒ CSS 權重相關範例"></a>❒ CSS 權重相關範例</h2><h3 id="Q1-h1-文字顏色為"><a href="#Q1-h1-文字顏色為" class="headerlink" title="Q1. h1 文字顏色為 ?"></a>Q1. h1 文字顏色為 ?</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title title2&quot;</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">h1</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.title2</span>&#123;</span><br><span class="line"> <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.title</span>&#123;</span><br><span class="line"> <span class="attribute">color</span>:blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>答案： 1. 藍色 ( 這邊不管 HTML 的先後順序，以 CSS 先後順序為優先。)</p>
+<h3 id="Q2-螢幕解析度在-769px-時，h1-文字顏色為"><a href="#Q2-螢幕解析度在-769px-時，h1-文字顏色為" class="headerlink" title="Q2. 螢幕解析度在 769px 時，h1 文字顏色為 ?"></a>Q2. 螢幕解析度在 769px 時，h1 文字顏色為 ?</h3><h3 id="Q3-螢幕解析度在-568px-時，h1-文字顏色為"><a href="#Q3-螢幕解析度在-568px-時，h1-文字顏色為" class="headerlink" title="Q3. 螢幕解析度在 568px 時，h1 文字顏色為 ?"></a>Q3. 螢幕解析度在 568px 時，h1 文字顏色為 ?</h3><h3 id="Q4-螢幕解析度在-320px-時，幾個-title-會被開啟"><a href="#Q4-螢幕解析度在-320px-時，幾個-title-會被開啟" class="headerlink" title="Q4. 螢幕解析度在 320px 時，幾個 .title 會被開啟 ?"></a>Q4. 螢幕解析度在 320px 時，幾個 .title 會被開啟 ?</h3><p>Q2 ~ Q4 程式碼 ↓</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">h1</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.title</span>&#123;</span><br><span class="line"> <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span>(max-width:768px&#123;</span><br><span class="line"> <span class="selector-class">.title</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:blue;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span>(max-width:375px&#123;</span><br><span class="line"> <span class="selector-class">.title</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:yellow;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>答案：Q2. 紅色<br>答案：Q3. 藍色<br>答案：Q4. 三個 .title 都會被開啟，只是上方第一個與第二個會被 <code>@media(max-width:375px&#123; &#125;</code> 的覆蓋掉。<br><img src="https://ithelp.ithome.com.tw/upload/images/20220915/20119743e3xEfsK9IC.png" alt="// 圖片來源 : 六角學院 ▲"></p>
+<h3 id="Q5-根據以下-CSS，在螢幕解析度-600px-時文字的顏色為何"><a href="#Q5-根據以下-CSS，在螢幕解析度-600px-時文字的顏色為何" class="headerlink" title="Q5. 根據以下 CSS，在螢幕解析度 600px 時文字的顏色為何 ?"></a>Q5. 根據以下 CSS，在螢幕解析度 600px 時文字的顏色為何 ?</h3><p>A. 紅色  B. 黑色  C. 黃色  D. 藍色</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">576px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">p</span> &#123; </span><br><span class="line">        <span class="attribute">color</span>: red;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>)&#123;</span><br><span class="line">    <span class="selector-tag">p</span> &#123; </span><br><span class="line">        <span class="attribute">color</span>: black; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: yellow; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>答案： C 黃色 ( <strong>先看權重再看先後</strong>，上方權重皆為 1 ，所以後方的 <code>p</code> 會覆蓋掉斷點中的 <code>p</code> 設定。)</p>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Glossary/CSS_Selector">MDN - CSS 選擇器</a></li>
+<li>偽元素選擇器<ul>
+<li><a href="https://www.delftstack.com/zh-tw/howto/css/css-not-first-child/">在 CSS 中選擇非第一個子元素的方法</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not">MDN - :not()</a></li>
+</ul>
+</li>
+<li>六角學院</li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+        <tag>權重</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day2 | img 圖片與背景圖使用方式、視差滾動背景效果</title>
+    <url>/html-css/20230327/3211221452/</url>
+    <content><![CDATA[<h2 id="❒-圖片使用背景圖方式"><a href="#❒-圖片使用背景圖方式" class="headerlink" title="❒ 圖片使用背景圖方式"></a>❒ 圖片使用背景圖方式</h2><h3 id="▷-屬性-background-repeat"><a href="#▷-屬性-background-repeat" class="headerlink" title="▷ 屬性 background-repeat"></a>▷ 屬性 <code>background-repeat</code></h3><ul>
+<li>為了確保背景圖正確顯示，需搭配 <code>background-repeat:no-repeat;</code> 告訴瀏覽器背景圖片不要重覆顯示。</li>
+</ul>
+<h3 id="▷-屬性-background-position"><a href="#▷-屬性-background-position" class="headerlink" title="▷ 屬性 background-position"></a>▷ 屬性 <code>background-position</code></h3><ul>
+<li><code>background-position: 水平方向 垂直方向;</code><ul>
+<li>水平方向：方向方式 ( left、center、right )、百分比方式。</li>
+<li>垂直方向：方向方式 ( top、center、bottom )、百分比方式。</li>
+</ul>
+</li>
+<li>注意：如果 <code>background-position</code> 使用了簡化寫法，只寫一個屬性值，另一個屬性值將會自動取中間值，為了將來管理方便，建議兩個方向的屬性值都寫上去比較好。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">background-position</span><span class="selector-pseudo">:right</span> <span class="attribute">bottom</span>;　// 靠右靠下對齊</span><br><span class="line"><span class="attribute">background-position</span>:<span class="number">30px</span> <span class="number">60px</span>;　//靠左 <span class="number">30px</span> 靠上 <span class="number">60</span> px 的位置</span><br><span class="line"><span class="attribute">background-position</span>:<span class="number">10%</span> <span class="number">50%</span>;　// 靠左 <span class="number">10%</span> 靠上 <span class="number">50%</span> 的位置</span><br><span class="line"><span class="attribute">background-position</span>:<span class="number">10%</span>;　// 效果同上一行，靠左 <span class="number">10%</span> 靠上 <span class="number">50%</span> 的位置</span><br></pre></td></tr></table></figure>
+
+<h3 id="▷-屬性-background-size"><a href="#▷-屬性-background-size" class="headerlink" title="▷ 屬性 background-size"></a>▷ 屬性 <code>background-size</code></h3><p><a href="https://codepen.io/echocarriet/pen/JjvXwpg">CodePen 範例</a></p>
+<ul>
+<li><code>contain</code>：如果背景圖有設定寬高，會自適應在設定的寬高內，但當背景圖尺寸小於設定的寬高時，不會填滿設定的寬高。</li>
+<li><code>cover</code>：背景圖會依設定個寬度做縮放並填滿。<ul>
+<li>因為使用 <code>backgrounf-size: cover</code> 時，可能會裁切到原圖片，可搭配 <code>background-position</code> 調整圖片位置。</li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-屬性-background-attachment"><a href="#▷-屬性-background-attachment" class="headerlink" title="▷ 屬性 background-attachment"></a>▷ 屬性 <code>background-attachment</code></h3><p>屬性主要是設定背景圖片位置在設定的區塊內捲動時會個著捲動或固定，可使用 <code>fixed</code> 做出視差滾動的效果。<br><strong>屬性值</strong></p>
+<ul>
+<li><code>scroll</code> 預設，在區塊內卷軸捲動時，背景會跟著移動。<a href="https://codepen.io/echocarriet/pen/xxjrRMJ">CodePen 範例</a><ul>
+<li>需注意，如果子區塊也使用 <code>scroll</code> ，子區塊的卷軸捲動時背景圖會固定不動，不會跟著被捲走。<a href="https://codepen.io/echocarriet/pen/VwxWmgR">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>fixed</code> 在區塊內卷軸捲動時，背景會固定不動。 <a href="https://codepen.io/echocarriet/pen/mdLwRyd">CodePen 範例</a><ul>
+<li>注意：如果子區塊也使用 <code>fixed</code> ，子區塊的卷軸捲動時背景圖不個著被捲走，會固定。但父區塊捲動卷軸時，子區塊的背景會個著動。 <a href="https://codepen.io/echocarriet/pen/ExLXZVe">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>local</code> 類似 <code>scroll</code> ，在區塊內滾動卷軸時背景圖會跟著動。<a href="https://codepen.io/echocarriet/pen/PoejWGN">CodePen 範例</a></li>
+</ul>
+<h2 id="❒-使用-background-attachment-fixed-做出視差滾動"><a href="#❒-使用-background-attachment-fixed-做出視差滾動" class="headerlink" title="❒ 使用 background-attachment:fixed 做出視差滾動"></a>❒ 使用 background-attachment:fixed 做出視差滾動</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 架構 */</span></span><br><span class="line"><span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&quot;圖片路徑&quot;</span>);</span><br><span class="line"><span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line"><span class="attribute">background-attachment</span>: fixed;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/gif%2F%E9%90%B5%E4%BA%BA%E8%B3%BD_%E8%A6%96%E5%B7%AE%E6%BB%BE%E5%8B%95%E7%A4%BA%E6%84%8F%E5%9C%96.gif?alt=media&token=8de99e63-63f5-43f9-986a-1708cd8cf610" alt="// 視差滾動示意圖"><br><a href="https://codepen.io/echocarriet/pen/rNvwjwZ">CodePen 範例</a></p>
+<h2 id="❒-圖片使用-img-標籤方式"><a href="#❒-圖片使用-img-標籤方式" class="headerlink" title="❒ 圖片使用 img 標籤方式"></a>❒ 圖片使用 img 標籤方式</h2><h3 id="▷-圖片寬度設定中-max-width-與-width-差異"><a href="#▷-圖片寬度設定中-max-width-與-width-差異" class="headerlink" title="▷ 圖片寬度設定中 max-width 與 width 差異"></a>▷ 圖片寬度設定中 <code>max-width</code> 與 <code>width</code> 差異</h3><p><a href="https://codepen.io/echocarriet/pen/LYPOozq">CodePen 範例</a></p>
+<p><code>max-width:100%;</code> ( 建議使用此方式 )</p>
+<ul>
+<li>會跟隨父層做自適應縮放，但會保有圖片原始寬度。如果父層寬度超出圖片寬度，則圖片會停止延伸。</li>
+</ul>
+<p><code>width:100%;</code></p>
+<ul>
+<li>隨父層做自適應縮放，父層大於圖片原始尺寸，圖片會跟著變大。</li>
+<li>缺點 : 如果圖片解析度不夠會糊掉。</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220917/20119743nnEbSgj6tg.png" alt="// 圖片寬度設定中 max-width 與 width 差異"></p>
+<h3 id="▷-響應式圖片-Reset"><a href="#▷-響應式圖片-Reset" class="headerlink" title="▷ 響應式圖片 Reset"></a>▷ 響應式圖片 Reset</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* img reset */</span></span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line"> <span class="attribute">max-width</span>:<span class="number">100%</span>;</span><br><span class="line"> <span class="attribute">height</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>理解上方 <code>max-width</code> 與 <code>width</code> 差異後可以把上方 img reset 設定方式加入 CSS Reset 中，就不需要重覆設定也可避免因圖片解析度太高出現 x 軸或破版問題囉！</li>
+</ul>
+<h3 id="▷-屬性-object-fit"><a href="#▷-屬性-object-fit" class="headerlink" title="▷ 屬性 object-fit"></a>▷ 屬性 <code>object-fit</code></h3><p><a href="https://codepen.io/echocarriet/pen/jOxbpdz">CodePen 範例</a></p>
+<ul>
+<li><code>fill</code>：預設值，圖片在填滿容器時可能會產生變形。</li>
+<li><code>contain</code> : 會保持圖片原本比例，呈現在容器中，但與容器尺寸不依時不會填滿整個容器。</li>
+<li><code>cover</code> : 保持圖片比例，填滿容器，但與容器尺寸不依時會裁切到圖片以填滿整個容器。<ul>
+<li>因為使用 <code>object-fit: cover</code> 時，可能會裁切到原圖片，如果想要移動可視範圍位置，可搭配 <code>object-position</code>，效果就類似於 <code>background-position</code>。</li>
+<li>關於 <code>object-position</code> 用法可參考「 <a href="https://www.runoob.com/cssref/pr-object-position.html">CSS object-position 属性</a> ****」。</li>
+</ul>
+</li>
+<li><code>none</code> : 不調整圖片比例。</li>
+<li><code>scale-down</code> : 等比縮小，與 none 或 contain 中的一個相同，取決於它們兩個之間誰得到的對象尺寸更小。</li>
+</ul>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a href="https://tzuhui.github.io/2020/03/26/CSS/css-object-fit/">HTML img 也能有 bg-image 的 cover 效果</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-position">MDN - object-position</a></li>
+<li><a href="https://www.runoob.com/cssref/pr-object-fit.html">CSS object-fit 属性</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10249759">Background-attchment 金魚都能懂的CSS必學屬性</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day3 | Form 表單</title>
+    <url>/html-css/20230327/3395657913/</url>
+    <content><![CDATA[<h2 id="❒-Form-表單"><a href="#❒-Form-表單" class="headerlink" title="❒ Form 表單"></a>❒ Form 表單</h2><ul>
+<li><code>&lt;form&gt;</code> 標籤是 HTML 中用來裝表單的容器， <code>&lt;form action=&quot;#&quot;&gt;..&lt;/form&gt;</code> 中的 action 用來指定一個位址 ( URL )，這個位址是告訴瀏覽器當使用者按送出表單後，要將表格的內容送去哪邊。所以建議於表單外層使用 <code>&lt;form&gt;</code> 標籤做包覆。</li>
+<li>避免將一個 label 標籤與多個控制元件相關聯， label 與 select 要分別設定，一個 <code>label</code> 標籤對應一個 <code>select</code>。<ul>
+<li><p>相關討論：<a href="https://stackoverflow.com/a/12166681">stackoverflow 的相關討論</a></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;#&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;year&quot;</span>&gt;</span>年份<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;year&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;year&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;2019&quot;</span>&gt;</span>2019<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;2020&quot;</span>&gt;</span>2020<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;month&quot;</span>&gt;</span>月份<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;month&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;month&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;3&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;4&quot;</span>&gt;</span>4<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-常見的-HTML-表單元素"><a href="#❒-常見的-HTML-表單元素" class="headerlink" title="❒ 常見的 HTML 表單元素"></a>❒ 常見的 HTML 表單元素</h2><ul>
+<li><code>&lt;label&gt;</code> 標籤<ul>
+<li><code>&lt;label&gt;</code> 標籤的 for 屬性會對應 <code>&lt;input&gt;</code> 標籤的 id 屬性。</li>
+</ul>
+</li>
+<li><code>&lt;input&gt;</code> 標籤： 輸入欄位，可搭配 <code>type</code> 屬性顯示不同方法。<ul>
+<li>詳細資訊可參考 <a href="https://www.w3schools.com/html/html_form_input_types.asp">w3school - HTML Input Types</a>。</li>
+</ul>
+</li>
+<li><code>&lt;textarea&gt;</code> 標籤：多行段落文字輸入欄位。</li>
+<li><code>&lt;select&gt;</code> 標籤搭配 <code>&lt;option&gt;</code> 標籤：下拉式選單。</li>
+<li><code>&lt;datalist&gt;</code> 標籤：下拉選項外也附帶文字輸入篩選功能。</li>
+</ul>
+<h2 id="❒-常見的-HTML-表單元素屬性"><a href="#❒-常見的-HTML-表單元素屬性" class="headerlink" title="❒ 常見的 HTML 表單元素屬性"></a>❒ 常見的 HTML 表單元素屬性</h2><ul>
+<li><code>name</code> 屬性：name 中資料會顯示在網址上，提交表單後可從網址上的傳送值得知填的資訊取出對應欄位值。<ul>
+<li><code>type</code> 屬性中，同組 <code>radio</code> 與 <code>checkbox</code> 屬性的 <code>name</code> 須設定同名，才能表示是同組。<a href="https://codepen.io/echocarriet/pen/abGNgdy">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>disabled</code> 屬性：禁止使用該表單元素。</li>
+<li><code>value</code> 屬性：表單元素的初始值。</li>
+<li><code>placeholder</code> 屬性：用法 <code>&lt;input placeholder=&quot;想顯示的文字&quot;&gt;</code> ，用戶輸入值前 <code>placeholder</code> 屬性中的文字會顯示於欄位上。<ul>
+<li><code>placeholder</code> 屬性適用於以下輸入類型：文本、搜索、url、電話、電子郵件和密碼。</li>
+</ul>
+</li>
+<li><code>for</code> 屬性與 <code>id</code> 屬性：<ul>
+<li><code>&lt;label&gt;</code> 標籤的 <code>for</code> 屬性會對應 <code>&lt;input&gt;</code> 標籤的 <code>id</code> 屬性。</li>
+<li><code>&lt;label&gt;</code> 標籤的 <code>for</code> 屬性會對應 <code>&lt;select&gt;</code> 標籤的 <code>id</code> 屬性。</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-datalist-與-option-標籤差異"><a href="#❒-datalist-與-option-標籤差異" class="headerlink" title="❒ datalist 與 option 標籤差異"></a>❒ datalist 與 option 標籤差異</h2><p><a href="https://codepen.io/echocarriet/pen/qBYZLzO">CodePen 範例</a></p>
+<h3 id="▷-使用時機"><a href="#▷-使用時機" class="headerlink" title="▷ 使用時機"></a>▷ 使用時機</h3><p><code>datalist</code> 標籤適用於選項很多的選單，除了下拉選項外也附帶文字輸入篩選功能，輸入關鍵字會跳出對應的選項。<code>select</code> 標籤需要手動選取選單內的選項。</p>
+<h3 id="▷-datalist-架構"><a href="#▷-datalist-架構" class="headerlink" title="▷ datalist 架構"></a>▷ datalist 架構</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;ice-cream-choice&quot;</span>&gt;</span>Choose a flavor:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">list</span>=<span class="string">&quot;ice-cream-flavors&quot;</span> <span class="attr">id</span>=<span class="string">&quot;ice-cream-choice&quot;</span> <span class="attr">name</span>=<span class="string">&quot;ice-cream-choice&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">datalist</span> <span class="attr">id</span>=<span class="string">&quot;ice-cream-flavors&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Chocolate&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Coconut&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Mint&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Strawberry&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Vanilla&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">datalist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>「 <code>label</code> 標籤的 for 屬性 」對應「 <code>input</code> 標籤的 id 屬性 」。</li>
+<li>架構為 <code>input</code> 加上 <code>datalist</code> 標籤，「 <code>input</code> 標籤的 list 屬性 」對應 「 <code>datalist</code> 標籤的 id 屬性 」。</li>
+<li><code>datalist</code> 內的 <code>&lt;option&gt;</code> 標籤與 <code>select</code> 標籤不同的是，<code>datalist</code> 內的 <code>&lt;option&gt;</code> 標籤不需要 <code>&lt;/option&gt;</code> 結尾。</li>
+<li>input 標籤的 name 屬性<ul>
+<li>如果網頁內的資料傳遞是使用實際頁面非 API ( SSR )，<code>select</code> 標籤就需要加上 name 屬性，後端工程師可由此知道此資訊名稱。基本上 name 是給後端看的， id 是前端操作用的。一般 name 屬性會與 id 屬性命名相同。</li>
+<li><code>name</code> 中資料會顯示在網址上，提交表單後可從網址上的傳送值得知填的資訊。提交表單後，文字欄位會以 <code>name</code> 中的值當欄位名稱 。</li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-select-架構"><a href="#▷-select-架構" class="headerlink" title="▷ select 架構"></a>▷ select 架構</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;city-select&quot;</span>&gt;</span>Choose a City:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;CitySelect&quot;</span> <span class="attr">id</span>=<span class="string">&quot;city-select&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> <span class="attr">selected</span> <span class="attr">disabled</span>&gt;</span>--請選取區域--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Kaohsiung&quot;</span>&gt;</span>高雄市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Tainan&quot;</span>&gt;</span>台南市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;Taichung&quot;</span>&gt;</span>台中市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>「<code>label</code> 標籤的 for 屬性」對應「 <code>input</code> 標籤的 id 屬性」。</li>
+<li><code>select</code> 內的 <code>&lt;option&gt;</code> 標籤與 <code>datalist</code> 標籤不同的是，<code>select</code>  標籤內的 <code>&lt;option&gt;</code> 需要 <code>&lt;/option&gt;</code> 結尾。</li>
+</ul>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist">MDN - <code>&lt;datalist&gt;</code>: The HTML Data List element</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select">MDN - <code>&lt;select&gt;</code></a></li>
+<li><a href="https://www.w3schools.com/html/html_form_input_types.asp">w3school - HTML Input Types</a></li>
+<li><a href="https://www.w3schools.com/tags/att_input_placeholder.asp">w3school - HTML <code>&lt;input&gt;</code> placeholder Attribute</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day4 | 淺談 Flex 排版外層屬性</title>
+    <url>/html-css/20230327/3023895147/</url>
+    <content><![CDATA[<h2 id="❒-Flex-的外層與內層屬性"><a href="#❒-Flex-的外層與內層屬性" class="headerlink" title="❒ Flex 的外層與內層屬性"></a>❒ Flex 的外層與內層屬性</h2><p><img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743tHXBnC7LKU.png" alt="// 左方為外層屬性，右方為內層屬性。  圖片出處 : 六角學院 ▲"></p>
+<ul>
+<li>外層 ( 外層 )<ul>
+<li>外層會用到的屬性：<ul>
+<li><code>display</code>、<code>flex-flow</code> ( <code>flex-direction</code> 與 <code>flex-wrap</code> 的組合 )、<code>flex-direction</code>、<code>flex-wrap</code>、<code>justify-content</code>、<code>align-items</code>。</li>
+</ul>
+</li>
+<li>如果想要區塊元素作並排，可於父層使用 <code>display:flex;</code> 。</li>
+<li>flex 都是設定在父層上，讓子層元素有 flex 的效果。</li>
+</ul>
+</li>
+<li>內層 ( 子層 )<ul>
+<li>內層會用到的屬性：<ul>
+<li><code>flex-grow</code>、<code>flex-shrink</code>、<code>flex-basis</code>、<code>order</code>、<code>align-self</code>。</li>
+</ul>
+</li>
+<li>子元素們會依照比例做伸縮調整，不會超出父層寬度。  ( <a href="https://codepen.io/echocarriet/pen/BajgNZw">CodePen 範例</a> )</li>
+<li>子元素會自動延伸與同層內最高元素的高度。 ( <a href="https://codepen.io/echocarriet/pen/jOWjbPR">CodePen 範例</a> )<ul>
+<li>範例中 <code>.box 2</code> 沒有設定高度，但它會自動延伸與子元素中高度最高的 <code>.box3</code> 同高。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Flex 與 Float 差異在於不用做清除浮動，父層還是抓的到子層的高度。</li>
+</ul>
+<h2 id="❒-不要談-XY-軸，談資料流向"><a href="#❒-不要談-XY-軸，談資料流向" class="headerlink" title="❒ 不要談 XY 軸，談資料流向"></a>❒ 不要談 XY 軸，談資料流向</h2><blockquote>
+<p><strong>先判斷主軸方向再進行主軸與次軸設定</strong></p>
+</blockquote>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220919/2011974308Ic34K7NV.jpg" alt="// flex 資料流向"></p>
+<ul>
+<li>資料流走直向主軸就是直，資料流走橫向主軸就是橫的</li>
+<li>資料流向 &#x3D; 主軸；交叉軸 &#x3D; 次軸</li>
+<li>以上方圖示為例，資料流向 ( 主軸 ) 橫向，交叉軸 ( 次軸 ) 就會是直向。如果資料流向 ( 主軸 ) 為直向，交叉軸 ( 次軸 ) 就會變橫向。</li>
+<li>資料流向 ( 主軸 ) 橫向預設為橫向 <code>row</code>。</li>
+</ul>
+<h2 id="❒-外層屬性"><a href="#❒-外層屬性" class="headerlink" title="❒ 外層屬性"></a>❒ 外層屬性</h2><blockquote>
+<p><strong>先判斷「 主軸方向 <code>flex-direction</code> 」，再進行「 主軸 <code>flex-wrap</code>、<code>justify-content</code> 」與「 次軸 <code>align-items</code> 」設定。</strong></p>
+</blockquote>
+<h3 id="▷-flex-direction-方向"><a href="#▷-flex-direction-方向" class="headerlink" title="▷ flex-direction 方向"></a>▷ flex-direction 方向</h3><p><strong>屬性值：</strong></p>
+<ul>
+<li><code>row</code> ( 預設 ) ，左至右。</li>
+<li><code>column</code>，上至下。</li>
+<li><code>row-reverse</code>  左至右反向。</li>
+<li><code>column-reverse</code>  上至下反向。</li>
+</ul>
+<h3 id="▷-flex-wrap-換行"><a href="#▷-flex-wrap-換行" class="headerlink" title="▷ flex-wrap 換行"></a>▷ <code>flex-wrap</code> 換行</h3><p><strong>屬性值：</strong></p>
+<ul>
+<li><code>nowrap</code>  ( 預設 )，不換行。</li>
+<li><code>wrap</code>，換行。</li>
+<li><code>wrapwrap-reverse</code>，依主軸決定直或橫的反向換行。</li>
+</ul>
+<h3 id="▷-flex-flow"><a href="#▷-flex-flow" class="headerlink" title="▷ flex-flow"></a>▷ flex-flow</h3><ul>
+<li><code>flex-flow</code> 為 <code>flex-direction</code> 與 <code>flex-wrap</code> 縮寫，依序寫入 <code>flex-direction</code> 與 <code>flex-wrap</code>。 例如： <code>flex-flow:row wrap;</code>。</li>
+</ul>
+<h3 id="▷-justify-content-主軸對齊方式"><a href="#▷-justify-content-主軸對齊方式" class="headerlink" title="▷ justify-content 主軸對齊方式"></a>▷ <code>justify-content</code> 主軸對齊方式</h3><blockquote>
+<p><strong>主軸對齊使用 <code>justify-content</code> ，次軸對齊使用 <code>align-items</code> 。</strong><br><img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743ftCyxP7Cav.png" alt="// 圖片來源 : 六角學院 ▲"></p>
+</blockquote>
+<p><strong>屬性值：</strong></p>
+<ul>
+<li><code>flex-start</code> : 對齊主軸起點</li>
+<li><code>flex-end</code> : 對齊主軸終點</li>
+<li><code>center</code> : 對齊主軸水平線</li>
+<li><code>space-between</code> : 平均分配每個元素，首元素與末元素會分別對齊主軸起點與終點。</li>
+<li><code>space-around</code>：與 <code>space-around</code> 很像，但中間留白與左右邊線距離不一樣 。</li>
+<li><code>space-evenly</code> : 與 <code>space-around</code> 很像，但中間留白與左右邊線距離一樣 。</li>
+</ul>
+<h3 id="▷-align-items-次軸對齊方式"><a href="#▷-align-items-次軸對齊方式" class="headerlink" title="▷ align-items 次軸對齊方式"></a>▷ align-items 次軸對齊方式</h3><blockquote>
+<p><strong>主軸對齊使用 <code>justify-content</code> ，次軸對齊使用 <code>align-items</code> 。</strong></p>
+</blockquote>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743xtbsAYFE1x.png" alt="// 圖片來源 : 六角學院 ▲"></p>
+<ul>
+<li><code>flex-start</code></li>
+<li><code>flex-end</code></li>
+<li><code>center</code></li>
+<li><code>strech</code> : 延伸 100% 交錯軸。( 預設 )</li>
+<li><code>baseline</code> : 讓並排元素的文字照<a href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E7%B7%9A">基線</a>做對齊。</li>
+</ul>
+<h3 id="▷-align-content-次軸對齊方式，但須多行才有效"><a href="#▷-align-content-次軸對齊方式，但須多行才有效" class="headerlink" title="▷ align-content 次軸對齊方式，但須多行才有效"></a>▷ align-content 次軸對齊方式，但須多行才有效</h3><ul>
+<li><code>align-content</code> 決定行之間的間隔，而 <code>align-items</code> 決定元素整體在容器的什麼位置。</li>
+<li>只有一行時 <code>align-content</code>  是無效的。</li>
+</ul>
+<h2 id="❒-Flex-模擬器與遊戲"><a href="#❒-Flex-模擬器與遊戲" class="headerlink" title="❒ Flex 模擬器與遊戲"></a>❒ Flex 模擬器與遊戲</h2><p>關於 Flex 屬性運用，可搭配下方模擬器與遊戲：</p>
+<ul>
+<li><a href="https://codepen.io/peiqun/pen/WYzzYX">Flex 六角線上模擬器</a></li>
+<li><a href="https://hexschool.github.io/flexbox-pirate/index.html#/">Flex pirate 新手關卡</a></li>
+<li><a href="https://flexboxfroggy.com/#zh-tw">Flex 青蛙</a></li>
+</ul>
+<h2 id="❒-使用-Flex-遇到的一些問題統整"><a href="#❒-使用-Flex-遇到的一些問題統整" class="headerlink" title="❒ 使用 Flex 遇到的一些問題統整"></a>❒ 使用 Flex 遇到的一些問題統整</h2><h3 id="❶-flex-中圖片變型的原因"><a href="#❶-flex-中圖片變型的原因" class="headerlink" title="❶ flex 中圖片變型的原因"></a>❶ flex 中圖片變型的原因</h3><p><a href="https://codepen.io/echocarriet/pen/GRqQKXd">Codepen 範例</a></p>
+<p>區塊設定 <code>flex</code>， 而 <code>align-items</code> 預設會是 <code>stretch</code>，會自動延伸與同層內最高元素<br>的高度 ，如果遇到隔壁排內容比圖片還多，圖片會因此產生變形。<br>可加上 <code>align-items: center</code> 就可讓圖片恢復原比例。</p>
+<h3 id="❷-align-items-baseline-是做什麼的"><a href="#❷-align-items-baseline-是做什麼的" class="headerlink" title="❷ align-items:baseline; 是做什麼的 ?"></a>❷ align-items:baseline; 是做什麼的 ?</h3><p>此出處於六角學院課程中問與答。</p>
+<ul>
+<li><p>Baseline 是英文或其他西方文字會有的文字基線，讓英文字母能夠依照此基準線對齊，可以參考此<a href="https://zh.wikipedia.org/wiki/%E5%9F%BA%E7%B7%9A">連結</a>。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743UBIcdXYsZY.png" alt="// 示意圖">  </p>
+</li>
+<li><p><code>align-items: baseline</code> 就是讓並排的元素的交錯軸依照 baseline 對齊，因此可以看到若有元素中有文字內容看起來就會是下圖二這樣。<br> <img src="https://ithelp.ithome.com.tw/upload/images/20220919/201197438zIUS8ESqL.png" alt="// align-items - CSS Reference"></p>
+<p>  ▲ 來源：<a href="https://cssreference.io/property/align-items/">align-items - CSS Reference</a> ▲</p>
+</li>
+</ul>
+<h3 id="❸-如何辨別「-align-items-baseline-」與「-align-items-flex-start-」"><a href="#❸-如何辨別「-align-items-baseline-」與「-align-items-flex-start-」" class="headerlink" title="❸ 如何辨別「 align-items:baseline; 」與「 align-items:flex-start; 」 ?"></a>❸ 如何辨別「 align-items:baseline; 」與「 align-items:flex-start; 」 ?</h3><p><strong>父層使用 row &amp; <code>align-items:baseline;</code>   ( <a href="https://codepen.io/echocarriet/pen/oNdLYZY">CodePen 範例</a> ) :</strong></p>
+<ul>
+<li><code>font-size</code> 相同 :  範例 ❶ 中看起來和 <code>align-items:flex-start;</code> 很像，都是靠上對齊。</li>
+<li><code>font-size</code> 不同 :<ul>
+<li>使用 <code>baseline</code>：和範例 ❶ 相比，範例 ❷ 中就會比較明顯看到，<code>.box</code> 們依內容文字基準線對齊。 boxC 高度是最高的，其他 <code>.box</code> 會用自己的 baseline 去對齊最高的 boxC 。</li>
+<li>使用 <code>flex-start</code>：和範例 ❷ 相比，範例❸ 中可見對齊基準依次軸的起點位置。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220919/20119743cOgZuwLbGN.jpg" alt="// font-size 不同使用 baseline 與 flex-start 差異"></p>
+<hr>
+<p>下篇繼續關於 Flex 內層屬性，<code>flex-grow</code>、<code>flex-shrink</code>、<code>flex-basis</code>、<code>order</code>、<code>align-self</code>。</p>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li>六角學院 : 使用 HTML、CSS 開發一個網站</li>
+<li><a href="https://codepen.io/peiqun/pen/WYzzYX">Flex 六角線上模擬器</a></li>
+<li><a href="https://youtu.be/_nCBQ6AIzDU">Css coke - 玩轉 CSS Flex</a></li>
+<li>Flex 遊戲<ul>
+<li><a href="https://hexschool.github.io/flexbox-pirate/index.html#/">Flex pirate 新手關卡</a></li>
+<li><a href="https://flexboxfroggy.com/#zh-tw">Flex 青蛙</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+        <tag>flex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day5 | 淺談 Flex 排版內層屬性</title>
+    <url>/html-css/20230327/1352471116/</url>
+    <content><![CDATA[<p>上篇「 淺談 Flex 排版外層屬性 」說到 flex 的外層屬性們，這篇來說說 flex 的內層屬性。<br><img src="https://ithelp.ithome.com.tw/upload/images/20220920/20119743oYMFcW1bHU.png" alt="// 左方為外層屬性，右方為內層屬性。  圖片出處 : 六角學院 ▲"></p>
+<h2 id="❒-Flex-內層屬性"><a href="#❒-Flex-內層屬性" class="headerlink" title="❒ Flex 內層屬性"></a>❒ Flex 內層屬性</h2><h3 id="▷-flex"><a href="#▷-flex" class="headerlink" title="▷ flex"></a>▷ flex</h3><p><code>flex</code> 為 <code>flex-grow</code>、<code>flex-shrink</code>、<code>flex-basis</code> 的縮寫。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">flex</span>: flex-grow flex-shrink flex-basis;</span><br></pre></td></tr></table></figure>
+
+<h3 id="▷-flex-grow-伸展比"><a href="#▷-flex-grow-伸展比" class="headerlink" title="▷ flex-grow 伸展比"></a>▷ flex-grow 伸展比</h3><p>子元素依比例伸展分配剩餘空間，在「 父元素空間充足時會有影響 」，預設為 0。</p>
+<ul>
+<li><code>flex-grow: 0;</code> 預設，不會將空間分配給子元素。</li>
+<li><code>flex-grow: 1;</code> 子元素會依比例進行伸展。</li>
+<li><a href="https://codepen.io/echocarriet/pen/dyGBJEB">CodePen 範例</a></li>
+</ul>
+<h3 id="▷-flex-shrink-收縮比"><a href="#▷-flex-shrink-收縮比" class="headerlink" title="▷ flex-shrink 收縮比"></a>▷ flex-shrink 收縮比</h3><p>子元素的<strong>壓縮</strong>比例分配 ， 在「 父完素空間不足時會有影響 」，預設為 1。</p>
+<ul>
+<li><code>flex-shrink: 0;</code> 不會被壓縮。</li>
+<li><code>flex-shrink: 1;</code> 預設，會被壓縮。</li>
+<li><a href="https://codepen.io/echocarriet/pen/VweJrdQ">CodePen 範例</a></li>
+</ul>
+<h3 id="▷-flex-basis-預設大小"><a href="#▷-flex-basis-預設大小" class="headerlink" title="▷ flex-basis 預設大小"></a>▷ flex-basis 預設大小</h3><p>子元素預設被分配到的空間，預設為 auto。<br><a href="https://codepen.io/echocarriet/pen/VweJrdQ">CodePen 範例</a></p>
+<h3 id="▷-order-排序"><a href="#▷-order-排序" class="headerlink" title="▷ order 排序"></a>▷ order 排序</h3><p>可改變子元素的排列順序，整數或負數皆可，數字越小排序越前。<br><a href="https://codepen.io/echocarriet/pen/rNvLZoo">Codepen 範例</a></p>
+<h3 id="▷-align-self-單一個物件的次軸對齊"><a href="#▷-align-self-單一個物件的次軸對齊" class="headerlink" title="▷ align-self 單一個物件的次軸對齊"></a>▷ align-self 單一個物件的次軸對齊</h3><p>可調整子元素在次軸的對齊位置 ( 向 <code>align-items</code> )，如果已在父層下 <code>align-items</code>，但要對子層其中一個子元素調整對齊位置，可在那個子元素下 <code>align-self</code> 。<br><a href="https://codepen.io/echocarriet/pen/NWMrOWy">CodePen 範例</a></p>
+<p><strong>屬性值：</strong></p>
+<ul>
+<li><code>auto | flex-start | flex-end | center | baseline | stretch</code></li>
+</ul>
+<h2 id="❒-Flex-運算"><a href="#❒-Flex-運算" class="headerlink" title="❒ Flex 運算"></a>❒ Flex 運算</h2><h3 id="01-父層寬度為-800px，子元素們寬度各為-300px-600px-100px，寬度依照比例來算會是多少呢"><a href="#01-父層寬度為-800px，子元素們寬度各為-300px-600px-100px，寬度依照比例來算會是多少呢" class="headerlink" title="01. 父層寬度為 800px，子元素們寬度各為 300px,600px,100px，寬度依照比例來算會是多少呢 ?"></a>01. 父層寬度為 800px，子元素們寬度各為 300px,600px,100px，寬度依照比例來算會是多少呢 ?</h3><p><strong>依照比例來算 :</strong></p>
+<ul>
+<li><code>.box1</code> : 800 px * ( 300 px &#x2F;1000 px ) &#x3D; 240 px</li>
+<li><code>.box2</code> : 800 px * ( 600 px &#x2F;1000 px ) &#x3D; 480 px</li>
+<li><code>.box3</code> : 800 px * ( 100 px &#x2F;1000 px ) &#x3D; 80 px<br><a href="https://codepen.io/echocarriet/pen/BajgNZw">CodePen 範例</a></li>
+</ul>
+<h2 id="❒-資料來源"><a href="#❒-資料來源" class="headerlink" title="❒ 資料來源"></a>❒ 資料來源</h2><ul>
+<li><a href="https://ithelp.ithome.com.tw/articles/10208741">Flex 空間分配 flex-grow &#x2F; flex-shrink &#x2F; flex-basis</a></li>
+<li>六角文章 - <a href="https://w3c.hexschool.com/flexbox/9883b0fb">flex-basis、flex-grow、flex-shrink 屬性介紹</a></li>
+<li><a href="https://w3c.hexschool.com/flexbox/c3847835">align-self 屬性介紹</a></li>
+<li><a href="https://www.casper.tw/css/2017/07/21/css-flex/#align-self">圖解：CSS Flex 屬性一點也不難 &#x2F; align-self</a></li>
+<li>Flex 遊戲<ul>
+<li><a href="https://hexschool.github.io/flexbox-pirate/index.html#/">Flex pirate 新手關卡</a></li>
+<li><a href="https://flexboxfroggy.com/#zh-tw">Flex 青蛙</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+        <tag>flex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day6 | 淺談 Grid 排版</title>
+    <url>/html-css/20230327/864635399/</url>
+    <content><![CDATA[<p>grid 排版上類似表格，先於外層使用 row 與 column 畫出所需數量的列與欄格線，內層設定好區塊後再放置外層的格子中。</p>
+<h2 id="❒-外層屬性"><a href="#❒-外層屬性" class="headerlink" title="❒ 外層屬性"></a>❒ 外層屬性</h2><ul>
+<li>「 <code>grid-template-rows|columns</code> 」與「 <code>grid-auto-rows|columns</code> 」擇一使用。</li>
+</ul>
+<p><strong>屬性：</strong></p>
+<ul>
+<li><code>display</code><ul>
+<li>屬性值為 <code>grid</code>。</li>
+</ul>
+</li>
+<li><code>grid-template-rows</code> 設定格線列<ul>
+<li>屬性值可為<code>百分比</code>、<code>px</code>、<code>fr</code>。</li>
+</ul>
+</li>
+<li><code>grid-template-columns</code> 設定格線欄<ul>
+<li>屬性值可為<code>百分比</code>、<code>px</code>、<code>fr</code>。</li>
+</ul>
+</li>
+<li><code>grid-auto-rows</code></li>
+<li><code>grid-auto-columns</code></li>
+<li><code>grid-template-area</code> ：需搭配內層屬性 <code>grid-area</code>。<ul>
+<li>屬性值：設定區塊位置，把內層自訂名稱 <code>grid-area</code> 屬性值帶入，像排格子一樣。</li>
+<li>屬性值中如果要產生空白也可使用 <code>.</code>。<a href="https://codepen.io/echocarriet/pen/NWMdqZY">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>grid-auto-flow</code> 可控制主軸為平行或垂直。<ul>
+<li>屬性值：<code>row</code>、<code>column</code>。</li>
+</ul>
+</li>
+<li><code>justify-items</code>、<code>justify-content</code>、<code>align-content</code>：與 flex 用法一樣。</li>
+<li><code>grid-gap</code>、<code>grid-column-gap</code>、<code>grid-row-gap</code> : 格線水平與垂直間隔。</li>
+</ul>
+<h3 id="▷-grid-格線單位-fr"><a href="#▷-grid-格線單位-fr" class="headerlink" title="▷ grid 格線單位 fr"></a>▷ grid 格線單位 fr</h3><ul>
+<li><code>fr</code> 為 grid 的格線單位，分數的部分需使用 <code>fr</code> 為單位。</li>
+<li><code>grid-template-columns: 2fr 2fr 1fr 1fr;</code> 為 2&#x2F;6 2&#x2F;6 1&#x2F;6 1&#x2F;6 ( 分母 6 為 2+2+1+1 )。</li>
+</ul>
+<h3 id="▷-縮寫"><a href="#▷-縮寫" class="headerlink" title="▷ 縮寫"></a>▷ 縮寫</h3><ul>
+<li><code>grid-template-rows|columns</code> 列欄屬性值相同時可使用 repeat，為 <code>repeat(次數, 格線)</code>。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 等同於 25% 25% 25% 25% */</span></span><br><span class="line"><span class="attribute">grid-template-rows</span>: <span class="built_in">repeate</span>(<span class="number">4</span>, <span class="number">25%</span>);</span><br><span class="line"><span class="attribute">grid-template-columns</span>: <span class="built_in">repeate</span>(<span class="number">4</span>, <span class="number">25%</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 同於 25% 25% 25% 100px */</span></span><br><span class="line"><span class="attribute">grid-template-rows</span>: <span class="built_in">repeate</span>(<span class="number">3</span>, <span class="number">25%</span>) <span class="number">100px</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-內層屬性"><a href="#❒-內層屬性" class="headerlink" title="❒ 內層屬性"></a>❒ 內層屬性</h2><ul>
+<li>「 <code>grid-area</code> 」與 「 <code>grid-row</code>、<code>grid-column</code> 」擇一使用，遇到多欄位可使用「 <code>grid-row</code>、<code>grid-column</code> 」比較方便，下方會有範例。</li>
+</ul>
+<p><strong>屬性：</strong></p>
+<ul>
+<li><code>grid-area</code> ：需搭配外層屬性 <code>grid-template-area</code> 。命名好自訂名稱後，帶入「 外層 <code>grid-template-area</code> 」 的中，也就是看內層的區塊要放到外層的哪些格子內。<ul>
+<li>屬性值：自訂名，例 <code>grid-area: A1</code>，A1 為自訂名。</li>
+</ul>
+</li>
+<li><code>grid-row</code><ul>
+<li>屬性值：<code>從第幾條線開始/從第幾條線結束;</code>，例 <code>1/3</code> 即從第一條線開始到第三條線結束的區塊。</li>
+<li>屬性值也可為負數 ( 倒數的意思 )，在外層沒有設定幾欄幾列時也可使用，例 <code>2/-3</code> 即從第二條線開始至倒數第三條線結束的區塊。</li>
+<li>為 <code>grid-row-start</code>、<code>gird-row-end</code> 縮寫</li>
+</ul>
+</li>
+<li><code>grid-column</code><ul>
+<li>屬性值與 <code>grid-row</code> 一樣。</li>
+<li>為 <code>grid-column-start</code>、<code>gird-column-end</code> 縮寫</li>
+</ul>
+</li>
+<li><code>justify-self</code>、<code>align-self</code>：與 flex 用法一樣。</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220921/201197431ZLxggarJG.jpg" alt="// grid-row|column 屬性值，線的概念"></p>
+<h2 id="❒-實作"><a href="#❒-實作" class="headerlink" title="❒ 實作"></a>❒ 實作</h2><h3 id="▷-實作-1-grid-template-rows-columns-搭配-grid-area"><a href="#▷-實作-1-grid-template-rows-columns-搭配-grid-area" class="headerlink" title="▷ 實作 1. grid-template-rows|columns 搭配 grid-area"></a>▷ 實作 1. grid-template-rows|columns 搭配 grid-area</h3><p><a href="https://codepen.io/echocarriet/pen/QWrdwXd">CodePen 範例</a></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;AA&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;BB&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;CC&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">800px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">800px</span>;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="number">2px</span> solid gray;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">25%</span> <span class="number">25%</span> <span class="number">25%</span> <span class="number">25%</span>;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">25%</span> <span class="number">25%</span> <span class="number">25%</span> <span class="number">25%</span>;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: </span><br><span class="line">  <span class="string">&#x27;B3 B3 B3 B1&#x27;</span></span><br><span class="line">  <span class="string">&#x27;B3 B3 B3 B1&#x27;</span></span><br><span class="line">  <span class="string">&#x27;B2 B2 B2 B1&#x27;</span></span><br><span class="line">  <span class="string">&#x27;B2 B2 B2 B1&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.AA</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#9dd3a8</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: B1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.BB</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ffad60</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: B2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.CC</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#d9d9f3</span>;</span><br><span class="line">  <span class="attribute">grid-area</span>: B3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220921/20119743uuUzrRE5ai.jpg" alt="// 圖層拆解"></p>
+<ul>
+<li>外層使用 <code>grid-template-rows|columns</code> 分別設定要幾欄幾列。</li>
+<li>內層自行命名要哪些區塊，這邊設定三個區塊 <code>.AA</code> <code>.BB</code> <code>.CC</code> 分別命名為 <code>B1</code> <code>B2</code> <code>B3</code>。</li>
+<li>把命名的區塊帶回外層的 <code>grid-template-areas</code> 空間中，如上圖。<ul>
+<li><p>注意：外層 <code>grid-template-areas</code> 中「 空間是不能分離的 」不然會無法顯示。如下，把列中第二排第三個 B3 改成 B1，就無法正常顯示囉！</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#x27;B3 B3 B3 B1&#x27;</span><br><span class="line">&#x27;B3 B3 B1 B1&#x27;</span><br><span class="line">&#x27;B2 B2 B2 B1&#x27;</span><br><span class="line">&#x27;B2 B2 B2 B1&#x27;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-實作-2-grid-auto-rows-columns-搭配-grid-row-column"><a href="#▷-實作-2-grid-auto-rows-columns-搭配-grid-row-column" class="headerlink" title="▷ 實作 2. grid-auto-rows|columns 搭配 grid-row|column"></a>▷ 實作 2. grid-auto-rows|columns 搭配 grid-row|column</h3><p><a href="https://codepen.io/echocarriet/pen/WNJGdqZ">Codepen 範例</a></p>
+<ul>
+<li>內層使用 <code>grid-row|column</code>，外層就可以不使用 <code>grid-template-areas</code>。</li>
+<li>內層使用 <code>grid-row|column</code> 是可以讓內層區塊重疊的，如範例中 C 與 D 。</li>
+<li>如果不想要使用 <code>grid-auto-rows|columns</code> 也可以使用 <code>grid-template-rows|columns</code> 自己先設定好要幾欄幾列。</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220921/20119743jDEUPEpQJb.jpg" alt="// 示意圖"></p>
+<h3 id="▷-實作-2-2-遇到很多欄列的組合"><a href="#▷-實作-2-2-遇到很多欄列的組合" class="headerlink" title="▷ 實作 2-2. 遇到很多欄列的組合"></a>▷ 實作 2-2. 遇到很多欄列的組合</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20220921/20119743r9k8M6DHbd.png" alt="示意圖"><br>&#x2F;&#x2F; 圖片出處：<a href="https://youtu.be/fYcz3FUqv7M">CSS GRID &#x2F; CSS格線好好玩【完整版】 | CSS教學 | CSS格線</a> ↑</p>
+<ul>
+<li>遇到很多欄列的組合，使用 「 <code>grid-template-rows|columns</code> 、<code>grid-template-area</code> 」搭配 <code>grid-area</code> 就會呈現上圖中密密麻麻的 <code>grid-template-area</code>，這時就可以改用 「 <code>grid-auto-rows|columns</code> 搭配 <code>grid-row|column</code> 」。</li>
+</ul>
+<h2 id="❒-使用-grid-auto-rows-columns-沒有指定欄列數，怎麼會產生格線？"><a href="#❒-使用-grid-auto-rows-columns-沒有指定欄列數，怎麼會產生格線？" class="headerlink" title="❒ 使用 grid-auto-rows|columns 沒有指定欄列數，怎麼會產生格線？"></a>❒ 使用 grid-auto-rows|columns 沒有指定欄列數，怎麼會產生格線？</h2><p>父層欄列都使用 <code>grid-auto-rows|columns</code> 屬性值為 1fr，沒有指定欄數，怎麼會產出格線？</p>
+<ul>
+<li>這是個<strong>隱形格線的概念：</strong>設定的格位<strong>超過</strong>既定格位，他就會自動產生新的格子。也就是父層欄列都設定了 auto，子層開始到結束的欄列如果超過父層的欄列，就會自動生成新的格子。</li>
+</ul>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a href="https://youtu.be/fYcz3FUqv7M">CSS GRID &#x2F; CSS格線好好玩【完整版】 | CSS教學 | CSS格線</a></li>
+<li><a href="https://www.casper.tw/css/2017/03/22/css-grid-layout/#grid-gap-grid-column-gap-grid-row-gap">卡斯伯 - CSS Grid 屬性介紹</a></li>
+<li>Grid 遊戲<ul>
+<li><a href="https://codepip.com/games/grid-garden/">Grid 花園遊戲</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+        <tag>grid</tag>
       </tags>
   </entry>
 </search>

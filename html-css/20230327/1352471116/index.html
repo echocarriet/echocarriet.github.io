@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="關於 Flex 排版的內層屬性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day5 | 淺談 Flex 排版內層屬性">
+<meta property="og:url" content="https://echocarriet.github.io/html-css/20230327/1352471116/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="關於 Flex 排版的內層屬性">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220920/20119743oYMFcW1bHU.png">
+<meta property="article:published_time" content="2023-03-27T10:29:28.000Z">
+<meta property="article:modified_time" content="2023-03-27T10:38:07.378Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="flex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20220920/20119743oYMFcW1bHU.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/html-css/20230327/1352471116/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/html-css/20230327/1352471116/","path":"html-css/20230327/1352471116/","title":"Day5 | 淺談 Flex 排版內層屬性"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day5 | 淺談 Flex 排版內層屬性 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Flex-%E5%85%A7%E5%B1%A4%E5%B1%AC%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">❒ Flex 內層屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-flex"><span class="nav-number">1.1.</span> <span class="nav-text">▷ flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-flex-grow-%E4%BC%B8%E5%B1%95%E6%AF%94"><span class="nav-number">1.2.</span> <span class="nav-text">▷ flex-grow 伸展比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-flex-shrink-%E6%94%B6%E7%B8%AE%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">▷ flex-shrink 收縮比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-flex-basis-%E9%A0%90%E8%A8%AD%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.4.</span> <span class="nav-text">▷ flex-basis 預設大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-order-%E6%8E%92%E5%BA%8F"><span class="nav-number">1.5.</span> <span class="nav-text">▷ order 排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-align-self-%E5%96%AE%E4%B8%80%E5%80%8B%E7%89%A9%E4%BB%B6%E7%9A%84%E6%AC%A1%E8%BB%B8%E5%B0%8D%E9%BD%8A"><span class="nav-number">1.6.</span> <span class="nav-text">▷ align-self 單一個物件的次軸對齊</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Flex-%E9%81%8B%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">❒ Flex 運算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-%E7%88%B6%E5%B1%A4%E5%AF%AC%E5%BA%A6%E7%82%BA-800px%EF%BC%8C%E5%AD%90%E5%85%83%E7%B4%A0%E5%80%91%E5%AF%AC%E5%BA%A6%E5%90%84%E7%82%BA-300px-600px-100px%EF%BC%8C%E5%AF%AC%E5%BA%A6%E4%BE%9D%E7%85%A7%E6%AF%94%E4%BE%8B%E4%BE%86%E7%AE%97%E6%9C%83%E6%98%AF%E5%A4%9A%E5%B0%91%E5%91%A2"><span class="nav-number">2.1.</span> <span class="nav-text">01. 父層寬度為 800px，子元素們寬度各為 300px,600px,100px，寬度依照比例來算會是多少呢 ?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">❒ 資料來源</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/html-css/20230327/1352471116/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day5 | 淺談 Flex 排版內層屬性 | Hi, I'm Carrie">
+      <meta itemprop="description" content="關於 Flex 排版的內層屬性">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day5 | 淺談 Flex 排版內層屬性
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 18:29:28 / 修改時間：18:38:07" itemprop="dateCreated datePublished" datetime="2023-03-27T18:29:28+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html-css/" itemprop="url" rel="index"><span itemprop="name">HTML&CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">關於 Flex 排版的內層屬性</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>上篇「 淺談 Flex 排版外層屬性 」說到 flex 的外層屬性們，這篇來說說 flex 的內層屬性。<br><img src="https://ithelp.ithome.com.tw/upload/images/20220920/20119743oYMFcW1bHU.png" alt="// 左方為外層屬性，右方為內層屬性。  圖片出處 : 六角學院 ▲"></p>
+<h2 id="❒-Flex-內層屬性"><a href="#❒-Flex-內層屬性" class="headerlink" title="❒ Flex 內層屬性"></a>❒ Flex 內層屬性</h2><h3 id="▷-flex"><a href="#▷-flex" class="headerlink" title="▷ flex"></a>▷ flex</h3><p><code>flex</code> 為 <code>flex-grow</code>、<code>flex-shrink</code>、<code>flex-basis</code> 的縮寫。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex</span>: flex-grow flex-shrink flex-basis;</span><br></pre></td></tr></table></figure>
+
+<h3 id="▷-flex-grow-伸展比"><a href="#▷-flex-grow-伸展比" class="headerlink" title="▷ flex-grow 伸展比"></a>▷ flex-grow 伸展比</h3><p>子元素依比例伸展分配剩餘空間，在「 父元素空間充足時會有影響 」，預設為 0。</p>
+<ul>
+<li><code>flex-grow: 0;</code> 預設，不會將空間分配給子元素。</li>
+<li><code>flex-grow: 1;</code> 子元素會依比例進行伸展。</li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/dyGBJEB">CodePen 範例</a></li>
+</ul>
+<h3 id="▷-flex-shrink-收縮比"><a href="#▷-flex-shrink-收縮比" class="headerlink" title="▷ flex-shrink 收縮比"></a>▷ flex-shrink 收縮比</h3><p>子元素的<strong>壓縮</strong>比例分配 ， 在「 父完素空間不足時會有影響 」，預設為 1。</p>
+<ul>
+<li><code>flex-shrink: 0;</code> 不會被壓縮。</li>
+<li><code>flex-shrink: 1;</code> 預設，會被壓縮。</li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/VweJrdQ">CodePen 範例</a></li>
+</ul>
+<h3 id="▷-flex-basis-預設大小"><a href="#▷-flex-basis-預設大小" class="headerlink" title="▷ flex-basis 預設大小"></a>▷ flex-basis 預設大小</h3><p>子元素預設被分配到的空間，預設為 auto。<br><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/VweJrdQ">CodePen 範例</a></p>
+<h3 id="▷-order-排序"><a href="#▷-order-排序" class="headerlink" title="▷ order 排序"></a>▷ order 排序</h3><p>可改變子元素的排列順序，整數或負數皆可，數字越小排序越前。<br><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/rNvLZoo">Codepen 範例</a></p>
+<h3 id="▷-align-self-單一個物件的次軸對齊"><a href="#▷-align-self-單一個物件的次軸對齊" class="headerlink" title="▷ align-self 單一個物件的次軸對齊"></a>▷ align-self 單一個物件的次軸對齊</h3><p>可調整子元素在次軸的對齊位置 ( 向 <code>align-items</code> )，如果已在父層下 <code>align-items</code>，但要對子層其中一個子元素調整對齊位置，可在那個子元素下 <code>align-self</code> 。<br><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/NWMrOWy">CodePen 範例</a></p>
+<p><strong>屬性值：</strong></p>
+<ul>
+<li><code>auto | flex-start | flex-end | center | baseline | stretch</code></li>
+</ul>
+<h2 id="❒-Flex-運算"><a href="#❒-Flex-運算" class="headerlink" title="❒ Flex 運算"></a>❒ Flex 運算</h2><h3 id="01-父層寬度為-800px，子元素們寬度各為-300px-600px-100px，寬度依照比例來算會是多少呢"><a href="#01-父層寬度為-800px，子元素們寬度各為-300px-600px-100px，寬度依照比例來算會是多少呢" class="headerlink" title="01. 父層寬度為 800px，子元素們寬度各為 300px,600px,100px，寬度依照比例來算會是多少呢 ?"></a>01. 父層寬度為 800px，子元素們寬度各為 300px,600px,100px，寬度依照比例來算會是多少呢 ?</h3><p><strong>依照比例來算 :</strong></p>
+<ul>
+<li><code>.box1</code> : 800 px * ( 300 px &#x2F;1000 px ) &#x3D; 240 px</li>
+<li><code>.box2</code> : 800 px * ( 600 px &#x2F;1000 px ) &#x3D; 480 px</li>
+<li><code>.box3</code> : 800 px * ( 100 px &#x2F;1000 px ) &#x3D; 80 px<br><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/BajgNZw">CodePen 範例</a></li>
+</ul>
+<h2 id="❒-資料來源"><a href="#❒-資料來源" class="headerlink" title="❒ 資料來源"></a>❒ 資料來源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10208741">Flex 空間分配 flex-grow &#x2F; flex-shrink &#x2F; flex-basis</a></li>
+<li>六角文章 - <a target="_blank" rel="noopener" href="https://w3c.hexschool.com/flexbox/9883b0fb">flex-basis、flex-grow、flex-shrink 屬性介紹</a></li>
+<li><a target="_blank" rel="noopener" href="https://w3c.hexschool.com/flexbox/c3847835">align-self 屬性介紹</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2017/07/21/css-flex/#align-self">圖解：CSS Flex 屬性一點也不難 &#x2F; align-self</a></li>
+<li>Flex 遊戲<ul>
+<li><a target="_blank" rel="noopener" href="https://hexschool.github.io/flexbox-pirate/index.html#/">Flex pirate 新手關卡</a></li>
+<li><a target="_blank" rel="noopener" href="https://flexboxfroggy.com/#zh-tw">Flex 青蛙</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/flex/" rel="tag"># flex</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/3023895147/" rel="prev" title="Day4 | 淺談 Flex 排版外層屬性">
+                  <i class="fa fa-chevron-left"></i> Day4 | 淺談 Flex 排版外層屬性
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/864635399/" rel="next" title="Day6 | 淺談 Grid 排版">
+                  Day6 | 淺談 Grid 排版 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>
