@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="animation、transition、transform">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day8 | Animation、Transition、Transform 動畫效果">
+<meta property="og:url" content="https://echocarriet.github.io/html-css/20230327/3200009126/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="animation、transition、transform">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-03-27T11:12:58.000Z">
+<meta property="article:modified_time" content="2023-03-27T11:15:40.485Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="animation">
+<meta property="article:tag" content="transition">
+<meta property="article:tag" content="transform">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/html-css/20230327/3200009126/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/html-css/20230327/3200009126/","path":"html-css/20230327/3200009126/","title":"Day8 | Animation、Transition、Transform 動畫效果"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day8 | Animation、Transition、Transform 動畫效果 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Animation-%E3%80%81-Transition%E3%80%81Transform-%E5%B7%AE%E7%95%B0"><span class="nav-number">1.</span> <span class="nav-text">❒ Animation 、 Transition、Transform 差異</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Animation-%E5%8B%95%E7%95%AB"><span class="nav-number">2.</span> <span class="nav-text">❒ Animation 動畫</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-Animation-%E7%B5%90%E6%A7%8B"><span class="nav-number">2.1.</span> <span class="nav-text">▷ Animation 結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-animation-%E5%B1%AC%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text">▷ animation 屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-Animation-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">▷ Animation 使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%AF%A6%E4%BD%9C-1-Animation-%E4%BD%BF%E7%94%A8-from-%E8%88%87-to-%E8%AE%93%E7%89%A9%E4%BB%B6%E7%A7%BB%E8%87%B3%E5%8F%B3%E6%96%B9%E5%86%8D%E5%9B%9E%E4%BE%86%E5%8E%9F%E9%BB%9E"><span class="nav-number">2.4.</span> <span class="nav-text">▷ 實作 1. Animation 使用 from 與 to 讓物件移至右方再回來原點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%AF%A6%E4%BD%9C-2-Animation-%E4%BD%BF%E7%94%A8-%E8%AE%93%E7%89%A9%E4%BB%B6%E7%B9%9E%E4%B8%80%E5%9C%88%E6%AD%A3%E6%96%B9%E5%BD%A2"><span class="nav-number">2.5.</span> <span class="nav-text">▷ 實作 2. Animation 使用 % 讓物件繞一圈正方形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Transition-%E8%BD%89%E5%A0%B4%E6%95%88%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">❒ Transition 轉場效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-transition-%E5%B1%AC%E6%80%A7"><span class="nav-number">3.1.</span> <span class="nav-text">▷ transition 屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-transition-timing-function-%E5%B1%AC%E6%80%A7%E5%80%91%E7%9A%84%E6%95%88%E6%9E%9C"><span class="nav-number">3.2.</span> <span class="nav-text">▷ transition-timing-function 屬性們的效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%AF%A6%E4%BD%9C-1-Transition-%E8%BD%89%E5%A0%B4%E6%95%88%E6%9E%9C%EF%BC%8Chover-%E6%99%82%E7%89%A9%E4%BB%B6%E5%AF%AC%E5%BA%A6%E8%AE%8A%E5%A4%A7"><span class="nav-number">3.3.</span> <span class="nav-text">▷ 實作 1. Transition 轉場效果，hover 時物件寬度變大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E5%AF%A6%E4%BD%9C-1-Transition-%E8%BD%89%E5%A0%B4%E6%95%88%E6%9E%9C%E4%BD%BF%E7%94%A8-transition-property"><span class="nav-number">3.4.</span> <span class="nav-text">▷ 實作 1. Transition 轉場效果使用 transition-property</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Transform"><span class="nav-number">4.</span> <span class="nav-text">❒ Transform</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-Transform-%E5%B1%AC%E6%80%A7"><span class="nav-number">4.1.</span> <span class="nav-text">▷ Transform 屬性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Animation-%E6%95%88%E6%9E%9C%E7%9A%84%E5%A5%97%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">❒ Animation 效果的套件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Animate-css-%E5%A5%97%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">1. Animate.css 套件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-AOS-%E5%A5%97%E4%BB%B6"><span class="nav-number">5.2.</span> <span class="nav-text">2. AOS 套件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%8B%95%E7%95%AB%E6%95%88%E6%9E%9C%E5%BB%BA%E8%AD%B0%E4%BD%BF%E7%94%A8%E6%9C%83%E4%BD%94%E6%93%9A%E7%A9%BA%E9%96%93%E7%9A%84%E5%B1%AC%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">❒ 動畫效果建議使用會佔據空間的屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E6%9C%83%E4%BD%94%E6%93%9A%E7%A9%BA%E9%96%93%E7%9A%84%E5%B1%AC%E6%80%A7"><span class="nav-number">6.1.</span> <span class="nav-text">▷ 會佔據空間的屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E4%B8%8D%E6%9C%83%E4%BD%94%E6%93%9A%E7%A9%BA%E9%96%93%E7%9A%84%E5%B1%AC%E6%80%A7"><span class="nav-number">6.2.</span> <span class="nav-text">▷ 不會佔據空間的屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%96%B7-%E7%82%BA%E4%BB%80%E9%BA%BC%E5%BB%BA%E8%AD%B0%E4%BD%BF%E7%94%A8%E6%9C%83%E4%BD%94%E6%93%9A%E7%A9%BA%E9%96%93%E7%9A%84%E5%B1%AC%E6%80%A7%EF%BC%9F"><span class="nav-number">6.3.</span> <span class="nav-text">▷ 為什麼建議使用會佔據空間的屬性？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">7.</span> <span class="nav-text">❒ 參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/html-css/20230327/3200009126/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day8 | Animation、Transition、Transform 動畫效果 | Hi, I'm Carrie">
+      <meta itemprop="description" content="animation、transition、transform">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day8 | Animation、Transition、Transform 動畫效果
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 19:12:58 / 修改時間：19:15:40" itemprop="dateCreated datePublished" datetime="2023-03-27T19:12:58+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html-css/" itemprop="url" rel="index"><span itemprop="name">HTML&CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">animation、transition、transform</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-Animation-、-Transition、Transform-差異"><a href="#❒-Animation-、-Transition、Transform-差異" class="headerlink" title="❒ Animation 、 Transition、Transform 差異"></a>❒ Animation 、 Transition、Transform 差異</h2><p><strong>Animation</strong></p>
+<ul>
+<li>需搭配關鍵影格 <code>@keyframes</code> 使用，因可定義多影格，所以適用較細微的動畫，</li>
+<li>運作方式：不需事件觸發網頁加載就會執行。</li>
+</ul>
+<p><strong>Transform</strong></p>
+<ul>
+<li>可控制元素的移動、縮放、旋轉、傾斜。</li>
+<li>運作方式：不需事件觸發網頁加載就會執行。</li>
+<li>transition 可於 animation 中被當屬性運用。</li>
+</ul>
+<p><strong>Transition</strong></p>
+<ul>
+<li>Transition 只能定義開始和結束狀態，不適用較細微的動畫。</li>
+<li>運作方式：需事件觸發動畫才會開始，動畫為一次性，無法重覆發生除非一再觸發。</li>
+</ul>
+<h2 id="❒-Animation-動畫"><a href="#❒-Animation-動畫" class="headerlink" title="❒ Animation 動畫"></a>❒ Animation 動畫</h2><h3 id="▷-Animation-結構"><a href="#▷-Animation-結構" class="headerlink" title="▷ Animation 結構"></a>▷ Animation 結構</h3><p><code>animation</code> 需搭配關鍵影格 <code>@keyframes</code> 使用。<code>@keyframes</code> 內部結構有兩種寫法：</p>
+<ul>
+<li><code>from</code> 與 <code>to</code> ：只能定義頭語尾的影格變化。</li>
+<li><code>%</code> ：可以定義更多階段的影格變化。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*方式一：使用 @keyframes 定義，後面customname為自訂名稱，搭配 form to 頭尾的撰寫方式 */</span></span><br><span class="line"><span class="keyword">@keyframes</span> customname &#123;</span><br><span class="line">  <span class="comment">/* 定義每個階段的影格變化  */</span></span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="comment">/* 定義元素在該影格所套用的樣式 */</span></span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*方式二：使用 @keyframes 定義，後面customname為自訂名稱，搭配％的撰寫方式 */</span></span><br><span class="line"><span class="keyword">@keyframes</span> customname &#123;</span><br><span class="line">  <span class="comment">/* 定義每個階段的影格變化  */</span></span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="comment">/* 定義元素在該影格所套用的樣式 */</span></span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="number">100%</span> &#123;</span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="▷-animation-屬性"><a href="#▷-animation-屬性" class="headerlink" title="▷ animation 屬性"></a>▷ animation 屬性</h3><p>這邊只列出一些常用的屬性</p>
+<ul>
+<li><code>animation-name</code> → 要執行的 animation 名稱。</li>
+<li><code>animation-duration</code> → 執行過程秒數。</li>
+<li><code>animation-play-state</code> → 播放狀態，預設是 <code>running</code>。<ul>
+<li>狀態可設定 <code>pause</code> 搭配 <code>:hover</code> 。</li>
+</ul>
+</li>
+<li><code>animation-timing-function</code> → 動畫的加速速率。</li>
+<li><code>animation-delay</code> → 延遲多少時間發動 animation。</li>
+<li><code>animation-iteration-count</code> → 動畫要重複播放幾次。<ul>
+<li>屬性值 <code>infinite</code> 為一直持續跑</li>
+</ul>
+</li>
+<li><code>animation-fill-mode</code> → 動畫未播放或動畫完成時，要停在哪個影格 ( 呈現的樣子 )。<ul>
+<li><code>none</code> 預設值，動畫執行前或之後不會對元素產生任何樣式。</li>
+<li><code>forward</code> 停留在最後一個影格位置( 結束時的狀態 )。</li>
+<li><code>backwards</code> 留在第一個影格位置 ( 開始時的狀態 )。</li>
+<li><code>both</code> 擁有 <code>forward</code> 與 <code>backwards</code> 兩者功能，依據開始或結束決定呈現的狀態。</li>
+</ul>
+</li>
+<li><code>animation-direction</code> → 是否要循環交替反向播放動畫。<ul>
+<li><code>normal</code> 預設值，動畫正常播放</li>
+<li><code>reverse</code> 動畫反向播放</li>
+<li><code>alternate</code> 動畫在奇數時正向播放，偶數值反向播放。</li>
+<li><code>alternate-reverse</code> 動畫在奇數時反向播放，偶數值正向播放。</li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-Animation-使用方式"><a href="#▷-Animation-使用方式" class="headerlink" title="▷ Animation 使用方式"></a>▷ Animation 使用方式</h3><ol>
+<li>建立影格 <code>@keyframes</code>，並自訂名稱<ol>
+<li>有兩種撰寫方式，可看上方的「 Animation 結構 」。</li>
+</ol>
+</li>
+<li><code>animation</code> 載入影格<ol>
+<li><code>animation</code> 需對應一個 <code>@keyframes</code> 自訂名 ( <code>animation-name：@keyframes 自訂名;</code> )。</li>
+<li>須包含兩個以上的屬性才能運作。</li>
+</ol>
+</li>
+</ol>
+<p>註 ：如果不想要使用 <code>animation-fill-mode:both;</code> ，可於 <code>@keyfarmes</code> 中的開始與結束數值寫一樣並搭配 <code>animation-iteration-count : infinite;</code>，就會很順的重複跑。</p>
+<h3 id="▷-實作-1-Animation-使用-from-與-to-讓物件移至右方再回來原點"><a href="#▷-實作-1-Animation-使用-from-與-to-讓物件移至右方再回來原點" class="headerlink" title="▷ 實作 1. Animation 使用 from 與 to 讓物件移至右方再回來原點"></a>▷ 實作 1. Animation 使用 <code>from</code> 與 <code>to</code> 讓物件移至右方再回來原點</h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/xxjdpjq">CodePen 範例</a></p>
+<h3 id="▷-實作-2-Animation-使用-讓物件繞一圈正方形"><a href="#▷-實作-2-Animation-使用-讓物件繞一圈正方形" class="headerlink" title="▷ 實作 2. Animation 使用 % 讓物件繞一圈正方形"></a>▷ 實作 2. Animation 使用 <code>%</code> 讓物件繞一圈正方形</h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/GRdmydB">CodePen 範例</a></p>
+<h2 id="❒-Transition-轉場效果"><a href="#❒-Transition-轉場效果" class="headerlink" title="❒ Transition 轉場效果"></a>❒ Transition 轉場效果</h2><h3 id="▷-transition-屬性"><a href="#▷-transition-屬性" class="headerlink" title="▷ transition 屬性"></a>▷ transition 屬性</h3><ul>
+<li><code>transition-duration</code> : 動畫播放的時間。</li>
+<li><code>transition-timing-function</code>：動畫執行過程的速度變化。</li>
+<li><code>transition-delay</code>：延遲多少時間再發動動畫。</li>
+<li><code>transition-property</code>：要更精確地掌控，可定義哪些 CSS 屬性有轉場的動畫效果<ul>
+<li><code>all</code> : 預設，所有 CSS 都要轉場。</li>
+<li><code>none</code> : 沒有任何 CSS 要轉場。</li>
+<li><code>property</code>：屬性值可以是要轉場的 CSS 屬性名稱，以逗號區隔，屬性名稱例如 <code>width</code>、<code>height</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-transition-timing-function-屬性們的效果"><a href="#▷-transition-timing-function-屬性們的效果" class="headerlink" title="▷ transition-timing-function 屬性們的效果"></a>▷ transition-timing-function 屬性們的效果</h3><ul>
+<li><code>ease</code> : 緩慢開始 → 中間變快 → 慢慢結束。</li>
+<li><code>linear</code>：從開始到結束的速度一致。</li>
+<li><code>ease-in</code>：緩慢開始。</li>
+<li><code>ease-out</code>：緩慢結束。</li>
+<li><code>ease-in-out</code>：緩慢開始和緩慢的結束。</li>
+<li><code>steps(int,start|end)</code>：逐格動畫，沒有過度效果，而是一幀一幀的變化，所以指定格數越多動畫看起來會越滑順。<ul>
+<li>第一個參數 <code>int</code> 為指定間格數。</li>
+<li>第二個參數有 <code>start|end</code> 可選，若選 <code>start</code> 表示開始值不動。</li>
+</ul>
+</li>
+<li><code>cubic-bezier(n, n, n, n)</code>：為二次貝茲曲線，利用兩個控制點決定一個曲線，可搭配 <a target="_blank" rel="noopener" href="http://cubic-bezier.com/">cubic-bezier.com</a> 來使用。<ul>
+<li><code>n</code> 值可填 0 ~ 1 之間的數字。</li>
+</ul>
+</li>
+</ul>
+<p>詳細動畫效果可參考此篇文章 <a target="_blank" rel="noopener" href="https://www.casper.tw/css/2013/08/24/css-transtion-speed/">CSS transition 各種速率</a></p>
+<h3 id="▷-實作-1-Transition-轉場效果，hover-時物件寬度變大"><a href="#▷-實作-1-Transition-轉場效果，hover-時物件寬度變大" class="headerlink" title="▷ 實作 1. Transition 轉場效果，hover 時物件寬度變大"></a>▷ 實作 1. Transition 轉場效果，hover 時物件寬度變大</h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/vYjmdRw">CodePen 範例</a></p>
+<h3 id="▷-實作-1-Transition-轉場效果使用-transition-property"><a href="#▷-實作-1-Transition-轉場效果使用-transition-property" class="headerlink" title="▷ 實作 1. Transition 轉場效果使用 transition-property"></a>▷ 實作 1. Transition 轉場效果使用 transition-property</h3><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/xxjdYjJ">CodePen 範例</a></p>
+<ul>
+<li>範例中使用 <code>transition-property: width;</code> ，明確指定只有寬度要轉場效果，可見滑鼠滑入時高度是沒有轉場效果的。</li>
+</ul>
+<h2 id="❒-Transform"><a href="#❒-Transform" class="headerlink" title="❒ Transform"></a>❒ Transform</h2><ul>
+<li>可控制元素的旋轉、縮放、移動 等，但不適用「 行內元素 」。</li>
+<li>transition 可於 animation 中被當屬性運用。</li>
+</ul>
+<h3 id="▷-Transform-屬性"><a href="#▷-Transform-屬性" class="headerlink" title="▷ Transform 屬性"></a>▷ Transform 屬性</h3><ul>
+<li><code>translate</code> 移動：<ul>
+<li>單位：百分比或尺寸值 ( px 等 )</li>
+<li>屬性值：<code>translate(X軸, Y軸) | translateX() | translateY() | translateZ() | translate3d()</code></li>
+<li><code>translateX()</code>、 <code>translateY()</code> 可縮寫為 <code>translate(X軸, Y軸)</code> 。</li>
+</ul>
+</li>
+<li><code>scale</code> 縮放：<ul>
+<li>單位：須為倍數</li>
+<li>屬性值：<code>scaleX() | scaleY() | scaleZ() | scale3d()</code>。</li>
+<li>X 軸與 Y 軸會以同倍率縮放。</li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/RwyVyYJ">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>rotate</code> 旋轉：<ul>
+<li>單位：deg</li>
+<li>屬性值：<code>rotateX() | rotateY() | rotateZ() | rotate3d()</code>。</li>
+</ul>
+</li>
+<li><code>skew</code> 傾斜：<ul>
+<li>單位：deg</li>
+<li>屬性值：<code>skew(X軸, Y軸)</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-Animation-效果的套件"><a href="#❒-Animation-效果的套件" class="headerlink" title="❒ Animation 效果的套件"></a>❒ Animation 效果的套件</h2><h3 id="1-Animate-css-套件"><a href="#1-Animate-css-套件" class="headerlink" title="1. Animate.css 套件"></a>1. <a target="_blank" rel="noopener" href="https://animate.style/">Animate.css</a> 套件</h3><h3 id="2-AOS-套件"><a href="#2-AOS-套件" class="headerlink" title="2. AOS 套件"></a>2. <a target="_blank" rel="noopener" href="https://michalsnik.github.io/aos/">AOS</a> 套件</h3><h2 id="❒-動畫效果建議使用會佔據空間的屬性"><a href="#❒-動畫效果建議使用會佔據空間的屬性" class="headerlink" title="❒ 動畫效果建議使用會佔據空間的屬性"></a>❒ 動畫效果建議使用會佔據空間的屬性</h2><p>以 <code>opacity</code>、<code>transform</code>、<code>display</code>、<code>visibility</code> 屬性為例。</p>
+<h3 id="▷-會佔據空間的屬性"><a href="#▷-會佔據空間的屬性" class="headerlink" title="▷ 會佔據空間的屬性"></a>▷ 會佔據空間的屬性</h3><ol>
+<li><code>opacity</code></li>
+<li><code>transform</code></li>
+<li><code>visibility</code></li>
+</ol>
+<h3 id="▷-不會佔據空間的屬性"><a href="#▷-不會佔據空間的屬性" class="headerlink" title="▷ 不會佔據空間的屬性"></a>▷ 不會佔據空間的屬性</h3><ol>
+<li><code>display</code></li>
+</ol>
+<h3 id="▷-為什麼建議使用會佔據空間的屬性？"><a href="#▷-為什麼建議使用會佔據空間的屬性？" class="headerlink" title="▷ 為什麼建議使用會佔據空間的屬性？"></a>▷ 為什麼建議使用會佔據空間的屬性？</h3><p>如果要做動畫效果會建議使用<strong>會佔據空間的屬性</strong>，這樣當某元素執行動畫效果時，不會影響其他元素的位置變得大家都在動，使用者體驗會比較好。</p>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/ExgPogb">Codepen 範例</a></p>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10197303">Day27：小事之 Transition 與 Animation</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10200712">CSS動畫-Transition、Animation、Transform的分析比較</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/css/css3_animations.asp">W3school - CSS Animations</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2021/10/04/css-animation/">一個工具，帶你完整認識 CSS Animation</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2013/08/24/css-transtion-speed/">CSS transition 各種速率</a></li>
+<li><a target="_blank" rel="noopener" href="https://selflearningsuccess.com/css-transition/#Transition-property_%E6%8C%87%E5%AE%9A%E8%BD%89%E5%A0%B4%E7%9B%AE%E6%A8%99">CSS Transition屬性的4個操作</a></li>
+<li>六角學院</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/animation/" rel="tag"># animation</a>
+              <a href="/tags/transition/" rel="tag"># transition</a>
+              <a href="/tags/transform/" rel="tag"># transform</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/3640475199/" rel="prev" title="Day7 | 垂直置中的一些排版方式">
+                  <i class="fa fa-chevron-left"></i> Day7 | 垂直置中的一些排版方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/1892231840/" rel="next" title="Day9 | CSS 屬性 filter 的濾鏡效果">
+                  Day9 | CSS 屬性 filter 的濾鏡效果 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

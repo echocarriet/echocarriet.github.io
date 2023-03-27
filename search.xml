@@ -1954,4 +1954,332 @@
         <tag>grid</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Day7 | 垂直置中的一些排版方式</title>
+    <url>/html-css/20230327/3640475199/</url>
+    <content><![CDATA[<h2 id="❒-flex-方式"><a href="#❒-flex-方式" class="headerlink" title="❒ flex 方式"></a>❒ flex 方式</h2><p><strong>適用：</strong><br>區塊與文字排版皆適用。</p>
+<p><strong>作法：</strong></p>
+<ul>
+<li>父層使用 <code>display:flex;</code> 搭配 <code>align-items: center;</code> 可將子層 <code>.box</code> 垂直置中於父層 <code>.container</code>。</li>
+<li>如需水平置中，可於父層 <code>.container</code> 再加上 <code>justify-content: center;</code>。</li>
+<li><a href="https://codepen.io/echocarriet/pen/QWrdoRP">CodePen 範例</a></li>
+</ul>
+<h2 id="❒-偽元素搭配-inline-block-vertical-align-方式"><a href="#❒-偽元素搭配-inline-block-vertical-align-方式" class="headerlink" title="❒ 偽元素搭配 inline-block + vertical-align 方式"></a>❒ 偽元素搭配 inline-block + vertical-align 方式</h2><p><strong>作法：</strong></p>
+<ul>
+<li>如果需要水平置中可於父層加上 <code>text-align: center;</code> ( 因為子層為 <code>inline-block</code> )。</li>
+<li><a href="https://codepen.io/echocarriet/pen/XWqpGLd">CodePen 範例</a></li>
+</ul>
+<h2 id="❒-position-transform-方式"><a href="#❒-position-transform-方式" class="headerlink" title="❒ position + transform 方式"></a>❒ position + transform 方式</h2><p><strong>適用：</strong><br>區塊與文字排版皆適用。</p>
+<p><strong>作法：</strong></p>
+<ol>
+<li><p>父層使用 <code>position: relative;</code>  子層使用 <code>position: absolute;</code> 讓子層以父層為對齊標地。</p>
+</li>
+<li><p>子層使用 <code>transform</code> 屬性的 <code>translate(X軸, Y軸)</code> 平移功能搭配 <code>top</code> 往下推 <code>50%</code> 距離，讓子物件置中。</p>
+<ol>
+<li><code>top:50%;</code> 讓子層物件上方與父層產生 <code>50%</code> 空間，這時物件還未垂直置中。</li>
+<li><code>translate(0, -50%)</code> 讓物件 Y 軸向上移動 <code>50%</code> 自身高度，達到垂直置中。<br> <img src="https://ithelp.ithome.com.tw/upload/images/20220922/20119743x1Jqtzj5wP.jpg" alt="// translate-示意圖"></li>
+</ol>
+</li>
+<li><p>如需水平置中，可調整「 <code>transform</code> 屬性的 <code>translate(-50%, -50%)</code> 」與「 <code>left:50%;</code> 」。</p>
+<ol>
+<li><code>left:50%;</code> 讓子層物件左方與父層產生 <code>50%</code> 空間。</li>
+<li><code>translate(-50%, -50%)</code> 讓物件 X 軸向左移動 <code>50%</code> 自身寬度，達到水平置中。</li>
+</ol>
+</li>
+<li><p><a href="https://codepen.io/echocarriet/pen/WNJRWGV">CodePen 範例</a></p>
+</li>
+</ol>
+<h3 id="▷-關於-translateX-、-translateY-平移"><a href="#▷-關於-translateX-、-translateY-平移" class="headerlink" title="▷ 關於 translateX()、 translateY() 平移"></a>▷ 關於 translateX()、 translateY() 平移</h3><ul>
+<li><code>translateX(單位或百分比, 單位或百分比)</code> 和 <code>translateY(單位或百分比, 單位或百分比)</code> ，可以用來平移元素，<code>()</code> 內可以為正值、負值。</li>
+<li><code>translateX()</code>、 <code>translateY()</code> 可縮寫為 <code>translate(X軸, Y軸)</code> 。</li>
+<li><code>translate(X軸百分比, Y軸百分比)</code> 的百分比單位是利用物件自身的尺寸作為 100%。</li>
+</ul>
+<h2 id="❒-搭配-margin-方式"><a href="#❒-搭配-margin-方式" class="headerlink" title="❒ 搭配 margin 方式"></a>❒ 搭配 margin 方式</h2><p><strong>適用：</strong><br>只適用於有明確尺寸的區塊。</p>
+<p><strong>作法：</strong></p>
+<ol>
+<li>父層使用 <code>position: relative;</code>  子層使用 <code>position: absolute;</code> 讓子層以父層為對齊標地。</li>
+<li>子層區塊將 <code>top</code> <code>bottom</code> 設為 <code>0</code> 搭配 <code>margin: auto;</code>。</li>
+<li><a href="https://codepen.io/echocarriet/pen/ExLZJzQ">Codepen 範例</a></li>
+</ol>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a href="https://www.casper.tw/css/2015/01/16/css-magic/">CSS 5種垂直置中方法</a></li>
+<li><a href="https://pjchender.dev/css/css-center-center/">[CSS] 垂直置中的方法</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day8 | Animation、Transition、Transform 動畫效果</title>
+    <url>/html-css/20230327/3200009126/</url>
+    <content><![CDATA[<h2 id="❒-Animation-、-Transition、Transform-差異"><a href="#❒-Animation-、-Transition、Transform-差異" class="headerlink" title="❒ Animation 、 Transition、Transform 差異"></a>❒ Animation 、 Transition、Transform 差異</h2><p><strong>Animation</strong></p>
+<ul>
+<li>需搭配關鍵影格 <code>@keyframes</code> 使用，因可定義多影格，所以適用較細微的動畫，</li>
+<li>運作方式：不需事件觸發網頁加載就會執行。</li>
+</ul>
+<p><strong>Transform</strong></p>
+<ul>
+<li>可控制元素的移動、縮放、旋轉、傾斜。</li>
+<li>運作方式：不需事件觸發網頁加載就會執行。</li>
+<li>transition 可於 animation 中被當屬性運用。</li>
+</ul>
+<p><strong>Transition</strong></p>
+<ul>
+<li>Transition 只能定義開始和結束狀態，不適用較細微的動畫。</li>
+<li>運作方式：需事件觸發動畫才會開始，動畫為一次性，無法重覆發生除非一再觸發。</li>
+</ul>
+<h2 id="❒-Animation-動畫"><a href="#❒-Animation-動畫" class="headerlink" title="❒ Animation 動畫"></a>❒ Animation 動畫</h2><h3 id="▷-Animation-結構"><a href="#▷-Animation-結構" class="headerlink" title="▷ Animation 結構"></a>▷ Animation 結構</h3><p><code>animation</code> 需搭配關鍵影格 <code>@keyframes</code> 使用。<code>@keyframes</code> 內部結構有兩種寫法：</p>
+<ul>
+<li><code>from</code> 與 <code>to</code> ：只能定義頭語尾的影格變化。</li>
+<li><code>%</code> ：可以定義更多階段的影格變化。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*方式一：使用 @keyframes 定義，後面customname為自訂名稱，搭配 form to 頭尾的撰寫方式 */</span></span><br><span class="line"><span class="keyword">@keyframes</span> customname &#123;</span><br><span class="line">  <span class="comment">/* 定義每個階段的影格變化  */</span></span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="comment">/* 定義元素在該影格所套用的樣式 */</span></span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*方式二：使用 @keyframes 定義，後面customname為自訂名稱，搭配％的撰寫方式 */</span></span><br><span class="line"><span class="keyword">@keyframes</span> customname &#123;</span><br><span class="line">  <span class="comment">/* 定義每個階段的影格變化  */</span></span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="comment">/* 定義元素在該影格所套用的樣式 */</span></span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">50%</span> &#123;</span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="number">100%</span> &#123;</span><br><span class="line">    ..</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="▷-animation-屬性"><a href="#▷-animation-屬性" class="headerlink" title="▷ animation 屬性"></a>▷ animation 屬性</h3><p>這邊只列出一些常用的屬性</p>
+<ul>
+<li><code>animation-name</code> → 要執行的 animation 名稱。</li>
+<li><code>animation-duration</code> → 執行過程秒數。</li>
+<li><code>animation-play-state</code> → 播放狀態，預設是 <code>running</code>。<ul>
+<li>狀態可設定 <code>pause</code> 搭配 <code>:hover</code> 。</li>
+</ul>
+</li>
+<li><code>animation-timing-function</code> → 動畫的加速速率。</li>
+<li><code>animation-delay</code> → 延遲多少時間發動 animation。</li>
+<li><code>animation-iteration-count</code> → 動畫要重複播放幾次。<ul>
+<li>屬性值 <code>infinite</code> 為一直持續跑</li>
+</ul>
+</li>
+<li><code>animation-fill-mode</code> → 動畫未播放或動畫完成時，要停在哪個影格 ( 呈現的樣子 )。<ul>
+<li><code>none</code> 預設值，動畫執行前或之後不會對元素產生任何樣式。</li>
+<li><code>forward</code> 停留在最後一個影格位置( 結束時的狀態 )。</li>
+<li><code>backwards</code> 留在第一個影格位置 ( 開始時的狀態 )。</li>
+<li><code>both</code> 擁有 <code>forward</code> 與 <code>backwards</code> 兩者功能，依據開始或結束決定呈現的狀態。</li>
+</ul>
+</li>
+<li><code>animation-direction</code> → 是否要循環交替反向播放動畫。<ul>
+<li><code>normal</code> 預設值，動畫正常播放</li>
+<li><code>reverse</code> 動畫反向播放</li>
+<li><code>alternate</code> 動畫在奇數時正向播放，偶數值反向播放。</li>
+<li><code>alternate-reverse</code> 動畫在奇數時反向播放，偶數值正向播放。</li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-Animation-使用方式"><a href="#▷-Animation-使用方式" class="headerlink" title="▷ Animation 使用方式"></a>▷ Animation 使用方式</h3><ol>
+<li>建立影格 <code>@keyframes</code>，並自訂名稱<ol>
+<li>有兩種撰寫方式，可看上方的「 Animation 結構 」。</li>
+</ol>
+</li>
+<li><code>animation</code> 載入影格<ol>
+<li><code>animation</code> 需對應一個 <code>@keyframes</code> 自訂名 ( <code>animation-name：@keyframes 自訂名;</code> )。</li>
+<li>須包含兩個以上的屬性才能運作。</li>
+</ol>
+</li>
+</ol>
+<p>註 ：如果不想要使用 <code>animation-fill-mode:both;</code> ，可於 <code>@keyfarmes</code> 中的開始與結束數值寫一樣並搭配 <code>animation-iteration-count : infinite;</code>，就會很順的重複跑。</p>
+<h3 id="▷-實作-1-Animation-使用-from-與-to-讓物件移至右方再回來原點"><a href="#▷-實作-1-Animation-使用-from-與-to-讓物件移至右方再回來原點" class="headerlink" title="▷ 實作 1. Animation 使用 from 與 to 讓物件移至右方再回來原點"></a>▷ 實作 1. Animation 使用 <code>from</code> 與 <code>to</code> 讓物件移至右方再回來原點</h3><p><a href="https://codepen.io/echocarriet/pen/xxjdpjq">CodePen 範例</a></p>
+<h3 id="▷-實作-2-Animation-使用-讓物件繞一圈正方形"><a href="#▷-實作-2-Animation-使用-讓物件繞一圈正方形" class="headerlink" title="▷ 實作 2. Animation 使用 % 讓物件繞一圈正方形"></a>▷ 實作 2. Animation 使用 <code>%</code> 讓物件繞一圈正方形</h3><p><a href="https://codepen.io/echocarriet/pen/GRdmydB">CodePen 範例</a></p>
+<h2 id="❒-Transition-轉場效果"><a href="#❒-Transition-轉場效果" class="headerlink" title="❒ Transition 轉場效果"></a>❒ Transition 轉場效果</h2><h3 id="▷-transition-屬性"><a href="#▷-transition-屬性" class="headerlink" title="▷ transition 屬性"></a>▷ transition 屬性</h3><ul>
+<li><code>transition-duration</code> : 動畫播放的時間。</li>
+<li><code>transition-timing-function</code>：動畫執行過程的速度變化。</li>
+<li><code>transition-delay</code>：延遲多少時間再發動動畫。</li>
+<li><code>transition-property</code>：要更精確地掌控，可定義哪些 CSS 屬性有轉場的動畫效果<ul>
+<li><code>all</code> : 預設，所有 CSS 都要轉場。</li>
+<li><code>none</code> : 沒有任何 CSS 要轉場。</li>
+<li><code>property</code>：屬性值可以是要轉場的 CSS 屬性名稱，以逗號區隔，屬性名稱例如 <code>width</code>、<code>height</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="▷-transition-timing-function-屬性們的效果"><a href="#▷-transition-timing-function-屬性們的效果" class="headerlink" title="▷ transition-timing-function 屬性們的效果"></a>▷ transition-timing-function 屬性們的效果</h3><ul>
+<li><code>ease</code> : 緩慢開始 → 中間變快 → 慢慢結束。</li>
+<li><code>linear</code>：從開始到結束的速度一致。</li>
+<li><code>ease-in</code>：緩慢開始。</li>
+<li><code>ease-out</code>：緩慢結束。</li>
+<li><code>ease-in-out</code>：緩慢開始和緩慢的結束。</li>
+<li><code>steps(int,start|end)</code>：逐格動畫，沒有過度效果，而是一幀一幀的變化，所以指定格數越多動畫看起來會越滑順。<ul>
+<li>第一個參數 <code>int</code> 為指定間格數。</li>
+<li>第二個參數有 <code>start|end</code> 可選，若選 <code>start</code> 表示開始值不動。</li>
+</ul>
+</li>
+<li><code>cubic-bezier(n, n, n, n)</code>：為二次貝茲曲線，利用兩個控制點決定一個曲線，可搭配 <a href="http://cubic-bezier.com/">cubic-bezier.com</a> 來使用。<ul>
+<li><code>n</code> 值可填 0 ~ 1 之間的數字。</li>
+</ul>
+</li>
+</ul>
+<p>詳細動畫效果可參考此篇文章 <a href="https://www.casper.tw/css/2013/08/24/css-transtion-speed/">CSS transition 各種速率</a></p>
+<h3 id="▷-實作-1-Transition-轉場效果，hover-時物件寬度變大"><a href="#▷-實作-1-Transition-轉場效果，hover-時物件寬度變大" class="headerlink" title="▷ 實作 1. Transition 轉場效果，hover 時物件寬度變大"></a>▷ 實作 1. Transition 轉場效果，hover 時物件寬度變大</h3><p><a href="https://codepen.io/echocarriet/pen/vYjmdRw">CodePen 範例</a></p>
+<h3 id="▷-實作-1-Transition-轉場效果使用-transition-property"><a href="#▷-實作-1-Transition-轉場效果使用-transition-property" class="headerlink" title="▷ 實作 1. Transition 轉場效果使用 transition-property"></a>▷ 實作 1. Transition 轉場效果使用 transition-property</h3><p><a href="https://codepen.io/echocarriet/pen/xxjdYjJ">CodePen 範例</a></p>
+<ul>
+<li>範例中使用 <code>transition-property: width;</code> ，明確指定只有寬度要轉場效果，可見滑鼠滑入時高度是沒有轉場效果的。</li>
+</ul>
+<h2 id="❒-Transform"><a href="#❒-Transform" class="headerlink" title="❒ Transform"></a>❒ Transform</h2><ul>
+<li>可控制元素的旋轉、縮放、移動 等，但不適用「 行內元素 」。</li>
+<li>transition 可於 animation 中被當屬性運用。</li>
+</ul>
+<h3 id="▷-Transform-屬性"><a href="#▷-Transform-屬性" class="headerlink" title="▷ Transform 屬性"></a>▷ Transform 屬性</h3><ul>
+<li><code>translate</code> 移動：<ul>
+<li>單位：百分比或尺寸值 ( px 等 )</li>
+<li>屬性值：<code>translate(X軸, Y軸) | translateX() | translateY() | translateZ() | translate3d()</code></li>
+<li><code>translateX()</code>、 <code>translateY()</code> 可縮寫為 <code>translate(X軸, Y軸)</code> 。</li>
+</ul>
+</li>
+<li><code>scale</code> 縮放：<ul>
+<li>單位：須為倍數</li>
+<li>屬性值：<code>scaleX() | scaleY() | scaleZ() | scale3d()</code>。</li>
+<li>X 軸與 Y 軸會以同倍率縮放。</li>
+<li><a href="https://codepen.io/echocarriet/pen/RwyVyYJ">CodePen 範例</a></li>
+</ul>
+</li>
+<li><code>rotate</code> 旋轉：<ul>
+<li>單位：deg</li>
+<li>屬性值：<code>rotateX() | rotateY() | rotateZ() | rotate3d()</code>。</li>
+</ul>
+</li>
+<li><code>skew</code> 傾斜：<ul>
+<li>單位：deg</li>
+<li>屬性值：<code>skew(X軸, Y軸)</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-Animation-效果的套件"><a href="#❒-Animation-效果的套件" class="headerlink" title="❒ Animation 效果的套件"></a>❒ Animation 效果的套件</h2><h3 id="1-Animate-css-套件"><a href="#1-Animate-css-套件" class="headerlink" title="1. Animate.css 套件"></a>1. <a href="https://animate.style/">Animate.css</a> 套件</h3><h3 id="2-AOS-套件"><a href="#2-AOS-套件" class="headerlink" title="2. AOS 套件"></a>2. <a href="https://michalsnik.github.io/aos/">AOS</a> 套件</h3><h2 id="❒-動畫效果建議使用會佔據空間的屬性"><a href="#❒-動畫效果建議使用會佔據空間的屬性" class="headerlink" title="❒ 動畫效果建議使用會佔據空間的屬性"></a>❒ 動畫效果建議使用會佔據空間的屬性</h2><p>以 <code>opacity</code>、<code>transform</code>、<code>display</code>、<code>visibility</code> 屬性為例。</p>
+<h3 id="▷-會佔據空間的屬性"><a href="#▷-會佔據空間的屬性" class="headerlink" title="▷ 會佔據空間的屬性"></a>▷ 會佔據空間的屬性</h3><ol>
+<li><code>opacity</code></li>
+<li><code>transform</code></li>
+<li><code>visibility</code></li>
+</ol>
+<h3 id="▷-不會佔據空間的屬性"><a href="#▷-不會佔據空間的屬性" class="headerlink" title="▷ 不會佔據空間的屬性"></a>▷ 不會佔據空間的屬性</h3><ol>
+<li><code>display</code></li>
+</ol>
+<h3 id="▷-為什麼建議使用會佔據空間的屬性？"><a href="#▷-為什麼建議使用會佔據空間的屬性？" class="headerlink" title="▷ 為什麼建議使用會佔據空間的屬性？"></a>▷ 為什麼建議使用會佔據空間的屬性？</h3><p>如果要做動畫效果會建議使用<strong>會佔據空間的屬性</strong>，這樣當某元素執行動畫效果時，不會影響其他元素的位置變得大家都在動，使用者體驗會比較好。</p>
+<p><a href="https://codepen.io/echocarriet/pen/ExgPogb">Codepen 範例</a></p>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a href="https://ithelp.ithome.com.tw/articles/10197303">Day27：小事之 Transition 與 Animation</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10200712">CSS動畫-Transition、Animation、Transform的分析比較</a></li>
+<li><a href="https://www.w3schools.com/css/css3_animations.asp">W3school - CSS Animations</a></li>
+<li><a href="https://www.casper.tw/development/2021/10/04/css-animation/">一個工具，帶你完整認識 CSS Animation</a></li>
+<li><a href="https://www.casper.tw/css/2013/08/24/css-transtion-speed/">CSS transition 各種速率</a></li>
+<li><a href="https://selflearningsuccess.com/css-transition/#Transition-property_%E6%8C%87%E5%AE%9A%E8%BD%89%E5%A0%B4%E7%9B%AE%E6%A8%99">CSS Transition屬性的4個操作</a></li>
+<li>六角學院</li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+        <tag>animation</tag>
+        <tag>transition</tag>
+        <tag>transform</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day9 | CSS 屬性 filter 的濾鏡效果</title>
+    <url>/html-css/20230327/1892231840/</url>
+    <content><![CDATA[<p>CSS 屬性 <code>filter</code> 的濾鏡效果，可套用於元素上，常用於圖片、背景、邊框。</p>
+<h2 id="❒-drop-shadow-陰影效果"><a href="#❒-drop-shadow-陰影效果" class="headerlink" title="❒ drop-shadow 陰影效果"></a>❒ drop-shadow 陰影效果</h2><p><strong>語法：</strong> <code>filter: (drop-shadow(參數1 參數2 參數3 參數4))</code></p>
+<p><code>參數1</code> 必填，陰影位置，水平與垂直距離。</p>
+<p><code>參數2</code> 選填，陰影的模糊半徑</p>
+<p><code>參數3</code> 選填，陰影的擴張半徑</p>
+<p><code>參數4</code> 設定陰影的顏色，可使用 <code>rgba(值)</code>。</p>
+<p><strong>範例：</strong><a href="https://codepen.io/echocarriet/pen/dyeRRaY">CodePen 程式碼</a></p>
+<h2 id="❒-blur-高斯模糊"><a href="#❒-blur-高斯模糊" class="headerlink" title="❒ blur 高斯模糊"></a>❒ blur 高斯模糊</h2><p><strong>語法：</strong> <code>filter: blur(單位)</code></p>
+<p><strong>單位：</strong> <code>px</code> 或是 <code>rem</code>，不接受百分比為單位。預設為 0，數值越高越模糊。</p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/PoejjXm">CodePen 程式碼</a></p>
+<h2 id="❒-grayscale-灰階"><a href="#❒-grayscale-灰階" class="headerlink" title="❒ grayscale 灰階"></a>❒ grayscale 灰階</h2><p><strong>語法：</strong><code>filter: grayscale(單位)</code></p>
+<p><strong>單位：</strong><code>％</code>。默認為 0，值為 0% ~ 100% 間，100% 元素會轉為灰色。</p>
+<p><strong>範例：</strong><a href="https://codepen.io/echocarriet/pen/xxjrreK">CodePen 程式碼</a></p>
+<h2 id="❒-hue-rotate-色相旋轉"><a href="#❒-hue-rotate-色相旋轉" class="headerlink" title="❒ hue-rotate 色相旋轉"></a>❒ hue-rotate 色相旋轉</h2><p><strong>語法：</strong><code>filter: hue-rotate(單位)</code></p>
+<p><strong>單位：</strong> 預設 <code>0deg</code>，以<code>度(deg)</code> 為單位。</p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/jOxwwgp">CodePen 程式碼</a></p>
+<h2 id="❒-invert-負片效果"><a href="#❒-invert-負片效果" class="headerlink" title="❒ invert 負片效果"></a>❒ invert 負片效果</h2><p><strong>語法：</strong> <code>filter: invert(單位)</code></p>
+<p><strong>單位：</strong> 預設 0，小數點或百分比為單位，默認為 0%，值為 0% ~ 100% 間。</p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/abGwyzb">CodePen 程式碼</a></p>
+<h2 id="❒-opacity-透明度"><a href="#❒-opacity-透明度" class="headerlink" title="❒ opacity 透明度"></a>❒ opacity 透明度</h2><p><strong>語法：</strong> <code>filter: opacity(單位)</code></p>
+<p><strong>單位：</strong> 預設 1，小數點或百分比為單位。值為 0% ( 完全透明 ) ~ 100% 間 ( 原始狀態 )。</p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/VwxWzLK">CodePen 程式碼</a></p>
+<h2 id="❒-saturate-飽和度"><a href="#❒-saturate-飽和度" class="headerlink" title="❒ saturate 飽和度"></a>❒ saturate 飽和度</h2><p><strong>語法：</strong> <code>filter: saturate(單位)</code></p>
+<p><strong>單位：</strong> 預設 1，小數點或百分比為單位。值 0% 為完全不飽和， 100% 為原始狀態，超過 100% 為更高的飽和度。</p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/yLjXoYG">CodePen 程式碼</a></p>
+<h2 id="❒-sepia-懷舊"><a href="#❒-sepia-懷舊" class="headerlink" title="❒ sepia 懷舊"></a>❒ sepia 懷舊</h2><p><strong>語法：</strong> <code>filter: sepia(單位)</code></p>
+<p><strong>單位：</strong> 預設 0，小數點或百分比為單位。值為 0% ( 原始狀態 ) ~ 100% 間 ( 深褐色 )。</p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/JjvJyKY">CodePen 程式碼</a></p>
+<h2 id="❒-contrast-對比度"><a href="#❒-contrast-對比度" class="headerlink" title="❒ contrast 對比度"></a>❒ contrast 對比度</h2><p><strong>語法：</strong> <code>filter: contrast(單位)</code></p>
+<p><strong>單位：</strong> 預設 1，小數點或百分比為單位。值 0% 為全黑， 100% 為原始狀態，超過 100% 為更低的對比。</p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/zYjzdwx">CodePen 程式碼</a></p>
+<h2 id="❒-brightness-亮度"><a href="#❒-brightness-亮度" class="headerlink" title="❒ brightness 亮度"></a>❒ brightness 亮度</h2><p><strong>語法：</strong> <code>filter: brightness(單位)</code></p>
+<p><strong>單位：</strong> 預設 1，小數點或百分比為單位。值 0% 為全黑， 100% 為原始狀態，超過 100% 會越來越亮。</p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/xxjrLrZ">CodePen 程式碼</a></p>
+<h2 id="❒-「-contrast-對比度、brightness-亮度-」組合"><a href="#❒-「-contrast-對比度、brightness-亮度-」組合" class="headerlink" title="❒ 「 contrast 對比度、brightness 亮度 」組合"></a>❒ 「 contrast 對比度、brightness 亮度 」組合</h2><p><strong>語法：</strong> <code>filter: contrast(單位) brightness(單位)</code></p>
+<p><strong>範例：</strong> <a href="https://codepen.io/echocarriet/pen/ExLXvoP">CodePen 程式碼</a></p>
+<h2 id="❒-filter-drop-shadow-與-box-shadow-差異"><a href="#❒-filter-drop-shadow-與-box-shadow-差異" class="headerlink" title="❒ filter:drop-shadow 與 box-shadow 差異"></a>❒ filter:drop-shadow 與 box-shadow 差異</h2><p><img src="https://ithelp.ithome.com.tw/upload/images/20220924/20119743vvg7Zi2gKj.png" alt="filter:drop-shadow 與 box-shadow 差異示意圖"></p>
+<p><a href="https://codepen.io/echocarriet/pen/PoejjzZ">CodePen 範例</a></p>
+<p>範例中的圖片皆為 png 檔，可見 <code>drop-shadow</code>  會依元素的內容產生陰影，而 <code>box-shadow</code>  則是以區塊的方式來產生。</p>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a href="https://hsuchihting.github.io/css/20200610/3064004331/">CSS 筆記 - CSS Filter 濾鏡效果</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter">MDN - filter</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+        <tag>css濾鏡效果</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day10 | 你有正確清除浮動 float 嗎 ?</title>
+    <url>/html-css/20230327/1954621280/</url>
+    <content><![CDATA[<h2 id="❒-為什麼要清除浮動"><a href="#❒-為什麼要清除浮動" class="headerlink" title="❒ 為什麼要清除浮動"></a>❒ 為什麼要清除浮動</h2><p>父元素在未設定高度的情況下，是無法被撐開呈一個容器，所以會由裡面的子元素去撐開它。 但當子元素使用到 float 浮動，會造成左鄰右舍集體大爆走，導致父元素無法判斷子元素而無法被撐開。 這時就需使用清除浮動，讓使用 float 的子元素可以按規則在容器中移動。</p>
+<h2 id="❒-怎麼清除浮動"><a href="#❒-怎麼清除浮動" class="headerlink" title="❒ 怎麼清除浮動?"></a>❒ 怎麼清除浮動?</h2><p>清除浮動的方式有很多種，這邊在父元素使用<strong>偽元素清除浮動</strong>的方式，程式碼如下:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">display</span>:table;</span><br><span class="line">  <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="▷-下方用選單範例來看看，未使用清除浮動與使用清除浮動的差異"><a href="#▷-下方用選單範例來看看，未使用清除浮動與使用清除浮動的差異" class="headerlink" title="▷ 下方用選單範例來看看，未使用清除浮動與使用清除浮動的差異"></a>▷ 下方用選單範例來看看，未使用清除浮動與使用清除浮動的差異</h3><p><strong>❶ 範例. 父層 <code>.header</code> 中加入靠左的 <code>.menu</code></strong></p>
+<p><a href="https://codepen.io/echocarriet/pen/MWWagXp">CodePen 範例</a></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;header&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;menu clearfix&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>menu1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>menu2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>menu3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>選單靠左，<code>.menu li</code> 使用 <code>float:left;</code> 未做清除浮動，父元素 <code>.header</code> 無法判斷高度 ( 高度消失 )，下面的 <code>.content</code> 見上方有空位就會往上推擠。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20220925/20119743TdiBqcge4d.png" alt="示意圖"></p>
+</li>
+<li><p>為了還 <code>.header</code> 一個高度，需做清除浮動動作。要清除浮動的內容在父元素加上 clearfix 的 class 。</p>
+</li>
+<li><p>選單 <code>.menu li</code> 使用 float ，需在它的父元素 <code>.menu</code> 加上 clearfix 的 class。清除動作完成後，子元素與左鄰右舍歸隊，父元素能正確判斷子元素，高度完整被撐開。</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line"><span class="attribute">content</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="attribute">display</span>:table;</span><br><span class="line"><span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <img src="https://ithelp.ithome.com.tw/upload/images/20220925/20119743lqEwDre1Eu.png" alt="示意圖"></p>
+</li>
+</ul>
+<p><strong>❷ 範例. 父層 .header 中加入 ➀ 靠左的 logo ② 靠右的 menu</strong></p>
+<p><a href="https://codepen.io/echocarriet/pen/eYYpYQb">CodePen 範例</a></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;header clearfix&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;logo&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>六角學院<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;menu clearfix&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>menu1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>menu2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>menu3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220925/20119743BHpjYlZb6H.png" alt="示意圖"></p>
+<ul>
+<li><p><code>.header</code> 子層中設定 float 屬性，讓 logo 靠左 、選單部分 <code>.menu</code> 靠右 ＆ <code>.menu li</code> 靠左對齊。</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.logo</span>&#123;</span><br><span class="line"> <span class="attribute">float</span><span class="selector-pseudo">:left</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.menu</span>&#123;</span><br><span class="line"> <span class="attribute">float</span><span class="selector-pseudo">:right</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.menu</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line"> <span class="attribute">float</span><span class="selector-pseudo">:left</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由上得知，使用到 float 的子元素有 <code>.logo</code> 、<code>.menu</code> 、<code>.menu li</code> ，回到 HTML 中找尋它們的父元素做清除浮動的動作</p>
+<ul>
+<li><code>.logo</code> 父元素→ <code>.header</code></li>
+<li><code>.menu</code> 父元素→ <code>.header</code></li>
+<li><code>.menu li</code> 父元素→ <code>.menu</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="❒-參考資源"><a href="#❒-參考資源" class="headerlink" title="❒ 參考資源"></a>❒ 參考資源</h2><ul>
+<li><a href="https://www.hexschool.com/courses/html_css.html">六角學院課程-使用HTML、CSS開發一個網站&#x2F;第五節</a></li>
+<li><a href="https://www.youtube.com/watch?v=QwuhilXyNYI">六角學院影片-使用 Chrome 工具檢查浮動的問題(clearfix)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML&amp;CSS</category>
+      </categories>
+      <tags>
+        <tag>2022年iThome鐵人賽</tag>
+      </tags>
+  </entry>
 </search>
