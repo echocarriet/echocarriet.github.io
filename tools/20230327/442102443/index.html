@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="MacM1 安裝 HomeBrew、HomeBrew 安裝 iTerm2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacM1 安裝 iTerm2">
+<meta property="og:url" content="https://echocarriet.github.io/tools/20230327/442102443/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="MacM1 安裝 HomeBrew、HomeBrew 安裝 iTerm2">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_01.png?alt=media&token=019adecb-da6b-405f-a412-c04499273ef6">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_02.png?alt=media&token=86ce53ca-3db6-4dd3-a915-5fa912ed9f82">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_03.png?alt=media&token=7150b2dd-f6ac-4302-8f45-7e2613665044">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_04.png?alt=media&token=7119daeb-db26-4e02-add1-9402f9640210">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_05.png?alt=media&token=dbc6dd7b-6f16-491c-88fd-afa5867c0e29">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_06.png?alt=media&token=a99e3bf7-3be7-4d26-8809-ce9c6f1278d9">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_07.png?alt=media&token=2994bd89-8a8d-4cde-97bc-6288d8f37689">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_08.png?alt=media&token=983ff13d-1aa3-48c2-aea2-cb7524b7b6ac">
+<meta property="article:published_time" content="2023-03-27T06:58:13.000Z">
+<meta property="article:modified_time" content="2023-03-27T07:01:27.510Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="終端機美化">
+<meta property="article:tag" content="HomeBrew">
+<meta property="article:tag" content="iTerm2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_01.png?alt=media&token=019adecb-da6b-405f-a412-c04499273ef6">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/tools/20230327/442102443/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/tools/20230327/442102443/","path":"tools/20230327/442102443/","title":"MacM1 安裝 iTerm2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MacM1 安裝 iTerm2 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%92%B0%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">❒ 環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-iTerm2"><span class="nav-number">2.</span> <span class="nav-text">❒ iTerm2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E5%AE%89%E8%A3%9D-HomeBrew"><span class="nav-number">2.1.</span> <span class="nav-text">➊ 安裝 HomeBrew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-HomeBrew-%E5%AE%89%E8%A3%9D-iTerm2"><span class="nav-number">2.2.</span> <span class="nav-text">➋ HomeBrew 安裝 iTerm2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Oh-My-ZSH"><span class="nav-number">3.</span> <span class="nav-text">❒ Oh My ZSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%BF%E6%95%B4-iTerm-%E8%88%87%E7%B5%82%E7%AB%AF%E6%A9%9F%E5%AD%97%E9%AB%94%E5%8F%8A-theme"><span class="nav-number">3.1.</span> <span class="nav-text">調整 iTerm 與終端機字體及 theme</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E4%B8%BB%E9%A1%8C%E5%A5%97%E4%BB%B6%E4%B8%A6%E8%AA%BF%E6%95%B4%E4%B8%BB%E9%A1%8C%E8%89%B2"><span class="nav-number">3.2.</span> <span class="nav-text">安裝主題套件並調整主題色</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%9F%A5%E7%9C%8B%E7%B5%82%E7%AB%AF%E6%A9%9F-shell-%E7%82%BA%E5%93%AA%E7%A8%AE%E8%85%B3%E6%9C%AC%E8%AA%9E%E8%A8%80%E7%9A%84%E5%85%A9%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">❒ 查看終端機 shell 為哪種腳本語言的兩種方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">5.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/tools/20230327/442102443/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MacM1 安裝 iTerm2 | Hi, I'm Carrie">
+      <meta itemprop="description" content="MacM1 安裝 HomeBrew、HomeBrew 安裝 iTerm2">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MacM1 安裝 iTerm2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 14:58:13 / 修改時間：15:01:27" itemprop="dateCreated datePublished" datetime="2023-03-27T14:58:13+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">MacM1 安裝 HomeBrew、HomeBrew 安裝 iTerm2</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-環境"><a href="#❒-環境" class="headerlink" title="❒ 環境"></a>❒ 環境</h2><ul>
+<li>Mac M1</li>
+<li>M1 終端機 shell 預設為 zsh</li>
+</ul>
+<h2 id="❒-iTerm2"><a href="#❒-iTerm2" class="headerlink" title="❒ iTerm2"></a>❒ iTerm2</h2><p>有兩種安裝方式 ① iTerm2 官網 ② HomeBrew，此篇文章將會使用 HomeBrew 來安裝 iTerm2。</p>
+<h3 id="➊-安裝-HomeBrew"><a href="#➊-安裝-HomeBrew" class="headerlink" title="➊ 安裝 HomeBrew"></a>➊ 安裝 HomeBrew</h3><ol>
+<li><p>HomeBrew 依照是 Mac OS X 的套件管理工具，把下方指令輸入到終端機，接著就等它安裝囉！</p>
+</li>
+<li><p>M1 電腦安裝 HomeBrew 會被安裝在 <code>/opt/homebrew</code> 路徑下，所以如果安裝在 <code>/usr/local/Homebrew</code> 目錄下是找不到的。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝過程會需要一點時間。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_01.png?alt=media&token=019adecb-da6b-405f-a412-c04499273ef6" alt="// 安裝過程截圖"></p>
+</li>
+<li><p>把下方指令輸入於終端機，會把 HomeBrew 加到你的 <code>~/.zprofile</code> 路徑中 ( 加入此路徑才能讓用 brew 指令安裝的套件在執行的時候被找到 )。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval $(/opt/homebrew/bin/brew shellenv)&#x27;</span> &gt;&gt; ~/.zprofile</span><br><span class="line"><span class="built_in">eval</span> $(/opt/homebrew/bin/brew shellenv)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在終端機執行此指令</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重啟終端機，輸入指令查看是否有成功，成功會跳出 Homebrew 版本號。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew --version</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_02.png?alt=media&token=86ce53ca-3db6-4dd3-a915-5fa912ed9f82" alt="// 終端機 Homebrew 版本號"></p>
+</li>
+</ol>
+<h3 id="➋-HomeBrew-安裝-iTerm2"><a href="#➋-HomeBrew-安裝-iTerm2" class="headerlink" title="➋ HomeBrew 安裝 iTerm2"></a>➋ HomeBrew 安裝 iTerm2</h3><p><a target="_blank" rel="noopener" href="https://formulae.brew.sh/cask/iterm2">HomeBrew 官網指令</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask iterm2</span><br></pre></td></tr></table></figure>
+
+<p>安裝成功後就可在電腦的應用程式中看到囉 ！( 路徑： &#x2F;Applications&#x2F;iTerm.app )</p>
+<h2 id="❒-Oh-My-ZSH"><a href="#❒-Oh-My-ZSH" class="headerlink" title="❒ Oh My ZSH"></a>❒ Oh My ZSH</h2><p>① 於終端機輸入指令安裝 Oh My ZSH。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>執行完上面指令後，終端機原本的 <code>%</code> 符號變成 <code>→ ~</code>。</p>
+<h3 id="調整-iTerm-與終端機字體及-theme"><a href="#調整-iTerm-與終端機字體及-theme" class="headerlink" title="調整 iTerm 與終端機字體及 theme"></a>調整 iTerm 與終端機字體及 theme</h3><p>字體可依自己喜好設定，建議使用 Nerd Font 系列字型才能支援完整的顯示效果。</p>
+<p>② 下載 GoMono nerd Font 字型。可參考此文章中的 “ <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10253908">老師！我想知道！要怎麼讓終端機變漂亮呢 - Mac 篇</a> ” 或 “ <a target="_blank" rel="noopener" href="https://cindyliu923.com/2021/07/17/macbook-pro-m1/#iTerm">安裝 oh my zsh - 安裝字型</a>” 。</p>
+<p>③ 調整主題：輸入指令開啟 .zshrc 檔案，把檔案中的 <code>ZSH_THEME=&quot;robbyrussell&quot;</code> 改為 <code>ZSH_THEME=&quot;agnoster&quot;</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>④ 電腦應用程式中開啟 iTerm，按下快捷鍵 <code>command + ,</code> 進行設定。於 Preferences → Text 中把 Font 調整為步驟 2 下載的字型 <code>GoMono Nerd Font Mono</code>。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_03.png?alt=media&token=7150b2dd-f6ac-4302-8f45-7e2613665044" alt="// iTerm 設定"></p>
+<p>⑤ 開啟終端機，使用快捷鍵 <code>command + ,</code> 進行終端機文字設定，在描述檔的文字中，把字體調整為 <code>GoMono Nerd Font Mono</code> 。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_04.png?alt=media&token=7119daeb-db26-4e02-add1-9402f9640210" alt="// 終端機設定"></p>
+<h3 id="安裝主題套件並調整主題色"><a href="#安裝主題套件並調整主題色" class="headerlink" title="安裝主題套件並調整主題色"></a>安裝主題套件並調整主題色</h3><p>可依自己喜好設定，下面主題擇一</p>
+<p><strong>第一種主題： <a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#agnoster">agnoster</a> 主題</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">Oh My ZSH Themes 文件</a> (  ****<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#agnoster">agnoster</a>** )</p>
+<p>輸入指令開啟 .zshrc 檔案，把檔案中的 <code>ZSH_THEME=&quot;robbyrussell&quot;</code> 將它改為 <code>ZSH_THEME=&quot;agnoster&quot;</code> ( 調整 Oh-my-zsh 主題 )。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二種主題 <a target="_blank" rel="noopener" href="https://github.com/Powerlevel9k/powerlevel9k">powerlevel9k</a> ( 筆者使用此主題 )</strong></p>
+<p>① 安裝 <a target="_blank" rel="noopener" href="https://github.com/Powerlevel9k/powerlevel9k">**powerlevel9k</a>**</p>
+<p>目前出到 <strong><strong>Powerlevel10k</strong></strong>，可以嘗試看看。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k</span><br></pre></td></tr></table></figure>
+
+<p>② 開啟  .zshrc 輸入指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>③ 調整顏色</p>
+<ul>
+<li><p>iTerm2 挑選配色，可參考「 <a target="_blank" rel="noopener" href="https://iterm2colorschemes.com/">Iterm2-color-schemes</a> 」，網頁中可以看到很多不同配色，挑選一個自己喜歡的配色，在喜歡的配色的名字按右鍵，並選擇另存連結後將檔案儲存下來。</p>
+<ul>
+<li>以筆者這邊選擇「 Tomorrow Night Eighties 」，另存連結就會下載一個 <code>Tomorrow Night Eighties.itermcolor</code> 的檔案。</li>
+</ul>
+</li>
+<li><p>下載好後，開啟 iTerm 使用快捷鍵 <code>command + ,</code> 於 Preferences &gt; Profiles &gt; Colors，右下角 <code>Color Presets..</code> 打開選單，並選擇 Import 把下載的檔案載入。筆者這邊選擇 Builtin Solarized Light。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_05.png?alt=media&token=dbc6dd7b-6f16-491c-88fd-afa5867c0e29" alt="// iTerm 主題色設定"></p>
+</li>
+</ul>
+<p>④ 把下面內容加入 .zshrc 檔案，記得按儲存 ( 依自己喜好設定 )</p>
+<p>更多提示設定可參考 <strong><a target="_blank" rel="noopener" href="https://github.com/Powerlevel9k/powerlevel9k/wiki/Stylizing-Your-Prompt">Stylizing Your Prompt 文件</a></strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 當前主題</span></span><br><span class="line">ZSH_THEME=powerlevel9k/powerlevel9k</span><br><span class="line"><span class="comment"># powerlevel9k 使用的模式</span></span><br><span class="line">POWERLINE9K_MODE=<span class="string">&#x27;nerdfont-complete&#x27;</span></span><br><span class="line"><span class="comment"># command line 左邊想顯示的內容</span></span><br><span class="line">POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context <span class="built_in">dir</span> dir_writable vcs vi_mode)</span><br><span class="line"><span class="comment"># command line 右邊想顯示的內容</span></span><br><span class="line">POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram load time)</span><br><span class="line">POWERLEVEL9K_PROMPT_ADD_NEWLINE=<span class="literal">true</span></span><br><span class="line">POWERLEVEL9K_DIR_HOME_BACKGROUND=<span class="string">&#x27;216&#x27;</span></span><br><span class="line">POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=<span class="string">&#x27;216&#x27;</span></span><br><span class="line">POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=<span class="string">&#x27;216&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>.zshrc 檔案中 <code>POWERLEVEL9K_LEFT_PROMPT_ELEMENTS</code> 與 <code>POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS</code></p>
+<ul>
+<li>更多提示設定可參考 <a target="_blank" rel="noopener" href="https://github.com/Powerlevel9k/powerlevel9k#available-prompt-segments">Available Prompt Segments &#x2F; System Status Segments</a>。</li>
+</ul>
+</li>
+<li><p><code>POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command line 右邊顯示的內容)</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下圖一</span></span><br><span class="line">POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram load time)</span><br><span class="line"><span class="comment"># 下圖二</span></span><br><span class="line">POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_06.png?alt=media&token=a99e3bf7-3be7-4d26-8809-ce9c6f1278d9" alt="// command line 右邊顯示的內容 (圖一)"><br><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_07.png?alt=media&token=2994bd89-8a8d-4cde-97bc-6288d8f37689" alt="// command line 右邊顯示的內容 (圖二)"></p>
+</li>
+<li><p><code>_BACKGROUND</code> 顏色可參考文件「 Stylizing Your Prompt 中的 <a target="_blank" rel="noopener" href="https://github.com/Powerlevel9k/powerlevel9k/wiki/Stylizing-Your-Prompt#segment-color-customization">Segment Color Customization</a> 」</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">POWERLEVEL9K_DIR_HOME_BACKGROUND=<span class="string">&#x27;填顏色&#x27;</span></span><br><span class="line">POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=<span class="string">&#x27;填顏色&#x27;</span></span><br><span class="line">POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=<span class="string">&#x27;填顏色&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>⑤ 輸入指令，就會出現設定好的樣式囉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-查看終端機-shell-為哪種腳本語言的兩種方式"><a href="#❒-查看終端機-shell-為哪種腳本語言的兩種方式" class="headerlink" title="❒ 查看終端機 shell 為哪種腳本語言的兩種方式"></a>❒ 查看終端機 shell 為哪種腳本語言的兩種方式</h2><p>① 開啟終端機後，於最上方欄位可以看到是哪種腳本。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_08.png?alt=media&token=983ff13d-1aa3-48c2-aea2-cb7524b7b6ac" alt="// 終端機表頭截圖"></p>
+<p>② 使用指令</p>
+<p>可使用指令 <code>echo $SHELL</code> 驗證，如果是會回傳 <code>/bin/zsh</code> 。</p>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/66666134/how-to-install-homebrew-on-m1-mac">How to install homebrew on M1 mac</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cxymm.net/article/weixin_45108550/113887368">Macos M1电脑安装homebrew过程。</a></li>
+<li><a target="_blank" rel="noopener" href="https://cindyliu923.com/2021/07/17/macbook-pro-m1/#%E5%AE%89%E8%A3%9D-for-m1-arm-%E7%9A%84-homebrew">MacBook Pro M1 開箱使用紀錄 - 安裝 M1 的 homebrew</a></li>
+<li><a target="_blank" rel="noopener" href="https://clay-atlas.com/blog/2020/10/16/mac-cn-terminal-zsh-bash-shell-script/">[MacOS] 將終端機預設 zsh 轉換成 bash（或其他腳本語言）</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10253908">老師！我想知道！要怎麼讓終端機變漂亮呢 - Mac 篇</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%BE%8E%E5%8C%96/" rel="tag"># 終端機美化</a>
+              <a href="/tags/HomeBrew/" rel="tag"># HomeBrew</a>
+              <a href="/tags/iTerm2/" rel="tag"># iTerm2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/tools/20230327/2533981155/" rel="prev" title="PowerShell 美化">
+                  <i class="fa fa-chevron-left"></i> PowerShell 美化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/tools/20230327/41934832/" rel="next" title="MacM1 更改終端機預設語言">
+                  MacM1 更改終端機預設語言 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

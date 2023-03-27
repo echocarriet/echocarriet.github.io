@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="淺談 Box Model 盒模型與盒模型內的組成。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="淺談 Box-Model 盒模型">
+<meta property="og:url" content="https://echocarriet.github.io/html-css/20230327/3889239367/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="淺談 Box Model 盒模型與盒模型內的組成。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_01.jpg?alt=media&token=6aba6421-7f49-4ca3-ba22-dc81eeca8c3f">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_02.png?alt=media&token=c46089d2-dda7-44c4-b5f6-3a5f48f4b1ca">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_03.png?alt=media&token=a23416ed-a9a2-4183-abda-0cc31da313f5">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_04.jpg?alt=media&token=3f4085a5-f90f-4635-83cc-195e08158928">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_05.jpg?alt=media&token=ef6fc25a-14b9-4eef-9f4c-846691fe82d7">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_06.jpg?alt=media&token=d6e0bfd5-e8ef-4f38-a6e2-8a52c31f907f">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_07.png?alt=media&token=a62897b6-f311-433a-b4f3-385dca37411e">
+<meta property="article:published_time" content="2023-03-27T06:49:46.000Z">
+<meta property="article:modified_time" content="2023-03-27T06:50:40.061Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="Box Model">
+<meta property="article:tag" content="盒模型">
+<meta property="article:tag" content="margin">
+<meta property="article:tag" content="padding">
+<meta property="article:tag" content="border">
+<meta property="article:tag" content="box-sizing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_01.jpg?alt=media&token=6aba6421-7f49-4ca3-ba22-dc81eeca8c3f">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/html-css/20230327/3889239367/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/html-css/20230327/3889239367/","path":"html-css/20230327/3889239367/","title":"淺談 Box-Model 盒模型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>淺談 Box-Model 盒模型 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Box-Model-%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Box Model 盒模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-%E5%B1%AC%E6%80%A7-margin-%E3%80%81-padding%E3%80%81border"><span class="nav-number">2.</span> <span class="nav-text">CSS 屬性 margin 、 padding、border</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#margin-%E5%A4%96%E8%B7%9D"><span class="nav-number">2.1.</span> <span class="nav-text">margin 外距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#padding-%E5%85%A7%E8%B7%9D"><span class="nav-number">2.2.</span> <span class="nav-text">padding 內距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#border-%E9%82%8A%E6%A1%86"><span class="nav-number">2.3.</span> <span class="nav-text">border 邊框</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Box-Model-%E5%8D%80%E5%A1%8A%E6%A8%A1%E5%9E%8B%E4%B8%AD%E4%BD%BF%E7%94%A8-margin%E3%80%81padding%E3%80%81border-%E5%B8%B6%E4%BE%86%E7%9A%84%E8%AE%8A%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">Box Model 區塊模型中使用 margin、padding、border 帶來的變化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-margin"><span class="nav-number">3.1.</span> <span class="nav-text">使用 margin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-padding-%E8%88%87-border"><span class="nav-number">3.2.</span> <span class="nav-text">使用 padding 與 border</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-%EF%BD%9C%E8%A8%88%E7%AE%97-Box-Model-%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%B0%BA%E5%AF%B8"><span class="nav-number">4.</span> <span class="nav-text">範例 ｜計算 Box Model 盒模型尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E6%96%B9%E7%82%BA-box-%E8%B3%87%E8%A8%8A%EF%BC%8C%E8%AB%8B%E5%95%8F%E6%9C%80%E7%B5%82-box-%E7%9A%84%E5%A4%A7%E5%B0%8F%EF%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">下方為 box 資訊，請問最終 box 的大小？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%85%A7-padding-%E8%88%87-border-%E5%B8%B6%E4%BE%86%E7%9A%84%E5%BD%B1%E9%9F%BF%EF%BC%8C%E5%8F%AF%E4%BD%BF%E7%94%A8-box-sizing-border-box"><span class="nav-number">5.</span> <span class="nav-text">解決盒模型內 padding 與 border 帶來的影響，可使用 box-sizing:border-box</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/html-css/20230327/3889239367/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="淺談 Box-Model 盒模型 | Hi, I'm Carrie">
+      <meta itemprop="description" content="淺談 Box Model 盒模型與盒模型內的組成。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          淺談 Box-Model 盒模型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 14:49:46 / 修改時間：14:50:40" itemprop="dateCreated datePublished" datetime="2023-03-27T14:49:46+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html-css/" itemprop="url" rel="index"><span itemprop="name">HTML & CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">淺談 Box Model 盒模型與盒模型內的組成。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Box-Model-盒模型"><a href="#Box-Model-盒模型" class="headerlink" title="Box Model 盒模型"></a>Box Model 盒模型</h2><p>Box Model 盒模型主要由四個部分組成，由內而外分別是 content、<code>padding</code>、<code>border</code>、<code>margin</code>。CSS 裏面，HTML 的每個元素都可以被視為一個盒子 ( Box Model 盒模型 )，可使用 <code>padding</code>、<code>border</code>、<code>margin</code> 對這個盒子做調整。</p>
+<p>content 為盒子的原尺寸，而 <code>padding</code>、<code>border</code> 的使用會影響此盒子的尺寸，所以可以搭配 <code>box-sizing:border-box;</code> 就不會增加盒子本身的尺寸。</p>
+<h2 id="CSS-屬性-margin-、-padding、border"><a href="#CSS-屬性-margin-、-padding、border" class="headerlink" title="CSS 屬性 margin 、 padding、border"></a>CSS 屬性 margin 、 padding、border</h2><h3 id="margin-外距"><a href="#margin-外距" class="headerlink" title="margin 外距"></a>margin 外距</h3><ul>
+<li><p>推盒模型的「 外 」邊距。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/WNzvyWq">CodePen 範例程式碼</a>中，box1 元素向<strong>外</strong>面右邊推了 box2 元素 50px 距離。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_01.jpg?alt=media&token=6aba6421-7f49-4ca3-ba22-dc81eeca8c3f" alt="margin 外距示意圖 ▲"></p>
+</li>
+</ul>
+<h3 id="padding-內距"><a href="#padding-內距" class="headerlink" title="padding 內距"></a>padding 內距</h3><ul>
+<li><p>增加盒模型「 內 」的留白距離。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/abYOKMJ">CodePen 範例程式碼</a> 中，div 標籤的盒模型向<strong>內</strong>往四周推了 30px 的距離 ( 綠色範圍處 )，div 盒模型內的子層文字內縮了 30px 的距離。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_02.png?alt=media&token=c46089d2-dda7-44c4-b5f6-3a5f48f4b1ca" alt="padding 內距示意圖 ▲"></p>
+</li>
+</ul>
+<h3 id="border-邊框"><a href="#border-邊框" class="headerlink" title="border 邊框"></a>border 邊框</h3><p>圍繞盒模型周圍的邊框。( 下圖黃色範圍 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/RwMPyQa">CodePen 程式碼</a> )</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_03.png?alt=media&token=a23416ed-a9a2-4183-abda-0cc31da313f5" alt="border 邊框示意圖 ▲"></p>
+<h2 id="Box-Model-區塊模型中使用-margin、padding、border-帶來的變化"><a href="#Box-Model-區塊模型中使用-margin、padding、border-帶來的變化" class="headerlink" title="Box Model 區塊模型中使用 margin、padding、border 帶來的變化"></a><strong><strong>Box Model 區塊模型中使用 margin、padding、border 帶來的變化</strong></strong></h2><h3 id="使用-margin"><a href="#使用-margin" class="headerlink" title="使用 margin"></a><strong>使用 margin</strong></h3><p><code>margin</code> 是推<strong>外</strong>邊界，所以不會影響 box 的原始尺寸。<a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/WNzvyWq">CodePen 程式碼</a></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_04.jpg?alt=media&token=3f4085a5-f90f-4635-83cc-195e08158928" alt="使用 margin 示意圖 ▲"></p>
+<h3 id="使用-padding-與-border"><a href="#使用-padding-與-border" class="headerlink" title="使用 padding 與 border"></a><strong>使用 padding 與 border</strong></h3><ul>
+<li>盒模型使用 <code>padding</code> 與 <code>border</code> 皆會改變 box 的原始尺寸，盒模型由 300 x 300 → 316 x 316。</li>
+<li>解決方式 : 可使用 <code>box-sizing: border-box;</code> 來解決尺寸問題，下方會有解說。</li>
+</ul>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_05.jpg?alt=media&token=ef6fc25a-14b9-4eef-9f4c-846691fe82d7" alt="使用 padding 與 border 示意圖 ▲"></p>
+<h2 id="範例-｜計算-Box-Model-盒模型尺寸"><a href="#範例-｜計算-Box-Model-盒模型尺寸" class="headerlink" title="範例 ｜計算 Box Model 盒模型尺寸"></a>範例 ｜計算 Box Model 盒模型尺寸</h2><h3 id="下方為-box-資訊，請問最終-box-的大小？"><a href="#下方為-box-資訊，請問最終-box-的大小？" class="headerlink" title="下方為 box 資訊，請問最終 box 的大小？"></a>下方為 box 資訊，請問最終 box 的大小？</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line"> <span class="attribute">width</span>:<span class="number">300px</span>;</span><br><span class="line"> <span class="attribute">height</span>:<span class="number">300px</span>;</span><br><span class="line"> <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line"> <span class="attribute">padding-right</span>:<span class="number">50px</span>;</span><br><span class="line"> <span class="attribute">border</span>:<span class="number">10px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>margin</code> 不會影響 box 大小，只有 <code>padding</code> 與 <code>border</code> 會有影響。</li>
+<li>box 尺寸運算方式為 ：<ul>
+<li><p>width : 300px + 50px ( <code>padding-right</code> ) + 20px ( 左右 <code>boder</code> ) &#x3D; 370px。</p>
+</li>
+<li><p>height : 300px + 20px ( 左右 <code>boder</code> ) &#x3D; 320px。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_06.jpg?alt=media&token=d6e0bfd5-e8ef-4f38-a6e2-8a52c31f907f" alt="示意圖 ▲"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_07.png?alt=media&token=a62897b6-f311-433a-b4f3-385dca37411e" alt="圖片來源 : 六角學院 ▲"></p>
+<h2 id="解決盒模型內-padding-與-border-帶來的影響，可使用-box-sizing-border-box"><a href="#解決盒模型內-padding-與-border-帶來的影響，可使用-box-sizing-border-box" class="headerlink" title="解決盒模型內 padding 與 border 帶來的影響，可使用 box-sizing:border-box"></a>解決盒模型內 padding 與 border 帶來的影響，可使用 box-sizing:border-box</h2><p>當你設定一個元素樣式為 <code>box-sizing: border-box;</code>，這個元素的 <code>padding</code> 和 <code>border</code> 將不會增加元素本身的寬度。</p>
+<ul>
+<li><p>css3 新語法。</p>
+</li>
+<li><p><code>box-sizing: border-box;</code> 對 <code>margin</code> 是無效的， <code>margin</code> 本來就不會對元素的大小有影響。</p>
+</li>
+<li><p>如果整個網頁都會用到  <code>box-sizing:border-box;</code> 可統一寫在一起，加入 <code>*</code> 星號，讓所有的 HTML 吃到此標籤。</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*,*<span class="selector-pseudo">:before</span>,*<span class="selector-pseudo">:after</span>&#123;</span><br><span class="line"><span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>box-sizing</code> 與未使用 <code>box-sizing</code> 差異，可參考此 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/YzaXvRe">CodePen 範例程式碼</a> 搭配開發人員工具做查看。</p>
+</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li>六角學院 : 使用 HTML、CSS 開發一個網站</li>
+<li><a target="_blank" rel="noopener" href="https://www.wibibi.com/info.php?tid=CSS_box_model_%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B">Wibibi - CSS box model</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/202008/css-box-model.html">深入理解 CSS Box Model ( 盒子模型 )</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Box-Model/" rel="tag"># Box Model</a>
+              <a href="/tags/%E7%9B%92%E6%A8%A1%E5%9E%8B/" rel="tag"># 盒模型</a>
+              <a href="/tags/margin/" rel="tag"># margin</a>
+              <a href="/tags/padding/" rel="tag"># padding</a>
+              <a href="/tags/border/" rel="tag"># border</a>
+              <a href="/tags/box-sizing/" rel="tag"># box-sizing</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/vue/20230327/1158769951/" rel="prev" title="使用 Vue-Cli 遇到的錯誤訊息們與解決方式">
+                  <i class="fa fa-chevron-left"></i> 使用 Vue-Cli 遇到的錯誤訊息們與解決方式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/1509112208/" rel="next" title="實現設計稿中英文不同字形設定">
+                  實現設計稿中英文不同字形設定 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

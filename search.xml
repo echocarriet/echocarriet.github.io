@@ -1,21 +1,652 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/uncategorized/20230324/1243066710/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>安裝 VueCli 環境與環境中檔案說明</title>
+    <url>/vue/20230327/3166448359/</url>
+    <content><![CDATA[<h2 id="開始使用-Vue-Cli-相關指令"><a href="#開始使用-Vue-Cli-相關指令" class="headerlink" title="開始使用 Vue Cli | 相關指令"></a>開始使用 Vue Cli | 相關指令</h2><ul>
+<li>查詢 Nodejs 版本 <code>node -v</code></li>
+<li>查詢 npm 版本 <code>npm -v</code></li>
+<li>建立專案 <code>vue create &#123;&#123; 專案名稱 &#125;&#125;</code></li>
+<li>運行 Vue 開發環境 <code>npm run serve</code></li>
+<li>編譯 Production 上線版本 <code>npm run build</code></li>
+</ul>
+<h2 id="Vue-Cli-準備流程"><a href="#Vue-Cli-準備流程" class="headerlink" title="Vue Cli 準備流程"></a>Vue Cli 準備流程</h2><ol>
+<li>安裝 Node.js  ( 到 <a href="https://nodejs.org/en/">Node.js</a> 官網下載 LTS 版本，較穩定 )</li>
+<li>安裝 Vue Cli 全域環境 ( 安裝完成後才能使用 Vue Cli 指令 )</li>
+<li>建立 Vue 專案</li>
+<li>開始開發 !</li>
+</ol>
+<h3 id="步驟-1-安裝-Node-js"><a href="#步驟-1-安裝-Node-js" class="headerlink" title="步驟 1. 安裝 Node.js"></a>步驟 1. 安裝 Node.js</h3><ol>
+<li>到 <a href="https://nodejs.org/en/">Node.js</a> 官網下載 LTS 版本，較穩定。</li>
+<li>windows 開啟命令提示字元，Mac 開啟終端機 → 執行 <code>node -v</code> 與 <code>npm -v</code> 查詢版本，有查到表成功。<ol>
+<li>node 為運行的環境、npm 為套件管理的工具。</li>
+</ol>
+</li>
+</ol>
+<p>🗒️ <strong>筆者自用 | 電腦安裝 node.js 方式</strong></p>
+<ul>
+<li>mac 用 nvm 安裝 node.js。( 更換版本需使用 <code>nvm install v版本號</code>+ <code>nvm use v版本號</code>  ) <a href="https://titangene.github.io/article/nvm.html">參考文章</a></li>
+<li>windows 使用 node.js 官網套件安裝。</li>
+</ul>
+<h3 id="步驟-2-安裝-Vue-Cli-全域環境"><a href="#步驟-2-安裝-Vue-Cli-全域環境" class="headerlink" title="步驟 2. 安裝 Vue Cli 全域環境"></a>步驟 2. 安裝 Vue Cli 全域環境</h3><p><a href="https://cli.vuejs.org/zh/guide/installation.html">Vue Cli 安裝文件 ( 中譯 )</a></p>
+<p>‼️ 注意 : 下方全域安裝不是在專案位置。開啟終端機 ( 命令提示字元 ) 如下圖，再依下方步驟把指令貼入。 ( 在專案位置做安裝 … 會 error )。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_01.png?alt=media&token=b1c70911-7886-4376-88bf-ada23e5222dd" alt="路徑 ▲"></p>
+<p><strong>步驟 :</strong></p>
+<ol>
+<li><code>npm install -g @vue/cli</code> 貼到終端機。下方為 Mac 遇到的問題 :<ol>
+<li>從 macOS Catalina 版開始，Mac 使用 zsh 做為預設登入 shell （ 終端機 ）。本來改回舊的預設 shell 但專案丟到 vscode 跑 npm run serve 時，它強迫我把預設換回 zsh，只好換回來。</li>
+<li>zsh 要執行 <code>npm install -g @vue/cli</code> 會出現 error ，這時可加上 sudo → <code>sudo npm install -g @vue/cli</code>，輸入密碼後就可安裝了 ！</li>
+</ol>
+</li>
+<li><code>vue -V</code> 查詢目前 Cli 版本，有查詢到代表安裝成功 !</li>
+<li>到「步驟 2. 安裝 Vue Cli 全域環境」建立的是一個全域環境，表示在此電腦內都可以運行。</li>
+<li>下方「步驟 3. 建立 Vue 專案」 開始做區域環境的設定，建立一個 Vue 專案資料夾。</li>
+</ol>
+<h3 id="步驟-3-建立-Vue-專案"><a href="#步驟-3-建立-Vue-專案" class="headerlink" title="步驟 3. 建立 Vue 專案"></a>步驟 3. 建立 Vue 專案</h3><p>Vue 官網路徑 :  基礎 &#x2F; <a href="https://cli.vuejs.org/zh/guide/creating-a-project.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE">創建一個項目</a></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_02.png?alt=media&token=6a99d6a0-c2a0-4efa-8abe-052cc829676c" alt="Vue 文件中創建一個項目 ▲"></p>
+<p><strong>三種創建形式 ( 擇一 ) :</strong></p>
+<ol>
+<li><p><strong>Vue create</strong> :  使用 vue cli 的形式來建立專案。 ( 課程中主要使用此方式 ) → <code>vue create 專案資料夾名稱</code></p>
+</li>
+<li><p>使用圖形化介面</p>
+</li>
+<li><p>拉取 2.x 模板 ( 舊版本 )</p>
+</li>
+</ol>
+<hr>
+<p><strong>安裝遇到的問題 :</strong></p>
+<p><strong>更新 : windows 下方遇到的安裝問題，可改用 windows PowerShell 做操作，或使用下面方式。</strong></p>
+<ul>
+<li><p>windows 的命令提示字元要用管理員開啟才可 vue create 專案資料夾名稱。</p>
+<ul>
+<li><p>或者是搜尋 .vuerc 檔案 ( 路徑 :  C:\Users\WIN10.vuerc) → “useTaobaoRegistry”: false 改成 true。</p>
+</li>
+<li><p>或是參考 <a href="https://stackoverflow.com/questions/53934852/vue-cli-3-command-failed-npm-install-loglevel-error">stack overflow</a></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_03.png?alt=media&token=9fe7dc96-70e1-4cec-9dc6-a2ac9bde04a1" alt="錯誤訊息 ▲"></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_04.png?alt=media&token=feef9509-4e5c-4a9c-bc17-93fd7522b397" alt=".vuerc 檔案 ▲"></p>
+</li>
+</ul>
+</li>
+<li><p>MAC 電腦使用 nvm 安裝 node.js，記得使用 <code>nvm use v版本號</code> 切換 node 為最新版</p>
+</li>
+<li><p>windows 電腦可能遇到錯誤訊息 <code>Expected linebreaks to be &#39;LF&#39; but found &#39;CRLF&#39; linebreak-style</code>。</p>
+<ul>
+<li>解決辦法 : 專案中開啟 .eslintrc.js 於 reles 內加入 <code>&#39;linebreak-style&#39;: [&#39;error&#39;, &#39;windows&#39;]</code>。</li>
+<li>可參考 <a href="https://www.notion.so/Vue-Cil-windows-CRLF-8b44b53996e147709c7055c7eea089c9">Vue Cil | 解決 windows 系統的換行符標準 CRLF 問題</a></li>
+</ul>
+</li>
+<li><p>改 src 資料夾內的檔案都不需要 <code>npm run serve</code> 重啟，以外的都需要 <code>npm run serve</code> 重啟。</p>
+</li>
+</ul>
+<h3 id="步驟-3-1-操作開始"><a href="#步驟-3-1-操作開始" class="headerlink" title="步驟 3-1. 操作開始"></a>步驟 3-1. <strong>操作開始</strong></h3><ol>
+<li><p><code>cd 專案要儲存的路徑</code> ( 例如，專案要存在桌面 practiveVue 資料夾內，路徑如下 )</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_05.png?alt=media&token=468fb644-cc77-40a0-8b6d-33d11a5dafb3" alt="路徑 ▲"></p>
+</li>
+<li><p><code>vue create 專案資料夾名稱</code> ( 在 practiveVue 資料夾內新增一個 project0605 專案 )</p>
+<ul>
+<li>輸入完指令會出現三個選項，</li>
+<li>過程中如果選錯了，可按下 <code>Ctrl + c</code> 來中斷目前操作 ( 中斷終端機行為 )。</li>
+</ul>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_06.png?alt=media&token=f95550c8-063a-43c5-97a5-81cd325e4d60" alt="路徑 ▲"></p>
+</li>
+<li><p>輸入完 3-1.2 步驟的指令，會進入選項要做選取 :</p>
+<ol>
+<li><p><strong>Please pick a preset</strong> :</p>
+<ul>
+<li>default ([Vue3] babel, eslint)</li>
+<li>default ([Vue2] babel, eslint)</li>
+<li><code>Manually select features</code> 手動建立環境。</li>
+</ul>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_07.png?alt=media&token=c7fac4a8-a463-4a26-85a9-bcfa2d36ed19" alt="// 輸入指令後會出現三個預設選項 ▲"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_08.png?alt=media&token=08076cac-12b8-483d-ada8-ad0de11ad321" alt="// 老師的終端機，上方黃色框內的兩個是老師預先儲存的 ( 建立好的環境可以先儲存，之後就不須重新輸入 ) ▲"></p>
+</li>
+<li><p><strong>Check features needed for your project :</strong> ( 用空白鍵選取項目 )</p>
+<ul>
+<li><del><code>choose Vue version</code> : 可選擇 Vue 的版本 ( 要選擇 vue2 或其他版本都可在此選取 )</del><ul>
+<li>目前 5.0.4 版本無此選項</li>
+</ul>
+</li>
+<li><code>Babel</code> : 要把 ES 6 以後較新的版本編譯成大部分瀏覽器都可運行的 js</li>
+<li>TypeScript : 當有需要使用 TypeScript  可選此</li>
+<li>Progressive Web App (PWA) Support : 開發的網站是需要有 PWA 功能的選此</li>
+<li><code>Router</code> : 會再獨立的章節進行介紹</li>
+<li>Vuex : 是 Vue 資料狀態管理的工具，目前不會使用到</li>
+<li><code>CSS Pre-processors</code> : 為 CSS 預處理器，後方實戰中會帶到</li>
+<li><code>Linter / Formatter</code> : 是檢視程式碼品質的工具 ( 建議開啟 )</li>
+<li>Unit Testing : 為測試工具</li>
+<li>E2E Testing : 為測試工具</li>
+</ul>
+</li>
+<li><p><strong>Choose a version of Vue.js that you want to start the project with ( Use arrow keys )</strong></p>
+<ul>
+<li><code>3.x</code> ( vue 3 版本 )</li>
+<li>2.x</li>
+</ul>
+</li>
+<li><p><strong>Use history mode for router? (Requires proper server setup for index fallback in production) (Y&#x2F;n) ?</strong> ( 選取 vue router 形式 )</p>
+<ul>
+<li><code>n</code> ( 為 Vue router 使用預設形式 )<br>  ( 在這個模式下你的 server 同樣要進行調整，這個調整這門課不會講到 )</li>
+</ul>
+</li>
+<li><p><strong>Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): (Use arrow keys) ?</strong> ( CSS 預處理器要選擇哪個版本 )</p>
+<ul>
+<li><code>Sass/SCSS ( with node-sass )</code>   &#x2F; 選 node.js 版本</li>
+<li>Less ( 無法跑 Bootstrap 的 Sass )</li>
+<li>Stylus  ( 無法跑 Bootstrap 的 Sass )</li>
+</ul>
+</li>
+<li><p><strong>Pick a linter &#x2F; formatter config: (Use arrow keys) ?</strong> ( linter 會影響 js 的撰寫風格 )</p>
+<ul>
+<li>老師推薦 ( 下兩項則一 )，老師用 airbnb 示範。<ul>
+<li><code>ESLint + Airbnb config</code> ( 對 JS 有一定的掌握度，尤其 ES6 ES7 掌握度非常高可選此。它對各項細節要求都很高 )</li>
+<li>ESLint + Standard config ( 對 JS 不是很有把握可選此 )</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Pick additional lint features: (Press「space」 to select, 「a」 to toggle all, 「i」 to invert selection) ?</strong> ( 妳的 linter 是用哪種方式進行檢視 )</p>
+<ul>
+<li><code>Lint on save</code> 存檔時就進行檢視。</li>
+<li>Lint and fix on commit</li>
+</ul>
+</li>
+<li><p><strong>Where do you prefer placing config for Babel, ESLint, etc.? (Use arrow keys)</strong><br> 這些設定要獨立檔案的形式還使統一存在 package.json ? ( 看個人習慣 )</p>
+<ul>
+<li><code>In dedicated config files</code> ( 存在獨立檔案 ) _ 老師選此</li>
+<li>In package.json ( 存在 package.json )</li>
+</ul>
+</li>
+<li><p><strong>Save this as a preset for future projects? (y&#x2F;N)</strong><br> 需不需要把這些設定檔儲存起來</p>
+<ul>
+<li><code>N</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>成功安裝</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_09.png?alt=media&token=ded1c593-2913-42ae-b53a-a0f4ff7e6a28" alt="成功安裝 ▲"></p>
+</li>
+<li><p>設定好後，把專案丟到 vscode ，開啟 vscode 終端機執行 <code>npm run serve</code>，就可把環境運行起來。<br>運行完後，會出現兩個連結 ( Local 、Network ) 按下其中一個就會開啟網頁。</p>
+<ul>
+<li>本地端開發可選擇 Local 。</li>
+<li>當要把專案分享給其他人可選取 Network ，但須和伙伴處於同個網域下才能使用。</li>
+</ul>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_010.png?alt=media&token=f443073b-a32e-4d98-af9f-8cb35855428d"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_011.png?alt=media&token=d54c660a-9d03-4d9b-a59d-8e6cb7b49bad"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_012.png?alt=media&token=d5623568-27f6-470b-9060-fcb750a2bb09" alt="執行 npm run serve環境運行起來畫面 ▲"></p>
+</li>
+<li><p>接下來可把「六角學院 Vue 課程練習 API 申請」申請的 API 加入到環境變數中。 ( 課程最終挑戰部分 )</p>
+<ol>
+<li><p>於專案根目錄建立 .env 檔案，新增兩個環境變數</p>
+<ul>
+<li><code>VUE_APP_API</code> : API server 路徑</li>
+<li><code>VUE_APP_PATH</code> : 「六角學院 Vue 課程練習 API 申請」的路徑。</li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// .<span class="built_in">env</span></span><br><span class="line">VUE_APP_API=https://vue3-course-api.hexschool.io/</span><br><span class="line">VUE_APP_PATH=請填申請API路徑</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>確認環境變數加入到專案中</p>
+<ol>
+<li><p>開啟「 專案 &#x2F; src &#x2F; views &#x2F; HomeView.vue」</p>
+<ul>
+<li><p>加入 created 生命週期，查看 <code>process.env.VUE_APP_API</code> 與 <code>process.env.VUE_APP_PATH</code>。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_013.png?alt=media&token=b95ee2bc-8ffb-4a91-a53b-1fa56a6f6b7d" alt="成功顯示 VUE_APP_API 與 VUE_APP_PATH 資訊 ▲"></p>
+</li>
+<li><p><code>process.env</code> 可參考 <a href="https://www.notion.so/Vue-Cli-4be2706a6dd849029f4aa543931246f7">Vue Cli 中環境變數觀念與操作</a>  。</p>
+</li>
+<li><p>‼️ 注意 : 調整到環境變數，終端機一定要重新啟用， <code>ctrl+c</code> → <code>npm run serve</code>。</p>
+</li>
+</ul>
+ <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">components</span>: &#123;</span><br><span class="line">    ..</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">created</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">VUE_APP_API</span>, process.<span class="property">env</span>.<span class="property">VUE_APP_PATH</span>);</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Vue-Cli-環境中的檔案說明"><a href="#Vue-Cli-環境中的檔案說明" class="headerlink" title="Vue Cli 環境中的檔案說明"></a>Vue Cli 環境中的檔案說明</h2><p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_014.png?alt=media&token=e035f935-0958-4423-8835-6bef864e9b0c" alt="專案內檔案結構 ▲"></p>
+<h3 id="node-modules-資料夾"><a href="#node-modules-資料夾" class="headerlink" title="node_modules 資料夾"></a>node_modules 資料夾</h3><ul>
+<li><strong>千千萬萬不要修改「node_modules 資料夾」</strong>，還原上或與其他人協作會有很大的問題。</li>
+<li><strong>千千萬萬不能 commit 到專案。</strong> push 到 Github 上。 ( 通常 .gitignore 檔案都會有設定，可再做確認 )</li>
+<li>運行所需的原生套件，這些套件是依據 package.json 檔案內所列的清單一一進行安裝。</li>
+<li>專案從遠端載下來時，可使用 <code>npm install</code> 指令的方式把環境還原。</li>
+</ul>
+<h3 id="src-資料夾-開發都在此資料夾內"><a href="#src-資料夾-開發都在此資料夾內" class="headerlink" title="src 資料夾 | 開發都在此資料夾內"></a>src 資料夾 | 開發都在此資料夾內</h3><p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_015.png?alt=media&token=9579601f-debb-4760-b3f1-a09eebda788f" alt="專案內檔案結構 ▲"></p>
+<ul>
+<li><p><strong>main.js</strong> → main.js 為專案中最重要的檔案，所有檔案都會與它產生關連性，為專案的進入點。</p>
+<ul>
+<li><code>main.js</code> 會載入路由表，路由表會載入 HomeView 與 AboutView 檔案，其他元件還可以再載入其他子元件，一層層串接下去。</li>
+<li>main.js 內 <code>import router from &#39;./router&#39;</code> 中的 router 為路由的配置檔案。可於 router 資料夾內找到。</li>
+<li><strong>當有「引用的外部套件要做全域註冊會寫在 main.js 」上。</strong><ul>
+<li>外部套件例如 axios、bootstrap。<br>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_016.png?alt=media&token=69707e74-1539-43ec-b973-e8805c06e43b" alt="router 為路由的配置檔案 ▲"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>App.vue → 為 main.js 第一個生成的主要元件，通常只做簡單的配置。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_017.png?alt=media&token=b8bdb39c-4e37-46c2-84cd-c6eb65c0e575"></p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_018.png?alt=media&token=0de0dcdd-efc0-4cf4-ba0f-9c9ad0186a87" alt="導覽列示意圖 ▲"></p>
+</li>
+<li><p>views 資料夾 → 主要的頁面會放此資料夾，而這些頁面掛載的的元件會放在 components 資料夾內。</p>
+</li>
+<li><p>assets 資料夾 → 相關的其他資產，例如比較小的圖片、CSS、相關的 JS 檔案</p>
+</li>
+</ul>
+<h3 id="public-資料夾"><a href="#public-資料夾" class="headerlink" title="public 資料夾"></a>public 資料夾</h3><ul>
+<li><p><strong>不會去動 public 資料夾內的程式碼。</strong></p>
+</li>
+<li><p>放置與進入點沒有相關連的檔案，或不需要編譯的檔案。但唯獨 public 資料夾內的 index.html 檔案會被編譯。 主要是因為 Vue 元件生成會需要掛載在一個實體頁面上所需的檔案。</p>
+</li>
+<li><p><strong>無論有多少分頁，最終編譯的 html 檔案只會有 index.html 一個。</strong></p>
+</li>
+<li><p><code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</code> 為元件生成的主要位置，<code>&lt;!-- built files will be auto injected --&gt;</code> 最終編譯的檔案會注入於此，這邊就是最終編譯完的 css 或 js 會放置的 HTML 的頁面。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_019.png?alt=media&token=b173ad35-814c-401a-b527-c4ed52f164d9"></p>
+</li>
+<li><p>比較大的圖片或資源也可放置於此資料夾。</p>
+</li>
+<li><p>使用 CDN 放置位置 → 專案 &#x2F; public 資料夾 &#x2F; index.html ( <code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</code> 下面 )。</p>
+<ul>
+<li>可以在 vscode 終端機輸入 <code>npm run build</code> 執行編譯產出 dist 資料夾，看裡面的 index.html 檔案內的 <code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</code> 有 script 的檔案。<br>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_020.png?alt=media&token=62576dc5-c573-4516-b5c9-f6c29cdcde43" alt="Line22 以下▲"></li>
+</ul>
+</li>
+</ul>
+<h3 id="其餘檔案-環境相關設定檔"><a href="#其餘檔案-環境相關設定檔" class="headerlink" title="其餘檔案 | 環境相關設定檔"></a>其餘檔案 | 環境相關設定檔</h3><ul>
+<li><p><strong>README.md</strong> → 介紹該怎麼運作這份 Vue</p>
+</li>
+<li><p><strong>package.json</strong> → 此專案的配置檔案，包含專案內有哪些相關套件都會記錄在此檔案。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_021.png?alt=media&token=508caef0-7feb-4807-ad54-155116c4c075" alt="小技巧 : vscode 終端機執行的 npm run serve，也可直接於上示意圖點選執行指令碼操作，結果會是一樣的。"></p>
+</li>
+<li><p><strong>package-lock.json</strong> → 專案內實際安裝套件的版本與相關描述。如果開發有問題，會使用此檔案做套件版本的查詢，不太會動到這支檔案。</p>
+</li>
+<li><p><strong>babel.config.js</strong> → 預設已調整好，不太會動到這支檔案。</p>
+</li>
+<li><p><strong>.gitignore</strong> → git 中忽略的檔案。 ( 裡面的檔案不會上傳到 Github )</p>
+</li>
+<li><p><strong>.eslintrc.js</strong> → eslink 的設定檔案，會依據我們的選擇先把設定檔與規則載入。當初 <code>vue create 專案名稱</code> 選取的規則是 <code>standard</code> 裡面就會有標示。如想要調整更多規則可於此檔案進行設定。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_022.png?alt=media&token=9f35ca6b-d7ab-46ee-8e0d-adc8ae84a2ea"></p>
+</li>
+<li><p><strong>.editorconfig</strong> → 編輯器的設定檔。</p>
+</li>
+<li><p><strong>.browserslistrc</strong> → 瀏覽器預期要支援的版本。 &gt;1% 表示瀏覽器有支援大於 1% 的使用就會支援它。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%89%E8%A3%9D%20Vue%20Cli%20%E7%92%B0%E5%A2%83%E8%88%87%E7%92%B0%E5%A2%83%E4%B8%AD%E6%AA%94%E6%A1%88%E8%AA%AA%E6%98%8E_023.png?alt=media&token=837bec03-a98a-4b89-bb49-78a684d6e813"></p>
+</li>
+</ul>
+<h2 id="資訊來源"><a href="#資訊來源" class="headerlink" title="資訊來源"></a>資訊來源</h2><ul>
+<li>六角學院 : Vue 3 實戰影音課程</li>
+</ul>
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Vue-Cli 遇到的錯誤訊息們與解決方式</title>
+    <url>/vue/20230327/1158769951/</url>
+    <content><![CDATA[<h2 id="vue-cli-顯示-autoprefixer-錯誤訊息解學方式"><a href="#vue-cli-顯示-autoprefixer-錯誤訊息解學方式" class="headerlink" title="vue cli 顯示 autoprefixer: 錯誤訊息解學方式"></a>vue cli 顯示 <code>autoprefixer:</code> 錯誤訊息解學方式</h2><p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8%20Vue%20Cli%20%E9%81%87%E5%88%B0%E7%9A%84%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF%E5%80%91%E8%88%87%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F_01.png?alt=media&token=694bc3bc-e75b-46ab-b66c-147bd3dc1084" alt="顯示 autoprefixer 錯誤訊息 ▲"></p>
+<p>錯誤訊息 : <code>autoprefixer: Replace color-adjust to print-color-adjust. The color-adjust shorthand is currently deprecated.</code></p>
+<h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>安裝 <strong><a href="mailto:&#97;&#x75;&#116;&#111;&#112;&#114;&#101;&#x66;&#105;&#x78;&#x65;&#114;&#x40;&#49;&#48;&#x2e;&#52;&#46;&#x35;">&#97;&#x75;&#116;&#111;&#112;&#114;&#101;&#x66;&#105;&#x78;&#x65;&#114;&#x40;&#49;&#48;&#x2e;&#52;&#46;&#x35;</a></strong> 版本，在終端機執行指令 : <code>npm install autoprefixer@10.4.5 --save-exact</code></p>
+<h2 id="無法使用-npm-install-載回-node-modules-解決方式"><a href="#無法使用-npm-install-載回-node-modules-解決方式" class="headerlink" title="無法使用 npm install 載回 node_modules 解決方式"></a>無法使用 <code>npm install</code> 載回 node_modules 解決方式</h2><p>可能是本地端的 node 版本高於專案的版本，以系統管理員身份開啟 windows PowerShell 使用 <code>nvm</code> 降級。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm list - 列出已安裝清單</span><br><span class="line">nvm install [node 版本號]</span><br><span class="line">nvm use [node 版本號] - 切換到特定 Node 版本(只限有安裝的版本)</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a href="https://www.notion.so/07-95c88ebb1822439691a4c8b5b09fd50e">#07. <strong>扛起骨灰級專案吧！</strong></a></li>
+<li><a href="https://www.notion.so/macOS-NVM-Node-js-a2550a17b6464d158aa8b6ec31caa64a">macOS 安裝 NVM 與 Node.js</a></li>
+<li><a href="https://israynotarray.com/nodejs/20200107/3738078915/">Windows 10 安裝並使用 nvm 切換 NodeJS 版本</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>淺談 Box-Model 盒模型</title>
+    <url>/html-css/20230327/3889239367/</url>
+    <content><![CDATA[<h2 id="Box-Model-盒模型"><a href="#Box-Model-盒模型" class="headerlink" title="Box Model 盒模型"></a>Box Model 盒模型</h2><p>Box Model 盒模型主要由四個部分組成，由內而外分別是 content、<code>padding</code>、<code>border</code>、<code>margin</code>。CSS 裏面，HTML 的每個元素都可以被視為一個盒子 ( Box Model 盒模型 )，可使用 <code>padding</code>、<code>border</code>、<code>margin</code> 對這個盒子做調整。</p>
+<p>content 為盒子的原尺寸，而 <code>padding</code>、<code>border</code> 的使用會影響此盒子的尺寸，所以可以搭配 <code>box-sizing:border-box;</code> 就不會增加盒子本身的尺寸。</p>
+<h2 id="CSS-屬性-margin-、-padding、border"><a href="#CSS-屬性-margin-、-padding、border" class="headerlink" title="CSS 屬性 margin 、 padding、border"></a>CSS 屬性 margin 、 padding、border</h2><h3 id="margin-外距"><a href="#margin-外距" class="headerlink" title="margin 外距"></a>margin 外距</h3><ul>
+<li><p>推盒模型的「 外 」邊距。</p>
+</li>
+<li><p><a href="https://codepen.io/echocarriet/pen/WNzvyWq">CodePen 範例程式碼</a>中，box1 元素向<strong>外</strong>面右邊推了 box2 元素 50px 距離。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_01.jpg?alt=media&token=6aba6421-7f49-4ca3-ba22-dc81eeca8c3f" alt="margin 外距示意圖 ▲"></p>
+</li>
+</ul>
+<h3 id="padding-內距"><a href="#padding-內距" class="headerlink" title="padding 內距"></a>padding 內距</h3><ul>
+<li><p>增加盒模型「 內 」的留白距離。</p>
+</li>
+<li><p><a href="https://codepen.io/echocarriet/pen/abYOKMJ">CodePen 範例程式碼</a> 中，div 標籤的盒模型向<strong>內</strong>往四周推了 30px 的距離 ( 綠色範圍處 )，div 盒模型內的子層文字內縮了 30px 的距離。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_02.png?alt=media&token=c46089d2-dda7-44c4-b5f6-3a5f48f4b1ca" alt="padding 內距示意圖 ▲"></p>
+</li>
+</ul>
+<h3 id="border-邊框"><a href="#border-邊框" class="headerlink" title="border 邊框"></a>border 邊框</h3><p>圍繞盒模型周圍的邊框。( 下圖黃色範圍 <a href="https://codepen.io/echocarriet/pen/RwMPyQa">CodePen 程式碼</a> )</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_03.png?alt=media&token=a23416ed-a9a2-4183-abda-0cc31da313f5" alt="border 邊框示意圖 ▲"></p>
+<h2 id="Box-Model-區塊模型中使用-margin、padding、border-帶來的變化"><a href="#Box-Model-區塊模型中使用-margin、padding、border-帶來的變化" class="headerlink" title="Box Model 區塊模型中使用 margin、padding、border 帶來的變化"></a><strong><strong>Box Model 區塊模型中使用 margin、padding、border 帶來的變化</strong></strong></h2><h3 id="使用-margin"><a href="#使用-margin" class="headerlink" title="使用 margin"></a><strong>使用 margin</strong></h3><p><code>margin</code> 是推<strong>外</strong>邊界，所以不會影響 box 的原始尺寸。<a href="https://codepen.io/echocarriet/pen/WNzvyWq">CodePen 程式碼</a></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_04.jpg?alt=media&token=3f4085a5-f90f-4635-83cc-195e08158928" alt="使用 margin 示意圖 ▲"></p>
+<h3 id="使用-padding-與-border"><a href="#使用-padding-與-border" class="headerlink" title="使用 padding 與 border"></a><strong>使用 padding 與 border</strong></h3><ul>
+<li>盒模型使用 <code>padding</code> 與 <code>border</code> 皆會改變 box 的原始尺寸，盒模型由 300 x 300 → 316 x 316。</li>
+<li>解決方式 : 可使用 <code>box-sizing: border-box;</code> 來解決尺寸問題，下方會有解說。</li>
+</ul>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_05.jpg?alt=media&token=ef6fc25a-14b9-4eef-9f4c-846691fe82d7" alt="使用 padding 與 border 示意圖 ▲"></p>
+<h2 id="範例-｜計算-Box-Model-盒模型尺寸"><a href="#範例-｜計算-Box-Model-盒模型尺寸" class="headerlink" title="範例 ｜計算 Box Model 盒模型尺寸"></a>範例 ｜計算 Box Model 盒模型尺寸</h2><h3 id="下方為-box-資訊，請問最終-box-的大小？"><a href="#下方為-box-資訊，請問最終-box-的大小？" class="headerlink" title="下方為 box 資訊，請問最終 box 的大小？"></a>下方為 box 資訊，請問最終 box 的大小？</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line"> <span class="attribute">width</span>:<span class="number">300px</span>;</span><br><span class="line"> <span class="attribute">height</span>:<span class="number">300px</span>;</span><br><span class="line"> <span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line"> <span class="attribute">padding-right</span>:<span class="number">50px</span>;</span><br><span class="line"> <span class="attribute">border</span>:<span class="number">10px</span> solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>margin</code> 不會影響 box 大小，只有 <code>padding</code> 與 <code>border</code> 會有影響。</li>
+<li>box 尺寸運算方式為 ：<ul>
+<li><p>width : 300px + 50px ( <code>padding-right</code> ) + 20px ( 左右 <code>boder</code> ) &#x3D; 370px。</p>
+</li>
+<li><p>height : 300px + 20px ( 左右 <code>boder</code> ) &#x3D; 320px。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_06.jpg?alt=media&token=d6e0bfd5-e8ef-4f38-a6e2-8a52c31f907f" alt="示意圖 ▲"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E6%B7%BA%E8%AB%87%20Box%20Model%20%E7%9B%92%E6%A8%A1%E5%9E%8B_07.png?alt=media&token=a62897b6-f311-433a-b4f3-385dca37411e" alt="圖片來源 : 六角學院 ▲"></p>
+<h2 id="解決盒模型內-padding-與-border-帶來的影響，可使用-box-sizing-border-box"><a href="#解決盒模型內-padding-與-border-帶來的影響，可使用-box-sizing-border-box" class="headerlink" title="解決盒模型內 padding 與 border 帶來的影響，可使用 box-sizing:border-box"></a>解決盒模型內 padding 與 border 帶來的影響，可使用 box-sizing:border-box</h2><p>當你設定一個元素樣式為 <code>box-sizing: border-box;</code>，這個元素的 <code>padding</code> 和 <code>border</code> 將不會增加元素本身的寬度。</p>
+<ul>
+<li><p>css3 新語法。</p>
+</li>
+<li><p><code>box-sizing: border-box;</code> 對 <code>margin</code> 是無效的， <code>margin</code> 本來就不會對元素的大小有影響。</p>
+</li>
+<li><p>如果整個網頁都會用到  <code>box-sizing:border-box;</code> 可統一寫在一起，加入 <code>*</code> 星號，讓所有的 HTML 吃到此標籤。</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*,*<span class="selector-pseudo">:before</span>,*<span class="selector-pseudo">:after</span>&#123;</span><br><span class="line"><span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>box-sizing</code> 與未使用 <code>box-sizing</code> 差異，可參考此 <a href="https://codepen.io/echocarriet/pen/YzaXvRe">CodePen 範例程式碼</a> 搭配開發人員工具做查看。</p>
+</li>
+</ul>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li>六角學院 : 使用 HTML、CSS 開發一個網站</li>
+<li><a href="https://www.wibibi.com/info.php?tid=CSS_box_model_%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B">Wibibi - CSS box model</a></li>
+<li><a href="https://www.oxxostudio.tw/articles/202008/css-box-model.html">深入理解 CSS Box Model ( 盒子模型 )</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML &amp; CSS</category>
+      </categories>
+      <tags>
+        <tag>Box Model</tag>
+        <tag>盒模型</tag>
+        <tag>margin</tag>
+        <tag>padding</tag>
+        <tag>border</tag>
+        <tag>box-sizing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>實現設計稿中英文不同字形設定</title>
+    <url>/html-css/20230327/1509112208/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時會遇到設計稿中使用不同字體的中英文，如果要一直手動設定真是稍嫌麻煩，下方使用 「 <code>@font-face</code> 規則搭配 <code>unicode-range</code> 屬性 」的方式，在一般專案與 Vue Cli 專案讓系統去偵測中英文並配對對應的字型。</p>
+<p>下方兩個範例使用兩種字體：</p>
+<ol>
+<li>英文字體載入本地端資料夾。<a href="https://pangrampangram.com/products/monument-extended">Monument Extended 字體載入點</a></li>
+<li>中文字體使用 Google Font - <a href="https://fonts.google.com/noto/specimen/Noto+Sans+TC">Noto Sans Traditional Chinese</a></li>
+</ol>
+<h2 id="❒-Vue-Cli-BS"><a href="#❒-Vue-Cli-BS" class="headerlink" title="❒ Vue Cli + BS"></a>❒ Vue Cli + BS</h2><p><a href="https://github.com/echocarriet/vue_usedifferentfont">GitHub 程式碼</a></p>
+<p><a href="https://echocarrie.com/vue_usedifferentfont/#/">GitHub Pages</a></p>
+<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><p><strong>① 資料統整</strong></p>
+<ol>
+<li><p>新增資料夾，把英文字體檔丟入 fonts 資料夾內</p>
+<ol>
+<li>開啟資料夾 src &#x2F; assets ，新增 stylesheets &#x2F;  fonts 資料夾，把英文字體檔案丟 fonts 資料夾內。</li>
+</ol>
+</li>
+<li><p>stylesheets 資料夾新增 all.scss 檔案，把所有樣式從這邊 <code>@import</code>。</p>
+<ol>
+<li>這邊 npm 載入 bootstrap，all.scss 使用 <code>@import</code> 引入。</li>
+</ol>
+</li>
+<li><p>於 App.vue  <code>@import</code>  all.scss 。</p>
+<ol>
+<li>記得把 App.vue 下方 style 預設的 #app font-family 備註掉，不然會吃不到待會下方要設定的字型。</li>
+</ol>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- @ 為路徑 src --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">&quot;scss&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"> <span class="keyword">@import</span> <span class="string">&#x27;@/assets/stylesheets/all&#x27;</span>;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>② 使用 <code>@font-face</code> 規則搭配 <code>unicode-range</code> 屬性</strong></p>
+<ul>
+<li>使用 <code>unicode-range</code> ，它可分辨你是中文或英文。<ul>
+<li>中文代碼 : <code>unicode-range: U+4E00-9FFF;</code></li>
+<li>英文代碼 : <code>unicode-range: U+00-024F;</code></li>
+</ul>
+</li>
+<li>中文與英文 <code>@font-face</code> 中的 <code>font-family</code> 自訂一樣的名字 ( 例如 <code>custom-font</code> )，把 <code>custom-font</code> 加入 _variables.scss 中的 <code>$font-family-sans-serif</code> 的第一個。因為已經各自設定了 <code>unicode-range</code> ，所以系統會自己偵測中英文並配對對應字型。</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// all.scss</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ----- 中文設定(google font)</span></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: custom-font;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&#x27;Noto Sans TC&#x27;</span>),</span><br><span class="line">    <span class="built_in">url</span>(https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@<span class="number">400</span>;<span class="number">700</span>&amp;<span class="attribute">display</span>=swap)</span><br><span class="line">      <span class="built_in">format</span>(&#x27;embedded-opentype&#x27;);</span><br><span class="line">  unicode-range: U+<span class="number">4</span>E00-<span class="number">9</span>FFF;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ----- 英文設定(本地端文字檔)</span></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: custom-font;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&#x27;PPMonumentExtended-Regular&#x27;</span>),</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">&#x27;@/assets/stylesheets/fonts/PPMonumentExtended-Regular.otf&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;opentype&#x27;</span>);</span><br><span class="line">  unicode-range: U+<span class="number">00</span>-<span class="number">024</span>F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-一般專案"><a href="#❒-一般專案" class="headerlink" title="❒ 一般專案"></a>❒ 一般專案</h2><p><a href="https://github.com/echocarriet/usedifferentfont">GitHub 程式碼</a></p>
+<p><a href="https://echocarrie.com/usedifferentfont/">GitHub Pages</a></p>
+<p><strong>① 資料整理</strong></p>
+<ol>
+<li>把載下本地端的英文字體放置專案資料夾內。</li>
+<li>開啟 all.css 做字體設定。</li>
+</ol>
+<p><strong>② 使用 <code>@font-face</code> 規則搭配 <code>unicode-range</code> 屬性</strong></p>
+<ul>
+<li>使用 <code>unicode-range</code> ，它可分辨你是中文或英文。<ul>
+<li>中文代碼 : <code>unicode-range: U+4E00-9FFF;</code></li>
+<li>英文代碼 : <code>unicode-range: U+00-024F;</code></li>
+</ul>
+</li>
+<li>中文與英文 <code>@font-face</code> 中的 <code>font-family</code> 自訂一樣的名字 ( 例如 <code>custom-fonts</code> )，把 <code>custom-fonts</code> 加入 body 中。因為已經各自設定了 <code>unicode-range</code> ，所以系統會自己偵測中英文並配對對應字型。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 中文設定(google font) */</span></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: custom-fonts;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;Noto Sans TC&quot;</span>), <span class="built_in">url</span>(<span class="string">&#x27;https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap&#x27;</span>) <span class="built_in">format</span>(<span class="string">&quot;embedded-opentype&quot;</span>);</span><br><span class="line">  unicode-range: U+<span class="number">4</span>E00-<span class="number">9</span>FFF;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 英文設定(本地端文字檔) */</span></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: custom-fonts;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;PPMonumentExtended-Regular&quot;</span>), <span class="built_in">url</span>(<span class="string">&#x27;./fonts/PPMonumentExtended-Regular.otf&#x27;</span>) <span class="built_in">format</span>(<span class="string">&quot;opentype&quot;</span>);</span><br><span class="line">  unicode-range: U+<span class="number">00</span>-<span class="number">024</span>F;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 中英文@font-face中的font-family自訂名加入body的 */</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: custom-fonts;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a href="https://blog.gtwang.org/web-development/css-font-face/">CSS 網頁字型 @font-face 使用教學與範例</a></li>
+<li><a href="https://wcc723.github.io/sass/2014/02/21/font-code-range/">CSS設定中英文不同的字體</a></li>
+<li><a href="https://keqingrong.cn/blog/2019-11-30-different-fonts-in-different-locales/">前端如何实现中文、英文、数字使用不同字体</a></li>
+<li><a href="https://css-tricks.com/snippets/css/using-font-face-in-css/">How to use @font-face in CSS</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML &amp; CSS</category>
+      </categories>
+      <tags>
+        <tag>font-face</tag>
+        <tag>unicode-range</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PowerShell 美化</title>
+    <url>/tools/20230327/2533981155/</url>
+    <content><![CDATA[<h2 id="操作環境"><a href="#操作環境" class="headerlink" title="操作環境"></a>操作環境</h2><p>Windows 10</p>
+<h2 id="更換-Sarasa-Gothic-更紗黑體"><a href="#更換-Sarasa-Gothic-更紗黑體" class="headerlink" title="更換 Sarasa Gothic 更紗黑體"></a>更換 Sarasa Gothic 更紗黑體</h2><ol>
+<li>進入 <a href="https://github.com/be5invis/Sarasa-Gothic">更紗黑體 GitHub</a> 的 <a href="https://github.com/be5invis/Sarasa-Gothic/releases">release</a> 頁面</li>
+<li>選取 ttf 壓縮檔下載 ( sarasa-gothic-ttf-unhinted-0.34.1.7z) → 解壓縮 → 找到檔案 sarasa-mono-tc-regular.ttf 按右鍵安裝 。<ol>
+<li>字體中繁中就是有標註 tc 的。</li>
+</ol>
+</li>
+<li>重新啟動 PowerShell → 內容 → 字型，就可以選取 “ 等距更紗黑體 “ 囉 !</li>
+</ol>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FPowerShell%20%E7%BE%8E%E5%8C%96_0.png?alt=media&token=f3703089-1a6e-4f7c-8e08-77566a2be6e3" alt="PowerShell"></p>
+<h2 id="oh-my-posh-增加提示條"><a href="#oh-my-posh-增加提示條" class="headerlink" title="oh-my-posh | 增加提示條"></a>oh-my-posh | 增加提示條</h2><p><a href="https://github.com/JanDeDobbeleer/oh-my-posh">oh-my-posh GitHub</a></p>
+<ol>
+<li><p>於 PowerShell 輸入以下指令，第一次安裝遇到問題直接輸入 Y 即可。</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Install-Module</span> <span class="string">posh-git</span> <span class="string">-Scope</span> <span class="string">CurrentUser</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FPowerShell%20%E7%BE%8E%E5%8C%96_1.png?alt=media&token=22d9af07-7224-4c42-aa44-659db1dbe600" alt="PowerShell1"></p>
+</li>
+<li><p>安裝 oh-my-posh 模組，過程一路按 Y。</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Install-Module</span> <span class="string">oh-my-posh</span> <span class="string">-Scope</span> <span class="string">CurrentUser</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FPowerShell%20%E7%BE%8E%E5%8C%96_2.png?alt=media&token=42f3cf05-2926-4967-ae4f-68921ea8f295" alt="PowerShell2"></p>
+</li>
+<li><p>設定自動套用，每次啟動 PowerShell 就可以子動套入設定。</p>
+<ol>
+<li><p>於 PowerShell 輸入 <code>$profile</code> 來顯示 PowerShell 自定義路徑</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FPowerShell%20%E7%BE%8E%E5%8C%96_3.png?alt=media&token=812a473b-6462-483f-88a6-f44172c78e08" alt="PowerShell3"></p>
+</li>
+<li><p>複製 <code>C:\Users\WIN10\OneDrive\文件\WindowsPowerShell</code> 開啟資料夾</p>
+</li>
+<li><p>找名為 <code>Microsoft.PowerShell_profile.ps1</code> 的檔案，如果沒有就自行新增，並把下方程式碼貼入。 ( oh-my-posh 改版後 Set-Theme Agnoster 可更改為 Set-PoshPrompt -Theme Paradox ，就不會產生無法辨識的問題囉 ! )</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FPowerShell%20%E7%BE%8E%E5%8C%96_4.png?alt=media&token=651dc4b2-c8ee-4fdf-8f0a-74c21fe58c4a" alt="PowerShell4"></p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Import-Module posh-git</span><br><span class="line">Import-Module oh-my-posh</span><br><span class="line">Set-PoshPrompt -Theme Paradox</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>記得重啟 PowerShell 。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FPowerShell%20%E7%BE%8E%E5%8C%96_5.png?alt=media&token=e5341d47-e9d2-418a-9a19-5b24948a5440" alt="PowerShell5"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul>
+<li><a href="https://hsiangfeng.github.io/other/20190924/3446878284/">Window PowerShell 美化 ( Windows Terminal )</a></li>
+<li><a href="https://igouist.github.io/post/2020/08/powershell-beauty/">Powershell 美化作戰 —— 字型、執行原則和 oh-my-posh</a></li>
+<li><a href="https://yangxuewu.com/pages/e06f47/">PowerShell 美化</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>PowerShell</tag>
+        <tag>oh-my-posh提示條</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MacM1 安裝 iTerm2</title>
+    <url>/tools/20230327/442102443/</url>
+    <content><![CDATA[<h2 id="❒-環境"><a href="#❒-環境" class="headerlink" title="❒ 環境"></a>❒ 環境</h2><ul>
+<li>Mac M1</li>
+<li>M1 終端機 shell 預設為 zsh</li>
+</ul>
+<h2 id="❒-iTerm2"><a href="#❒-iTerm2" class="headerlink" title="❒ iTerm2"></a>❒ iTerm2</h2><p>有兩種安裝方式 ① iTerm2 官網 ② HomeBrew，此篇文章將會使用 HomeBrew 來安裝 iTerm2。</p>
+<h3 id="➊-安裝-HomeBrew"><a href="#➊-安裝-HomeBrew" class="headerlink" title="➊ 安裝 HomeBrew"></a>➊ 安裝 HomeBrew</h3><ol>
+<li><p>HomeBrew 依照是 Mac OS X 的套件管理工具，把下方指令輸入到終端機，接著就等它安裝囉！</p>
+</li>
+<li><p>M1 電腦安裝 HomeBrew 會被安裝在 <code>/opt/homebrew</code> 路徑下，所以如果安裝在 <code>/usr/local/Homebrew</code> 目錄下是找不到的。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝過程會需要一點時間。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_01.png?alt=media&token=019adecb-da6b-405f-a412-c04499273ef6" alt="// 安裝過程截圖"></p>
+</li>
+<li><p>把下方指令輸入於終端機，會把 HomeBrew 加到你的 <code>~/.zprofile</code> 路徑中 ( 加入此路徑才能讓用 brew 指令安裝的套件在執行的時候被找到 )。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval $(/opt/homebrew/bin/brew shellenv)&#x27;</span> &gt;&gt; ~/.zprofile</span><br><span class="line"><span class="built_in">eval</span> $(/opt/homebrew/bin/brew shellenv)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在終端機執行此指令</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重啟終端機，輸入指令查看是否有成功，成功會跳出 Homebrew 版本號。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew --version</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_02.png?alt=media&token=86ce53ca-3db6-4dd3-a915-5fa912ed9f82" alt="// 終端機 Homebrew 版本號"></p>
+</li>
+</ol>
+<h3 id="➋-HomeBrew-安裝-iTerm2"><a href="#➋-HomeBrew-安裝-iTerm2" class="headerlink" title="➋ HomeBrew 安裝 iTerm2"></a>➋ HomeBrew 安裝 iTerm2</h3><p><a href="https://formulae.brew.sh/cask/iterm2">HomeBrew 官網指令</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install --cask iterm2</span><br></pre></td></tr></table></figure>
+
+<p>安裝成功後就可在電腦的應用程式中看到囉 ！( 路徑： &#x2F;Applications&#x2F;iTerm.app )</p>
+<h2 id="❒-Oh-My-ZSH"><a href="#❒-Oh-My-ZSH" class="headerlink" title="❒ Oh My ZSH"></a>❒ Oh My ZSH</h2><p>① 於終端機輸入指令安裝 Oh My ZSH。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>執行完上面指令後，終端機原本的 <code>%</code> 符號變成 <code>→ ~</code>。</p>
+<h3 id="調整-iTerm-與終端機字體及-theme"><a href="#調整-iTerm-與終端機字體及-theme" class="headerlink" title="調整 iTerm 與終端機字體及 theme"></a>調整 iTerm 與終端機字體及 theme</h3><p>字體可依自己喜好設定，建議使用 Nerd Font 系列字型才能支援完整的顯示效果。</p>
+<p>② 下載 GoMono nerd Font 字型。可參考此文章中的 “ <a href="https://ithelp.ithome.com.tw/articles/10253908">老師！我想知道！要怎麼讓終端機變漂亮呢 - Mac 篇</a> ” 或 “ <a href="https://cindyliu923.com/2021/07/17/macbook-pro-m1/#iTerm">安裝 oh my zsh - 安裝字型</a>” 。</p>
+<p>③ 調整主題：輸入指令開啟 .zshrc 檔案，把檔案中的 <code>ZSH_THEME=&quot;robbyrussell&quot;</code> 改為 <code>ZSH_THEME=&quot;agnoster&quot;</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>④ 電腦應用程式中開啟 iTerm，按下快捷鍵 <code>command + ,</code> 進行設定。於 Preferences → Text 中把 Font 調整為步驟 2 下載的字型 <code>GoMono Nerd Font Mono</code>。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_03.png?alt=media&token=7150b2dd-f6ac-4302-8f45-7e2613665044" alt="// iTerm 設定"></p>
+<p>⑤ 開啟終端機，使用快捷鍵 <code>command + ,</code> 進行終端機文字設定，在描述檔的文字中，把字體調整為 <code>GoMono Nerd Font Mono</code> 。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_04.png?alt=media&token=7119daeb-db26-4e02-add1-9402f9640210" alt="// 終端機設定"></p>
+<h3 id="安裝主題套件並調整主題色"><a href="#安裝主題套件並調整主題色" class="headerlink" title="安裝主題套件並調整主題色"></a>安裝主題套件並調整主題色</h3><p>可依自己喜好設定，下面主題擇一</p>
+<p><strong>第一種主題： <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#agnoster">agnoster</a> 主題</strong></p>
+<p><a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">Oh My ZSH Themes 文件</a> (  ****<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#agnoster">agnoster</a>** )</p>
+<p>輸入指令開啟 .zshrc 檔案，把檔案中的 <code>ZSH_THEME=&quot;robbyrussell&quot;</code> 將它改為 <code>ZSH_THEME=&quot;agnoster&quot;</code> ( 調整 Oh-my-zsh 主題 )。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二種主題 <a href="https://github.com/Powerlevel9k/powerlevel9k">powerlevel9k</a> ( 筆者使用此主題 )</strong></p>
+<p>① 安裝 <a href="https://github.com/Powerlevel9k/powerlevel9k">**powerlevel9k</a>**</p>
+<p>目前出到 <strong><strong>Powerlevel10k</strong></strong>，可以嘗試看看。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k</span><br></pre></td></tr></table></figure>
+
+<p>② 開啟  .zshrc 輸入指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>③ 調整顏色</p>
+<ul>
+<li><p>iTerm2 挑選配色，可參考「 <a href="https://iterm2colorschemes.com/">Iterm2-color-schemes</a> 」，網頁中可以看到很多不同配色，挑選一個自己喜歡的配色，在喜歡的配色的名字按右鍵，並選擇另存連結後將檔案儲存下來。</p>
+<ul>
+<li>以筆者這邊選擇「 Tomorrow Night Eighties 」，另存連結就會下載一個 <code>Tomorrow Night Eighties.itermcolor</code> 的檔案。</li>
+</ul>
+</li>
+<li><p>下載好後，開啟 iTerm 使用快捷鍵 <code>command + ,</code> 於 Preferences &gt; Profiles &gt; Colors，右下角 <code>Color Presets..</code> 打開選單，並選擇 Import 把下載的檔案載入。筆者這邊選擇 Builtin Solarized Light。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_05.png?alt=media&token=dbc6dd7b-6f16-491c-88fd-afa5867c0e29" alt="// iTerm 主題色設定"></p>
+</li>
+</ul>
+<p>④ 把下面內容加入 .zshrc 檔案，記得按儲存 ( 依自己喜好設定 )</p>
+<p>更多提示設定可參考 <strong><a href="https://github.com/Powerlevel9k/powerlevel9k/wiki/Stylizing-Your-Prompt">Stylizing Your Prompt 文件</a></strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 當前主題</span></span><br><span class="line">ZSH_THEME=powerlevel9k/powerlevel9k</span><br><span class="line"><span class="comment"># powerlevel9k 使用的模式</span></span><br><span class="line">POWERLINE9K_MODE=<span class="string">&#x27;nerdfont-complete&#x27;</span></span><br><span class="line"><span class="comment"># command line 左邊想顯示的內容</span></span><br><span class="line">POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context <span class="built_in">dir</span> dir_writable vcs vi_mode)</span><br><span class="line"><span class="comment"># command line 右邊想顯示的內容</span></span><br><span class="line">POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram load time)</span><br><span class="line">POWERLEVEL9K_PROMPT_ADD_NEWLINE=<span class="literal">true</span></span><br><span class="line">POWERLEVEL9K_DIR_HOME_BACKGROUND=<span class="string">&#x27;216&#x27;</span></span><br><span class="line">POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=<span class="string">&#x27;216&#x27;</span></span><br><span class="line">POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=<span class="string">&#x27;216&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>.zshrc 檔案中 <code>POWERLEVEL9K_LEFT_PROMPT_ELEMENTS</code> 與 <code>POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS</code></p>
+<ul>
+<li>更多提示設定可參考 <a href="https://github.com/Powerlevel9k/powerlevel9k#available-prompt-segments">Available Prompt Segments &#x2F; System Status Segments</a>。</li>
+</ul>
+</li>
+<li><p><code>POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command line 右邊顯示的內容)</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下圖一</span></span><br><span class="line">POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ram load time)</span><br><span class="line"><span class="comment"># 下圖二</span></span><br><span class="line">POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_06.png?alt=media&token=a99e3bf7-3be7-4d26-8809-ce9c6f1278d9" alt="// command line 右邊顯示的內容 (圖一)"><br><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_07.png?alt=media&token=2994bd89-8a8d-4cde-97bc-6288d8f37689" alt="// command line 右邊顯示的內容 (圖二)"></p>
+</li>
+<li><p><code>_BACKGROUND</code> 顏色可參考文件「 Stylizing Your Prompt 中的 <a href="https://github.com/Powerlevel9k/powerlevel9k/wiki/Stylizing-Your-Prompt#segment-color-customization">Segment Color Customization</a> 」</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POWERLEVEL9K_DIR_HOME_BACKGROUND=<span class="string">&#x27;填顏色&#x27;</span></span><br><span class="line">POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=<span class="string">&#x27;填顏色&#x27;</span></span><br><span class="line">POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=<span class="string">&#x27;填顏色&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>⑤ 輸入指令，就會出現設定好的樣式囉</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exec</span> <span class="variable">$SHELL</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-查看終端機-shell-為哪種腳本語言的兩種方式"><a href="#❒-查看終端機-shell-為哪種腳本語言的兩種方式" class="headerlink" title="❒ 查看終端機 shell 為哪種腳本語言的兩種方式"></a>❒ 查看終端機 shell 為哪種腳本語言的兩種方式</h2><p>① 開啟終端機後，於最上方欄位可以看到是哪種腳本。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E5%AE%89%E8%A3%9DiTerm2_08.png?alt=media&token=983ff13d-1aa3-48c2-aea2-cb7524b7b6ac" alt="// 終端機表頭截圖"></p>
+<p>② 使用指令</p>
+<p>可使用指令 <code>echo $SHELL</code> 驗證，如果是會回傳 <code>/bin/zsh</code> 。</p>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a href="https://stackoverflow.com/questions/66666134/how-to-install-homebrew-on-m1-mac">How to install homebrew on M1 mac</a></li>
+<li><a href="https://www.cxymm.net/article/weixin_45108550/113887368">Macos M1电脑安装homebrew过程。</a></li>
+<li><a href="https://cindyliu923.com/2021/07/17/macbook-pro-m1/#%E5%AE%89%E8%A3%9D-for-m1-arm-%E7%9A%84-homebrew">MacBook Pro M1 開箱使用紀錄 - 安裝 M1 的 homebrew</a></li>
+<li><a href="https://clay-atlas.com/blog/2020/10/16/mac-cn-terminal-zsh-bash-shell-script/">[MacOS] 將終端機預設 zsh 轉換成 bash（或其他腳本語言）</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10253908">老師！我想知道！要怎麼讓終端機變漂亮呢 - Mac 篇</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>終端機美化</tag>
+        <tag>HomeBrew</tag>
+        <tag>iTerm2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MacM1 更改終端機預設語言</title>
+    <url>/tools/20230327/41934832/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>既上篇 <a href="https://echocarrie.com/tools/20230327/442102443/">MacM1 安裝 iTerm2</a>  安裝完 iTerm2 後終端機預設語言就變成中文，雖然閱讀速度瞬間升級，但認真害怕哪天就真的完全喪失基本英文閱讀力，記錄一下怎麼再把預設語言由中文改回英文吧！</p>
+<h2 id="查看終端機目前語言"><a href="#查看終端機目前語言" class="headerlink" title="查看終端機目前語言"></a>查看終端機目前語言</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$LANG</span></span><br></pre></td></tr></table></figure>
+
+<p>回傳 <code>zh_TW.UTF-8</code></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FMacM1%E6%9B%B4%E6%94%B9%E7%B5%82%E7%AB%AF%E6%A9%9F%E9%A0%90%E8%A8%AD%E8%AA%9E%E8%A8%80_01.png?alt=media&token=ff5fe20b-1fd5-49c5-8c3b-575b8dd8805c" alt="截圖"></p>
+<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><ol>
+<li><p>終端機執行指令，開啟 <code>.zshrc</code> 檔案</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>.zshrc</code> 檔案內輸入下方內容</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export LC_ALL=en_US.UTF-8  </span><br><span class="line">export LANG=en_US.UTF-8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重啟終端機或輸入下方指令</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul>
+<li><a href="https://blog.csdn.net/xs18952904/article/details/97630389">macOS 更改 Terminal 语言</a></li>
+<li><a href="https://developer.aliyun.com/article/836740">Mac终端使用oh-my-zsh中文乱码</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>iTerm2</tag>
+      </tags>
   </entry>
 </search>
