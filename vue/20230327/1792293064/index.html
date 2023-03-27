@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="簡述 Vue Cli、使用 vue ui 指令開啟圖形化介面來操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="簡述 Vue Cli 並以 GUI 介面操作">
+<meta property="og:url" content="https://echocarriet.github.io/vue/20230327/1792293064/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="簡述 Vue Cli、使用 vue ui 指令開啟圖形化介面來操作">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_01.png?alt=media&token=5fff4ed3-baa5-4c33-9ffc-0fe2d2721977">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_02.png?alt=media&token=576b3b63-c16f-43cf-9a71-675efa87106b">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_03.png?alt=media&token=3bec332d-9247-44b3-b70c-5c5f28b6e905">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_04.png?alt=media&token=3267d95e-71d1-49e1-90a1-7eb7cd4ad358">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_05.png?alt=media&token=1fa8b7ea-384f-493d-86ef-ad09193fdf54">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_06.png?alt=media&token=b3cd18c5-f4bc-4202-b461-880df0ba38f0">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_07.png?alt=media&token=843111cb-1887-4b26-86ea-a3dbc1ea0031">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_08.png?alt=media&token=af4d3bde-4441-40e1-ac5f-3170220f85b2">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_09.png?alt=media&token=e729cbaa-e02c-4ea1-ba9d-a0c7dc80488f">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_010.png?alt=media&token=6b6f5a9a-8b2b-41ca-a806-e935e0bbac60">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_011.png?alt=media&token=df902953-85d3-4acd-9973-cea5a1de8ab9">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_012.png?alt=media&token=1d46a7ae-80a5-433d-872c-3d72fc3e3fb2">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_013.png?alt=media&token=555265b5-e4ee-4620-bb3a-b5b14af3508e">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_014.png?alt=media&token=2764fedc-4a07-4206-b923-c471fab67385">
+<meta property="article:published_time" content="2023-03-27T07:46:14.000Z">
+<meta property="article:modified_time" content="2023-03-27T07:49:40.759Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Vue3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_01.png?alt=media&token=5fff4ed3-baa5-4c33-9ffc-0fe2d2721977">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/vue/20230327/1792293064/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/vue/20230327/1792293064/","path":"vue/20230327/1792293064/","title":"簡述 Vue Cli 並以 GUI 介面操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>簡述 Vue Cli 並以 GUI 介面操作 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E7%94%A8-Vue-Cli"><span class="nav-number">1.</span> <span class="nav-text">為什麼要用 Vue Cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-Cli-%E6%98%AF%E7%94%9A%E9%BA%BC"><span class="nav-number">2.</span> <span class="nav-text">Vue Cli 是甚麼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BC-Cli"><span class="nav-number">3.</span> <span class="nav-text">關於 Cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-%E5%90%8C%E6%99%82%E6%8F%90%E4%BE%9B-GUI-%E7%9A%84%E4%BB%8B%E9%9D%A2"><span class="nav-number">4.</span> <span class="nav-text">Vue 同時提供 GUI 的介面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%A4%AA%E9%BA%BB%E7%85%A9%EF%BC%8C%E4%BE%86%E8%A9%A6%E8%A9%A6%E7%9C%8B-GUI-%E5%90%A7"><span class="nav-number">5.</span> <span class="nav-text">指令太麻煩，來試試看 GUI 吧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E8%A8%8A%E4%BE%86%E6%BA%90"><span class="nav-number">6.</span> <span class="nav-text">資訊來源</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/vue/20230327/1792293064/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="簡述 Vue Cli 並以 GUI 介面操作 | Hi, I'm Carrie">
+      <meta itemprop="description" content="簡述 Vue Cli、使用 vue ui 指令開啟圖形化介面來操作">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          簡述 Vue Cli 並以 GUI 介面操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 15:46:14 / 修改時間：15:49:40" itemprop="dateCreated datePublished" datetime="2023-03-27T15:46:14+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">簡述 Vue Cli、使用 vue ui 指令開啟圖形化介面來操作</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="為什麼要用-Vue-Cli"><a href="#為什麼要用-Vue-Cli" class="headerlink" title="為什麼要用 Vue Cli"></a>為什麼要用 Vue Cli</h2><ol>
+<li>前端開發日益複雜，每個開發者習慣亦有很大不同，因此整合性的工具可以減少彼此開發上的差異。</li>
+<li>編譯環境越來越複雜，缺乏整合工具將會在每次專案都耗去大量時間。</li>
+<li>前後端分離形成主流，單頁式應用程式更符合開發習慣。</li>
+<li>套件引用越來越多，導致難以管理。</li>
+</ol>
+<h2 id="Vue-Cli-是甚麼"><a href="#Vue-Cli-是甚麼" class="headerlink" title="Vue Cli 是甚麼"></a>Vue Cli 是甚麼</h2><p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_01.png?alt=media&token=5fff4ed3-baa5-4c33-9ffc-0fe2d2721977" alt="Webpack 整合了哪些開發環境 ▲"></p>
+<ol>
+<li><p>基於 Webpack 所建置的開發工具。</p>
+</li>
+<li><p>變於使用各種第三方套件 ( BS4、Vue Router ..  )。</p>
+</li>
+<li><p>可運行 Sass，Bebel 等編譯工具。</p>
+</li>
+<li><p>獨特 .vue 檔案，一次包含 html 、js、css 。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_02.png?alt=media&token=576b3b63-c16f-43cf-9a71-675efa87106b"></p>
+</li>
+<li><p>便於開發 SPA 的網頁工具 ( SPA 原文為 single-page-applicaiton，稱為<strong>單頁式應用程式</strong> )</p>
+<ul>
+<li><p>傳統的路每次進入頁面就會重新載入頁面所有的資源 ( 不管此頁面的某些區塊是否之前有載入過 )，所以會產生一次性地閃爍，會影響載入速度與使用者體驗。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_03.png?alt=media&token=3bec332d-9247-44b3-b70c-5c5f28b6e905"></p>
+</li>
+<li><p>SPA 載入是由前端來管理路由，路由上面會多一個 # 字號。在第一次進入網頁就會載入大部分資源，切換頁面時則會重新渲染不同的部分。 像 layout 在第一次進入頁面已經載入的情況下，到了其他頁面就不會再重新載入，只會重新渲染沒有載入過的部分。這樣每次進入新的頁面就不會產生一次性地閃爍。<br> 後端會透過 API 形式往前端送，前端再把這些資料整理到畫面上。<br> 進到頁面會從後端去取得資料，再把這些資料重新渲染到畫面上。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_04.png?alt=media&token=3267d95e-71d1-49e1-90a1-7eb7cd4ad358"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="關於-Cli"><a href="#關於-Cli" class="headerlink" title="關於 Cli"></a>關於 Cli</h2><p>Cli 原文為 Command-Line Interface， 簡單來說就是命令列介面。 ( windows 會開啟命令提示字元，Mac 會開啟終端機 )</p>
+<h2 id="Vue-同時提供-GUI-的介面"><a href="#Vue-同時提供-GUI-的介面" class="headerlink" title="Vue 同時提供 GUI 的介面"></a>Vue 同時提供 GUI 的介面</h2><p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_05.png?alt=media&token=1fa8b7ea-384f-493d-86ef-ad09193fdf54" alt="// Vue GUI 介面"></p>
+<h2 id="指令太麻煩，來試試看-GUI-吧"><a href="#指令太麻煩，來試試看-GUI-吧" class="headerlink" title="指令太麻煩，來試試看 GUI 吧"></a>指令太麻煩，來試試看 GUI 吧</h2><p>Vue cli 與 UI 運行完的結果是一樣的，可擇一使用。</p>
+<ol>
+<li><p>終端機輸入 <code>vue ui</code> 會開啟介面。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_06.png?alt=media&token=b3cd18c5-f4bc-4202-b461-880df0ba38f0" alt="// 第一次開啟的介面回呈現 ▲"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_07.png?alt=media&token=843111cb-1887-4b26-86ea-a3dbc1ea0031" alt="// 之前已使用過會開啟某一個專案"></p>
+</li>
+<li><p>上方已經有使用 cli 新增裝案，就可以選取 “ 匯入 “ 方式來把專案匯入。</p>
+</li>
+<li><p>如要建立新專案</p>
+<ol>
+<li><p>終端機輸入 <code>vue ui</code> 會開啟介面 → 新增</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_08.png?alt=media&token=af4d3bde-4441-40e1-ac5f-3170220f85b2" alt="// Vue GUI 介面"></p>
+</li>
+<li><p>選擇檔案要放置的路徑 ( 這邊選取桌面的 practiveVue 資料夾 ) → 按下 + 在此新增專案 → 填寫資料 → 接下來會出現一連串類似 vue cli 設定的選項 :</p>
+<ol>
+<li>選擇一套模板 : <code>手動</code></li>
+<li>選擇功能 : <code>Choose Vue version、Babel、Router、CSS Pre-processors、Linter / Formatter</code> 。</li>
+<li>Choose a version of Vue.js that you want to start the project with : <code>3.X</code></li>
+<li>Use history mode for router?  <code>不開啟</code> ( 開啟的話伺服器是需要進行重新設定的 )</li>
+<li>Pick a CSS pre-processor :  <code>Sass/SCSS (with node-sass)</code></li>
+<li>Pick a linter &#x2F; formatter config : <code>ESLint + Standard config</code> ( 可看<a target="_blank" rel="noopener" href="https://www.notion.so/Vue-Cli-GUI-ba33df715e424464990115bf5493d4f8">上方設定解說</a> )</li>
+<li>Pick additional lint features:</li>
+</ol>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_09.png?alt=media&token=e729cbaa-e02c-4ea1-ba9d-a0c7dc80488f" alt="// Vue GUI 介面"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_010.png?alt=media&token=6b6f5a9a-8b2b-41ca-a806-e935e0bbac60" alt="// Vue GUI 介面"></p>
+</li>
+<li><p>設定完後會詢問是否要保這些這訂做保留，先按不保存。</p>
+</li>
+</ol>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_011.png?alt=media&token=df902953-85d3-4acd-9973-cea5a1de8ab9" alt="// Vue GUI 介面"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_012.png?alt=media&token=1d46a7ae-80a5-433d-872c-3d72fc3e3fb2" alt="CUI 安裝同時，終端機也會一起做奔跑 ▲"></p>
+</li>
+<li><p>專案建立完成會呈現下方樣式</p>
+<ul>
+<li>插件選單 : 會影響到 webpack 運行的功能，這些套件都是在專案安裝過程我們選好的，所以不太會去調整它。</li>
+<li>依賴選單 : 不會直接影響到 webpack 運行，獲這些項目是相依於插件選單內的套件所使用的。如果開發過程要引入其他插件也會在依賴選單這邊做選擇。如果要安裝 Bootstrap 會於此做安裝。</li>
+<li>任務選單 :<ul>
+<li>裡面的 serve 裡的執行按鈕，如同 vue cil 中終端機運行 <code>npm run serve</code> 指令，可把專案環境運行起來。</li>
+<li>serve → 執行完成後，右方的輸入按鈕內的介面如同 vue cli 把環境運行完成後會出現兩個連結 ( Local 、Network ) 按下其中一個就會開啟網頁。</li>
+<li>編譯 → 執行完成後，專案內會出現 dist 資料夾，為專案完整編譯的結果</li>
+</ul>
+</li>
+</ul>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_013.png?alt=media&token=555265b5-e4ee-4620-bb3a-b5b14af3508e" alt="// Vue GUI 介面"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_014.png?alt=media&token=2764fedc-4a07-4206-b923-c471fab67385" alt="// Vue GUI 介面"></p>
+</li>
+</ol>
+<h2 id="資訊來源"><a href="#資訊來源" class="headerlink" title="資訊來源"></a>資訊來源</h2><ul>
+<li>六角學院 : Vue 3 實戰影音課程</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+              <a href="/tags/Vue3/" rel="tag"># Vue3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/vue/20230327/2093301171/" rel="prev" title="Vue Cli 中環境變數觀念與操作">
+                  <i class="fa fa-chevron-left"></i> Vue Cli 中環境變數觀念與操作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/tools/20230327/1259632675/" rel="next" title="使用 Postman 進行 API 測試">
+                  使用 Postman 進行 API 測試 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -649,4 +649,676 @@
         <tag>iTerm2</tag>
       </tags>
   </entry>
+  <entry>
+    <title>VSCode 樣板字面值使用 emmet</title>
+    <url>/tools/20230327/2346096926/</url>
+    <content><![CDATA[<p>NVM 為「 Node 版本管理控制 」</p>
+<h2 id="macOS-安裝-NVM"><a href="#macOS-安裝-NVM" class="headerlink" title="macOS 安裝 NVM"></a>macOS 安裝 NVM</h2><h3 id="開啟隱藏的資料夾"><a href="#開啟隱藏的資料夾" class="headerlink" title="開啟隱藏的資料夾"></a>開啟隱藏的資料夾</h3><ul>
+<li>開啟 Finder 切換到當前使用者的目錄下，使用 <code>Command + Shift+ .</code> 開啟隱藏的資料夾。</li>
+</ul>
+<h3 id="查詢是否有-zshrc-檔案"><a href="#查詢是否有-zshrc-檔案" class="headerlink" title="查詢是否有 .zshrc 檔案"></a>查詢是否有 <code>.zshrc</code> 檔案</h3><ul>
+<li>開啟終端機輸入指令 <code>ls -a</code> 查詢是否有 <code>.zshrc</code> 檔案。</li>
+<li>沒有的話，於終端機使用指令 <code>touch ~/.zshrc</code> 新增 <code>.zshrc</code> 檔案於使用者目錄下。( 請先確認終端機位置是否在使用者目錄下 )</li>
+</ul>
+<h3 id="安裝-nvm-指令"><a href="#安裝-nvm-指令" class="headerlink" title="安裝 nvm 指令"></a>安裝 nvm 指令</h3><ol>
+<li><p>開啟終端機輸入下方指令</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FmacOS%E5%AE%89%E8%A3%9DNVM%E8%88%87Node_01.png?alt=media&token=a98e3619-2c14-4c6a-bb82-c075b62697b1" alt="// 會需要跑一段時間 ▲"></p>
+</li>
+<li><p>安裝完後，使用者目錄下的 「 .nvm 資料夾與 <code>.zshrc</code> 檔案」目前是空的。這時執行指令 <code>nvm</code> 會報錯 <code>zsh: command not found:nvm</code>。請繼續跑完下方流程。</p>
+</li>
+</ol>
+<p>注意：NVM 官方建議使用 cURL 安裝或更新 nvm，不建議用 Homebrew 來安裝，避免出現問題。</p>
+<h3 id="再次安裝-nvm-指令"><a href="#再次安裝-nvm-指令" class="headerlink" title="再次安裝 nvm 指令"></a>再次安裝 nvm 指令</h3><ol>
+<li><p>再次安裝 nvm 指令與 <code>source ~/.zshrc</code> 指令 ( 請一個輸入完再輸入另一個 )</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>輸入完上方指令後，使用者目錄內的「 .nvm 資料夾與 <code>.zshrc</code> 檔案」就有生成資料囉 !</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可使用下方指令查看 <code>.zshrc</code> 檔案是否有步驟二的內容</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重啟終端機，依下面方式查看就可看到 nvm 安裝成功囉 ！</p>
+</li>
+</ol>
+<h3 id="查看-nvm-是否安裝成功-？"><a href="#查看-nvm-是否安裝成功-？" class="headerlink" title="查看 nvm 是否安裝成功 ？"></a>查看 nvm 是否安裝成功 ？</h3><ol>
+<li><p>終端機執行 <code>command -v nvm</code>，顯示 nvm 表示安裝成功。</p>
+</li>
+<li><p>終端機執行 <code>nvm</code>，會跳出下方圖示。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FmacOS%E5%AE%89%E8%A3%9DNVM%E8%88%87Node_02.png?alt=media&token=9e8a86d3-799f-41e5-a208-85a827861533" alt="截圖"></p>
+</li>
+</ol>
+<h2 id="常用的-nvm-指令"><a href="#常用的-nvm-指令" class="headerlink" title="常用的 nvm 指令"></a>常用的 nvm 指令</h2><ul>
+<li><code>nvm install [node 版本號]</code> : 安裝特定版本的 nvm ( 例，版本號為 16 : <code>nvm install 16</code> )</li>
+<li><code>nvm alias default [node 版本號]</code> : 將特定版本號做為預設值。</li>
+<li><code>nvm list</code> : 列出已安裝清單</li>
+<li><code>nvm use [node 版本號]</code> : 切換到特定 Node 版本(只限有安裝的版本)</li>
+</ul>
+<h2 id="使用-nvm-安裝-Node-js"><a href="#使用-nvm-安裝-Node-js" class="headerlink" title="使用 nvm 安裝 Node.js"></a>使用 nvm 安裝 Node.js</h2><ul>
+<li>終端機執行指令 <code>nvm install 16</code></li>
+<li>使用 <code>nvm list</code> 可看到目前已安裝的版本號與預設版本號。</li>
+</ul>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FmacOS%E5%AE%89%E8%A3%9DNVM%E8%88%87Node_03.png?alt=media&token=8757ff02-a3a0-495e-9675-0e643b05d747" alt="截圖"></p>
+<h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><p><a href="https://benscheer.medium.com/how-to-install-nvm-and-node-on-macos-m1-silicon-in-2022-172fba82d92f">How to Install NVM and Node on macOS M1 Silicon in 2022</a></p>
+<ul>
+<li><a href="https://www.casper.tw/development/2022/01/10/install-nvm/">安裝 nvm 環境，Node.js 開發者必學（ Windows、Mac 均適用 ）</a></li>
+<li><a href="https://israynotarray.com/nodejs/20200124/3404456418/">Mac OS X 安裝 nvm</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>VSCode</tag>
+        <tag>VSCode設定檔settings.json</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>macOS 安裝 NVM 與 Node.js</title>
+    <url>/tools/20230327/3371717253/</url>
+    <content><![CDATA[<h2 id="macOS-安裝-NVM"><a href="#macOS-安裝-NVM" class="headerlink" title="macOS 安裝 NVM"></a>macOS 安裝 NVM</h2><h3 id="開啟隱藏的資料夾"><a href="#開啟隱藏的資料夾" class="headerlink" title="開啟隱藏的資料夾"></a>開啟隱藏的資料夾</h3><ul>
+<li>開啟 Finder 切換到當前使用者的目錄下，使用 <code>Command + Shift+ .</code> 開啟隱藏的資料夾。</li>
+</ul>
+<h3 id="查詢是否有-zshrc-檔案"><a href="#查詢是否有-zshrc-檔案" class="headerlink" title="查詢是否有 .zshrc 檔案"></a>查詢是否有 <code>.zshrc</code> 檔案</h3><ul>
+<li>開啟終端機輸入指令 <code>ls -a</code> 查詢是否有 <code>.zshrc</code> 檔案。</li>
+<li>沒有的話，於終端機使用指令 <code>touch ~/.zshrc</code> 新增 <code>.zshrc</code> 檔案於使用者目錄下。( 請先確認終端機位置是否在使用者目錄下 )</li>
+</ul>
+<h3 id="安裝-nvm-指令"><a href="#安裝-nvm-指令" class="headerlink" title="安裝 nvm 指令"></a>安裝 nvm 指令</h3><ol>
+<li><p>開啟終端機輸入下方指令</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FmacOS%E5%AE%89%E8%A3%9DNVM%E8%88%87Node_01.png?alt=media&token=a98e3619-2c14-4c6a-bb82-c075b62697b1" alt="// 會需要跑一段時間 ▲"></p>
+</li>
+<li><p>安裝完後，使用者目錄下的 「 .nvm 資料夾與 <code>.zshrc</code> 檔案」目前是空的。這時執行指令 <code>nvm</code> 會報錯 <code>zsh: command not found:nvm</code>。請繼續跑完下方流程。</p>
+</li>
+</ol>
+<p>注意：NVM 官方建議使用 cURL 安裝或更新 nvm，不建議用 Homebrew 來安裝，避免出現問題。</p>
+<h3 id="再次安裝-nvm-指令"><a href="#再次安裝-nvm-指令" class="headerlink" title="再次安裝 nvm 指令"></a>再次安裝 nvm 指令</h3><ol>
+<li><p>再次安裝 nvm 指令與 <code>source ~/.zshrc</code> 指令 ( 請一個輸入完再輸入另一個 )</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>輸入完上方指令後，使用者目錄內的「 .nvm 資料夾與 <code>.zshrc</code> 檔案」就有生成資料囉 !</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可使用下方指令查看 <code>.zshrc</code> 檔案是否有步驟二的內容</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">open ~/.zshrc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重啟終端機，依下面方式查看就可看到 nvm 安裝成功囉 ！</p>
+</li>
+</ol>
+<h3 id="查看-nvm-是否安裝成功-？"><a href="#查看-nvm-是否安裝成功-？" class="headerlink" title="查看 nvm 是否安裝成功 ？"></a>查看 nvm 是否安裝成功 ？</h3><ol>
+<li><p>終端機執行 <code>command -v nvm</code>，顯示 nvm 表示安裝成功。</p>
+</li>
+<li><p>終端機執行 <code>nvm</code>，會跳出下方圖示。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FmacOS%E5%AE%89%E8%A3%9DNVM%E8%88%87Node_02.png?alt=media&token=9e8a86d3-799f-41e5-a208-85a827861533" alt="截圖"></p>
+</li>
+</ol>
+<h2 id="常用的-nvm-指令"><a href="#常用的-nvm-指令" class="headerlink" title="常用的 nvm 指令"></a>常用的 nvm 指令</h2><ul>
+<li><code>nvm install [node 版本號]</code> : 安裝特定版本的 nvm ( 例，版本號為 16 : <code>nvm install 16</code> )</li>
+<li><code>nvm alias default [node 版本號]</code> : 將特定版本號做為預設值。</li>
+<li><code>nvm list</code> : 列出已安裝清單</li>
+<li><code>nvm use [node 版本號]</code> : 切換到特定 Node 版本(只限有安裝的版本)</li>
+</ul>
+<h2 id="使用-nvm-安裝-Node-js"><a href="#使用-nvm-安裝-Node-js" class="headerlink" title="使用 nvm 安裝 Node.js"></a>使用 nvm 安裝 Node.js</h2><ul>
+<li>終端機執行指令 <code>nvm install 16</code></li>
+<li>使用 <code>nvm list</code> 可看到目前已安裝的版本號與預設版本號。</li>
+</ul>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FmacOS%E5%AE%89%E8%A3%9DNVM%E8%88%87Node_03.png?alt=media&token=8757ff02-a3a0-495e-9675-0e643b05d747" alt="截圖"></p>
+<h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul>
+<li><p><a href="https://benscheer.medium.com/how-to-install-nvm-and-node-on-macos-m1-silicon-in-2022-172fba82d92f">How to Install NVM and Node on macOS M1 Silicon in 2022</a></p>
+</li>
+<li><p><a href="https://www.casper.tw/development/2022/01/10/install-nvm/">安裝 nvm 環境，Node.js 開發者必學（ Windows、Mac 均適用 ）</a></p>
+</li>
+<li><p><a href="https://israynotarray.com/nodejs/20200124/3404456418/">Mac OS X 安裝 nvm</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>mvm</tag>
+        <tag>npm</tag>
+        <tag>node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue Cli 中環境變數觀念與操作</title>
+    <url>/vue/20230327/2093301171/</url>
+    <content><![CDATA[<h2 id="Vue-Cli-中環境變數基礎觀念"><a href="#Vue-Cli-中環境變數基礎觀念" class="headerlink" title="Vue Cli 中環境變數基礎觀念"></a>Vue Cli 中環境變數基礎觀念</h2><p><a href="https://cli.vuejs.org/zh/guide/mode-and-env.html#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">Vue Cli 環境變數文件</a></p>
+<ul>
+<li><p>團隊中可能會有好幾個人一同開發一個專案，儲存各自負責開發的項目於各自電腦中，前端開發者們會對同一個後端主機進行開發測試，開發到一個階段會上傳到正式主機上，這時連線位置就會需要替換掉，所以專案中連線位置會另外儲存在環境變數中。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FVue%20Cli%E4%B8%AD%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E8%A7%80%E5%BF%B5%E8%88%87%E6%93%8D%E4%BD%9C_01.png?alt=media&token=673aaeb3-0be5-488e-a865-6e6d72aa7658" alt="// 示意圖(出處:六角學院)"></p>
+</li>
+<li><p>環境變數分為 :</p>
+<ul>
+<li>開發者環境 development</li>
+<li>正式環境 production</li>
+</ul>
+</li>
+<li><p>env.local : 有些開發者懶得重複輸入帳秘等機密資訊，想把機密資訊儲存在環境變數中，這些機密資訊環境變數會存在 local 的環境變數，而這些資訊並不會傳給其他開發者只會自己使用。</p>
+</li>
+<li><p><a href="https://cli.vuejs.org/zh/guide/mode-and-env.html#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">Vue Cli 環境變數文件</a> 中表示可以在你的項目根目錄中放置下列文件來指定環境變數 :</p>
+<ul>
+<li><p><code>.env.[mode]</code>  : 代表你是要選擇「 開發者環境 development 」或「 正式環境 production 」哪種開發環境。<code>.env.[mode]</code> 只會在特定模式下才會被載入。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.<span class="built_in">env</span>                <span class="comment"># 在所有環境中被載入</span></span><br><span class="line">.env.local          <span class="comment"># 在所有環境中被載入，但會被 git 忽略，只存在本地端</span></span><br><span class="line">.<span class="built_in">env</span>.[mode]         <span class="comment"># 只在指定的模式中被載入</span></span><br><span class="line">.<span class="built_in">env</span>.[mode].<span class="built_in">local</span>   <span class="comment"># 只在指定的模式中被載入，但會被 git 忽略，只存在本地端</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="在專案中加入環境變數操作"><a href="#在專案中加入環境變數操作" class="headerlink" title="在專案中加入環境變數操作"></a>在專案中加入環境變數操作</h2><p>環境變數放置的位置於專案下，目前課程中使用 .env 環境變數。相關資訊可參考 : <a href="https://cli.vuejs.org/zh/guide/mode-and-env.html#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">Vue Cli 環境變數文件</a>。</p>
+<p>‼️ 注意 : 調整到環境變數 ( .env )，終端機一定要重新啟用， <code>ctrl+c</code> → <code>npm run serve</code>。</p>
+<h3 id="步驟-1-選擇要使用的環境變數"><a href="#步驟-1-選擇要使用的環境變數" class="headerlink" title="步驟 1 選擇要使用的環境變數"></a>步驟 1 選擇要使用的環境變數</h3><p>路徑 : 專案下</p>
+<ol>
+<li>此環境變數在所有環境都可被載入<ul>
+<li>新增 <code>.env</code> 檔案</li>
+</ul>
+</li>
+<li>此環境變數只在開發中環境被載入<ul>
+<li>新增 <code>.env.development</code> 檔案</li>
+</ul>
+</li>
+<li>此環境變數只在正式環境被載入使用<ul>
+<li>新增 <code>.env.production</code> 檔案</li>
+</ul>
+</li>
+<li>此還記變數只存在自己電腦中使用<ul>
+<li>新增 <code>.env.development.local</code> 檔案</li>
+</ul>
+</li>
+</ol>
+<h3 id="步驟-2-於專案中使用環境變數"><a href="#步驟-2-於專案中使用環境變數" class="headerlink" title="步驟 2. 於專案中使用環境變數"></a>步驟 2. 於專案中使用環境變數</h3><ol>
+<li><p>於專案中新增 .env 環境變數。</p>
+</li>
+<li><p>在 Vue 專案中要使用環境變數，.env 檔案內程式碼前方一定要加入 <code>VUE_APP</code> 的字樣，後方加入自訂義名稱，請以大寫形式 → <code>VUE_APP_大寫自訂義名=自訂義名</code>。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 檔案位置:專案/.env</span><br><span class="line">VUE_APP_NOT_SECRET_CODE=some_value</span><br><span class="line"></span><br><span class="line">// 調整後</span><br><span class="line">VUE_APP_NAME=我在開發中</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把自訂義變數加到專案中，開啟 src 資料夾 &#x2F; App.vue</p>
+<ul>
+<li>data 中 <code>name: process.env</code> 為固定。</li>
+<li>‼️ 注意 : 調整到環境變數，終端機一定要重新啟用， <code>ctrl+c</code> → <code>npm run serve</code>。</li>
+<li>讓環境變數設定的名稱顯示在畫面上 ( 方便查看用 )，於 <code>&lt;template&gt;</code> 中加入 <code>&#123;&#123; name &#125;&#125;</code> ，可看到畫面出現 我在開發中 文字，表成功。</li>
+</ul>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;nav&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span> |</span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/about&quot;</span>&gt;</span>About<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">router-view</span> /&gt;</span></span><br><span class="line">  &#123;&#123; name &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">name</span>: process.<span class="property">env</span>.<span class="property">VUE_APP_NAME</span>,</span></span><br><span class="line"><span class="language-javascript">    &#125;;</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">&#125;;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2FVue%20Cli%E4%B8%AD%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E8%A7%80%E5%BF%B5%E8%88%87%E6%93%8D%E4%BD%9C_02.png?alt=media&token=86dfe261-f898-4994-b860-b0a47e2c8b7c" alt="// 示意圖"></p>
+</li>
+</ol>
+<h2 id="資訊來源"><a href="#資訊來源" class="headerlink" title="資訊來源"></a>資訊來源</h2><ul>
+<li>六角學院 : Vue 3 實戰影音課程</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>簡述 Vue Cli 並以 GUI 介面操作</title>
+    <url>/vue/20230327/1792293064/</url>
+    <content><![CDATA[<h2 id="為什麼要用-Vue-Cli"><a href="#為什麼要用-Vue-Cli" class="headerlink" title="為什麼要用 Vue Cli"></a>為什麼要用 Vue Cli</h2><ol>
+<li>前端開發日益複雜，每個開發者習慣亦有很大不同，因此整合性的工具可以減少彼此開發上的差異。</li>
+<li>編譯環境越來越複雜，缺乏整合工具將會在每次專案都耗去大量時間。</li>
+<li>前後端分離形成主流，單頁式應用程式更符合開發習慣。</li>
+<li>套件引用越來越多，導致難以管理。</li>
+</ol>
+<h2 id="Vue-Cli-是甚麼"><a href="#Vue-Cli-是甚麼" class="headerlink" title="Vue Cli 是甚麼"></a>Vue Cli 是甚麼</h2><p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_01.png?alt=media&token=5fff4ed3-baa5-4c33-9ffc-0fe2d2721977" alt="Webpack 整合了哪些開發環境 ▲"></p>
+<ol>
+<li><p>基於 Webpack 所建置的開發工具。</p>
+</li>
+<li><p>變於使用各種第三方套件 ( BS4、Vue Router ..  )。</p>
+</li>
+<li><p>可運行 Sass，Bebel 等編譯工具。</p>
+</li>
+<li><p>獨特 .vue 檔案，一次包含 html 、js、css 。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_02.png?alt=media&token=576b3b63-c16f-43cf-9a71-675efa87106b"></p>
+</li>
+<li><p>便於開發 SPA 的網頁工具 ( SPA 原文為 single-page-applicaiton，稱為<strong>單頁式應用程式</strong> )</p>
+<ul>
+<li><p>傳統的路每次進入頁面就會重新載入頁面所有的資源 ( 不管此頁面的某些區塊是否之前有載入過 )，所以會產生一次性地閃爍，會影響載入速度與使用者體驗。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_03.png?alt=media&token=3bec332d-9247-44b3-b70c-5c5f28b6e905"></p>
+</li>
+<li><p>SPA 載入是由前端來管理路由，路由上面會多一個 # 字號。在第一次進入網頁就會載入大部分資源，切換頁面時則會重新渲染不同的部分。 像 layout 在第一次進入頁面已經載入的情況下，到了其他頁面就不會再重新載入，只會重新渲染沒有載入過的部分。這樣每次進入新的頁面就不會產生一次性地閃爍。<br> 後端會透過 API 形式往前端送，前端再把這些資料整理到畫面上。<br> 進到頁面會從後端去取得資料，再把這些資料重新渲染到畫面上。</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_04.png?alt=media&token=3267d95e-71d1-49e1-90a1-7eb7cd4ad358"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="關於-Cli"><a href="#關於-Cli" class="headerlink" title="關於 Cli"></a>關於 Cli</h2><p>Cli 原文為 Command-Line Interface， 簡單來說就是命令列介面。 ( windows 會開啟命令提示字元，Mac 會開啟終端機 )</p>
+<h2 id="Vue-同時提供-GUI-的介面"><a href="#Vue-同時提供-GUI-的介面" class="headerlink" title="Vue 同時提供 GUI 的介面"></a>Vue 同時提供 GUI 的介面</h2><p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_05.png?alt=media&token=1fa8b7ea-384f-493d-86ef-ad09193fdf54" alt="// Vue GUI 介面"></p>
+<h2 id="指令太麻煩，來試試看-GUI-吧"><a href="#指令太麻煩，來試試看-GUI-吧" class="headerlink" title="指令太麻煩，來試試看 GUI 吧"></a>指令太麻煩，來試試看 GUI 吧</h2><p>Vue cli 與 UI 運行完的結果是一樣的，可擇一使用。</p>
+<ol>
+<li><p>終端機輸入 <code>vue ui</code> 會開啟介面。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_06.png?alt=media&token=b3cd18c5-f4bc-4202-b461-880df0ba38f0" alt="// 第一次開啟的介面回呈現 ▲"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_07.png?alt=media&token=843111cb-1887-4b26-86ea-a3dbc1ea0031" alt="// 之前已使用過會開啟某一個專案"></p>
+</li>
+<li><p>上方已經有使用 cli 新增裝案，就可以選取 “ 匯入 “ 方式來把專案匯入。</p>
+</li>
+<li><p>如要建立新專案</p>
+<ol>
+<li><p>終端機輸入 <code>vue ui</code> 會開啟介面 → 新增</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_08.png?alt=media&token=af4d3bde-4441-40e1-ac5f-3170220f85b2" alt="// Vue GUI 介面"></p>
+</li>
+<li><p>選擇檔案要放置的路徑 ( 這邊選取桌面的 practiveVue 資料夾 ) → 按下 + 在此新增專案 → 填寫資料 → 接下來會出現一連串類似 vue cli 設定的選項 :</p>
+<ol>
+<li>選擇一套模板 : <code>手動</code></li>
+<li>選擇功能 : <code>Choose Vue version、Babel、Router、CSS Pre-processors、Linter / Formatter</code> 。</li>
+<li>Choose a version of Vue.js that you want to start the project with : <code>3.X</code></li>
+<li>Use history mode for router?  <code>不開啟</code> ( 開啟的話伺服器是需要進行重新設定的 )</li>
+<li>Pick a CSS pre-processor :  <code>Sass/SCSS (with node-sass)</code></li>
+<li>Pick a linter &#x2F; formatter config : <code>ESLint + Standard config</code> ( 可看<a href="https://www.notion.so/Vue-Cli-GUI-ba33df715e424464990115bf5493d4f8">上方設定解說</a> )</li>
+<li>Pick additional lint features:</li>
+</ol>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_09.png?alt=media&token=e729cbaa-e02c-4ea1-ba9d-a0c7dc80488f" alt="// Vue GUI 介面"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_010.png?alt=media&token=6b6f5a9a-8b2b-41ca-a806-e935e0bbac60" alt="// Vue GUI 介面"></p>
+</li>
+<li><p>設定完後會詢問是否要保這些這訂做保留，先按不保存。</p>
+</li>
+</ol>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_011.png?alt=media&token=df902953-85d3-4acd-9973-cea5a1de8ab9" alt="// Vue GUI 介面"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_012.png?alt=media&token=1d46a7ae-80a5-433d-872c-3d72fc3e3fb2" alt="CUI 安裝同時，終端機也會一起做奔跑 ▲"></p>
+</li>
+<li><p>專案建立完成會呈現下方樣式</p>
+<ul>
+<li>插件選單 : 會影響到 webpack 運行的功能，這些套件都是在專案安裝過程我們選好的，所以不太會去調整它。</li>
+<li>依賴選單 : 不會直接影響到 webpack 運行，獲這些項目是相依於插件選單內的套件所使用的。如果開發過程要引入其他插件也會在依賴選單這邊做選擇。如果要安裝 Bootstrap 會於此做安裝。</li>
+<li>任務選單 :<ul>
+<li>裡面的 serve 裡的執行按鈕，如同 vue cil 中終端機運行 <code>npm run serve</code> 指令，可把專案環境運行起來。</li>
+<li>serve → 執行完成後，右方的輸入按鈕內的介面如同 vue cli 把環境運行完成後會出現兩個連結 ( Local 、Network ) 按下其中一個就會開啟網頁。</li>
+<li>編譯 → 執行完成後，專案內會出現 dist 資料夾，為專案完整編譯的結果</li>
+</ul>
+</li>
+</ul>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_013.png?alt=media&token=555265b5-e4ee-4620-bb3a-b5b14af3508e" alt="// Vue GUI 介面"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E7%B0%A1%E8%BF%B0%20Vue%20Cli%20%E4%B8%A6%E4%BB%A5%20GUI%20%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C_014.png?alt=media&token=2764fedc-4a07-4206-b923-c471fab67385" alt="// Vue GUI 介面"></p>
+</li>
+</ol>
+<h2 id="資訊來源"><a href="#資訊來源" class="headerlink" title="資訊來源"></a>資訊來源</h2><ul>
+<li>六角學院 : Vue 3 實戰影音課程</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Postman 進行 API 測試</title>
+    <url>/tools/20230327/1259632675/</url>
+    <content><![CDATA[<h2 id="挑戰目標"><a href="#挑戰目標" class="headerlink" title="挑戰目標"></a>挑戰目標</h2><p>使用 Postman 建立 request 並搭配 Collections Test 測試五隻 API，HTTP Status 必須為 200。</p>
+<ul>
+<li>使用 Postman 建立 Env Url 變數</li>
+<li>建立 Collections Test 測試五隻 API，HTTP Status 必須為 200</li>
+</ul>
+<h2 id="API-文件"><a href="#API-文件" class="headerlink" title="API 文件"></a>API 文件</h2><p>怕洩漏到課程資訊，擷取六角 API 文件中關鍵資料，以文字方式呈現</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># [Get] 取得產品列表</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → GET</span><br><span class="line">## API Path → /api/shopping/v1/products?category=xxx</span><br><span class="line">## API Description → 若沒有帶入 Query 預設會回傳全部產品列表，若 category 不存在則也會回傳全部產品。</span><br><span class="line"></span><br><span class="line"># [Get] 取得單一產品詳細資訊</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → GET</span><br><span class="line">## API Path → /api/shopping/v1/product/:id</span><br><span class="line">## API Description → 取得單一產品詳細資訊，包含描述欄位。</span><br><span class="line">## Request Param → id (產品 ID，必填)</span><br><span class="line"></span><br><span class="line"># [Post] 新增產品</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → POST</span><br><span class="line">## API Path → /api/shopping/v1/product</span><br><span class="line">## API Description → 新增產品，請務必注意必填欄位與型別。</span><br><span class="line"></span><br><span class="line"># [Put] 編輯產品</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → PUT</span><br><span class="line">## API Path → /api/shopping/v1/product/:id</span><br><span class="line">## API Description → 編輯產品，請務必注意必填欄位與型別。</span><br><span class="line">## Request Param → ID (產品 ID)</span><br><span class="line"></span><br><span class="line"># [Patch] 修改產品狀態</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → PATCH</span><br><span class="line">## API Path → /api/shopping/v1/product/:id</span><br><span class="line">## API Description → 修改產品狀態</span><br><span class="line">## Request Param → ID (產品 ID)</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作步驟"><a href="#操作步驟" class="headerlink" title="操作步驟"></a>操作步驟</h2><h3 id="Step1-Postman-安裝"><a href="#Step1-Postman-安裝" class="headerlink" title="Step1. Postman 安裝"></a>Step1. Postman 安裝</h3><p>文章 : <a href="https://israynotarray.com/other/20211207/427026/">跟著我一起快速入門 Postman 吧！</a></p>
+<h3 id="Step2-建立環境變數-Environments"><a href="#Step2-建立環境變數-Environments" class="headerlink" title="Step2. 建立環境變數 Environments"></a>Step2. 建立環境變數 <strong><strong>Environments</strong></strong></h3><p>要測試的 5 支 API ，開頭網址皆為 <code>https://hex-escape-room.herokuapp.com</code> 的 API Url，可以先建立一個環境變數。</p>
+<ol>
+<li><p>點選左側欄 Environments ，進入後點擊 + 新增一個 Environments。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_01.png?alt=media&token=b4d1dfd0-5fd0-44d4-a901-2675dc94c802" alt="// 新增 Environments"></p>
+</li>
+<li><p>建立好環境變數 ( Env ) 後，進行命名 「商品資料 Env」。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_02_%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E5%91%BD%E5%90%8D.png?alt=media&token=5b3efda5-0882-4f3d-9e3a-6d36ebe17e26" alt="// 環境變數命名"></p>
+</li>
+<li><p>將環境變數 ( Env ) 改成剛編輯的名字 「商品資料 Env」。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_03_%E6%8A%8AEnv%E6%94%B9%E7%82%BA%E6%96%B0%E5%91%BD%E5%90%8D%E7%9A%84%E5%90%8D%E5%AD%97.png?alt=media&token=d12dcd03-d47c-43b7-a118-0a5938561915" alt="// 把 Env 改為新命名的名字"></p>
+</li>
+<li><p>進行環境變數 ( Env ) 相關設定</p>
+<ul>
+<li>VARIABLE 命名為 <code>API_URL</code>。</li>
+<li>INITIAL VALUE 填入要測試的 5支 API 相同開頭的網址<code>https://hex-escape-room.herokuapp.com</code>。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_04_%E9%80%B2%E8%A1%8C%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8_(_Env_)_%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A.png?alt=media&token=d117fdde-3e74-4b71-ad2b-a890b4429977" alt="// 進行環境變數 (Env) 相關設定"></li>
+</ul>
+</li>
+<li><p>最後記得按下 Save。</p>
+</li>
+</ol>
+<h3 id="Step3-建立收藏-Collections"><a href="#Step3-建立收藏-Collections" class="headerlink" title="Step3. 建立收藏 Collections"></a>Step3. 建立收藏 Collections</h3><ol>
+<li>進左側欄 Collections → 點擊 + create new collections。</li>
+<li>把 Collections 命名為 「商品資訊 API Test」。</li>
+<li>於 「商品資訊 API Test」新增請求 ( add request )。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_05_Collections%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82.png?alt=media&token=7fb22180-cf0a-4a17-87ee-09ff4e471f47" alt="// Collections新增請求"></li>
+<li>於 「商品資訊 API Test」新增請求 ( add request ) 後，依據 <a href="https://www.notion.so/Post-man-API-ed3793ced5ac4cec98852e29c71b6372">公司給了五支 API</a> : <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>PATCH</code> 進行新增。<ol>
+<li><p><code>GET</code> 取得商品列表 ( 上方 API 文件 )</p>
+<ol>
+<li>把 request 名稱改為 「取得商品列表」。</li>
+<li>已設好環境變數，所以 Get 的網址調整為 <code>&#123;&#123;環境變數中的 VARIABLE&#125;&#125;取得商品列表的API Path</code>，按下 Sent 按鈕，如果 API 沒問題下方就會顯示 200 ok。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_06.png?alt=media&token=86746a29-c219-4e5e-a199-46e58028be08" alt="// 使用 Potman 進行 API 測試"></li>
+<li>記得按下 Save 可收藏請求。</li>
+</ol>
+</li>
+<li><p><code>GET</code> 取得單一產品詳細資訊 ( 上方 API 文件 )</p>
+<ol>
+<li>add request → 把 request 名稱改為 「取得單一產品詳細資訊」</li>
+<li>文件中的 Api Path 後方有 <code>:id</code>，把文件中 id 複製貼於 「取得單一產品詳細資訊」請求的 Path Variables 中。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_07.png?alt=media&token=657a03f3-6d26-40bd-bcd4-f393b5f65613" alt="// 把 API 文件中的 id 填入"><br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_08.png?alt=media&token=55ac6a55-3e2e-41bc-ae14-9d0c6daa8976" alt="// 把 API 文件中的 id 填入"></li>
+<li>按下 Send 按鈕測試 HTTP Status 是否為 200，沒問題的話記得按下 Save。</li>
+</ol>
+</li>
+<li><p><code>POST</code> 新增商品 ( 上方 API 文件 )</p>
+<ol>
+<li><p>add request → 把 request 名稱改為 「新增商品」→ methods 選 <code>POST</code> → 網址如步驟 2。</p>
+</li>
+<li><p>文件中表示 「新增產品，請務必注意必填欄位與型別。」，把文件中 Example JSON 程式碼貼於 body → raw → Text 選取 JSON。</p>
+ <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 文件中 Example JSON</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gNd4cp2u5NxXTTaT&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;KoboGame&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;game&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1000&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;超好玩遊戲&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_09.png?alt=media&token=5b31de63-c0b1-4a15-8144-228f9253ca21" alt="// 把文件中 Example JSON 程式碼貼於 body → raw → Text 選取 JSON"></p>
+</li>
+<li><p>出現 HTTP Status 400，老師有埋陷阱 XD，按照指使後，把屬性 price 的屬性值型別改為數字即可。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_10.png?alt=media&token=8c6e5f72-f061-4f27-973e-4dbe4e023270" alt="// 陷阱，把 price 屬性改為數字"></p>
+ <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 調整後</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gNd4cp2u5NxXTTaT&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;KoboGame&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;game&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;price&quot;</span><span class="punctuation">:</span> <span class="number">1000</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;超好玩遊戲&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p><code>PUT</code> 編輯商品 ( 上方 API 文件 )</p>
+<ol>
+<li><p>API Path 出現 <code>:id</code>，依文件中 Example JSON 得知商品資訊，到 「取得商品列表」request 找此商品的 id，貼於 Params → Path Variables 的 id 中。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_11.png?alt=media&token=f8887b48-26c1-4ac3-96d3-c128c60ef382" alt="// 文件中Example JSON程式碼貼入Body→raw"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_12.png?alt=media&token=be040645-c545-4fad-b1e9-2a0a864e7fc4" alt="// 依文件中Example JSON得知商品資訊，到「取得商品列表」request找此商品的id"></p>
+</li>
+</ol>
+</li>
+<li><p><code>Patch</code> 修改商品狀態 ( 上方 API 文件 )</p>
+<ol>
+<li>依照步驟 3.d 。Params 的 id 可以到 「取的商品列表」request 隨便找一個商品 id 填入。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_13_%E6%96%B0%E5%A2%9E_request.png?alt=media&token=bcb6cd74-9c63-48ea-bb12-83d09d8f4569" alt="// 於 collections 新增請求(add request)"></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Step4-自動-API-測試"><a href="#Step4-自動-API-測試" class="headerlink" title="Step4. 自動 API 測試"></a>Step4. 自動 API 測試</h3><p>可參考文章中的 <a href="https://israynotarray.com/other/20211207/427026/#%E8%87%AA%E5%8B%95-API-%E6%B8%AC%E8%A9%A6-Auto-Collection-Test">自動 API 測試 (Auto Collection Test)</a></p>
+<ol>
+<li><p>進左側欄 Collections → 點擊步驟 #2 新增的 「商品資訊 API Test」 收藏。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_14.png?alt=media&token=dce25a87-91bd-420d-a869-9feca14e3578" alt="// 收藏 Collections"></p>
+</li>
+<li><p>進入後點擊下方的 「Test」，選取 「Status code: Code is 200」會生成一段程式碼 → 按 Save 儲存。</p>
+</li>
+<li><p>按下 Run<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_15.png?alt=media&token=22e3088e-c028-43b1-81b6-53d6fb1b7688" alt="// 按下 Run"></p>
+</li>
+<li><p>點擊 「Run 商品資訊 API Test」→ 就可以直接把所有要測試的 API 一次測試完囉 !<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_16.png?alt=media&token=5a263257-e40f-4c52-b79a-b9c7908ed897" alt="// 點擊Run 商品資訊 API Test 按鈕"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_17.png?alt=media&token=742de7d0-577c-4e3d-96af-83afb3cd86ae" alt="// 所有API一次測試完成"></p>
+</li>
+</ol>
+<h2 id="模擬測試單支-API"><a href="#模擬測試單支-API" class="headerlink" title="模擬測試單支 API"></a>模擬測試單支 API</h2><p>這邊依上方 API 文件中的 “ [Get] 取得單一產品詳細資訊 “ 為例 ，測試此 API 使否可使用。</p>
+<ol>
+<li><p>新增請求</p>
+<ol>
+<li><p>快捷鍵</p>
+<ul>
+<li>Mac : <code>Command</code> + <code>N</code></li>
+<li>Windows : <code>Ctrl</code> + <code>N</code></li>
+</ul>
+</li>
+<li><p>面板上的 <code>New</code> 或  <code>+</code>。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_18_%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8F.png?alt=media&token=ba736b5c-6b44-4b00-ae81-f0494f34677c" alt="// 新增請求方式"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_19_%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8FHTTPRequest.png?alt=media&token=a9354d72-abe8-4d21-ad36-8605e94e4136" alt="// 新增請求方式HTTPRequest"></p>
+</li>
+</ol>
+</li>
+<li><p>選取請求方式 GET<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_20_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_01.png?alt=media&token=4e8164f2-d8e6-440e-8db6-6b79604ebf0f" alt="// 單支API測試_01"></p>
+</li>
+<li><p>複製 API 文件中的 API Url 與 API Path，貼入後方欄位</p>
+<ol>
+<li><p>API Path 中 <code>:id</code> 部份已事先查詢，可參考上方操作步驟 Step3. 4( <code>Y4agVBkW3c2Y5q9U</code> )。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_21_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_02.png?alt=media&token=cbe91f0c-2cfb-4b23-9462-e40d366a368c" alt="// 單支API測試_02"><br> <small>&#x2F;&#x2F; <a href="https://www.notion.so/Get-b214c92e0a504d9bbaf14f0b7d8efa15">[Get] 取得單一產品詳細資訊</a> 文件 ▲</small></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_22_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_03.png?alt=media&token=af7aa666-4361-4a2d-bf4a-a3e1dd86aa11" alt="// 單支API測試_03"><br> <small>&#x2F;&#x2F; 複製 API 文件中的 API Url 與 API Path 貼入欄位內 ▲</small></p>
+</li>
+</ol>
+</li>
+<li><p>按下 Send 按鈕測試 HTTP Status 為 200，下方出現此筆 id 相關資訊，成功 !<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_23_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_04.png?alt=media&token=0efa521c-2d1b-4c1d-8949-4b905182ac4e" alt="// 單支API測試_04"></p>
+</li>
+</ol>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a href="https://www.hexschool.com/courses/escape.html">六角學院 - 前端密室逃脫</a></li>
+<li><a href="https://israynotarray.com/other/20211207/427026/">跟著我一起快速入門 Postman 吧！</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Postman</tag>
+        <tag>API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tilt.js 套件 - 3D 互動效果</title>
+    <url>/plugin/20230327/3538132004/</url>
+    <content><![CDATA[<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/gif%2Ftilt.js%E5%A5%97%E4%BB%B63D%20%E4%BA%92%E5%8B%95%E6%95%88%E6%9E%9C_01.gif?alt=media&token=671dbfac-d395-4789-b09d-5d54e271072e" alt=" // 2022 The F2E 官網互動效果"></p>
+<h2 id="套件版本"><a href="#套件版本" class="headerlink" title="套件版本"></a>套件版本</h2><p>該套件有兩種版本：</p>
+<ol>
+<li>jQuery 版：<a href="http://gijsroge.github.io/tilt.js/">Tilt.js</a>。</li>
+<li>JS 版：<a href="https://micku7zu.github.io/vanilla-tilt.js/">Vanilla-Tilt</a>。( 本筆記使用此版 )</li>
+</ol>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>可使用 ① npm 、② 下載文件中的 js 檔到專案內、③ <a href="https://cdnjs.com/libraries/vanilla-tilt">CDN 方式</a> ( 本筆記使用方式 )。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js</span><br></pre></td></tr></table></figure>
+
+<h2 id="結構"><a href="#結構" class="headerlink" title="結構"></a>結構</h2><p>tilt.js 套件的套用方式 ① HTML ② JS 可擇一選擇。</p>
+<p>① HTML 方式</p>
+<p><a href="https://codepen.io/echocarriet/pen/PoaoMow">Codepen 範例</a></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;網址&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">data-tilt</span> </span></span><br><span class="line"><span class="tag"><span class="attr">data-tilt-max</span>=<span class="string">&quot;25&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">data-tilt-scale</span>=<span class="string">&quot;1.1&quot;</span> </span></span><br><span class="line"><span class="tag">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在要套用的元素先加上 <code>data-tilt</code>，再依序於 <code>data-tilt-</code> 後方加上想要的效果屬性與數值，如果要傾斜角度 25 度，則為 <code>data-tilt-max=&quot;25&quot;</code>。</li>
+</ul>
+<p>② JS 方式</p>
+<p><a href="https://codepen.io/echocarriet/pen/JjZjgom">Codepen 範例</a></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用.querySelector() 方式來選取要操作的 DOM。</span></span><br><span class="line"><span class="title class_">VanillaTilt</span>.<span class="title function_">init</span>(<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;選擇器&#x27;</span>), &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>直接把效果寫在 <code>&#123;&#125;</code> 中。</li>
+</ul>
+<h2 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h2><ul>
+<li><code>reverse</code>：反轉傾斜方向</li>
+<li><code>max</code>：最大傾斜旋轉角度</li>
+<li><code>startX</code>：X 軸上的起始傾斜度，以度為單位</li>
+<li><code>startY</code>：Y 軸上的起始傾斜度，以度為單位</li>
+<li><code>perspective</code>：變換透視，越低傾斜越極端。可參考<a href="https://micku7zu.github.io/vanilla-tilt.js/">文件</a>中的 「 Creating a parallax effect 」。</li>
+<li><code>scale</code>：hover 放大多少 (  2 &#x3D; 200%, 1.5 &#x3D; 150%, etc.. )</li>
+<li><code>speed</code>：hover 進入 &#x2F; 退出轉換的速度。( 傾斜轉換的速度 )</li>
+<li><code>transition</code>：hover 進入 &#x2F; 退出的設置轉換。</li>
+<li><code>axis</code>：要禁用哪個軸 ( X 或 Ｙ )</li>
+<li><code>reset</code>：傾斜效果必須在退出時重置</li>
+<li><code>easing</code>：hover 進入 &#x2F; 退出時的緩衝。</li>
+<li><code>glare</code>：是否開啟眩光效果。</li>
+<li><code>&quot;max-glare&quot;</code>：最大炫光不透明度</li>
+<li><code>&quot;glare-prerender&quot;</code>：</li>
+<li><code>&quot;mouse-event-element&quot;</code>：用滑鼠事件監聽 CSS 選擇器或 HTML 元素。</li>
+<li><code>gyroscope</code>：啟用&#x2F;禁用設備方向檢測的布林值。</li>
+<li><code>gyroscopeMinAngleX</code>：這是 X 軸上設備角度的下限，這意味著以該角度旋轉的設備會傾斜元素，就好像鼠標在元素的底部邊框上一樣。</li>
+<li><code>gyroscopeMaxAngleX</code>：這是 X 軸上設備角度的上限，這意味著以該角度旋轉的設備會傾斜元素，就好像鼠標在元素的底部邊框上一樣。</li>
+<li><code>gyroscopeMinAngleY</code>：這是 Y 軸上設備角度的下限，這意味著以該角度旋轉的設備會傾斜元素，就好像鼠標在元素的底部邊框上一樣。</li>
+<li><code>gyroscopeMaxAngleY</code>：這是 Y 軸上設備角度的上限，這意味著以該角度旋轉的設備會傾斜元素，就好像鼠標在元素的底部邊框上一樣。</li>
+</ul>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a href="https://hackmd.io/ofJD4K7iSI65V19zxC7d0w">2022 TheF2E 攻略資源</a></li>
+<li><a href="https://www.notion.so/tilt-js-3D-a8f08b6743b940cba680813d5db33ca4">Vanilla-Tilt</a> [官方文件](<a href="https://micku7zu.github.io/vanill">https://micku7zu.github.io/vanill</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>plugin</category>
+      </categories>
+      <tags>
+        <tag>vanilla-tilt.js</tag>
+        <tag>tilt.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>客製 Sass 模組化設計</title>
+    <url>/scss/20230327/3866487804/</url>
+    <content><![CDATA[<h2 id="❒-前言"><a href="#❒-前言" class="headerlink" title="❒ 前言"></a>❒ 前言</h2><p>自訂 Sass Module ( 像 BS ) 上傳 GitHub 並於要使用的專案中安裝使用，就不需要每次開發都重新架設環境，可加速開發效率。</p>
+<p>此文將會提到 ➀ 客製 Sass 模組化 ➁ 升級模組框架並新增版本號 ➂ 於專案引用不同版本號模組。</p>
+<h2 id="❒-使用環境"><a href="#❒-使用環境" class="headerlink" title="❒ 使用環境"></a>❒ 使用環境</h2><ul>
+<li>VSCode<ul>
+<li>Live Sass Compiler 套件</li>
+<li>Live Server 套件</li>
+</ul>
+</li>
+<li>npm ( 管理模組 )</li>
+<li>Git ( 做版本控制 )</li>
+<li>GitHub ( 模組上傳至此，方便更新版本並隨時於新專案安裝使用 )</li>
+</ul>
+<h2 id="❒-流程"><a href="#❒-流程" class="headerlink" title="❒ 流程"></a>❒ 流程</h2><ol>
+<li>建立一個框架，並包含變數、基本樣式、Package.json。</li>
+<li>上傳到 GitHub。</li>
+<li>建立一個專案，引用該框架內容。</li>
+<li>升級框架，並增加版本號。</li>
+<li>專案升級，選擇特定版本號。</li>
+<li>預設值覆蓋。</li>
+</ol>
+<h2 id="❒-為何需要預先定義模組"><a href="#❒-為何需要預先定義模組" class="headerlink" title="❒ 為何需要預先定義模組"></a>❒ 為何需要預先定義模組</h2><ul>
+<li>Dry ( Don’t repeat your self )，重複的事情別一直做。</li>
+<li>確保團隊開發視覺一致</li>
+<li>依據公司需求客製的擴展性</li>
+<li>視覺設計<ul>
+<li>設計具有參考</li>
+<li>設計語言部會隨著專案不同而改變</li>
+<li>模組受到版本控制</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-客製-Sass-模組並上傳至-GitHub"><a href="#❒-客製-Sass-模組並上傳至-GitHub" class="headerlink" title="❒ 客製 Sass 模組並上傳至 GitHub"></a>❒ 客製 Sass 模組並上傳至 GitHub</h2><h3 id="❶-建立-Sass-模組化的資料夾，使用-npm-操作版控"><a href="#❶-建立-Sass-模組化的資料夾，使用-npm-操作版控" class="headerlink" title="❶ 建立 Sass 模組化的資料夾，使用 npm 操作版控"></a>❶ 建立 Sass 模組化的資料夾，使用 npm 操作版控</h3><ul>
+<li><p>本地端新增專案資料夾 SassModuleNote_sample ( 可自行命名 )。</p>
+</li>
+<li><p>npm 版控，先初始化 <code>npm init</code>。</p>
+<ul>
+<li>專案內會產生 package.json 檔案。</li>
+<li>package.json 內的 <code>&quot;name&quot;</code> 為專案名稱  SassModuleNote_sample，從 GitHub 拉下的資料夾也會是相同名。</li>
+</ul>
+</li>
+<li><p>專案內新增 scss 檔案 :</p>
+<ul>
+<li><p>可參考 Bootstrap GitHub 中的 scss 資料夾來製作自己的 Sass 模組化資料，製作好後就可以進入下個步驟上傳至 GitHub。</p>
+<ul>
+<li><a href="https://github.com/twbs/bootstrap/tree/v5.2.3/scss">版本號 v5.2.3</a></li>
+</ul>
+</li>
+<li><p><code>_variables.scss</code> ( 不會被編譯 )</p>
+</li>
+<li><p><code>SassModuleNote_sample.scss</code> ( 會被編譯 )</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// _variables.scss</span></span><br><span class="line"><span class="variable">$primary-color</span>: <span class="number">#00cc99</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SassModuleNote_sample.scss</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;variables&quot;</span>; </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>目前未調整編譯後的 css 檔案位置，先不要點擊 VSCode 下方的 Watch Sass。</p>
+</li>
+</ul>
+<h3 id="❷-調整-Sass-檔案輸出的位置"><a href="#❷-調整-Sass-檔案輸出的位置" class="headerlink" title="❷ 調整 Sass 檔案輸出的位置"></a>❷ 調整 Sass 檔案輸出的位置</h3><p>專案路徑 : VSCode 設定 &#x2F; 工作區 ( Workspace ) &#x2F; 開啟 JSON 設定 : settings.json</p>
+<p><strong>自訂 Sass 輸出位置 settings.json</strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ----- 工作區 settings.json</span></span><br><span class="line"><span class="attr">&quot;liveSassCompile.settings.formats&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"> <span class="comment">// This is Default. 為展開的形式</span></span><br><span class="line"> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;expanded&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;extensionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.css&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/dist/css&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="comment">// You can add more 為壓縮的形式</span></span><br><span class="line"> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;compressed&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;extensionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.min.css&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/dist/css&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&quot;savePath&quot;</code> 中編譯後的 css 檔案可自訂要放哪個位置。</li>
+<li>調整好後，點擊 VSCode 下方的 Watch Sass 就會編譯出 dist 資料夾內含 css 檔 ( 展開與壓縮格式的 css 檔 )。</li>
+</ul>
+<p><strong>補充 :</strong></p>
+<ul>
+<li>format : 編譯後的 CSS 格式。<ul>
+<li>expanded : 未壓縮。</li>
+<li>compressed : 壓縮。</li>
+</ul>
+</li>
+<li>extensionName : 編譯後產生的副檔名。</li>
+<li>savePath : 此檔案儲存的路徑，請自行調整路徑。</li>
+</ul>
+<h3 id="❸-上傳至-GitHub"><a href="#❸-上傳至-GitHub" class="headerlink" title="❸ 上傳至 GitHub"></a>❸ 上傳至 GitHub</h3><p><strong>➀ 專案執行 git 指令做版控</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m<span class="string">&quot;update 1.0.0&quot;</span> (package.json中的version，請自行更換名稱)</span><br></pre></td></tr></table></figure>
+
+<p><strong>➁ 於 GitHub 新增 Res，把模組化專案上傳至 GitHub</strong></p>
+<ul>
+<li>把 GitHub 中 <code>…or push an existing repository from the command line</code> 內的指令複製貼入 VSCode 終端機。</li>
+</ul>
+<h2 id="❒-於新專案中使用剛上傳至-GitHub-的客製-Sass-模組"><a href="#❒-於新專案中使用剛上傳至-GitHub-的客製-Sass-模組" class="headerlink" title="❒ 於新專案中使用剛上傳至 GitHub 的客製 Sass 模組"></a>❒ 於新專案中使用剛上傳至 GitHub 的客製 Sass 模組</h2><h3 id="❹-把剛上傳的-Sass-模組化拉下來新專案使用"><a href="#❹-把剛上傳的-Sass-模組化拉下來新專案使用" class="headerlink" title="❹ 把剛上傳的 Sass 模組化拉下來新專案使用"></a>❹ 把剛上傳的 Sass 模組化拉下來新專案使用</h3><p>完成上方 ❶ ～ ❸ 步驟後，之後有新的專案，就可以使用下面方式把自製的 Sass 模組化資料夾拉下來使用囉！ ( 拉下來後會顯示在 <code>node_module</code> 資料夾內 )</p>
+<ol>
+<li><p>本地端新增一個名為 project  專案資料夾。</p>
+</li>
+<li><p>複製剛上傳 GitHub 模組化專案 ( SassModuleNote_sample  ) 的連結。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_01.png?alt=media&token=f21c463e-43cb-4115-9650-c064586fc409" alt="// GitHub 模組化專案的 SSH URL"></p>
+</li>
+<li><p>project 專案拉進 VSCode  → 終端機執行初始化指令 <code>npm init</code> ( 如果沒有做細部設定可直接一直按 Enter ) → 終端機內輸入指令 <code>npm install 步驟2的URL —-save</code>。</p>
+<ol>
+<li><p>加上 <code>--save</code> 除了會把 GitHub 模組化專案的框架內容直接存於 package.json，也會把 GitHub 模組化專案的框架拉下來。框架拉下來後可於 <code>node_module</code> 資料夾內看見。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_02.png?alt=media&token=4f9e3d52-90e4-491c-8b0d-1083a51bbef3" alt="// node_module 資料夾"></p>
+</li>
+</ol>
+</li>
+<li><p>專案內新增 index.html 與 scss 資料夾與檔案</p>
+<ol>
+<li>專案 &#x2F; scss 資料夾 &#x2F; all.scss<ol>
+<li><p>all.scss 裏面引入客製模組的 ➀ 所有 scss ② 所需的 scss 檔案，擇一即可。</p>
+ <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 引入SassModuleNote_sample專案內所有scss檔案</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/SassModuleNote_sample/scss/SassModuleNote_sample&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入SassModuleNote_sample專案所需的scss檔案,以變數為例</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/SassModuleNote_sample/scss/_variables&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按下 Watch Sass 前請先參考「 ❷ 調整 Sass 檔案輸出的位置 」調整編譯出來的 css 檔案位置。</p>
+</li>
+</ol>
+</li>
+<li>專案 &#x2F; index.html 匯入編譯後的 css 檔案，上方 4.ii 就可以套用自製的模組囉！</li>
+</ol>
+</li>
+<li><p>如果自製的模組有分不同版本號，抓下來沒選要安裝哪個版本號就會抓下最新版的，想要在專案中使用特定版本號可參考下方「❒ 新專案中引用 Sass 某版本號模組化 」做法。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_03.png?alt=media&token=64828d03-57ef-4d97-9ea1-9d9fd0e1744d" alt="// 沒顯示版本號"></p>
+</li>
+</ol>
+<h2 id="❒-Sass-模組化於-GitHub-Res-做版本號更新"><a href="#❒-Sass-模組化於-GitHub-Res-做版本號更新" class="headerlink" title="❒ Sass 模組化於 GitHub Res 做版本號更新"></a>❒ Sass 模組化於 GitHub Res 做版本號更新</h2><p>隨著日後維護會有更新我們自己客製 Sass 模組化資料的需求，可參考下面方法來替不同時期的 Sass 模組化資料標記上不同的標籤。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_04.png?alt=media&token=cf5fb0a7-b034-4353-965a-bf1fb3f2edc9" alt="// BS GitHub 標籤上的版本號(https://github.com/twbs/bootstrap) "></p>
+<p><strong>有兩種方式可於 Sass 模組化加上不同版本號的標籤 ( tags )：</strong></p>
+<ol>
+<li>使用 Source Tree 。</li>
+<li>使用指令方式。</li>
+</ol>
+<h3 id="❶-Source-Tree-加上標籤-tags"><a href="#❶-Source-Tree-加上標籤-tags" class="headerlink" title="❶ Source Tree 加上標籤 tags"></a>❶ Source Tree 加上標籤 tags</h3><ol>
+<li><p>於要加上版本號的 commit 點上，點擊右鍵 Tag 於視窗中的 Tag Name 加入標籤名稱 ( 例，v1.0.0 )。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_05.png?alt=media&token=197806ba-4912-4e3b-a694-2fe6e0a6f9be" alt="// SourceTree 示意圖"></p>
+</li>
+<li><p>VSCode 中使用指令推上去 GitHub → <code>git push origin --tags</code></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_06.png?alt=media&token=ef06dde9-97ef-4a7d-ba2c-c527270c2604" alt="// GitHub Res 顯示版本號"></p>
+</li>
+</ol>
+<h3 id="❷-使用語法加上標籤-tags"><a href="#❷-使用語法加上標籤-tags" class="headerlink" title="❷ 使用語法加上標籤 tags"></a>❷ 使用語法加上標籤 tags</h3><ul>
+<li><p>使用 <code>git log</code> 查詢要加上版本號 commit 點的 SHA-1 值。如果想在某個 commit 加上標籤 → <code>$ git tag 標籤名 commit的SHA-1值前六碼</code> ( <a href="https://gitbook.tw/chapters/tag/using-tag">文章</a> )</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag v1.0.0 d550d5</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>記得要在推上去 GitHub 做更新 → <code>git push origin --tags</code>，GitHub 就可以看到剛剛新增的 v1.0.0 版本號囉 ！( <code>git push 遠端節點名稱 —-tags</code> )</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_07.png?alt=media&token=f35f00d6-d2c4-458f-9287-50ff3b55bbfc" alt="// GitHub 示意圖"></p>
+</li>
+</ul>
+<h2 id="❒-新專案中引用-Sass-某版本號模組化"><a href="#❒-新專案中引用-Sass-某版本號模組化" class="headerlink" title="❒ 新專案中引用 Sass 某版本號模組化"></a>❒ 新專案中引用 Sass 某版本號模組化</h2><ol>
+<li><p>如果要引用新模組化的專案，但本地端已經有拉下舊的模組化就需要先反安裝 package.json 中的 “dependencies” → <code>npm uninstall GitHub數據庫URL --save</code>。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 以上方自己客製的 Sass powerful framework 專案為例</span><br><span class="line">$ npm uninstall github:echocarriet/powerful_framework --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再安裝要的版本號模組 → <code>npm install Github數據庫URL\#版本號 --save</code>，可見 “dependencies”: 路徑後方多了版本號，並重新按一次 VSCode 的 Watch Sass 做編譯，版本號會透過 package.json 做管理。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install git@github.com:echocarriet/SassModuleNote_sample.git\<span class="comment">#v1.0.0 --save</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_08.png?alt=media&token=b21425d5-a241-44ec-893b-590b0d538a52" alt="// 專案中的 package.json 顯示目前安裝的版本號"></p>
+</li>
+</ol>
+<p><strong>如果想要在專案使用其他版本號，例如 v1.0.1，有兩個方式：</strong></p>
+<p>➀ 使用指令</p>
+<p>下指令 <code>npm install Github數據庫URL\#版本號 --save</code>，專案的 package.json 內可見 “dependencies” 路徑後方會顯示版本號 v1.0.1。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install git@github.com:echocarriet/SassModuleNote_sample.git\<span class="comment">#v1.0.1 --save</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_09.png?alt=media&token=30273626-379a-487a-84cd-ed096264788a" alt="// package.json 內可見 &quot;dependencies” 版本號為 v1.0.1"></p>
+<p>② 於專案的 package.json 修改</p>
+<ol>
+<li><p>開啟專案 &#x2F; package.json 中的 “dependencies” 直接在路徑後方修改版本號</p>
+ <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// package.json </span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;powerful-framework&quot;</span><span class="punctuation">:</span> <span class="string">&quot;github:echocarriet/powerful_framework#1.0.1&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接著刪除整個 node_module 資料夾 → 執行 <code>npm install</code> 它就會載回 package.json 內的資訊包含剛剛我們修改的新的版本號 v1.0.1 模組。</p>
+</li>
+</ol>
+<h2 id="❒-此文自製-Sass-模組的-GitHub-Res-Demo"><a href="#❒-此文自製-Sass-模組的-GitHub-Res-Demo" class="headerlink" title="❒ 此文自製 Sass 模組的 GitHub Res Demo"></a>❒ 此文自製 Sass 模組的 GitHub Res Demo</h2><p><a href="https://github.com/echocarriet/SassModuleNote_sample">GitHub Res</a></p>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a href="https://www.casper.tw/css/2016/12/20/sass-folder/">卡斯伯 - Sass 資料夾結構</a></li>
+<li>六角學院<ul>
+<li>中大型 CSS 專案 實戰管理術 ( 直播課程 ) - 模組化設計</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Scss</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>使用git新增版本號</tag>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
 </search>

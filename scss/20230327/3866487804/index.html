@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="此文將會提到 ➀ 客製 Sass 模組化 ➁ 升級模組框架並新增版本號 ➂ 於專案引用不同版本號模組。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="客製 Sass 模組化設計">
+<meta property="og:url" content="https://echocarriet.github.io/scss/20230327/3866487804/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="此文將會提到 ➀ 客製 Sass 模組化 ➁ 升級模組框架並新增版本號 ➂ 於專案引用不同版本號模組。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_01.png?alt=media&token=f21c463e-43cb-4115-9650-c064586fc409">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_02.png?alt=media&token=4f9e3d52-90e4-491c-8b0d-1083a51bbef3">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_03.png?alt=media&token=64828d03-57ef-4d97-9ea1-9d9fd0e1744d">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_04.png?alt=media&token=cf5fb0a7-b034-4353-965a-bf1fb3f2edc9">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_05.png?alt=media&token=197806ba-4912-4e3b-a694-2fe6e0a6f9be">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_06.png?alt=media&token=ef06dde9-97ef-4a7d-ba2c-c527270c2604">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_07.png?alt=media&token=f35f00d6-d2c4-458f-9287-50ff3b55bbfc">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_08.png?alt=media&token=b21425d5-a241-44ec-893b-590b0d538a52">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_09.png?alt=media&token=30273626-379a-487a-84cd-ed096264788a">
+<meta property="article:published_time" content="2023-03-27T07:57:08.000Z">
+<meta property="article:modified_time" content="2023-03-27T07:57:47.767Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="使用git新增版本號">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_01.png?alt=media&token=f21c463e-43cb-4115-9650-c064586fc409">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/scss/20230327/3866487804/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/scss/20230327/3866487804/","path":"scss/20230327/3866487804/","title":"客製 Sass 模組化設計"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>客製 Sass 模組化設計 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">❒ 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E4%BD%BF%E7%94%A8%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">❒ 使用環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">❒ 流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81%E9%A0%90%E5%85%88%E5%AE%9A%E7%BE%A9%E6%A8%A1%E7%B5%84"><span class="nav-number">4.</span> <span class="nav-text">❒ 為何需要預先定義模組</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%AE%A2%E8%A3%BD-Sass-%E6%A8%A1%E7%B5%84%E4%B8%A6%E4%B8%8A%E5%82%B3%E8%87%B3-GitHub"><span class="nav-number">5.</span> <span class="nav-text">❒ 客製 Sass 模組並上傳至 GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B6-%E5%BB%BA%E7%AB%8B-Sass-%E6%A8%A1%E7%B5%84%E5%8C%96%E7%9A%84%E8%B3%87%E6%96%99%E5%A4%BE%EF%BC%8C%E4%BD%BF%E7%94%A8-npm-%E6%93%8D%E4%BD%9C%E7%89%88%E6%8E%A7"><span class="nav-number">5.1.</span> <span class="nav-text">❶ 建立 Sass 模組化的資料夾，使用 npm 操作版控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B7-%E8%AA%BF%E6%95%B4-Sass-%E6%AA%94%E6%A1%88%E8%BC%B8%E5%87%BA%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">❷ 調整 Sass 檔案輸出的位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B8-%E4%B8%8A%E5%82%B3%E8%87%B3-GitHub"><span class="nav-number">5.3.</span> <span class="nav-text">❸ 上傳至 GitHub</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%96%BC%E6%96%B0%E5%B0%88%E6%A1%88%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%89%9B%E4%B8%8A%E5%82%B3%E8%87%B3-GitHub-%E7%9A%84%E5%AE%A2%E8%A3%BD-Sass-%E6%A8%A1%E7%B5%84"><span class="nav-number">6.</span> <span class="nav-text">❒ 於新專案中使用剛上傳至 GitHub 的客製 Sass 模組</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B9-%E6%8A%8A%E5%89%9B%E4%B8%8A%E5%82%B3%E7%9A%84-Sass-%E6%A8%A1%E7%B5%84%E5%8C%96%E6%8B%89%E4%B8%8B%E4%BE%86%E6%96%B0%E5%B0%88%E6%A1%88%E4%BD%BF%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">❹ 把剛上傳的 Sass 模組化拉下來新專案使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Sass-%E6%A8%A1%E7%B5%84%E5%8C%96%E6%96%BC-GitHub-Res-%E5%81%9A%E7%89%88%E6%9C%AC%E8%99%9F%E6%9B%B4%E6%96%B0"><span class="nav-number">7.</span> <span class="nav-text">❒ Sass 模組化於 GitHub Res 做版本號更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B6-Source-Tree-%E5%8A%A0%E4%B8%8A%E6%A8%99%E7%B1%A4-tags"><span class="nav-number">7.1.</span> <span class="nav-text">❶ Source Tree 加上標籤 tags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B7-%E4%BD%BF%E7%94%A8%E8%AA%9E%E6%B3%95%E5%8A%A0%E4%B8%8A%E6%A8%99%E7%B1%A4-tags"><span class="nav-number">7.2.</span> <span class="nav-text">❷ 使用語法加上標籤 tags</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%96%B0%E5%B0%88%E6%A1%88%E4%B8%AD%E5%BC%95%E7%94%A8-Sass-%E6%9F%90%E7%89%88%E6%9C%AC%E8%99%9F%E6%A8%A1%E7%B5%84%E5%8C%96"><span class="nav-number">8.</span> <span class="nav-text">❒ 新專案中引用 Sass 某版本號模組化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%AD%A4%E6%96%87%E8%87%AA%E8%A3%BD-Sass-%E6%A8%A1%E7%B5%84%E7%9A%84-GitHub-Res-Demo"><span class="nav-number">9.</span> <span class="nav-text">❒ 此文自製 Sass 模組的 GitHub Res Demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">10.</span> <span class="nav-text">❒ 參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/scss/20230327/3866487804/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="客製 Sass 模組化設計 | Hi, I'm Carrie">
+      <meta itemprop="description" content="此文將會提到 ➀ 客製 Sass 模組化 ➁ 升級模組框架並新增版本號 ➂ 於專案引用不同版本號模組。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          客製 Sass 模組化設計
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 15:57:08 / 修改時間：15:57:47" itemprop="dateCreated datePublished" datetime="2023-03-27T15:57:08+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/scss/" itemprop="url" rel="index"><span itemprop="name">Scss</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">此文將會提到 ➀ 客製 Sass 模組化 ➁ 升級模組框架並新增版本號 ➂ 於專案引用不同版本號模組。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-前言"><a href="#❒-前言" class="headerlink" title="❒ 前言"></a>❒ 前言</h2><p>自訂 Sass Module ( 像 BS ) 上傳 GitHub 並於要使用的專案中安裝使用，就不需要每次開發都重新架設環境，可加速開發效率。</p>
+<p>此文將會提到 ➀ 客製 Sass 模組化 ➁ 升級模組框架並新增版本號 ➂ 於專案引用不同版本號模組。</p>
+<h2 id="❒-使用環境"><a href="#❒-使用環境" class="headerlink" title="❒ 使用環境"></a>❒ 使用環境</h2><ul>
+<li>VSCode<ul>
+<li>Live Sass Compiler 套件</li>
+<li>Live Server 套件</li>
+</ul>
+</li>
+<li>npm ( 管理模組 )</li>
+<li>Git ( 做版本控制 )</li>
+<li>GitHub ( 模組上傳至此，方便更新版本並隨時於新專案安裝使用 )</li>
+</ul>
+<h2 id="❒-流程"><a href="#❒-流程" class="headerlink" title="❒ 流程"></a>❒ 流程</h2><ol>
+<li>建立一個框架，並包含變數、基本樣式、Package.json。</li>
+<li>上傳到 GitHub。</li>
+<li>建立一個專案，引用該框架內容。</li>
+<li>升級框架，並增加版本號。</li>
+<li>專案升級，選擇特定版本號。</li>
+<li>預設值覆蓋。</li>
+</ol>
+<h2 id="❒-為何需要預先定義模組"><a href="#❒-為何需要預先定義模組" class="headerlink" title="❒ 為何需要預先定義模組"></a>❒ 為何需要預先定義模組</h2><ul>
+<li>Dry ( Don’t repeat your self )，重複的事情別一直做。</li>
+<li>確保團隊開發視覺一致</li>
+<li>依據公司需求客製的擴展性</li>
+<li>視覺設計<ul>
+<li>設計具有參考</li>
+<li>設計語言部會隨著專案不同而改變</li>
+<li>模組受到版本控制</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-客製-Sass-模組並上傳至-GitHub"><a href="#❒-客製-Sass-模組並上傳至-GitHub" class="headerlink" title="❒ 客製 Sass 模組並上傳至 GitHub"></a>❒ 客製 Sass 模組並上傳至 GitHub</h2><h3 id="❶-建立-Sass-模組化的資料夾，使用-npm-操作版控"><a href="#❶-建立-Sass-模組化的資料夾，使用-npm-操作版控" class="headerlink" title="❶ 建立 Sass 模組化的資料夾，使用 npm 操作版控"></a>❶ 建立 Sass 模組化的資料夾，使用 npm 操作版控</h3><ul>
+<li><p>本地端新增專案資料夾 SassModuleNote_sample ( 可自行命名 )。</p>
+</li>
+<li><p>npm 版控，先初始化 <code>npm init</code>。</p>
+<ul>
+<li>專案內會產生 package.json 檔案。</li>
+<li>package.json 內的 <code>&quot;name&quot;</code> 為專案名稱  SassModuleNote_sample，從 GitHub 拉下的資料夾也會是相同名。</li>
+</ul>
+</li>
+<li><p>專案內新增 scss 檔案 :</p>
+<ul>
+<li><p>可參考 Bootstrap GitHub 中的 scss 資料夾來製作自己的 Sass 模組化資料，製作好後就可以進入下個步驟上傳至 GitHub。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/twbs/bootstrap/tree/v5.2.3/scss">版本號 v5.2.3</a></li>
+</ul>
+</li>
+<li><p><code>_variables.scss</code> ( 不會被編譯 )</p>
+</li>
+<li><p><code>SassModuleNote_sample.scss</code> ( 會被編譯 )</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// _variables.scss</span></span><br><span class="line"><span class="variable">$primary-color</span>: <span class="number">#00cc99</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SassModuleNote_sample.scss</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;variables&quot;</span>; </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>目前未調整編譯後的 css 檔案位置，先不要點擊 VSCode 下方的 Watch Sass。</p>
+</li>
+</ul>
+<h3 id="❷-調整-Sass-檔案輸出的位置"><a href="#❷-調整-Sass-檔案輸出的位置" class="headerlink" title="❷ 調整 Sass 檔案輸出的位置"></a>❷ 調整 Sass 檔案輸出的位置</h3><p>專案路徑 : VSCode 設定 &#x2F; 工作區 ( Workspace ) &#x2F; 開啟 JSON 設定 : settings.json</p>
+<p><strong>自訂 Sass 輸出位置 settings.json</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ----- 工作區 settings.json</span></span><br><span class="line"><span class="attr">&quot;liveSassCompile.settings.formats&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"> <span class="comment">// This is Default. 為展開的形式</span></span><br><span class="line"> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;expanded&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;extensionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.css&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/dist/css&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="comment">// You can add more 為壓縮的形式</span></span><br><span class="line"> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;compressed&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;extensionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.min.css&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/dist/css&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&quot;savePath&quot;</code> 中編譯後的 css 檔案可自訂要放哪個位置。</li>
+<li>調整好後，點擊 VSCode 下方的 Watch Sass 就會編譯出 dist 資料夾內含 css 檔 ( 展開與壓縮格式的 css 檔 )。</li>
+</ul>
+<p><strong>補充 :</strong></p>
+<ul>
+<li>format : 編譯後的 CSS 格式。<ul>
+<li>expanded : 未壓縮。</li>
+<li>compressed : 壓縮。</li>
+</ul>
+</li>
+<li>extensionName : 編譯後產生的副檔名。</li>
+<li>savePath : 此檔案儲存的路徑，請自行調整路徑。</li>
+</ul>
+<h3 id="❸-上傳至-GitHub"><a href="#❸-上傳至-GitHub" class="headerlink" title="❸ 上傳至 GitHub"></a>❸ 上傳至 GitHub</h3><p><strong>➀ 專案執行 git 指令做版控</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m<span class="string">&quot;update 1.0.0&quot;</span> (package.json中的version，請自行更換名稱)</span><br></pre></td></tr></table></figure>
+
+<p><strong>➁ 於 GitHub 新增 Res，把模組化專案上傳至 GitHub</strong></p>
+<ul>
+<li>把 GitHub 中 <code>…or push an existing repository from the command line</code> 內的指令複製貼入 VSCode 終端機。</li>
+</ul>
+<h2 id="❒-於新專案中使用剛上傳至-GitHub-的客製-Sass-模組"><a href="#❒-於新專案中使用剛上傳至-GitHub-的客製-Sass-模組" class="headerlink" title="❒ 於新專案中使用剛上傳至 GitHub 的客製 Sass 模組"></a>❒ 於新專案中使用剛上傳至 GitHub 的客製 Sass 模組</h2><h3 id="❹-把剛上傳的-Sass-模組化拉下來新專案使用"><a href="#❹-把剛上傳的-Sass-模組化拉下來新專案使用" class="headerlink" title="❹ 把剛上傳的 Sass 模組化拉下來新專案使用"></a>❹ 把剛上傳的 Sass 模組化拉下來新專案使用</h3><p>完成上方 ❶ ～ ❸ 步驟後，之後有新的專案，就可以使用下面方式把自製的 Sass 模組化資料夾拉下來使用囉！ ( 拉下來後會顯示在 <code>node_module</code> 資料夾內 )</p>
+<ol>
+<li><p>本地端新增一個名為 project  專案資料夾。</p>
+</li>
+<li><p>複製剛上傳 GitHub 模組化專案 ( SassModuleNote_sample  ) 的連結。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_01.png?alt=media&token=f21c463e-43cb-4115-9650-c064586fc409" alt="// GitHub 模組化專案的 SSH URL"></p>
+</li>
+<li><p>project 專案拉進 VSCode  → 終端機執行初始化指令 <code>npm init</code> ( 如果沒有做細部設定可直接一直按 Enter ) → 終端機內輸入指令 <code>npm install 步驟2的URL —-save</code>。</p>
+<ol>
+<li><p>加上 <code>--save</code> 除了會把 GitHub 模組化專案的框架內容直接存於 package.json，也會把 GitHub 模組化專案的框架拉下來。框架拉下來後可於 <code>node_module</code> 資料夾內看見。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_02.png?alt=media&token=4f9e3d52-90e4-491c-8b0d-1083a51bbef3" alt="// node_module 資料夾"></p>
+</li>
+</ol>
+</li>
+<li><p>專案內新增 index.html 與 scss 資料夾與檔案</p>
+<ol>
+<li>專案 &#x2F; scss 資料夾 &#x2F; all.scss<ol>
+<li><p>all.scss 裏面引入客製模組的 ➀ 所有 scss ② 所需的 scss 檔案，擇一即可。</p>
+ <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入SassModuleNote_sample專案內所有scss檔案</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/SassModuleNote_sample/scss/SassModuleNote_sample&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入SassModuleNote_sample專案所需的scss檔案,以變數為例</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/SassModuleNote_sample/scss/_variables&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按下 Watch Sass 前請先參考「 ❷ 調整 Sass 檔案輸出的位置 」調整編譯出來的 css 檔案位置。</p>
+</li>
+</ol>
+</li>
+<li>專案 &#x2F; index.html 匯入編譯後的 css 檔案，上方 4.ii 就可以套用自製的模組囉！</li>
+</ol>
+</li>
+<li><p>如果自製的模組有分不同版本號，抓下來沒選要安裝哪個版本號就會抓下最新版的，想要在專案中使用特定版本號可參考下方「❒ 新專案中引用 Sass 某版本號模組化 」做法。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_03.png?alt=media&token=64828d03-57ef-4d97-9ea1-9d9fd0e1744d" alt="// 沒顯示版本號"></p>
+</li>
+</ol>
+<h2 id="❒-Sass-模組化於-GitHub-Res-做版本號更新"><a href="#❒-Sass-模組化於-GitHub-Res-做版本號更新" class="headerlink" title="❒ Sass 模組化於 GitHub Res 做版本號更新"></a>❒ Sass 模組化於 GitHub Res 做版本號更新</h2><p>隨著日後維護會有更新我們自己客製 Sass 模組化資料的需求，可參考下面方法來替不同時期的 Sass 模組化資料標記上不同的標籤。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_04.png?alt=media&token=cf5fb0a7-b034-4353-965a-bf1fb3f2edc9" alt="// BS GitHub 標籤上的版本號(https://github.com/twbs/bootstrap) "></p>
+<p><strong>有兩種方式可於 Sass 模組化加上不同版本號的標籤 ( tags )：</strong></p>
+<ol>
+<li>使用 Source Tree 。</li>
+<li>使用指令方式。</li>
+</ol>
+<h3 id="❶-Source-Tree-加上標籤-tags"><a href="#❶-Source-Tree-加上標籤-tags" class="headerlink" title="❶ Source Tree 加上標籤 tags"></a>❶ Source Tree 加上標籤 tags</h3><ol>
+<li><p>於要加上版本號的 commit 點上，點擊右鍵 Tag 於視窗中的 Tag Name 加入標籤名稱 ( 例，v1.0.0 )。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_05.png?alt=media&token=197806ba-4912-4e3b-a694-2fe6e0a6f9be" alt="// SourceTree 示意圖"></p>
+</li>
+<li><p>VSCode 中使用指令推上去 GitHub → <code>git push origin --tags</code></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_06.png?alt=media&token=ef06dde9-97ef-4a7d-ba2c-c527270c2604" alt="// GitHub Res 顯示版本號"></p>
+</li>
+</ol>
+<h3 id="❷-使用語法加上標籤-tags"><a href="#❷-使用語法加上標籤-tags" class="headerlink" title="❷ 使用語法加上標籤 tags"></a>❷ 使用語法加上標籤 tags</h3><ul>
+<li><p>使用 <code>git log</code> 查詢要加上版本號 commit 點的 SHA-1 值。如果想在某個 commit 加上標籤 → <code>$ git tag 標籤名 commit的SHA-1值前六碼</code> ( <a target="_blank" rel="noopener" href="https://gitbook.tw/chapters/tag/using-tag">文章</a> )</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v1.0.0 d550d5</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>記得要在推上去 GitHub 做更新 → <code>git push origin --tags</code>，GitHub 就可以看到剛剛新增的 v1.0.0 版本號囉 ！( <code>git push 遠端節點名稱 —-tags</code> )</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_07.png?alt=media&token=f35f00d6-d2c4-458f-9287-50ff3b55bbfc" alt="// GitHub 示意圖"></p>
+</li>
+</ul>
+<h2 id="❒-新專案中引用-Sass-某版本號模組化"><a href="#❒-新專案中引用-Sass-某版本號模組化" class="headerlink" title="❒ 新專案中引用 Sass 某版本號模組化"></a>❒ 新專案中引用 Sass 某版本號模組化</h2><ol>
+<li><p>如果要引用新模組化的專案，但本地端已經有拉下舊的模組化就需要先反安裝 package.json 中的 “dependencies” → <code>npm uninstall GitHub數據庫URL --save</code>。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 以上方自己客製的 Sass powerful framework 專案為例</span><br><span class="line">$ npm uninstall github:echocarriet/powerful_framework --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再安裝要的版本號模組 → <code>npm install Github數據庫URL\#版本號 --save</code>，可見 “dependencies”: 路徑後方多了版本號，並重新按一次 VSCode 的 Watch Sass 做編譯，版本號會透過 package.json 做管理。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install git@github.com:echocarriet/SassModuleNote_sample.git\<span class="comment">#v1.0.0 --save</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_08.png?alt=media&token=b21425d5-a241-44ec-893b-590b0d538a52" alt="// 專案中的 package.json 顯示目前安裝的版本號"></p>
+</li>
+</ol>
+<p><strong>如果想要在專案使用其他版本號，例如 v1.0.1，有兩個方式：</strong></p>
+<p>➀ 使用指令</p>
+<p>下指令 <code>npm install Github數據庫URL\#版本號 --save</code>，專案的 package.json 內可見 “dependencies” 路徑後方會顯示版本號 v1.0.1。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install git@github.com:echocarriet/SassModuleNote_sample.git\<span class="comment">#v1.0.1 --save</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E5%AE%A2%E8%A3%BD%20Sass%20%E6%A8%A1%E7%B5%84%E5%8C%96%E8%A8%AD%E8%A8%88_09.png?alt=media&token=30273626-379a-487a-84cd-ed096264788a" alt="// package.json 內可見 &quot;dependencies” 版本號為 v1.0.1"></p>
+<p>② 於專案的 package.json 修改</p>
+<ol>
+<li><p>開啟專案 &#x2F; package.json 中的 “dependencies” 直接在路徑後方修改版本號</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json </span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;powerful-framework&quot;</span><span class="punctuation">:</span> <span class="string">&quot;github:echocarriet/powerful_framework#1.0.1&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接著刪除整個 node_module 資料夾 → 執行 <code>npm install</code> 它就會載回 package.json 內的資訊包含剛剛我們修改的新的版本號 v1.0.1 模組。</p>
+</li>
+</ol>
+<h2 id="❒-此文自製-Sass-模組的-GitHub-Res-Demo"><a href="#❒-此文自製-Sass-模組的-GitHub-Res-Demo" class="headerlink" title="❒ 此文自製 Sass 模組的 GitHub Res Demo"></a>❒ 此文自製 Sass 模組的 GitHub Res Demo</h2><p><a target="_blank" rel="noopener" href="https://github.com/echocarriet/SassModuleNote_sample">GitHub Res</a></p>
+<h2 id="❒-參考資訊"><a href="#❒-參考資訊" class="headerlink" title="❒ 參考資訊"></a>❒ 參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/css/2016/12/20/sass-folder/">卡斯伯 - Sass 資料夾結構</a></li>
+<li>六角學院<ul>
+<li>中大型 CSS 專案 實戰管理術 ( 直播課程 ) - 模組化設計</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/%E4%BD%BF%E7%94%A8git%E6%96%B0%E5%A2%9E%E7%89%88%E6%9C%AC%E8%99%9F/" rel="tag"># 使用git新增版本號</a>
+              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/plugin/20230327/3538132004/" rel="prev" title="tilt.js 套件 - 3D 互動效果">
+                  <i class="fa fa-chevron-left"></i> tilt.js 套件 - 3D 互動效果
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

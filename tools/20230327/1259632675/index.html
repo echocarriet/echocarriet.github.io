@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="API 測試神器，能快速測試 API 是否能正常運作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Postman 進行 API 測試">
+<meta property="og:url" content="https://echocarriet.github.io/tools/20230327/1259632675/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="API 測試神器，能快速測試 API 是否能正常運作。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_01.png?alt=media&token=b4d1dfd0-5fd0-44d4-a901-2675dc94c802">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_02_%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E5%91%BD%E5%90%8D.png?alt=media&token=5b3efda5-0882-4f3d-9e3a-6d36ebe17e26">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_03_%E6%8A%8AEnv%E6%94%B9%E7%82%BA%E6%96%B0%E5%91%BD%E5%90%8D%E7%9A%84%E5%90%8D%E5%AD%97.png?alt=media&token=d12dcd03-d47c-43b7-a118-0a5938561915">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_04_%E9%80%B2%E8%A1%8C%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8_(_Env_)_%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A.png?alt=media&token=d117fdde-3e74-4b71-ad2b-a890b4429977">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_05_Collections%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82.png?alt=media&token=7fb22180-cf0a-4a17-87ee-09ff4e471f47">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_06.png?alt=media&token=86746a29-c219-4e5e-a199-46e58028be08">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_07.png?alt=media&token=657a03f3-6d26-40bd-bcd4-f393b5f65613">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_08.png?alt=media&token=55ac6a55-3e2e-41bc-ae14-9d0c6daa8976">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_09.png?alt=media&token=5b31de63-c0b1-4a15-8144-228f9253ca21">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_10.png?alt=media&token=8c6e5f72-f061-4f27-973e-4dbe4e023270">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_11.png?alt=media&token=f8887b48-26c1-4ac3-96d3-c128c60ef382">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_12.png?alt=media&token=be040645-c545-4fad-b1e9-2a0a864e7fc4">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_13_%E6%96%B0%E5%A2%9E_request.png?alt=media&token=bcb6cd74-9c63-48ea-bb12-83d09d8f4569">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_14.png?alt=media&token=dce25a87-91bd-420d-a869-9feca14e3578">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_15.png?alt=media&token=22e3088e-c028-43b1-81b6-53d6fb1b7688">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_16.png?alt=media&token=5a263257-e40f-4c52-b79a-b9c7908ed897">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_17.png?alt=media&token=742de7d0-577c-4e3d-96af-83afb3cd86ae">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_18_%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8F.png?alt=media&token=ba736b5c-6b44-4b00-ae81-f0494f34677c">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_19_%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8FHTTPRequest.png?alt=media&token=a9354d72-abe8-4d21-ad36-8605e94e4136">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_20_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_01.png?alt=media&token=4e8164f2-d8e6-440e-8db6-6b79604ebf0f">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_21_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_02.png?alt=media&token=cbe91f0c-2cfb-4b23-9462-e40d366a368c">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_22_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_03.png?alt=media&token=af7aa666-4361-4a2d-bf4a-a3e1dd86aa11">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_23_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_04.png?alt=media&token=0efa521c-2d1b-4c1d-8949-4b905182ac4e">
+<meta property="article:published_time" content="2023-03-27T07:50:54.000Z">
+<meta property="article:modified_time" content="2023-03-27T07:54:06.550Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="Postman">
+<meta property="article:tag" content="API">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_01.png?alt=media&token=b4d1dfd0-5fd0-44d4-a901-2675dc94c802">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/tools/20230327/1259632675/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/tools/20230327/1259632675/","path":"tools/20230327/1259632675/","title":"使用 Postman 進行 API 測試"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用 Postman 進行 API 測試 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E6%88%B0%E7%9B%AE%E6%A8%99"><span class="nav-number">1.</span> <span class="nav-text">挑戰目標</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">API 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%A9%9F"><span class="nav-number">3.</span> <span class="nav-text">操作步驟</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-Postman-%E5%AE%89%E8%A3%9D"><span class="nav-number">3.1.</span> <span class="nav-text">Step1. Postman 安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8-Environments"><span class="nav-number">3.2.</span> <span class="nav-text">Step2. 建立環境變數 Environments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-%E5%BB%BA%E7%AB%8B%E6%94%B6%E8%97%8F-Collections"><span class="nav-number">3.3.</span> <span class="nav-text">Step3. 建立收藏 Collections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step4-%E8%87%AA%E5%8B%95-API-%E6%B8%AC%E8%A9%A6"><span class="nav-number">3.4.</span> <span class="nav-text">Step4. 自動 API 測試</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%93%AC%E6%B8%AC%E8%A9%A6%E5%96%AE%E6%94%AF-API"><span class="nav-number">4.</span> <span class="nav-text">模擬測試單支 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">5.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/tools/20230327/1259632675/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用 Postman 進行 API 測試 | Hi, I'm Carrie">
+      <meta itemprop="description" content="API 測試神器，能快速測試 API 是否能正常運作。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用 Postman 進行 API 測試
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-27 15:50:54 / 修改時間：15:54:06" itemprop="dateCreated datePublished" datetime="2023-03-27T15:50:54+08:00">2023-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/tools/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">API 測試神器，能快速測試 API 是否能正常運作。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="挑戰目標"><a href="#挑戰目標" class="headerlink" title="挑戰目標"></a>挑戰目標</h2><p>使用 Postman 建立 request 並搭配 Collections Test 測試五隻 API，HTTP Status 必須為 200。</p>
+<ul>
+<li>使用 Postman 建立 Env Url 變數</li>
+<li>建立 Collections Test 測試五隻 API，HTTP Status 必須為 200</li>
+</ul>
+<h2 id="API-文件"><a href="#API-文件" class="headerlink" title="API 文件"></a>API 文件</h2><p>怕洩漏到課程資訊，擷取六角 API 文件中關鍵資料，以文字方式呈現</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># [Get] 取得產品列表</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → GET</span><br><span class="line">## API Path → /api/shopping/v1/products?category=xxx</span><br><span class="line">## API Description → 若沒有帶入 Query 預設會回傳全部產品列表，若 category 不存在則也會回傳全部產品。</span><br><span class="line"></span><br><span class="line"># [Get] 取得單一產品詳細資訊</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → GET</span><br><span class="line">## API Path → /api/shopping/v1/product/:id</span><br><span class="line">## API Description → 取得單一產品詳細資訊，包含描述欄位。</span><br><span class="line">## Request Param → id (產品 ID，必填)</span><br><span class="line"></span><br><span class="line"># [Post] 新增產品</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → POST</span><br><span class="line">## API Path → /api/shopping/v1/product</span><br><span class="line">## API Description → 新增產品，請務必注意必填欄位與型別。</span><br><span class="line"></span><br><span class="line"># [Put] 編輯產品</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → PUT</span><br><span class="line">## API Path → /api/shopping/v1/product/:id</span><br><span class="line">## API Description → 編輯產品，請務必注意必填欄位與型別。</span><br><span class="line">## Request Param → ID (產品 ID)</span><br><span class="line"></span><br><span class="line"># [Patch] 修改產品狀態</span><br><span class="line">## API Url → https://hex-escape-room.herokuapp.com</span><br><span class="line">## HTTP Method → PATCH</span><br><span class="line">## API Path → /api/shopping/v1/product/:id</span><br><span class="line">## API Description → 修改產品狀態</span><br><span class="line">## Request Param → ID (產品 ID)</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作步驟"><a href="#操作步驟" class="headerlink" title="操作步驟"></a>操作步驟</h2><h3 id="Step1-Postman-安裝"><a href="#Step1-Postman-安裝" class="headerlink" title="Step1. Postman 安裝"></a>Step1. Postman 安裝</h3><p>文章 : <a target="_blank" rel="noopener" href="https://israynotarray.com/other/20211207/427026/">跟著我一起快速入門 Postman 吧！</a></p>
+<h3 id="Step2-建立環境變數-Environments"><a href="#Step2-建立環境變數-Environments" class="headerlink" title="Step2. 建立環境變數 Environments"></a>Step2. 建立環境變數 <strong><strong>Environments</strong></strong></h3><p>要測試的 5 支 API ，開頭網址皆為 <code>https://hex-escape-room.herokuapp.com</code> 的 API Url，可以先建立一個環境變數。</p>
+<ol>
+<li><p>點選左側欄 Environments ，進入後點擊 + 新增一個 Environments。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_01.png?alt=media&token=b4d1dfd0-5fd0-44d4-a901-2675dc94c802" alt="// 新增 Environments"></p>
+</li>
+<li><p>建立好環境變數 ( Env ) 後，進行命名 「商品資料 Env」。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_02_%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E5%91%BD%E5%90%8D.png?alt=media&token=5b3efda5-0882-4f3d-9e3a-6d36ebe17e26" alt="// 環境變數命名"></p>
+</li>
+<li><p>將環境變數 ( Env ) 改成剛編輯的名字 「商品資料 Env」。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_03_%E6%8A%8AEnv%E6%94%B9%E7%82%BA%E6%96%B0%E5%91%BD%E5%90%8D%E7%9A%84%E5%90%8D%E5%AD%97.png?alt=media&token=d12dcd03-d47c-43b7-a118-0a5938561915" alt="// 把 Env 改為新命名的名字"></p>
+</li>
+<li><p>進行環境變數 ( Env ) 相關設定</p>
+<ul>
+<li>VARIABLE 命名為 <code>API_URL</code>。</li>
+<li>INITIAL VALUE 填入要測試的 5支 API 相同開頭的網址<code>https://hex-escape-room.herokuapp.com</code>。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_04_%E9%80%B2%E8%A1%8C%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8_(_Env_)_%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A.png?alt=media&token=d117fdde-3e74-4b71-ad2b-a890b4429977" alt="// 進行環境變數 (Env) 相關設定"></li>
+</ul>
+</li>
+<li><p>最後記得按下 Save。</p>
+</li>
+</ol>
+<h3 id="Step3-建立收藏-Collections"><a href="#Step3-建立收藏-Collections" class="headerlink" title="Step3. 建立收藏 Collections"></a>Step3. 建立收藏 Collections</h3><ol>
+<li>進左側欄 Collections → 點擊 + create new collections。</li>
+<li>把 Collections 命名為 「商品資訊 API Test」。</li>
+<li>於 「商品資訊 API Test」新增請求 ( add request )。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_05_Collections%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82.png?alt=media&token=7fb22180-cf0a-4a17-87ee-09ff4e471f47" alt="// Collections新增請求"></li>
+<li>於 「商品資訊 API Test」新增請求 ( add request ) 後，依據 <a target="_blank" rel="noopener" href="https://www.notion.so/Post-man-API-ed3793ced5ac4cec98852e29c71b6372">公司給了五支 API</a> : <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>PATCH</code> 進行新增。<ol>
+<li><p><code>GET</code> 取得商品列表 ( 上方 API 文件 )</p>
+<ol>
+<li>把 request 名稱改為 「取得商品列表」。</li>
+<li>已設好環境變數，所以 Get 的網址調整為 <code>&#123;&#123;環境變數中的 VARIABLE&#125;&#125;取得商品列表的API Path</code>，按下 Sent 按鈕，如果 API 沒問題下方就會顯示 200 ok。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_06.png?alt=media&token=86746a29-c219-4e5e-a199-46e58028be08" alt="// 使用 Potman 進行 API 測試"></li>
+<li>記得按下 Save 可收藏請求。</li>
+</ol>
+</li>
+<li><p><code>GET</code> 取得單一產品詳細資訊 ( 上方 API 文件 )</p>
+<ol>
+<li>add request → 把 request 名稱改為 「取得單一產品詳細資訊」</li>
+<li>文件中的 Api Path 後方有 <code>:id</code>，把文件中 id 複製貼於 「取得單一產品詳細資訊」請求的 Path Variables 中。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_07.png?alt=media&token=657a03f3-6d26-40bd-bcd4-f393b5f65613" alt="// 把 API 文件中的 id 填入"><br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_08.png?alt=media&token=55ac6a55-3e2e-41bc-ae14-9d0c6daa8976" alt="// 把 API 文件中的 id 填入"></li>
+<li>按下 Send 按鈕測試 HTTP Status 是否為 200，沒問題的話記得按下 Save。</li>
+</ol>
+</li>
+<li><p><code>POST</code> 新增商品 ( 上方 API 文件 )</p>
+<ol>
+<li><p>add request → 把 request 名稱改為 「新增商品」→ methods 選 <code>POST</code> → 網址如步驟 2。</p>
+</li>
+<li><p>文件中表示 「新增產品，請務必注意必填欄位與型別。」，把文件中 Example JSON 程式碼貼於 body → raw → Text 選取 JSON。</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件中 Example JSON</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gNd4cp2u5NxXTTaT&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;KoboGame&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;game&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1000&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;超好玩遊戲&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_09.png?alt=media&token=5b31de63-c0b1-4a15-8144-228f9253ca21" alt="// 把文件中 Example JSON 程式碼貼於 body → raw → Text 選取 JSON"></p>
+</li>
+<li><p>出現 HTTP Status 400，老師有埋陷阱 XD，按照指使後，把屬性 price 的屬性值型別改為數字即可。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_10.png?alt=media&token=8c6e5f72-f061-4f27-973e-4dbe4e023270" alt="// 陷阱，把 price 屬性改為數字"></p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 調整後</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gNd4cp2u5NxXTTaT&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;KoboGame&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;game&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;price&quot;</span><span class="punctuation">:</span> <span class="number">1000</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;超好玩遊戲&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p><code>PUT</code> 編輯商品 ( 上方 API 文件 )</p>
+<ol>
+<li><p>API Path 出現 <code>:id</code>，依文件中 Example JSON 得知商品資訊，到 「取得商品列表」request 找此商品的 id，貼於 Params → Path Variables 的 id 中。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_11.png?alt=media&token=f8887b48-26c1-4ac3-96d3-c128c60ef382" alt="// 文件中Example JSON程式碼貼入Body→raw"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_12.png?alt=media&token=be040645-c545-4fad-b1e9-2a0a864e7fc4" alt="// 依文件中Example JSON得知商品資訊，到「取得商品列表」request找此商品的id"></p>
+</li>
+</ol>
+</li>
+<li><p><code>Patch</code> 修改商品狀態 ( 上方 API 文件 )</p>
+<ol>
+<li>依照步驟 3.d 。Params 的 id 可以到 「取的商品列表」request 隨便找一個商品 id 填入。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_13_%E6%96%B0%E5%A2%9E_request.png?alt=media&token=bcb6cd74-9c63-48ea-bb12-83d09d8f4569" alt="// 於 collections 新增請求(add request)"></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Step4-自動-API-測試"><a href="#Step4-自動-API-測試" class="headerlink" title="Step4. 自動 API 測試"></a>Step4. 自動 API 測試</h3><p>可參考文章中的 <a target="_blank" rel="noopener" href="https://israynotarray.com/other/20211207/427026/#%E8%87%AA%E5%8B%95-API-%E6%B8%AC%E8%A9%A6-Auto-Collection-Test">自動 API 測試 (Auto Collection Test)</a></p>
+<ol>
+<li><p>進左側欄 Collections → 點擊步驟 #2 新增的 「商品資訊 API Test」 收藏。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_14.png?alt=media&token=dce25a87-91bd-420d-a869-9feca14e3578" alt="// 收藏 Collections"></p>
+</li>
+<li><p>進入後點擊下方的 「Test」，選取 「Status code: Code is 200」會生成一段程式碼 → 按 Save 儲存。</p>
+</li>
+<li><p>按下 Run<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_15.png?alt=media&token=22e3088e-c028-43b1-81b6-53d6fb1b7688" alt="// 按下 Run"></p>
+</li>
+<li><p>點擊 「Run 商品資訊 API Test」→ 就可以直接把所有要測試的 API 一次測試完囉 !<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_16.png?alt=media&token=5a263257-e40f-4c52-b79a-b9c7908ed897" alt="// 點擊Run 商品資訊 API Test 按鈕"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_17.png?alt=media&token=742de7d0-577c-4e3d-96af-83afb3cd86ae" alt="// 所有API一次測試完成"></p>
+</li>
+</ol>
+<h2 id="模擬測試單支-API"><a href="#模擬測試單支-API" class="headerlink" title="模擬測試單支 API"></a>模擬測試單支 API</h2><p>這邊依上方 API 文件中的 “ [Get] 取得單一產品詳細資訊 “ 為例 ，測試此 API 使否可使用。</p>
+<ol>
+<li><p>新增請求</p>
+<ol>
+<li><p>快捷鍵</p>
+<ul>
+<li>Mac : <code>Command</code> + <code>N</code></li>
+<li>Windows : <code>Ctrl</code> + <code>N</code></li>
+</ul>
+</li>
+<li><p>面板上的 <code>New</code> 或  <code>+</code>。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_18_%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8F.png?alt=media&token=ba736b5c-6b44-4b00-ae81-f0494f34677c" alt="// 新增請求方式"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_19_%E6%96%B0%E5%A2%9E%E8%AB%8B%E6%B1%82%E6%96%B9%E5%BC%8FHTTPRequest.png?alt=media&token=a9354d72-abe8-4d21-ad36-8605e94e4136" alt="// 新增請求方式HTTPRequest"></p>
+</li>
+</ol>
+</li>
+<li><p>選取請求方式 GET<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_20_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_01.png?alt=media&token=4e8164f2-d8e6-440e-8db6-6b79604ebf0f" alt="// 單支API測試_01"></p>
+</li>
+<li><p>複製 API 文件中的 API Url 與 API Path，貼入後方欄位</p>
+<ol>
+<li><p>API Path 中 <code>:id</code> 部份已事先查詢，可參考上方操作步驟 Step3. 4( <code>Y4agVBkW3c2Y5q9U</code> )。<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_21_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_02.png?alt=media&token=cbe91f0c-2cfb-4b23-9462-e40d366a368c" alt="// 單支API測試_02"><br> <small>&#x2F;&#x2F; <a target="_blank" rel="noopener" href="https://www.notion.so/Get-b214c92e0a504d9bbaf14f0b7d8efa15">[Get] 取得單一產品詳細資訊</a> 文件 ▲</small></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_22_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_03.png?alt=media&token=af7aa666-4361-4a2d-bf4a-a3e1dd86aa11" alt="// 單支API測試_03"><br> <small>&#x2F;&#x2F; 複製 API 文件中的 API Url 與 API Path 貼入欄位內 ▲</small></p>
+</li>
+</ol>
+</li>
+<li><p>按下 Send 按鈕測試 HTTP Status 為 200，下方出現此筆 id 相關資訊，成功 !<br> <img src="https://firebasestorage.googleapis.com/v0/b/heycarrie-b5502.appspot.com/o/images%2F%E4%BD%BF%E7%94%A8Potman%E9%80%B2%E8%A1%8CAPI%E6%B8%AC%E8%A9%A6_23_%E5%96%AE%E6%94%AFAPI%E6%B8%AC%E8%A9%A6_04.png?alt=media&token=0efa521c-2d1b-4c1d-8949-4b905182ac4e" alt="// 單支API測試_04"></p>
+</li>
+</ol>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.hexschool.com/courses/escape.html">六角學院 - 前端密室逃脫</a></li>
+<li><a target="_blank" rel="noopener" href="https://israynotarray.com/other/20211207/427026/">跟著我一起快速入門 Postman 吧！</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Postman/" rel="tag"># Postman</a>
+              <a href="/tags/API/" rel="tag"># API</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/vue/20230327/1792293064/" rel="prev" title="簡述 Vue Cli 並以 GUI 介面操作">
+                  <i class="fa fa-chevron-left"></i> 簡述 Vue Cli 並以 GUI 介面操作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/plugin/20230327/3538132004/" rel="next" title="tilt.js 套件 - 3D 互動效果">
+                  tilt.js 套件 - 3D 互動效果 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>
