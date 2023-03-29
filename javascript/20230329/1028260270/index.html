@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="JS 函式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day14 | JS 函式">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230329/1028260270/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="JS 函式">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220929/20119743kuvOUCjf90.png">
+<meta property="article:published_time" content="2023-03-29T03:43:24.000Z">
+<meta property="article:modified_time" content="2023-03-29T03:44:27.523Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20220929/20119743kuvOUCjf90.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230329/1028260270/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230329/1028260270/","path":"javascript/20230329/1028260270/","title":"Day14 | JS 函式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day14 | JS 函式 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E8%A8%98%E4%BD%8F%EF%BC%8C%E5%87%BD%E5%BC%8F%E4%B9%9F%E6%98%AF%E7%89%A9%E4%BB%B6%E7%9A%84%E4%B8%80%E7%A8%AE"><span class="nav-number">1.</span> <span class="nav-text">❒ 記住，函式也是物件的一種</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%87%BD%E5%BC%8F%E5%AF%AB%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">❒ 函式寫法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%AE%9A%E7%BE%A9%E5%87%BD%E5%BC%8F%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">❒ 定義函式的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E5%87%BD%E5%BC%8F%E5%AE%A3%E5%91%8A"><span class="nav-number">3.1.</span> <span class="nav-text">➊ 函式宣告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E5%87%BD%E5%BC%8F%E8%A1%A8%E9%81%94%E5%BC%8F-%E5%87%BD%E5%BC%8F%E9%81%8B%E7%AE%97%E5%BC%8F-Function-Expression"><span class="nav-number">3.2.</span> <span class="nav-text">➋ 函式表達式 ( 函式運算式 ) Function Expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8C-%E4%BD%BF%E7%94%A8-new-Function-%E5%BB%BA%E7%AB%8B%E5%87%BD%E5%BC%8F"><span class="nav-number">3.3.</span> <span class="nav-text">➌ 使用 new Function 建立函式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E9%99%B3%E8%BF%B0%E5%BC%8F-Statement-%E8%88%87%E8%A1%A8%E9%81%94%E5%BC%8F-Expression"><span class="nav-number">4.</span> <span class="nav-text">❒ 陳述式 Statement 與表達式 Expression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E9%99%B3%E8%BF%B0%E5%BC%8F-Statement"><span class="nav-number">5.</span> <span class="nav-text">❒ 陳述式 Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E7%9A%84%E9%99%B3%E8%BF%B0%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">常見的陳述式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E8%A1%A8%E9%81%94%E5%BC%8F-%E9%81%8B%E7%AE%97%E5%BC%8F-Expression"><span class="nav-number">6.</span> <span class="nav-text">❒ 表達式 ( 運算式 ) Expression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E7%9A%84%E8%A1%A8%E9%81%94%E5%BC%8F"><span class="nav-number">6.1.</span> <span class="nav-text">常見的表達式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%87%BD%E5%BC%8F%E9%99%B3%E8%BF%B0%E5%BC%8F-Function-Statement-%E5%85%B7%E5%90%8D%E5%87%BD%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">❒ 函式陳述式 Function Statement ( 具名函式 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%87%BD%E5%BC%8F%E8%A1%A8%E9%81%94%E5%BC%8F-Function-Expression-%E5%8C%BF%E5%90%8D%E5%87%BD%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">❒ 函式表達式 Function Expression ( 匿名函式 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">9.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230329/1028260270/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day14 | JS 函式 | Hi, I'm Carrie">
+      <meta itemprop="description" content="JS 函式">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day14 | JS 函式
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-29 11:43:24 / 修改時間：11:44:27" itemprop="dateCreated datePublished" datetime="2023-03-29T11:43:24+08:00">2023-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">JS 函式</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-記住，函式也是物件的一種"><a href="#❒-記住，函式也是物件的一種" class="headerlink" title="❒ 記住，函式也是物件的一種"></a>❒ 記住，函式也是物件的一種</h2><p>雖然使用 <code>typeof</code> 檢查 <code>function</code> 會得到 <code>function</code> 的結果，但實際上 <code>function</code> 仍屬於 <code>object</code> 的一種。可以把它想像成被呼叫的特殊物件 ( 值 )。</p>
+<h2 id="❒-函式寫法"><a href="#❒-函式寫法" class="headerlink" title="❒ 函式寫法"></a>❒ 函式寫法</h2><p>函式寫法會包含下面三部分：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ----- 簡易範例</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myNmae</span>(<span class="params">parm</span>) &#123;</span><br><span class="line"> <span class="keyword">return</span> parm + parm;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 呼叫函式，就會執行此函式</span></span><br><span class="line"><span class="title function_">myNmae</span>(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>函式的名稱</strong><ul>
+<li>上方程式碼中 <code>myNmae</code> 部分，名稱可自訂名稱，也有可能沒有名稱，如下方定義函式的方式 - 函式表達式寫法。</li>
+</ul>
+</li>
+<li><strong>參數</strong><ul>
+<li><code>()</code> 裡的內容，如有多個參數可使用逗號隔開，上方程式中 <code>parm</code>。</li>
+</ul>
+</li>
+<li><strong>需重覆執行的內容</strong><ul>
+<li><code>&#123;&#125;</code> 大括號中的內容。</li>
+</ul>
+</li>
+</ol>
+<p>上方範例為函式宣告與呼叫方式，「 透過名為 <code>myName</code> 的關鍵字來宣告函式 」＆「 透過 <code>myNmae(5);</code> 呼叫 <code>myName</code> 函式 」，<code>myName</code> 函式裡的 <code>parm</code> 的值就會是 <code>myNmae(5);</code> 傳進來的 5，而 <code>parm + parm</code> 結果就會是 10。</p>
+<p>最後透過 <code>return</code> 回傳結果，如果沒有 <code>return</code> 回傳預設會回傳 <code>undefined</code>。</p>
+<h2 id="❒-定義函式的方式"><a href="#❒-定義函式的方式" class="headerlink" title="❒ 定義函式的方式"></a>❒ 定義函式的方式</h2><h3 id="➊-函式宣告"><a href="#➊-函式宣告" class="headerlink" title="➊ 函式宣告"></a>➊ 函式宣告</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">myName</span>(<span class="params">parm</span>)&#123;</span><br><span class="line"> <span class="keyword">return</span> parm + parm;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">myName</span>(<span class="number">5</span>); <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<p>函式宣告的方式較常使用。</p>
+<h3 id="➋-函式表達式-函式運算式-Function-Expression"><a href="#➋-函式表達式-函式運算式-Function-Expression" class="headerlink" title="➋ 函式表達式 ( 函式運算式 ) Function Expression"></a>➋ 函式表達式 ( 函式運算式 ) Function Expression</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 變數名稱 = function(參數)&#123;…&#125;</span></span><br><span class="line"><span class="comment">// 將函式透過 = 來指定給某個變數</span></span><br><span class="line"><span class="keyword">const</span> myName = <span class="keyword">function</span>(<span class="params">parm</span>) &#123;</span><br><span class="line"> <span class="keyword">return</span> parm + parm;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">myName</span>(<span class="number">5</span>); <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<p>與函式宣告不同，函式表達式 function 後方沒有名稱，也可稱「 匿名函式 」，但如果要加名稱也是可以，但它就只會在「 自己函式的區塊內 」也就是 <code>&#123;&#125;</code> 內有效。</p>
+<h3 id="➌-使用-new-Function-建立函式"><a href="#➌-使用-new-Function-建立函式" class="headerlink" title="➌ 使用 new Function 建立函式"></a>➌ 使用 <code>new Function</code> 建立函式</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 透過 new 來建立 Function 物件</span></span><br><span class="line"><span class="keyword">let</span> myName = <span class="keyword">new</span> <span class="title class_">Function</span>(<span class="string">&#x27;parm1&#x27;</span>, <span class="string">&#x27;parm2&#x27;</span>, <span class="string">&#x27; return parm1 + parm2 &#x27;</span>);</span><br><span class="line"><span class="title function_">myName</span>(<span class="number">5</span>, <span class="number">5</span>);  <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
+<p><code>new Function</code> 建立的函式物件，每次執行都會進行解析字串的動作 ( <code>&#39;return parm1 + parm2&#39;</code> ) ，所以效能較差，實務上較少使用。</p>
+<h2 id="❒-陳述式-Statement-與表達式-Expression"><a href="#❒-陳述式-Statement-與表達式-Expression" class="headerlink" title="❒ 陳述式 Statement 與表達式 Expression"></a>❒ 陳述式 Statement 與表達式 <strong>Expression</strong></h2><blockquote>
+<p><strong>陳述式 Statement → 不會回傳值。</strong><br><strong>表達式 Expression → 會回傳一個值。</strong></p>
+</blockquote>
+<ul>
+<li><p>JavaScript 語法基本上分為「 陳述式 statement 」與「 表達式 expression 」兩大類。</p>
+</li>
+<li><p>陳述式 ( statement ) 大多是一個片段或幾個詞彙，其中也會混用到表達式 ( statement ) 的詞彙。運作上表達式 ( statement ) 可以獨立出現，也可以與陳述式 ( statement ) 混用。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用函式陳述式宣告一個函式，但運行後回傳結果為表達式</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">number</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 呼叫函式，回傳結果</span></span><br><span class="line"><span class="title function_">number</span>();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="❒-陳述式-Statement"><a href="#❒-陳述式-Statement" class="headerlink" title="❒ 陳述式 Statement"></a>❒ 陳述式 Statement</h2><ul>
+<li><p>JavaScript 的語句類型，用於命令執行指定的一系列操作，最大的特徵是「 <strong>不會回傳結果</strong> 」。</p>
+</li>
+<li><p>陳述式不會回傳結果，所以無法賦予值在其他變數上，會顯示錯誤訊息。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 錯誤寫法:把 statement 賦予在 expression 上會顯示錯誤訊息，如下</span></span><br><span class="line"><span class="keyword">var</span> ming;</span><br><span class="line">ming = <span class="keyword">if</span> (<span class="number">1</span> === <span class="number">1</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;55&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>  <img src="https://ithelp.ithome.com.tw/upload/images/20220929/20119743kuvOUCjf90.png" alt="錯誤訊息"></p>
+</li>
+<li><p>如果程式碼中只有 <code>&#123;&#125;</code> 是物件不會是陳述式，需要在 <code>&#123;&#125;</code> 裡面加入程式碼才會變成陳述式。另外下方範例中 <code>&#123;&#125;</code> 內使用 <code>var</code> 宣告，外層可讀取到變數，但使用 <code>let</code>、<code>const</code> 外層是無法讀取到內層的 ming 變數。可參考後天的 「 Day 14 | 關於 let、 const、var  」文章。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// --- 正確寫法</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">var</span> ming = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// --- 錯誤寫法:陳述式不會回傳值所以不能賦予在變數上</span></span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line"> <span class="keyword">var</span> ming = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// --- 正確寫法</span></span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line"> ming = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意：下面兩種寫法所呈現出來的意思是完全不同的</span></span><br><span class="line"><span class="comment">//--- 陳述式</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">let</span> ming = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//--- 物件實字</span></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line"> ming = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="常見的陳述式"><a href="#常見的陳述式" class="headerlink" title="常見的陳述式"></a>常見的陳述式</h3><ul>
+<li>宣告 ( <code>var</code>、<code>let</code>、<code>const</code>、<code>function</code> )</li>
+<li><code>if .. else</code>、<code>switch</code> …</li>
+<li>迴圈 ( <code>for</code>  )</li>
+<li>陳述式完整分類可參考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements">MDN 文件</a>。</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 陳述式們</span></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">let</span> ming = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-表達式-運算式-Expression"><a href="#❒-表達式-運算式-Expression" class="headerlink" title="❒ 表達式 ( 運算式 ) Expression"></a>❒ 表達式 ( 運算式 ) Expression</h2><ul>
+<li>又可稱為表示式、運算式，經常透過一些符號結合上下語句並運算及「 <strong>回傳結果</strong> 」。</li>
+</ul>
+<h3 id="常見的表達式"><a href="#常見的表達式" class="headerlink" title="常見的表達式"></a>常見的表達式</h3><ul>
+<li>純值</li>
+<li>變數</li>
+<li>運算子<ul>
+<li>算術運算子<ul>
+<li>四則運算 ( 加、減、乘、除  )</li>
+<li>一元運算子 ( 正號 <code>+</code>、負號 <code>-</code>、遞增 <code>++</code>、遞減 <code>—-</code> )</li>
+<li>二元運算子 ( 取餘數 <code>%</code> )</li>
+</ul>
+</li>
+<li>比較運算子 ( <code>==</code>、<code>===</code>、<code>!=</code>、<code>!==</code>、 <code>&gt;</code> 、<code>&lt;</code>  、<code>&lt;=</code> 、<code>&gt;=</code> )</li>
+<li>邏輯運算子 ( <code>&amp;&amp;</code>、<code>||</code>、<code>!</code> )</li>
+<li>其他運算子可參考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN 運算式與運算子</a>。</li>
+</ul>
+</li>
+<li>正規表達式</li>
+<li>函式表達式</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 表達式</span></span><br><span class="line"><span class="number">1</span> === <span class="number">1</span></span><br><span class="line"><span class="number">5</span> + <span class="number">6</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-函式陳述式-Function-Statement-具名函式"><a href="#❒-函式陳述式-Function-Statement-具名函式" class="headerlink" title="❒ 函式陳述式 Function Statement ( 具名函式 )"></a>❒ 函式陳述式 Function Statement ( 具名函式 )</h2><blockquote>
+<p>Function Statement 會直接宣告一個函式</p>
+</blockquote>
+<ul>
+<li>為函式宣告，直接宣告一個函式並給它一個名稱，不須使用變數 ( <code>var</code>、<code>let</code>、<code>const</code> ) 來定義一個函式。</li>
+<li>「 函式陳述式 Function Statement 」與「函式表達式 Function Expression 」兩者提升結果不同，下篇講到提升 hoisting。</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">callName</span>(<span class="params"></span>)&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-函式表達式-Function-Expression-匿名函式"><a href="#❒-函式表達式-Function-Expression-匿名函式" class="headerlink" title="❒ 函式表達式 Function Expression ( 匿名函式 )"></a>❒ 函式表達式 Function Expression ( 匿名函式 )</h2><blockquote>
+<p>Function Expression 會先宣告變數，再賦予值。</p>
+</blockquote>
+<p>為變數宣告，先會宣告一個變數，並用等號把後方的函式賦予到前面宣告的變數上。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> callName = <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li>Kuro - 008 天重新認識 JavaScript</li>
+<li>JavaScript 表達式觀念及運用 - JS Expression</li>
+<li>六角學院 - JavaScript 核心篇</li>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2020/09/17/js-expression/">JavaScript 表達式觀念及運用 - JS Expression</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/html-css/20230329/3908497130/" rel="prev" title="Day13 | 那些當助教遇到的問與答">
+                  <i class="fa fa-chevron-left"></i> Day13 | 那些當助教遇到的問與答
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230329/3917783636/" rel="next" title="Day15 | JS 的執行環境、作用域、範圍鏈">
+                  Day15 | JS 的執行環境、作用域、範圍鏈 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="此篇文章會講到 Bootstrap 文件客製 Sass 中 optionA 與 optionB 差異">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day11 | 客製 Bootstrap Sass 樣式">
+<meta property="og:url" content="https://echocarriet.github.io/bootstrap/20230329/1760453453/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="此篇文章會講到 Bootstrap 文件客製 Sass 中 optionA 與 optionB 差異">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-03-29T03:05:51.000Z">
+<meta property="article:modified_time" content="2023-03-29T03:40:18.571Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="bootstrap">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/bootstrap/20230329/1760453453/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/bootstrap/20230329/1760453453/","path":"bootstrap/20230329/1760453453/","title":"Day11 | 客製 Bootstrap Sass 樣式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day11 | 客製 Bootstrap Sass 樣式 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%89%88%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">❒ 版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-BS-%E6%96%87%E4%BB%B6%E5%AE%A2%E8%A3%BD-Sass-%E4%B8%AD-Option-A-%E8%88%87-B-%E5%B7%AE%E7%95%B0"><span class="nav-number">2.</span> <span class="nav-text">❒ BS 文件客製 Sass 中 Option A 與 B 差異</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%96%87%E4%BB%B6%E4%B8%AD-Option-A-%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">❒ 文件中 Option A 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B6-Option-A-import-%E6%AA%94%E6%A1%88%EF%BD%9C%E5%AE%A2%E8%A3%BD-variables"><span class="nav-number">3.1.</span> <span class="nav-text">❶ Option A. @import 檔案｜客製 variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B7-Option-A-import-%E6%AA%94%E6%A1%88%EF%BD%9C%E5%AE%A2%E8%A3%BD-variables-%E8%88%87-utilities"><span class="nav-number">3.2.</span> <span class="nav-text">❷ Option A. @import 檔案｜客製 variables 與 utilities</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%96%87%E4%BB%B6%E4%B8%AD-Option-B-%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">❒ 文件中 Option B 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B6-Option-B-import-%E6%AA%94%E6%A1%88%EF%BD%9C%E5%AE%A2%E8%A3%BD-variables"><span class="nav-number">4.1.</span> <span class="nav-text">❶ Option B. @import 檔案｜客製 variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B7-Option-B-import-%E6%AA%94%E6%A1%88%EF%BD%9C%E5%AE%A2%E8%A3%BD-variables-%E8%88%87-utilities"><span class="nav-number">4.2.</span> <span class="nav-text">❷ Option B. @import 檔案｜客製 variables 與 utilities</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/bootstrap/20230329/1760453453/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day11 | 客製 Bootstrap Sass 樣式 | Hi, I'm Carrie">
+      <meta itemprop="description" content="此篇文章會講到 Bootstrap 文件客製 Sass 中 optionA 與 optionB 差異">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day11 | 客製 Bootstrap Sass 樣式
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-29 11:05:51 / 修改時間：11:40:18" itemprop="dateCreated datePublished" datetime="2023-03-29T11:05:51+08:00">2023-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">此篇文章會講到 Bootstrap 文件客製 Sass 中 optionA 與 optionB 差異</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-版本"><a href="#❒-版本" class="headerlink" title="❒ 版本"></a>❒ 版本</h2><p>Bootstrap v5.1</p>
+<p>此文章使用 <code>npm i bootstrap@5.2.1</code> 方式載入 Bootstrap</p>
+<h2 id="❒-BS-文件客製-Sass-中-Option-A-與-B-差異"><a href="#❒-BS-文件客製-Sass-中-Option-A-與-B-差異" class="headerlink" title="❒ BS 文件客製 Sass 中 Option A 與 B 差異"></a>❒ <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.2/customize/sass/">BS 文件客製 Sass</a> 中 Option A 與 B 差異</h2><p>文件 Option A 方式可直接載入完整的 bootstrap，Option B 可選取需要的元件及工具 .. 等進行匯入，但直接載入完整的 bootstrap 怕檔案太肥的話，可選擇使用 Option B 方式。</p>
+<h2 id="❒-文件中-Option-A-方法"><a href="#❒-文件中-Option-A-方法" class="headerlink" title="❒ 文件中 Option A 方法"></a>❒ 文件中 Option A 方法</h2><p><strong>範例 :</strong> <a target="_blank" rel="noopener" href="https://github.com/echocarriet/vueBsOptionA">Option A GitHub Demo</a> ( Vue )</p>
+<p><strong>BS 文件 :</strong>  Customize &#x2F; Sass &#x2F; <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/customize/sass/#importing">Importting</a> : Option A</p>
+<p><strong>於專案使用 npm 載入 BS 後，視需求選擇要「 客製 variables 」或「 客製 variables 與 utilities 」。</strong></p>
+<h3 id="❶-Option-A-import-檔案｜客製-variables"><a href="#❶-Option-A-import-檔案｜客製-variables" class="headerlink" title="❶ Option A. @import 檔案｜客製 variables"></a>❶ <strong>Option A.</strong> @import <strong>檔案｜客製 variables</strong></h3><p><strong>步驟 :</strong></p>
+<ol>
+<li>從 node_modules 中複製一份 _variables 檔案到專案中 ( 下方第 2 支檔案 )，前面記得加上第一支 <code>functions</code> 檔案不然會出錯。</li>
+</ol>
+<p><strong>▷ Option A</strong> @import <strong>檔案程式碼｜客製 variables</strong></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/functions&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./helpers/variables&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/bootstrap&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="❷-Option-A-import-檔案｜客製-variables-與-utilities"><a href="#❷-Option-A-import-檔案｜客製-variables-與-utilities" class="headerlink" title="❷ Option A. @import 檔案｜客製 variables 與 utilities"></a>❷ <strong>Option A.</strong> @import <strong>檔案｜客製 variables 與 utilities</strong></h3><p><strong>步驟 :</strong></p>
+<p>➀ 從 node_modules 中複製一份 _variables 檔案到專案中 ( 下方第 2 支檔案 )，前面記得加上第一支 <code>functions</code> 檔案不然會出錯。<br>② 客製 <code>utilities</code> ，與_variables 一樣於 node_modules 中複製一份 <code>_utilities</code> 到專案路徑中下。</p>
+<ul>
+<li><p>如同 variables 操作，把文件中 <code>node_modules</code> 路徑改成專案放置的路徑。</p>
+</li>
+<li><p>客製 utilities 需匯入Utilities API。</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/utilities/api</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>utilities 相關設定可參考此<a target="_blank" rel="noopener" href="https://www.notion.so/Bootstrap-Sass-69e96475551640b99d410071287054fb">筆記</a>。</p>
+</li>
+</ul>
+<p><strong>▷ Option A. <code>@import</code> 檔案程式碼｜客製 variables 與 utilities</strong></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/functions&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./helpers/variables&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/bootstrap/scss/maps&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/bootstrap/scss/mixins&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./helpers/utilities&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/bootstrap&quot;</span>;</span><br><span class="line"><span class="comment">// 客製utilities需匯入Utilities API</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/utilities/api&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-文件中-Option-B-方法"><a href="#❒-文件中-Option-B-方法" class="headerlink" title="❒ 文件中 Option B 方法"></a>❒ 文件中 Option B 方法</h2><p><strong>範例 :</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/echocarriet/vueBsOptionB">Option B GitHub Demo</a> ( Vue )</p>
+<p><strong>BS 文件 :</strong></p>
+<p>① Customize &#x2F; Sass &#x2F; <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/customize/sass/#importing">Importting</a> : Option B<br>② <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/customize/optimize/">優化 Optimize</a> &#x2F; <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/customize/optimize/#lean-sass-imports">Lean Sass imports</a></p>
+<ul>
+<li>第一點的 Option B 可搭配文件中 <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/customize/optimize/#lean-sass-imports">Lean Sass imports</a> 使用，選取需要的檔案 <code>@import</code>。</li>
+<li><strong>於專案使用 npm 載入 BS 後，視需求選擇要「 客製 variables 」或「 客製 variables 與 utilities 」。</strong></li>
+<li>Option B 可自行選取要用的 「 components、helpers、Utilities 」，但有些必要的檔案是必須 <code>@import</code> 的，如下：<ul>
+<li>文件 <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/customize/optimize/">優化 Optimize</a> &#x2F; <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/customize/optimize/#lean-sass-imports">Lean Sass imports</a> 中「 Configuration 」內為必須 <code>@import</code> 的檔案，「 Layout &amp; components、Helpers、Utilities 」為選用的項目。路徑記得要改到 node_modules 下。</li>
+<li>‼️ 注意：選用的項目 「 Layout &amp; components 」 中建議保留「 root、reboot、type 」這三個檔案，它們為 BS 的預設值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="❶-Option-B-import-檔案｜客製-variables"><a href="#❶-Option-B-import-檔案｜客製-variables" class="headerlink" title="❶ Option B. @import 檔案｜客製 variables"></a>❶ <strong>Option B.</strong> @import <strong>檔案｜客製 variables</strong></h3><p><strong>步驟 :</strong></p>
+<p>從 node_modules 中複製一份 _variables 檔案到專案中 ( 下方第 2 支檔案 )，前面記得加上第一支 <code>functions</code> 檔案不然會出錯。</p>
+<p><strong>▷ Option B</strong> <code>@import</code> <strong>檔案程式碼｜客製 variables</strong></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #1. 必須 import 的檔案</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/functions&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./helpers/variables&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/bootstrap/scss/maps&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/bootstrap/scss/mixins&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/utilities&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// #2. 必須 import 的檔案</span></span><br><span class="line"><span class="comment">// 這三支為 BS 的預設值，建議加入必匯入檔案</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/root&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/reboot&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/type&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// #3. 選取需要的檔案匯入</span></span><br><span class="line"><span class="comment">// 可參考 優化 Optimize/Lean Sass imports中的「Layout &amp; components、Helpers、Utilities </span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="❷-Option-B-import-檔案｜客製-variables-與-utilities"><a href="#❷-Option-B-import-檔案｜客製-variables-與-utilities" class="headerlink" title="❷ Option B. @import 檔案｜客製 variables 與 utilities"></a>❷ <strong>Option B.</strong> @import <strong>檔案｜客製 variables 與 utilities</strong></h3><p><strong>步驟 :</strong></p>
+<p>① 從 node_modules 中複製一份 _variables 檔案到專案中 ( 下方第 2 支檔案 )，前面記得加上第一支 <code>functions</code> 檔案不然會出錯。<br>② 客製 <code>utilities</code> ，與_variables 一樣於 node_modules 中複製一份 <code>_utilities</code> 到專案路徑下。</p>
+<ul>
+<li><p>如同 variables 操作，把文件中 <code>node_modules</code> 路徑改成專案放置的路徑。</p>
+</li>
+<li><p>加入 Utilities API。</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/utilities/api&quot;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客製 utilities 需匯入Utilities API。</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/utilities/api&quot;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>utilities 相關設定可參考明日文章。</p>
+</li>
+</ul>
+<p><strong>▷ Option B</strong> <code>@import</code> <strong>檔案程式碼｜客製 variables 與 utilities</strong></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #1. 必須 import 的檔案</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/functions&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./helpers/variables&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/bootstrap/scss/maps&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;../node_modules/bootstrap/scss/mixins&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;./helpers/utilities&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// @import &quot;../node_modules/bootstrap/scss/utilities&quot;; 如utilities有客製此可刪</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #2. 必須 import 的檔案</span></span><br><span class="line"><span class="comment">// 這三支為 BS 的預設值，建議加入必匯入檔案</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/root&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/reboot&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/type&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// #3. 選取需要的檔案匯入</span></span><br><span class="line"><span class="comment">// 可參考 優化 Optimize/Lean Sass imports中的「Layout &amp; components、Helpers</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/選取需要的檔案&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// #4. 客製utilities需匯入Utilities API</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../node_modules/bootstrap/scss/utilities/api&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/bootstrap/" rel="tag"># bootstrap</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/html-css/20230327/1954621280/" rel="prev" title="Day10 | 你有正確清除浮動 float 嗎 ?">
+                  <i class="fa fa-chevron-left"></i> Day10 | 你有正確清除浮動 float 嗎 ?
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/bootstrap/20230329/2886543945/" rel="next" title="Day12 | 客製 Bootstrap 中的 Utilities">
+                  Day12 | 客製 Bootstrap 中的 Utilities <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

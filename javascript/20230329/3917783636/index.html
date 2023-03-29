@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="JS 的執行環境、作用域、範圍鏈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day15 | JS 的執行環境、作用域、範圍鏈">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230329/3917783636/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="JS 的執行環境、作用域、範圍鏈">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220930/20119743b4Zgq8LM5z.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220930/201197430Xn9yCXQIw.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220930/20119743A5ZT2dcpPw.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220930/20119743BGOhY0qkk7.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220930/20119743uu7ya1jc4W.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220930/20119743dZ5EAdD40b.png">
+<meta property="article:published_time" content="2023-03-29T03:45:28.000Z">
+<meta property="article:modified_time" content="2023-03-29T03:54:10.592Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20220930/20119743b4Zgq8LM5z.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230329/3917783636/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230329/3917783636/","path":"javascript/20230329/3917783636/","title":"Day15 | JS 的執行環境、作用域、範圍鏈"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day15 | JS 的執行環境、作用域、範圍鏈 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%9F%B7%E8%A1%8C%E7%9A%84%E9%8C%AF%E8%AA%A4%E6%83%85%E5%A2%83-LHS-RHS"><span class="nav-number">1.</span> <span class="nav-text">❒ 執行的錯誤情境 LHS, RHS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-number">1.1.</span> <span class="nav-text">範例 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E5%BB%B6%E7%BA%8C%E4%B8%8A%E9%A1%8C"><span class="nav-number">1.2.</span> <span class="nav-text">範例 2 | 延續上題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3"><span class="nav-number">1.3.</span> <span class="nav-text">範例 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E8%AA%9E%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F-Lexical-scope"><span class="nav-number">2.</span> <span class="nav-text">❒ 語法作用域 ( Lexical scope )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9C%E6%85%8B%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.1.</span> <span class="nav-text">靜態作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8B%95%E6%85%8B%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.2.</span> <span class="nav-text">動態作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.3.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F-%E7%AF%84%E4%BE%8B-1-%E9%9D%9C%E6%85%8B%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.4.</span> <span class="nav-text">作用域 | 範例 1. ( 靜態作用域 )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83%E8%88%87%E5%9F%B7%E8%A1%8C%E5%A0%86%E7%96%8A"><span class="nav-number">3.</span> <span class="nav-text">❒ 執行環境與執行堆疊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83"><span class="nav-number">3.1.</span> <span class="nav-text">函式執行環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%9F%9F%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83%E8%88%87%E5%A0%86%E7%96%8A"><span class="nav-number">3.2.</span> <span class="nav-text">全域執行環境與堆疊</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%AF%84%E5%9C%8D%E9%8D%8A"><span class="nav-number">4.</span> <span class="nav-text">❒ 範圍鍊</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E8%AA%AA%E7%AF%84%E5%9C%8D%E9%8D%8A"><span class="nav-number">4.1.</span> <span class="nav-text">解說範圍鍊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E5%9C%8D%E9%8D%8A%E7%AF%84%E4%BE%8B-1"><span class="nav-number">4.2.</span> <span class="nav-text">範圍鍊範例 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E5%9C%8D%E9%8D%8A%E7%AF%84%E4%BE%8B-02"><span class="nav-number">4.3.</span> <span class="nav-text">範圍鍊範例 02</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">5.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230329/3917783636/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day15 | JS 的執行環境、作用域、範圍鏈 | Hi, I'm Carrie">
+      <meta itemprop="description" content="JS 的執行環境、作用域、範圍鏈">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day15 | JS 的執行環境、作用域、範圍鏈
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-29 11:45:28 / 修改時間：11:54:10" itemprop="dateCreated datePublished" datetime="2023-03-29T11:45:28+08:00">2023-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">JS 的執行環境、作用域、範圍鏈</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-執行的錯誤情境-LHS-RHS"><a href="#❒-執行的錯誤情境-LHS-RHS" class="headerlink" title="❒ 執行的錯誤情境 LHS, RHS"></a>❒ 執行的錯誤情境 LHS, RHS</h2><p>在 JavaScript 遇到錯誤記得修正，不然後方的程式碼都不會運行，這時也可以運用 LHS, RHS 提示來進行排除。</p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220930/20119743b4Zgq8LM5z.png" alt="// LHS, RHS。出處：六角學院 ↑"></p>
+<h3 id="範例-1"><a href="#範例-1" class="headerlink" title="範例 1"></a>範例 1</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ming = <span class="string">&#x27;小明&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ming 在取值時就會稱為 RHS。</li>
+<li>小明賦予到左邊變數 <code>ming</code> 上稱為 LHS。</li>
+</ul>
+<h3 id="範例-2-延續上題"><a href="#範例-2-延續上題" class="headerlink" title="範例 2 | 延續上題"></a>範例 2 | 延續上題</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ming = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> man = ming;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>右邊的值 <code>ming</code> 就是使用 RHS 取得這個變數，並且透過 LHS 賦予到左邊的變數。</li>
+<li>在等號 <code>=</code> 的右邊或是函式取得變數上，都可以稱為 RHS。</li>
+</ul>
+<h3 id="範例-3"><a href="#範例-3" class="headerlink" title="範例 3"></a>範例 3</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析：</strong></p>
+<ul>
+<li>當左側不是變數時，就無法被賦予值，會顯示錯誤訊息 <code>Uncaught SyntaxError: Invalid left-hand side in assignment</code>。<ul>
+<li>看到 LHS 錯誤時，可以看一下左邊的值是不是沒有辦法被賦予。</li>
+</ul>
+</li>
+</ul>
+<p><strong>答案：</strong></p>
+<ul>
+<li><code>1 = true;</code> 在編譯時產生錯誤 <code>Uncaught SyntaxError: Invalid left-hand side in assignment</code> → LHS 錯誤。<ul>
+<li><code>console.log(a);</code> 不會在編譯過程產生錯誤，會在執行階段發現變數無法取得而產生錯誤訊息 <code>Uncaught ReferenceError: a is not defined</code>，表示此變數是沒有被定義過的，在 JS 運行過程中也無法找到此變數 → RHS 錯誤 。</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-語法作用域-Lexical-scope"><a href="#❒-語法作用域-Lexical-scope" class="headerlink" title="❒ 語法作用域 ( Lexical scope )"></a>❒ 語法作用域 ( Lexical scope )</h2><p><img src="https://ithelp.ithome.com.tw/upload/images/20220930/201197430Xn9yCXQIw.png" alt="// 靜態作用域與動態作用域,出處：六角學院 ↑"></p>
+<ul>
+<li>JavaScript 採用語法作用域，也稱靜態作用域。</li>
+<li>語法作用域會牽扯到靜態作用域與動態作用域。</li>
+</ul>
+<h3 id="靜態作用域"><a href="#靜態作用域" class="headerlink" title="靜態作用域"></a>靜態作用域</h3><ul>
+<li>變數的作用域在語法解析時，就已經確定作用域。</li>
+<li>JavaScript 是直譯式語言或透過直譯器來生成代碼，並運行代碼。語法作用域也稱靜態作用域 ( 語法解析時就已經確定作用域 )，寫 function 時作用域就已經確定 ( 下方範例 )。</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 範例一</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callName</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="keyword">var</span> <span class="title class_">Ming</span> = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Ming</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">callName</span>();  <span class="comment">// 可印出小明</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 範例二</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callName</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="keyword">var</span> <span class="title class_">Ming</span> = <span class="string">&#x27;小明&#x27;</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">callName</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Ming</span>); <span class="comment">//是無法呼叫到小明，is not desined</span></span><br><span class="line"><span class="comment">// 因JS作用域在函式內，在內層宣告變數外層是讀不到的</span></span><br><span class="line"><span class="comment">// 也就是函式內的程式碼只在&#123;&#125;中運行，出了&#123;&#125;就被釋放掉了。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="動態作用域"><a href="#動態作用域" class="headerlink" title="動態作用域"></a>動態作用域</h3><ul>
+<li>變數作用域在函式調用時才會決定它的作用域。</li>
+</ul>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20220930/20119743A5ZT2dcpPw.png" alt="// JavaScript 的作用域,出處：六角學院 ↑"></p>
+<ul>
+<li>JavaScript 的作用域是一層一層向內的。外層有一層全域作用域 → 內層由函式所包覆。</li>
+<li>上圖中兩個 function 的作用域是獨立的，如果作用域內有需要一些變數，但這作用域內沒有特定的變數時會向外層 ( 全域 ) 尋找，如果外層 ( 全域 ) 有可以使用就會直接使用，否則會顯示 <code>ReferenceError: xxx is not defined</code>。</li>
+</ul>
+<h3 id="作用域-範例-1-靜態作用域"><a href="#作用域-範例-1-靜態作用域" class="headerlink" title="作用域 | 範例 1. ( 靜態作用域 )"></a>作用域 | 範例 1. ( 靜態作用域 )</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params"></span>)&#123;</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params"></span>)&#123;</span><br><span class="line"> <span class="keyword">var</span> value =<span class="number">2</span>;</span><br><span class="line"> <span class="title function_">fn1</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn2</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>執行順序 :</strong></p>
+<ul>
+<li>運行順序先宣告 value 等於 1 。</li>
+<li>執行 <code>fn2()</code>，再把 <code>value</code> 重新宣告等於 2，再執行 <code>fn1()</code>。</li>
+<li>這時 <code>fn1()</code> 內 <code>value</code> 值會等於 1。</li>
+</ul>
+<p><strong>解說 :</strong></p>
+<ul>
+<li>因為 JS 是屬於靜態作用域，所以作用域在撰寫 funciton 時就已經確定。因此 <code>var value = 1;</code> 作用域包含全部，所以無論在 <code>fn1()</code> 或 <code>fn2()</code> 都可以讀取到。</li>
+<li>雖然在 <code>fn2()</code> 重新賦予 <code>value = 2</code> 的值，但 <code>value = 2</code> 的值作用域只在 <code>fn2()</code> 內。<br>所以再往下執行 <code>fn1()</code> 時， <code>fn1()</code> 內的 <code>console.log(value);</code>  就會向外查找 <code>value</code> 等於 1 的值。</li>
+</ul>
+<p>▶️  所以答案會印出 1。</p>
+<h2 id="❒-執行環境與執行堆疊"><a href="#❒-執行環境與執行堆疊" class="headerlink" title="❒ 執行環境與執行堆疊"></a>❒ 執行環境與執行堆疊</h2><h3 id="函式執行環境"><a href="#函式執行環境" class="headerlink" title="函式執行環境"></a>函式執行環境</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20220930/20119743BGOhY0qkk7.png" alt="// 函式執行環境, 出處：六角學院 ↑"></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 範例</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callName</span>(<span class="params"></span>) &#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">callName</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上方介紹到函式作用域是限制在 function 內，所以在 function 宣告任何變數，它的作用域就會限制在 function 內。</li>
+<li>‼️ <strong>注意 : 如果我們沒有執行這段函式「 <code>callName();</code>  」，它是不會有任何變數產生。</strong>所以是需要執行它「 呼叫 <code>callName();</code>  」才會產生執行環境，這個執行環境內才會有屬於它的變數。<br>另外它「 <code>callName();</code>  」是可以重複調用的。</li>
+<li>會產生一個 <code>this</code>，後方會介紹到。</li>
+</ul>
+<h3 id="全域執行環境與堆疊"><a href="#全域執行環境與堆疊" class="headerlink" title="全域執行環境與堆疊"></a>全域執行環境與堆疊</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20220930/20119743uu7ya1jc4W.png" alt="// 全域執行環境, 出處：六角學院 ↑"></p>
+<ul>
+<li>除了函式，全域也有屬於自己的全域執行環境。</li>
+<li>全域執行環境是在網頁一開啟或是後端的 Node.js 一開啟時，它的執行環境就已經建立了。它在建立時會同時產生一個 window 變數 ( 使用瀏覽器開啟 ) 或是 global 變數 ( 使用 Node JS 開啟 ) 。</li>
+<li>會產生一個 <code>this</code>，等於 window  或 global。<ul>
+<li>但注意 <code>this</code> 會隨著它的執行環境而有所不同，後方章節會介紹到。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 範例</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sayHi</span>(<span class="params">name</span>) &#123;</span><br><span class="line"> <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">doSomething</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="title function_">sayHi</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">doSomething</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>運行順序 :</strong></p>
+<ol>
+<li>上方兩個函式，先運行 <code>doSomething()</code>。</li>
+<li><code>doSomething()</code> 裡面再運行 <code>sayHi();</code>。</li>
+</ol>
+<p><strong>解說 :</strong></p>
+<ul>
+<li>在執行環境堆疊的狀態，會先看到上方運行順序。</li>
+<li>網頁一開啟就會產生全域執行環境<ol>
+<li>呼叫 <code>doSomething()</code>，出現 <code>doSomething()</code> 的執行環境，並且堆疊在全域的執行環境上。</li>
+<li><code>doSomething()</code> 內去呼叫 <code>sayHi();</code> 這個函式，<code>sayHi();</code> 會堆疊在 <code>doSomething()</code> 這個函式上。</li>
+</ol>
+</li>
+<li>所以這個執行環境是一層一層堆疊起來的，和函式在宣告的時候沒有關聯性，而是與呼叫的位置有關係。<br>離開時也是一層一層的離開 <code>sayHi();</code> 執行完就會先離開 → <code>doSomething()</code> 完成後也會離開 → 最後回到全域的執行環境。</li>
+</ul>
+<h2 id="❒-範圍鍊"><a href="#❒-範圍鍊" class="headerlink" title="❒ 範圍鍊"></a>❒ 範圍鍊</h2><h3 id="解說範圍鍊"><a href="#解說範圍鍊" class="headerlink" title="解說範圍鍊"></a>解說範圍鍊</h3><ul>
+<li>當函式的本身沒有這個變數時，它就會向外層來做尋找，這尋找的過程與執行環境是沒有關聯性的。</li>
+<li>所以下方範例中，無論是函式 fn1 或函式 fn2 的範圍鍊都是指向外層的全域環境。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20220930/20119743dZ5EAdD40b.png" alt="// 函式 fn1 或函式 fn2 的範圍鍊都是指向外層的全域環境, 出處：六角學院 ↑"></li>
+</ul>
+<h3 id="範圍鍊範例-1"><a href="#範圍鍊範例-1" class="headerlink" title="範圍鍊範例 1"></a>範圍鍊範例 1</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn1</span>(<span class="params"></span>)&#123;</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn2</span>(<span class="params"></span>)&#123;</span><br><span class="line"> <span class="keyword">var</span> value =<span class="number">2</span>;</span><br><span class="line"> <span class="title function_">fn1</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn2</span>();</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>一開始會產生全域執行環境。</li>
+<li>執行 <code>fn2();</code> 的執行環境 → 執行 <code>fn2()</code> 內的 <code>fn1();</code> ，雖然在 <code>fn2()</code> 重新賦予 <code>value = 2</code> 的值，但 <code>value = 2</code> 的值作用域只在 <code>fn2()</code> 內。<br>所以再往下執行 <code>fn1()</code> 時， <code>fn1()</code> 內的 <code>console.log(value);</code>  就會向外查找 <code>value</code> 等於 1 的值。</li>
+<li>‼️ <strong>注意 : 函式 <code>fn1</code> 在往外層尋找 <code>value</code> 時並不會跟執行環境有任何的關聯性。</strong>因為 JS 是語法作用域，它在程式碼撰寫時就已經確定它的作用域。<ol>
+<li>函式 <code>fn1</code> 沒有 <code>value</code> 這個變數時會向外層全域來做尋找，這尋找過程與執行環境 ( 執行環境也就是 <code>function fn1()&#123;&#125;</code> 內 ) 是沒有關聯性的。</li>
+</ol>
+</li>
+</ol>
+<h3 id="範圍鍊範例-02"><a href="#範圍鍊範例-02" class="headerlink" title="範圍鍊範例 02"></a>範圍鍊範例 02</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="string">&#x27;老媽&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`hi <span class="subst">$&#123;person&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">doMorningWork</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> person = <span class="string">&#x27;老爸&#x27;</span>;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">meetAuntie</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> person = <span class="string">&#x27;漂亮阿姨&#x27;</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`嗨囉~ <span class="subst">$&#123;person&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">sayHi</span>();</span><br><span class="line">  <span class="title function_">meetAuntie</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">sayHi</span>();</span><br><span class="line"><span class="title function_">doMorningWork</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>答案</p>
+<p>  hi 老媽、hi 老媽、哈囉~漂亮阿姨</p>
+<ul>
+<li><code>doMorningWork()</code> 內的 <code>sayHi();</code> 會忽視裏面的變數 person 老爸，向外層尋找變數 value 老媽。因為變數 person 老爸作用域只在 <code>doMorningWork()</code> 內。<br>另外函式 sayHi 向外尋找變數 person 老媽是因為它裡面本身沒有此變數。</li>
+<li><code>doMorningWork()</code> 內宣告一個 <code>meetAuntie()</code> ，所以現在執行的不是外層的 sayHi 而是內層的 <code>meetAuntie()</code>，而內層的 <code>meetAuntie()</code> 本身就有一個 person 變數漂亮阿姨，所以會印出 <code>哈囉~漂亮阿姨</code>。<ul>
+<li>如果註解掉 <code>var person = &#39;漂亮阿姨&#39;;</code> 就會向外尋找變數印出 <code>哈囉~老爸</code>。</li>
+</ul>
+</li>
+<li>結論 : <strong>當函式的本身沒有這個變數時，它就會向外層來做尋找</strong>，這尋找的過程與執行環境是沒有關聯性的。</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li>六角學院 - JavaScript 核心篇</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230329/1028260270/" rel="prev" title="Day14 | JS 函式">
+                  <i class="fa fa-chevron-left"></i> Day14 | JS 函式
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

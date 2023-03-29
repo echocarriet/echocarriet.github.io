@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="自定義 Bootstrap 中的 Utilities">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day12 | 客製 Bootstrap 中的 Utilities">
+<meta property="og:url" content="https://echocarriet.github.io/bootstrap/20230329/2886543945/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="自定義 Bootstrap 中的 Utilities">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20220927/20119743vr3tPN93oI.png">
+<meta property="article:published_time" content="2023-03-29T03:10:44.000Z">
+<meta property="article:modified_time" content="2023-03-29T03:26:31.802Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="bootstrap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20220927/20119743vr3tPN93oI.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/bootstrap/20230329/2886543945/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/bootstrap/20230329/2886543945/","path":"bootstrap/20230329/2886543945/","title":"Day12 | 客製 Bootstrap 中的 Utilities"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day12 | 客製 Bootstrap 中的 Utilities | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E7%BE%A9%E9%80%9A%E7%94%A8%E9%A1%9E%E5%88%A5-Utilities"><span class="nav-number">1.</span> <span class="nav-text">自定義通用類別 Utilities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E8%A3%BD-Utilities-%E5%9F%BA%E6%9C%AC%E3%80%81%E7%B8%AE%E5%AF%AB%E3%80%81%E9%9F%BF%E6%87%89%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">客製 Utilities | 基本、縮寫、響應式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.1.</span> <span class="nav-text">➊ 基本設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E8%87%AA%E5%AE%9A%E7%BE%A9%E5%89%8D%E7%B6%B4%E9%A1%9E%E5%88%A5-Local-CSS-variables"><span class="nav-number">2.2.</span> <span class="nav-text">➋ 自定義前綴類別 Local CSS variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8C-%E9%9F%BF%E6%87%89%E5%BC%8F%E9%80%9A%E7%94%A8%E9%A1%9E%E5%88%A5-Responsive"><span class="nav-number">2.3.</span> <span class="nav-text">➌ 響應式通用類別 Responsive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E6%96%BC-utilities-%E8%87%AA%E8%A8%82-CSS-%E5%B1%AC%E6%80%A7"><span class="nav-number">2.4.</span> <span class="nav-text">範例 1. 於 utilities 自訂 CSS 屬性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">資料來源</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/bootstrap/20230329/2886543945/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day12 | 客製 Bootstrap 中的 Utilities | Hi, I'm Carrie">
+      <meta itemprop="description" content="自定義 Bootstrap 中的 Utilities">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day12 | 客製 Bootstrap 中的 Utilities
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-03-29 11:10:44 / 修改時間：11:26:31" itemprop="dateCreated datePublished" datetime="2023-03-29T11:10:44+08:00">2023-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/bootstrap/" itemprop="url" rel="index"><span itemprop="name">Bootstrap</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">自定義 Bootstrap 中的 Utilities</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="自定義通用類別-Utilities"><a href="#自定義通用類別-Utilities" class="headerlink" title="自定義通用類別 Utilities"></a>自定義通用類別 Utilities</h2><ul>
+<li>文件中 <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/utilities/api/">Utility API</a> 可透過 Sass 自訂想用的通用類別。</li>
+<li>通用類別為一個 className 對應一個 CSS 屬性。</li>
+</ul>
+<h2 id="客製-Utilities-基本、縮寫、響應式"><a href="#客製-Utilities-基本、縮寫、響應式" class="headerlink" title="客製 Utilities | 基本、縮寫、響應式"></a>客製 Utilities | 基本、縮寫、響應式</h2><p><strong>客製 Utilities 順序：</strong></p>
+<ol>
+<li>基本設定</li>
+<li>自訂義前綴類別 ( 縮寫 ）<ol>
+<li>可自行決定是否要設定縮寫，如果沒有就會依上方 1. 中 「 property 屬性值 - values 值 」 為 class 名稱。</li>
+</ol>
+</li>
+<li>響應式通用類別<ol>
+<li>如果要開啟響應式，就加上此類別。</li>
+</ol>
+</li>
+</ol>
+<h3 id="➊-基本設定"><a href="#➊-基本設定" class="headerlink" title="➊ 基本設定"></a>➊ <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/utilities/api/#class">基本設定</a></h3><p> <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/utilities/api/#api-explained">API 說明</a> -  假設在 Utilities 定義一個透明度</p>
+<ul>
+<li><p>先定義一個透明度的名稱 <code>opacity</code>。</p>
+<ul>
+<li><p><code>&quot;opacity&quot;:()</code> 括號內為透明度的相關內容。</p>
+</li>
+<li><p>定義屬性 <code>property</code> 對應 css 屬性 → <code>property: opacity</code></p>
+</li>
+<li><p>定義透明度有五個階級的值 <code>values</code> : 0 ~ 100 冒號後方接 css 屬性的值。</p>
+</li>
+<li><p>最後會利用迴圈的形式帶出這些內容。</p>
+<pre><code><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$utilities</span>: (</span><br><span class="line">  <span class="string">&quot;opacity&quot;</span>: (</span><br><span class="line">    property: opacity,</span><br><span class="line">    values: (</span><br><span class="line">      <span class="number">0</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="number">25</span>: .<span class="number">25</span>,</span><br><span class="line">      <span class="number">50</span>: .<span class="number">5</span>,</span><br><span class="line">      <span class="number">75</span>: .<span class="number">75</span>,</span><br><span class="line">      <span class="number">100</span>: <span class="number">1</span>,</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20220927/20119743vr3tPN93oI.png" alt="// 出處：六角學院"></p>
+</li>
+</ul>
+<h3 id="➋-自定義前綴類別-Local-CSS-variables"><a href="#➋-自定義前綴類別-Local-CSS-variables" class="headerlink" title="➋ 自定義前綴類別 Local CSS variables"></a>➋ <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/utilities/api/#local-css-variables">自定義前綴類別 Local CSS variables</a></h3><ol>
+<li><p>承上新增透明度 utilities，加入 <code>class: 自訂縮寫名,</code> 可使用自訂縮寫名來取代 <code>opacity</code>。</p>
+<pre><code> <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$utilities</span>: (</span><br><span class="line">  <span class="string">&quot;opacity&quot;</span>: (</span><br><span class="line">    property: opacity,</span><br><span class="line">  class: o,</span><br><span class="line">    values: (</span><br><span class="line">      <span class="number">0</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="number">25</span>: .<span class="number">25</span>,</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸出後</span></span><br><span class="line"><span class="selector-class">.o-0</span> &#123; <span class="attribute">opacity</span>: <span class="number">0</span> <span class="meta">!important</span>; &#125;</span><br><span class="line"><span class="selector-class">.o-25</span> &#123; <span class="attribute">opacity</span>: .<span class="number">25</span> <span class="meta">!important</span>; &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+<h3 id="➌-響應式通用類別-Responsive"><a href="#➌-響應式通用類別-Responsive" class="headerlink" title="➌ 響應式通用類別 Responsive"></a>➌ <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.1/utilities/api/#responsive">響應式通用類別 Responsive</a></h3><ul>
+<li><p>於  <code>responsive</code> 加上 <code>true</code> ，就會開啟中斷點的形式 ( 響應式 )。</p>
+</li>
+<li><p>以上方 <code>opacity</code> 為例，會輸出為 <code>.opacity-&#123;sm,md,lg,xl,xxl&#125;-&#123;0,25,50,75,100&#125;</code>。</p>
+<pre><code><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$utilities</span>: (</span><br><span class="line">  <span class="string">&quot;opacity&quot;</span>: (</span><br><span class="line">    property: opacity,</span><br><span class="line">  class: o,</span><br><span class="line">    responsive: true,</span><br><span class="line">    values: (</span><br><span class="line">      <span class="number">0</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="number">25</span>: .<span class="number">25</span>,</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 輸出後</span></span><br><span class="line"><span class="selector-class">.opacity-0</span> &#123; <span class="attribute">opacity</span>: <span class="number">0</span> <span class="meta">!important</span>; &#125;</span><br><span class="line"><span class="selector-class">.opacity-25</span> &#123; <span class="attribute">opacity</span>: .<span class="number">25</span> <span class="meta">!important</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">576px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.opacity-sm-0</span> &#123; <span class="attribute">opacity</span>: <span class="number">0</span> <span class="meta">!important</span>; &#125;</span><br><span class="line">  <span class="selector-class">.opacity-sm-25</span> &#123; <span class="attribute">opacity</span>: .<span class="number">25</span> <span class="meta">!important</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">768px</span>) &#123; ... 同上 &#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">992px</span>) &#123; ... 同上 &#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">1200px</span>) &#123; ... 同上 &#125;</span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width</span>: <span class="number">1400px</span>) &#123; ... 同上 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h3 id="範例-1-於-utilities-自訂-CSS-屬性"><a href="#範例-1-於-utilities-自訂-CSS-屬性" class="headerlink" title="範例 1. 於 utilities 自訂 CSS 屬性"></a>範例 1. 於 utilities 自訂 CSS 屬性</h3><p>假設要自訂一個「 <code>background-size:cover;</code> 與 <code>background-position:center center;</code> 」。</p>
+<p><strong>▷ 操作步驟 ｜<code>background-size:cover;</code>：</strong></p>
+<p>➀ 從 node_modules 複製一份 <code>_utilities.scss</code> 檔案存在專案 helpers 資料夾中 ( 資料夾名稱自訂 )。<br>② 開啟複製的 <code>_utilities.scss</code>，把要設定的 <code>background-size:cover;</code> 加入，就會輸出為 <code>.bg-s-cover</code>、<code>.bg-s-contain</code>、<code>.bg-s-50</code>。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 複製的_utilities.scss</span></span><br><span class="line">&quot;<span class="attribute">background-size</span>&quot;: (</span><br><span class="line">  property: background-size,</span><br><span class="line">  class: bg-s,</span><br><span class="line">  values: (</span><br><span class="line">    cover: cover,</span><br><span class="line">    contain: contain,</span><br><span class="line">    <span class="number">50</span>: <span class="number">50%</span>,</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>➂ 開啟 all.scss</p>
+<ul>
+<li>import 複製的 <code>_utilities.scss</code> 檔案。</li>
+<li>加入 Utilities API → <code>@import &quot;../node_modules/bootstrap/scss/utilities/api&quot;;</code></li>
+<li>刪除 <code>@import &quot;../node_modules/bootstrap/scss/utilities&quot;;</code> ( 如同客製 variables 檔案一樣 )。</li>
+</ul>
+<p><strong>▷ 操作步驟 ｜<code>background-position:center center;</code>：</strong></p>
+<p>➀ 承上<br>② 開啟複製的 <code>_utilities.scss</code>，把要設定的 <code>background-position</code> 加入，就會輸出為 <code>.bg-p-center</code>。</p>
+<pre><code><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 複製的 _utilities.scss</span></span><br><span class="line">&quot;<span class="attribute">background-position</span>&quot;: (</span><br><span class="line">  property: background-position,</span><br><span class="line">  class: bg-p,</span><br><span class="line">  values: (</span><br><span class="line">    center: center center,</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><ul>
+<li>六角學院 - Bootstrap 5 網頁切版整合術</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/bootstrap/" rel="tag"># bootstrap</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/bootstrap/20230329/1760453453/" rel="prev" title="Day11 | 客製 Bootstrap Sass 樣式">
+                  <i class="fa fa-chevron-left"></i> Day11 | 客製 Bootstrap Sass 樣式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/html-css/20230329/3908497130/" rel="next" title="Day13 | 那些當助教遇到的問與答">
+                  Day13 | 那些當助教遇到的問與答 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>
