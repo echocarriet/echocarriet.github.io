@@ -3473,7 +3473,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Day20-JS陣列與物件常用的方法</title>
+    <title>Day20 | JS陣列與物件常用的方法</title>
     <url>/javascript/20230402/2857193530/</url>
     <content><![CDATA[<h2 id="❒-陣列寫入、新增、刪除資料"><a href="#❒-陣列寫入、新增、刪除資料" class="headerlink" title="❒ 陣列寫入、新增、刪除資料"></a>❒ 陣列寫入、新增、刪除資料</h2><h3 id="➊-透過索引位置-取代原值、新增、取值"><a href="#➊-透過索引位置-取代原值、新增、取值" class="headerlink" title="➊ 透過索引位置 取代原值、新增、取值"></a>➊ 透過索引位置 取代原值、新增、取值</h3><ol>
 <li><p><strong>取代原值 <code>Array[n] = 新值;</code></strong></p>
