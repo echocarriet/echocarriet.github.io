@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="非同步 AJAX axios 套件的使用方式與 HTTP 狀態碼">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day30 | JS 的 axios 套件與 HTTP 狀態碼">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/2074748114/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="非同步 AJAX axios 套件的使用方式與 HTTP 狀態碼">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743No0ajep8kd.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743CcnvnIZPVZ.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743QdEkEXsioQ.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743NQqNsVNb9m.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743eP6hPLFGPK.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743AOdlFRlt7E.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743tUmHaEDAGC.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743i874m5to6B.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743bO7yqdSCWU.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743josWnWkQWQ.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743Ma5ttqTROp.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743IBIVLJq8ng.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743EGUlR0jv4C.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743d7BdFm5UL3.png">
+<meta property="article:published_time" content="2023-04-02T06:18:30.000Z">
+<meta property="article:modified_time" content="2023-04-02T06:23:57.604Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="axios">
+<meta property="article:tag" content="HTTP狀態碼">
+<meta property="article:tag" content="AJAX">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20221015/20119743No0ajep8kd.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/2074748114/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/2074748114/","path":"javascript/20230402/2074748114/","title":"Day30 | JS 的 axios 套件與 HTTP 狀態碼"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day30 | JS 的 axios 套件與 HTTP 狀態碼 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%94%9A%E9%BA%BC%E6%98%AF-AJAX"><span class="nav-number">1.</span> <span class="nav-text">❒ 甚麼是 AJAX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E4%BB%80%E9%BA%BC%E6%98%AF%E7%B6%B2%E8%B7%AF%E8%AB%8B%E6%B1%82%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">❒ 什麼是網路請求？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%9E%E7%B6%B2%E9%A0%81%E6%9E%B6%E6%A7%8B%E7%9E%AD%E8%A7%A3%E7%B6%B2%E9%A0%81%E8%AB%8B%E6%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">從網頁架構瞭解網頁請求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E9%97%9C%E6%96%BC-request-%E8%AB%8B%E6%B1%82%E3%80%81response-%E5%9B%9E%E5%82%B3"><span class="nav-number">3.</span> <span class="nav-text">❒ 關於 request 請求、response 回傳</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#request-%E8%AB%8B%E6%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">request 請求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#response-%E5%9B%9E%E5%82%B3"><span class="nav-number">3.2.</span> <span class="nav-text">response 回傳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC-Response-Data-%E5%9B%9E%E5%82%B3%E7%9A%84%E6%98%AF%E5%AD%97%E4%B8%B2%E5%85%A7%E5%AE%B9%EF%BC%8C%E6%88%91%E5%80%91%E5%8D%BB%E7%9C%8B%E7%9A%84%E5%88%B0%E7%B6%B2%E9%A0%81%E7%95%AB%E9%9D%A2%E7%9A%84%E5%91%88%E7%8F%BE"><span class="nav-number">3.3.</span> <span class="nav-text">為什麼 Response Data 回傳的是字串內容，我們卻看的到網頁畫面的呈現 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#request-%E8%AB%8B%E6%B1%82-amp-response-%E5%9B%9E%E5%82%B3-%E7%B5%B1%E6%95%B4"><span class="nav-number">3.4.</span> <span class="nav-text">request 請求 &amp; response 回傳 | 統整</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%90%84%E7%A8%AE%E7%99%BC%E5%87%BA%E7%B6%B2%E8%B7%AF%E8%AB%8B%E6%B1%82%E7%9A%84-JS-%E5%AF%AB%E6%B3%95%E7%A8%AE%E9%A1%9E"><span class="nav-number">4.</span> <span class="nav-text">❒ 各種發出網路請求的 JS 寫法種類</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-JS-%E5%8E%9F%E7%94%9F%E5%AF%AB%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">➊ JS 原生寫法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E5%A5%97%E4%BB%B6-axios"><span class="nav-number">4.2.</span> <span class="nav-text">➋ 套件 axios ?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-axios-%E5%A5%97%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">❒ axios 套件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D"><span class="nav-number">5.1.</span> <span class="nav-text">➊ 環境安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E6%AA%A2%E6%9F%A5%E6%98%AF%E5%90%A6%E6%9C%89%E8%BC%89%E5%85%A5%E6%88%90%E5%8A%9F"><span class="nav-number">5.2.</span> <span class="nav-text">➋ 檢查是否有載入成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8C-%E4%BD%BF%E7%94%A8-axios-%E4%B8%B2%E6%8E%A5%E5%A4%96%E9%83%A8%E8%B3%87%E6%96%99"><span class="nav-number">5.3.</span> <span class="nav-text">➌ 使用 axios 串接外部資料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-axios-%E9%9D%9E%E5%90%8C%E6%AD%A5%E8%A7%80%E5%BF%B5"><span class="nav-number">6.</span> <span class="nav-text">❒ axios 非同步觀念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E7%AD%89%E5%88%B0-axios-%E8%B3%87%E6%96%99%E5%9F%B7%E8%A1%8C%E5%AE%8C%E5%86%8D%E5%BE%80%E4%B8%8B%E8%B7%91-console-log-ary"><span class="nav-number">6.1.</span> <span class="nav-text">為什麼不等到 axios 資料執行完再往下跑 console.log(ary); ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%8F%E9%81%8E%E5%87%BD%E5%BC%8F%E8%A8%AD%E8%A8%88%E8%99%95%E7%90%86%E9%9D%9E%E5%90%8C%E6%AD%A5"><span class="nav-number">6.2.</span> <span class="nav-text">透過函式設計處理非同步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%9B%A0-axios-%E9%9D%9E%E5%90%8C%E6%AD%A5%E7%89%B9%E6%80%A7%EF%BC%8C%E5%BB%BA%E8%AD%B0%E9%80%8F%E9%81%8E%E5%87%BD%E5%BC%8F%E8%99%95%E7%90%86%E9%9D%9E%E5%90%8C%E6%AD%A5"><span class="nav-number">7.</span> <span class="nav-text">❒ 因 axios 非同步特性，建議透過函式處理非同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-HTTP-%E7%8B%80%E6%85%8B%E7%A2%BC"><span class="nav-number">8.</span> <span class="nav-text">❒ HTTP 狀態碼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">9.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/2074748114/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day30 | JS 的 axios 套件與 HTTP 狀態碼 | Hi, I'm Carrie">
+      <meta itemprop="description" content="非同步 AJAX axios 套件的使用方式與 HTTP 狀態碼">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day30 | JS 的 axios 套件與 HTTP 狀態碼
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 14:18:30 / 修改時間：14:23:57" itemprop="dateCreated datePublished" datetime="2023-04-02T14:18:30+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">非同步 AJAX axios 套件的使用方式與 HTTP 狀態碼</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-甚麼是-AJAX"><a href="#❒-甚麼是-AJAX" class="headerlink" title="❒ 甚麼是 AJAX"></a>❒ 甚麼是 AJAX</h2><p>AJAX 是「 Asynchronous JavaScript and XML 」（ 非同步的 JavaScript 與 XML 技術 ）的縮寫，簡單說就是網頁不用重新整理，就能即時地透過瀏覽器去跟伺服器溝通，撈出資料。</p>
+<p>使用者在不換頁的情況下，還是擁有很好的使用者體驗，點選其他頁面只更新局部資料，不須每次都等網頁整理完載入其他周邊資訊，才可以看到想要的資料。</p>
+<p>點選其他頁面，不須等整個頁面重新載入，只會重新載入有變更的區域。</p>
+<h2 id="❒-什麼是網路請求？"><a href="#❒-什麼是網路請求？" class="headerlink" title="❒ 什麼是網路請求？"></a>❒ 什麼是網路請求？</h2><p>在網頁上 ( 例如 chrome ) 輸入網址，按下 Enter 這個動作等同於我傳送了一個網路請求。<br>我透過 chrome 發出一個網路請求，此請求為想要取得 ( get ) 一個網頁上的資訊。<br>要 get 一個網址，就會幫你找這個網址有沒有對應的伺服器，有的話就會連到對應的伺服器 ( 網址頁面 ) 去。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743No0ajep8kd.png" alt="利用網址按Enter 發出網路請求的過程"></p>
+<h3 id="從網頁架構瞭解網頁請求"><a href="#從網頁架構瞭解網頁請求" class="headerlink" title="從網頁架構瞭解網頁請求"></a>從網頁架構瞭解網頁請求</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743CcnvnIZPVZ.png" alt="從網頁架構瞭解網頁請求"></p>
+<ul>
+<li>可從 chrome 開發者工具的 Network 查詢裡面有幾個網路請求。剛開始開啟 Network 裡面沒資料，可按重新整理。</li>
+<li>以目前檔案內有 index.html 與 all.js ，載入的先後順序為 index.html 載入完會開始由上至下逐行解析 html 裡面的結構，最後顯示在網頁上。<br>Network 可見有三個網路請求 → index.html 、圖片、all.js。 這些網路請求是有先後順序如下圖，非一次一起出現。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743QdEkEXsioQ.png" alt="chrome 開發者工具的 Network 截圖"></li>
+</ul>
+<h2 id="❒-關於-request-請求、response-回傳"><a href="#❒-關於-request-請求、response-回傳" class="headerlink" title="❒ 關於 request 請求、response 回傳"></a>❒ 關於 request 請求、response 回傳</h2><h3 id="request-請求"><a href="#request-請求" class="headerlink" title="request 請求"></a>request 請求</h3><p>在傳送資料時，不是只 get 傳送一個網址伺服器就會回傳資料，會有一連串驗證，驗證資料沒問題，伺服器才會回傳資料給瀏覽器。</p>
+<ul>
+<li>Request Headers 使用者是看不到的，裡面的資訊主要是讓對方伺服器知道自己是甚麼身分 ( 表明 request 是誰、要傳送甚麼資料給對方伺服器、是甚麼瀏覽器 )，類似 html 中 <code>&lt;head&gt;&lt;/head&gt;</code> 內的資料 。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743NQqNsVNb9m.png" alt="不論是 request ( 請求 ) 或是 response ( 回傳 ) 都會有 Headers 的資料"></li>
+<li>想透過網頁請求發一些資訊給伺服器，告知我要登陸了並給予帳號密碼，伺服器驗證後覺得可行，再回傳資料給網頁。</li>
+</ul>
+<h3 id="response-回傳"><a href="#response-回傳" class="headerlink" title="response 回傳"></a>response 回傳</h3><ul>
+<li>發 request 與網址給伺服器，伺服器驗證覺得沒問題  → 伺服器透過 response 把資料回傳到網頁。</li>
+<li>response 回傳的內容有 :<ul>
+<li>Response Headers : 它不會顯示在網頁上，只是讓瀏覽器知道 Response Headers 有甚麼內容。Response Headers &#x2F; Content-Type 可看到資料是甚麼格式 。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743eP6hPLFGPK.png" alt="截圖"></li>
+<li>Response Data : 實際真正回傳的字串內容。( Network &#x2F; 左方點選檔案 &#x2F; 右方點選 Response )</li>
+</ul>
+</li>
+</ul>
+<h3 id="為什麼-Response-Data-回傳的是字串內容，我們卻看的到網頁畫面的呈現"><a href="#為什麼-Response-Data-回傳的是字串內容，我們卻看的到網頁畫面的呈現" class="headerlink" title="為什麼 Response Data 回傳的是字串內容，我們卻看的到網頁畫面的呈現 ?"></a>為什麼 Response Data 回傳的是字串內容，我們卻看的到網頁畫面的呈現 ?</h3><p>Response Data 回傳的字串內容 ( Network &#x2F; Response )，把它解析為 Content-Type 內的網頁格式 ( Network &#x2F; Headers → Content-Type : text&#x2F;html )，此時它就會用網頁格式做渲染讓我們看到畫面呈現。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743AOdlFRlt7E.png" alt="Response 會回傳的資訊"></p>
+<h3 id="request-請求-amp-response-回傳-統整"><a href="#request-請求-amp-response-回傳-統整" class="headerlink" title="request 請求 &amp; response 回傳 | 統整"></a>request 請求 &amp; response 回傳 | 統整</h3><ul>
+<li>不論是 request ( 請求 ) 或是 response ( 回傳 ) 都會有 Headers 的資料。</li>
+<li>透過瀏覽器或其他方式都可以發出網路請求給伺服器，伺服器回傳會使用 response ，回傳會有 Response Headers 與 Response 本身的資料內容 Response Data。<br>Response Data 中的 data 會被編譯為檔案、HTML、圖片 .. 等其他格式，會從 Response Headers 的 Content-Type 得知而進行編譯。</li>
+</ul>
+<h2 id="❒-各種發出網路請求的-JS-寫法種類"><a href="#❒-各種發出網路請求的-JS-寫法種類" class="headerlink" title="❒ 各種發出網路請求的 JS 寫法種類"></a>❒ 各種發出網路請求的 JS 寫法種類</h2><h3 id="➊-JS-原生寫法"><a href="#➊-JS-原生寫法" class="headerlink" title="➊ JS 原生寫法"></a>➊ JS 原生寫法</h3><ul>
+<li><p><code>XMLHttpRequest</code> : 最資深，每個網頁瀏覽器都有。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 結構</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reqListener</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">responseText</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> oReq = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">oReq.<span class="title function_">addEventListener</span>(<span class="string">&#x27;load&#x27;</span>, reqListener);</span><br><span class="line">oReq.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;http://example.org/example.text&#x27;</span>);</span><br><span class="line">oReq.<span class="title function_">send</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>fetch</code> : 較新的語法，在有些瀏覽器的運用上要留意是否有支援。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 結構</span></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;http://example.com/movies.json&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> response.<span class="title function_">json</span>();</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">myJson</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(myJson);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="➋-套件-axios"><a href="#➋-套件-axios" class="headerlink" title="➋ 套件 axios ?"></a>➋ 套件 axios ?</h3><ul>
+<li>需額外載入 JS。</li>
+<li>底層是使用 <code>XMLHttpRequest</code> 規則做出。</li>
+<li>精簡了 <code>XMLHttpRequest</code> 的程式碼，方便寫出簡潔的網路請求。</li>
+<li>axios 寫法：<ul>
+<li><p>對 <code>get(&#39;URL&#39;)</code> 內的網址發出網路請求，成功後會跑 <code>then</code> 然後直行裡面的函式把資料回傳。</p>
+<pre><code><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 結構</span></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;URL&#x27;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">data</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">status</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">statusText</span>); <span class="comment">// 狀態碼</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">headers</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">config</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-axios-套件"><a href="#❒-axios-套件" class="headerlink" title="❒ axios 套件"></a>❒ axios 套件</h2><h3 id="➊-環境安裝"><a href="#➊-環境安裝" class="headerlink" title="➊ 環境安裝"></a>➊ 環境安裝</h3><ul>
+<li><p>a<strong>xios repository :</strong> <a target="_blank" rel="noopener" href="https://github.com/axios/axios">https://github.com/axios/axios</a></p>
+</li>
+<li><p><strong>安裝方式 :</strong> axios 有多種安裝方式，可參考<a target="_blank" rel="noopener" href="https://github.com/axios/axios#installing">文件</a>，本文章使用 CDN 方式。</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 1.建議先載入套件的 js 檔案 ↓ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 2.自己寫的 js 檔案 ↓ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js/all.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="➋-檢查是否有載入成功"><a href="#➋-檢查是否有載入成功" class="headerlink" title="➋ 檢查是否有載入成功"></a>➋ 檢查是否有載入成功</h3><p><strong>方式一</strong></p>
+<p>開啟 chrome 開發者工具 &#x2F; Network 可見 axios.min.js 與 all.js 的狀態 Status 皆為 200 → 如果顯示 404 表沒載入成功。</p>
+<p>註： all.js 狀態碼 304 為已經有載入過，不會在跟伺服器要資料，會使用暫存的檔案。( 下方會有 HTTP 狀態碼解說 )<br><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743tUmHaEDAGC.png" alt="截圖"></p>
+<p><strong>方式二</strong></p>
+<p>於自己的 js 檔案輸入 <code>console.log(axios);</code> ，會回傳 axios 的相關資料。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743i874m5to6B.png" alt="截圖"></p>
+<h3 id="➌-使用-axios-串接外部資料"><a href="#➌-使用-axios-串接外部資料" class="headerlink" title="➌ 使用 axios 串接外部資料"></a>➌ 使用 axios 串接外部資料</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ------- axios 結構</span></span><br><span class="line"><span class="comment">// URL 可自行更換為想獲取資料的API網址</span></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;URL&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 成功回傳</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">data</span>); <span class="comment">//為上方JSON格式的資料，統整 response物件中，於裡面撈出</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">status</span>); <span class="comment">// HTTP 狀態碼</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 失敗回傳</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>範例 1. 使用 axios 讀取網址內的 JSON 資料</strong></p>
+<p>API 網址：<a target="_blank" rel="noopener" href="https://hexschool.github.io/ajaxHomework/data.json">https://hexschool.github.io/ajaxHomework/data.json</a></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;https://hexschool.github.io/ajaxHomework/data.json&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response); </span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>撈取 API 網址成功後回傳 <code>then</code> 中的 <code>response</code> 資料，<code>response</code> 下的 <code>data</code> 內可見<code>王小名</code>資訊。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743bO7yqdSCWU.png" alt="截圖"></p>
+</li>
+<li><p>試試故意把 URL 刪掉一個字讓網址錯誤，就會回傳 <code>catch</code> 中的 <code>err</code> 錯誤資訊。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743josWnWkQWQ.png" alt="截圖"></p>
+</li>
+</ul>
+<p><strong>範例 2. 使用 axios 讀取網址內的 JSON 資料，渲染在網頁上</strong></p>
+<p>API 網址 : <a target="_blank" rel="noopener" href="https://hexschool.github.io/ajaxHomework/data.json">https://hexschool.github.io/ajaxHomework/data.json</a></p>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/oNdVGbO">CodePen 範例</a></p>
+<h2 id="❒-axios-非同步觀念"><a href="#❒-axios-非同步觀念" class="headerlink" title="❒ axios 非同步觀念"></a>❒ axios 非同步觀念</h2><p><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743Ma5ttqTROp.png" alt="截圖"></p>
+<ul>
+<li>先印出 <code>console.log(ary);</code> → 空陣列，等待伺服器準備好資料回傳後就直接執行函式內的程式碼</li>
+<li>發網路請求給伺服器，等待伺服器回傳資料需要一些時間，還未等到資料回傳時 ( response 函式未執行，伺服器回傳資料後就會執行 response 的函式 )，程式碼就繼續往下運作，導致 <code>console.log(ary);</code> 會是空陣列。</li>
+</ul>
+<h3 id="為什麼不等到-axios-資料執行完再往下跑-console-log-ary"><a href="#為什麼不等到-axios-資料執行完再往下跑-console-log-ary" class="headerlink" title="為什麼不等到 axios 資料執行完再往下跑 console.log(ary); ?"></a>為什麼不等到 axios 資料執行完再往下跑 <code>console.log(ary);</code> ?</h3><p>如果 axios 內的資料很大，在等待下載的這段時間其他程式都不執行，網頁畫面會空白一片使用者體驗不好。所以都會先發出網路請求 <code>get</code> 再等待伺服器回傳資料的這段時間就繼續往下執行程式。<br>在繼續往下跑的這段時間，伺服器回傳資料後就會直接顯示出來。</p>
+<p>如下，第一次 <code>console.log(ary);</code> 顯示空值 ( 伺服器還未回傳資料 )，第二次 <code>console.log(ary);</code> 就會顯示 resopnse 資料了 ( 伺服器回傳資料成功，執行 response 的函式 )。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743IBIVLJq8ng.png" alt="截圖"></p>
+<h3 id="透過函式設計處理非同步"><a href="#透過函式設計處理非同步" class="headerlink" title="透過函式設計處理非同步"></a>透過函式設計處理非同步</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743EGUlR0jv4C.png" alt="截圖"></p>
+<ul>
+<li>執行順序 : 3 → 1 → 2</li>
+<li>透過函式設計處理非同步可使用函式方式包裝，確保伺服器有正確回傳資料後，再執行函式，就有保障。</li>
+<li>東西都是被函式包裝起來，當資料寫入 ( 發出網路請求，伺服器回傳資料 ) 就可直接執行函式。</li>
+<li>line10 <code>renderData()</code> 如果移至全域是<strong>不會</strong>得到 <code>response.data</code> 回傳的結果。</li>
+</ul>
+<h2 id="❒-因-axios-非同步特性，建議透過函式處理非同步"><a href="#❒-因-axios-非同步特性，建議透過函式處理非同步" class="headerlink" title="❒ 因 axios 非同步特性，建議透過函式處理非同步"></a>❒ 因 axios 非同步特性，建議透過函式處理非同步</h2><p><img src="https://ithelp.ithome.com.tw/upload/images/20221015/20119743d7BdFm5UL3.png" alt="截圖"></p>
+<ul>
+<li>執行順序 : 3 → 1 → 2</li>
+<li>任何指令都先寫成一個函式，像是渲染畫面用的 <code>renderData()</code>。等伺服器回傳資料 response 後，觸發 then 的函式，再把資料 response  寫到 line4 空陣列中，再往下執行，也能確保資料有吃到 ( line 9 ) 再來做後續的行為 ( 渲染畫面 <code>renderData()</code> )。</li>
+</ul>
+<p><strong>步驟解析 :</strong></p>
+<ol>
+<li>宣告一個變數 ary 為空陣列。</li>
+<li>使用 <code>get</code> 發出一個網路請求給伺服器，伺服器還在審核資料未回傳時， <code>then</code> 的函式是不會被觸發的 ( 會被丟到一個暫存區，等到伺服器跑好才會被執行 ) → 繼續往下跑去註冊 <code>randerData()</code> 函式到 chrome 的 JS 裡面 ( 這時伺服器還再跑未回傳 ) → 繼續往下執行 line 18 <code>console.log(ary);</code> 為空陣列 ( 印出 )。<br>這時還有個待處理的狀態 line 6 ~ line11，等到伺服器跑好了回傳 response，line 6 ~ line11 的函式就會開始執行，並且把伺服器回傳的 response 結果帶到 line7 的參數 response 上。開始往下執行剛剛待處理的狀態 :<ul>
+<li>line8 → 印出 資料回傳了</li>
+<li>line9 →  arr 資料寫到 line4 空陣列中。</li>
+<li>line10 → 執行 <code>randerData() ;</code> → 跑 line13 印出變數 <code>ary</code> 內的資料。</li>
+<li>line15 ~ line16 → 前方資料處理完後，把文字顯示在 html 上。</li>
+</ul>
+</li>
+<li><strong>總結 :</strong><br>在非同步執行後 ( line6 )，寫一個函式 ( line10 ) 去執行後續，但在這之前需先管理資料狀態 <code>ary=response.data;</code> ( line9 ) 把資料狀態賦予回去外層變數 <code>let ary =[];</code> 空陣列中。<br>以上可確保值都有吃到，再進行後續行為。</li>
+</ol>
+<p><strong>使用函式處理上方範例 2. 的程式碼：使用 axios 讀取網址內的 JSON 資料，渲染在網頁上</strong></p>
+<p>API 網址 : <a target="_blank" rel="noopener" href="https://hexschool.github.io/ajaxHomework/data.json">https://hexschool.github.io/ajaxHomework/data.json</a></p>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/XWqGejB">CodePen 範例</a></p>
+<h2 id="❒-HTTP-狀態碼"><a href="#❒-HTTP-狀態碼" class="headerlink" title="❒ HTTP 狀態碼"></a>❒ HTTP 狀態碼</h2><p>HTTP 狀態碼可以讓我們了解 HTTP 請求是否已經被完成或是出了什麼問題，下方整理了 AJAX 較常使用到的狀態碼訊息：</p>
+<ol>
+<li><strong>成功回應 ( Successful responses, 200 ~ 299 )</strong><ul>
+<li>200 OK：請求成功。</li>
+<li>這區間的狀態碼表示伺服器有成功接收到用戶端要求。以 AJAX 的串接為例，如果回傳的 <strong>status 為 200</strong>，則代表有成功接收到資料。</li>
+</ul>
+</li>
+<li><strong>重定向 300 ~ 399</strong><ul>
+<li>304 Not Modified ：已經有載入過，不會在跟伺服器要資料，會使用暫存的檔案。</li>
+</ul>
+</li>
+<li><strong>用戶端錯誤 ( Client errors, 400 ~ 499 )</strong> 這區間的狀態碼表示有錯誤發生，且錯誤來自於「用戶端」。以 AJAX 的串接為例，<ul>
+<li>回傳的 <strong>status 為 400</strong>，表示遠端伺服器接收到無效語法、無法理解請求，因此需要檢查程式碼有無寫錯的地方。</li>
+<li>回傳的 <strong>status 為 403</strong>, 表示禁止使用，這代表用戶端沒有訪問權限，因此沒辦法成功串接資料。</li>
+<li>回傳的 <strong>status 404</strong>，伺服器找不到請求的資源 ( 找不到檔案 ) 。</li>
+</ul>
+</li>
+<li><strong>伺服器端錯誤 ( Server errors, 500 ~ 599 )</strong> 如果發生狀態碼為 <strong>5xx</strong> 的錯誤，則表示錯誤發生跟「遠端伺服器」有關，此時就需要跟後端工程師進行協調了。<ul>
+<li><strong>500 Internal Server Error</strong> ：伺服器端發生未知或無法處理的錯誤 ( 接後端資訊時，可能會遇到 )。</li>
+</ul>
+</li>
+</ol>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li>六角學院</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status">MDN - HTTP 狀態碼</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/axios/" rel="tag"># axios</a>
+              <a href="/tags/HTTP%E7%8B%80%E6%85%8B%E7%A2%BC/" rel="tag"># HTTP狀態碼</a>
+              <a href="/tags/AJAX/" rel="tag"># AJAX</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/3423653197/" rel="prev" title="Day29 | localStorage 瀏覽器資料儲存">
+                  <i class="fa fa-chevron-left"></i> Day29 | localStorage 瀏覽器資料儲存
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

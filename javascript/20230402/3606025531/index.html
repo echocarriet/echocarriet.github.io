@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day27 | JS DOM">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/3606025531/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="DOM">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743rDMoKM5GAm.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743QpwHYFgaet.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743PfhxchsEGP.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743D5nlnSYZTS.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743pWwI35oRkw.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743GzD1IqXBjn.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743F7beqeDMd3.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743tfxcnzzvkq.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743UXJ4MHyvwg.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/201197431PWuU3v4AN.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743jKNALdZ1lh.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743RcqQzETpAW.png">
+<meta property="article:published_time" content="2023-04-02T06:15:50.000Z">
+<meta property="article:modified_time" content="2023-04-02T06:16:26.704Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="DOM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20221012/20119743rDMoKM5GAm.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/3606025531/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/3606025531/","path":"javascript/20230402/3606025531/","title":"Day27 | JS DOM"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day27 | JS DOM | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-DOM-Document-Object-Model"><span class="nav-number">1.</span> <span class="nav-text">❒ DOM ( Document Object Model )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9E%AD%E8%A7%A3-document-%E9%87%8D%E8%A6%81%E6%80%A7-%E4%BB%A5-HTML-%E8%A7%A3%E8%AA%AA"><span class="nav-number">1.1.</span> <span class="nav-text">瞭解 document 重要性 ( 以 HTML 解說 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-%E7%92%B0%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">DOM 環境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-body"><span class="nav-number">1.3.</span> <span class="nav-text">document.body</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A6%8B%E9%81%B8%E5%8F%96-DOM-%E7%AF%80%E9%BB%9E%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%BB%BA%E8%AD%B0%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">其他常見選取 DOM 節點的方法，建議使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-querySelector-%E8%88%87-getElementById-%E9%81%B8%E6%93%87%E5%96%AE%E4%B8%80%E5%85%83%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text">❒ querySelector 與 getElementById  選擇單一元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E4%BD%BF%E7%94%A8%E8%AE%8A%E6%95%B8%E7%B8%AE%E7%9F%AD%E7%A8%8B%E5%BC%8F%E7%A2%BC%EF%BC%8C%E4%BD%BF%E7%94%A8-getElementById"><span class="nav-number">2.1.</span> <span class="nav-text">範例 1. 使用變數縮短程式碼，使用 getElementById</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E4%BD%BF%E7%94%A8-querySelector"><span class="nav-number">2.2.</span> <span class="nav-text">範例 2. 使用 querySelector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getElementById-%E8%88%87-querySelector-%E5%B7%AE%E7%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">getElementById() 與 querySelector() 差異 ?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-querySelectorAll-%E5%8F%AF%E9%87%8D%E8%A6%86%E9%81%B8%E5%8F%96%E5%A4%9A%E5%80%8B%E5%85%83%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">❒ querySelectorAll 可重覆選取多個元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#querySelector-%E8%88%87-querySelectorAll-%E5%B7%AE%E7%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">querySelector() 與 querySelectorAll() 差異 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-querySelector-%E5%8F%AA%E6%9C%83%E6%8A%93%E7%AC%AC%E4%B8%80%E7%AD%86%E8%B3%87%E6%96%99%E5%81%9A%E6%9B%B4%E6%96%B0"><span class="nav-number">3.2.</span> <span class="nav-text">範例 1. querySelector() 只會抓第一筆資料做更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E4%B8%8D%E7%9F%A5%E9%99%A3%E5%88%97%E6%95%B8%E9%87%8F%E4%BD%BF%E7%94%A8-querySelectorAll-%E9%81%B8%E6%93%87%E5%A4%9A%E7%AD%86%E8%B3%87%E6%96%99%E5%81%9A%E6%9B%B4%E6%96%B0"><span class="nav-number">3.3.</span> <span class="nav-text">範例 2. 不知陣列數量使用 querySelectorAll 選擇多筆資料做更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3-%E7%9F%A5%E5%88%B0%E9%99%A3%E5%88%97%E6%95%B8%E9%87%8F%E4%BD%BF%E7%94%A8-querySelectorAll-%E9%81%B8%E6%93%87%E5%A4%9A%E7%AD%86%E8%B3%87%E6%96%99%E5%81%9A%E6%9B%B4%E6%96%B0"><span class="nav-number">3.4.</span> <span class="nav-text">範例 3. 知到陣列數量使用 querySelectorAll 選擇多筆資料做更新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-setAttribute-%E5%A2%9E%E5%8A%A0%E3%80%81%E4%BF%AE%E6%94%B9%E6%A8%99%E7%B1%A4%E5%B1%AC%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">❒ setAttribute 增加、修改標籤屬性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E9%80%8F%E9%81%8E-JS-%E5%8B%95%E6%85%8B%E6%96%B0%E5%A2%9E-HTML-%E4%B8%AD-lt-a-gt-%E6%A8%99%E7%B1%A4%E7%9A%84%E9%80%A3%E7%B5%90"><span class="nav-number">4.1.</span> <span class="nav-text">範例 1. 透過 JS 動態新增 HTML 中 &lt;a&gt; 標籤的連結</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E9%80%8F%E9%81%8E-JS-%E5%8B%95%E6%85%8B%E5%A2%9E%E5%8A%A0%E5%B1%AC%E6%80%A7%E8%AA%BF%E6%95%B4%E6%96%87%E5%AD%97%E9%A1%8F%E8%89%B2%EF%BC%8C%E6%8A%8A%E6%96%87%E5%AD%97%E7%94%B1%E9%BB%91%E8%AE%8A%E7%B4%85"><span class="nav-number">4.2.</span> <span class="nav-text">範例 2.  透過 JS 動態增加屬性調整文字顏色，把文字由黑變紅</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%BE%9EHTML-%E5%8F%96%E5%87%BA%E5%80%BC%E7%9A%84%E8%BE%A6%E6%B3%95-%E6%92%88%E5%87%BA%E5%B1%AC%E6%80%A7%E3%80%81%E7%B5%90%E6%A7%8B%E3%80%81%E6%96%87%E5%AD%97"><span class="nav-number">5.</span> <span class="nav-text">❒ 從HTML 取出值的辦法 ( 撈出屬性、結構、文字 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E6%92%88%E5%87%BA-HTML-%E4%B8%AD-h2-%E6%A8%99%E7%B1%A4%E5%85%A7%E7%9A%84-a-%E9%80%A3%E7%B5%90%E7%B6%B2%E5%9D%80"><span class="nav-number">5.1.</span> <span class="nav-text">範例 1. 撈出 HTML 中 h2 標籤內的 a 連結網址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E5%8F%96%E5%87%BA-textLink-%E7%9A%84-HTML-%E7%B5%90%E6%A7%8B"><span class="nav-number">5.2.</span> <span class="nav-text">範例 2. 取出 .textLink 的 HTML 結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3-%E6%92%88%E5%87%BA-HTML-%E4%B8%AD-h1-%E6%A8%99%E7%B1%A4%E4%B8%AD%E7%9A%84%E6%96%87%E5%AD%97"><span class="nav-number">5.3.</span> <span class="nav-text">範例 3. 撈出 HTML 中 h1 標籤中的文字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E8%A1%A8%E5%96%AE%E5%8F%96%E5%80%BC%E8%88%87%E6%9B%B4%E6%94%B9%E5%80%BC%E6%96%B9%E5%BC%8F-value"><span class="nav-number">6.</span> <span class="nav-text">❒ 表單取值與更改值方式 value</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E5%8F%96%E5%87%BA-input-%E8%A1%A8%E5%96%AE%E4%B8%AD-%E2%80%9C-%E4%BD%A0%E5%A5%BD%E5%97%8E-%E2%80%9C-%E7%9A%84%E6%96%87%E5%AD%97"><span class="nav-number">6.1.</span> <span class="nav-text">範例 1. 取出 input 表單中 “ 你好嗎 ? “ 的文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E6%9B%B4%E6%94%B9-input-%E8%A1%A8%E5%96%AE%E4%B8%AD-%E2%80%9C-%E4%BD%A0%E5%A5%BD%E5%97%8E-%E2%80%9C-%E7%9A%84%E6%96%87%E5%AD%97"><span class="nav-number">6.2.</span> <span class="nav-text">範例 2. 更改 input 表單中 “ 你好嗎 ? “ 的文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3-%E5%8F%96%E5%87%BA-input-%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE%E8%A1%A8%E5%96%AE%E4%B8%AD%E7%9A%84%E6%96%87%E5%AD%97"><span class="nav-number">6.3.</span> <span class="nav-text">範例 3. 取出 input 下拉選單表單中的文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-4-%E8%A8%AD%E5%AE%9A-input-%E4%B8%8B%E6%8B%89%E9%81%B8%E5%96%AE%E9%A1%AF%E7%A4%BA%E7%9A%84-option-%E6%96%87%E5%AD%97"><span class="nav-number">6.4.</span> <span class="nav-text">範例 4. 設定 input 下拉選單顯示的 option 文字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%8F%92%E5%85%A5-HTML-%E6%A8%99%E7%B1%A4%E7%9A%84%E5%85%A9%E7%A8%AE%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">❒ 插入 HTML 標籤的兩種方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8-JavaScript-%E6%93%8D%E6%8E%A7-HTML-%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">7.1.</span> <span class="nav-text">用 JavaScript 操控 HTML 的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-innerHTML"><span class="nav-number">7.2.</span> <span class="nav-text">➊ innerHTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6-%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC%E9%81%8B%E7%94%A8"><span class="nav-number">7.3.</span> <span class="nav-text">ES6 樣板字面值運用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-innerHTML-%E6%90%AD%E9%85%8D-for-loop-%E9%81%8B%E7%94%A8"><span class="nav-number">7.4.</span> <span class="nav-text">➋ innerHTML 搭配 for loop 運用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-createElement-%E6%90%AD%E9%85%8D-appendChild-%E5%AF%AB%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">❒ createElement 搭配 appendChild 寫法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-createElement-%E8%88%87-for-loop-%E9%81%8B%E7%94%A8"><span class="nav-number">9.</span> <span class="nav-text">❒ createElement 與 for loop 運用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%AD%A5%E9%A9%9F"><span class="nav-number">9.1.</span> <span class="nav-text">三步驟</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-XSS-%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%EF%BC%88Cross-site-scripting%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">❒ XSS 跨網站指令碼注意事項（Cross-site scripting）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E4%BE%86%E6%BA%90"><span class="nav-number">11.</span> <span class="nav-text">資料來源</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/3606025531/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day27 | JS DOM | Hi, I'm Carrie">
+      <meta itemprop="description" content="DOM">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day27 | JS DOM
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 14:15:50 / 修改時間：14:16:26" itemprop="dateCreated datePublished" datetime="2023-04-02T14:15:50+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">DOM</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-DOM-Document-Object-Model"><a href="#❒-DOM-Document-Object-Model" class="headerlink" title="❒ DOM ( Document Object Model )"></a>❒ DOM ( Document Object Model )</h2><p><strong>DOM 結點樹</strong>  <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B#/media/File:DOM-model">維基百科</a></p>
+<ul>
+<li><p>方便 js 選取</p>
+</li>
+<li><p>方便 css 渲染到對應標籤</p>
+</li>
+<li><p>當解析完一個網頁內容 ( 開啟一個網頁 )，會生成一個 DOM 也就是網站的節點樹 ( dom tree )  如下，Document  為最根目錄的地方，所以要先從根目錄開始選取才能選到裡面的標籤 ( 例如 h1 、a )。<br>簡述 :  網頁一打開，會生成出一個 document。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743rDMoKM5GAm.png" alt="DOM 結點樹"></p>
+</li>
+</ul>
+<h3 id="瞭解-document-重要性-以-HTML-解說"><a href="#瞭解-document-重要性-以-HTML-解說" class="headerlink" title="瞭解 document 重要性 ( 以 HTML 解說 )"></a>瞭解 document 重要性 ( 以 HTML 解說 )</h3><ul>
+<li>網頁在解析瀏覽器時，會先產生 Document ，Document  內就會依序解析裡面有些甚麼元素。</li>
+<li>可從 JS 內改 HTML 內的文字，例如 <code>document.getElementById().textContent</code> ，就是從 Document 依序往內找到 Text 更改裡面的文字。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743QpwHYFgaet.png" alt="網頁一打開，會生成出一個 document。"></li>
+</ul>
+<h3 id="DOM-環境配置"><a href="#DOM-環境配置" class="headerlink" title="DOM 環境配置"></a>DOM 環境配置</h3><p>出處 : JavaScript 工程師養成直播班 - 2021 春季班 影音</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;js檔案位置&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把 <code>&lt;script src=&quot;js檔案位置&quot;&gt;&lt;/script&gt;</code> 放置到 <code>&lt;/body&gt;</code> 結尾前。</li>
+<li>為什麼要放 <code>&lt;body&gt;</code> 內而非 <code>&lt;head&gt;</code> → 網頁打開，會從上往下執行，<code>&lt;body&gt;</code> 內的標籤轉化為 DOM 節點後，再依序往下執行 js 檔案才能夠解析到這些 DOM 節點。( 產生之後才能夠讀取 )</li>
+</ul>
+<h3 id="document-body"><a href="#document-body" class="headerlink" title="document.body"></a>document.body</h3><ul>
+<li>Document 介面代表所有在瀏覽器中載入的網頁，也是作為網頁內容 DOM Tree（包含 <body>、<table> 與其它的元素）的進入點。</li>
+<li><code>Document.body</code> 主要是「回傳目前文件的 <code>&lt;body&gt;</code> 節點，如元素不存在則回傳 <code>null</code> 」，因此只有 <code>body</code> 能使用。</li>
+</ul>
+<h3 id="其他常見選取-DOM-節點的方法，建議使用："><a href="#其他常見選取-DOM-節點的方法，建議使用：" class="headerlink" title="其他常見選取 DOM 節點的方法，建議使用："></a><strong>其他常見選取 DOM 節點的方法，建議使用：</strong></h3><ol>
+<li><p>根據傳入的值，找到 DOM 中 ID 為 ‘xxx’ 的元素 → <code>document.getElementById(&#39;xxx&#39;);</code>。</p>
+</li>
+<li><p>針對給定的 Selector ( 選擇器 ) 條件，回傳第一個或所有符合條件的 NodeList ( 節點列表 )。</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;xxx&#x27;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;xxx&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="❒-querySelector-與-getElementById-選擇單一元素"><a href="#❒-querySelector-與-getElementById-選擇單一元素" class="headerlink" title="❒ querySelector 與 getElementById  選擇單一元素"></a>❒ querySelector 與 getElementById  選擇單一元素</h2><h3 id="範例-1-使用變數縮短程式碼，使用-getElementById"><a href="#範例-1-使用變數縮短程式碼，使用-getElementById" class="headerlink" title="範例 1. 使用變數縮短程式碼，使用 getElementById"></a>範例 1. 使用變數<strong>縮短程式碼，使用</strong> getElementById</h3><ul>
+<li><code>getElementById</code> 只可用來選取 ID ( 加井字號 <code>#</code> ) 的語法。</li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/rNxKJQN">CodePen範例</a></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;textId&quot;</span> <span class="attr">class</span>=<span class="string">&quot;textClass&quot;</span>&gt;</span> text <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 程式碼太長</span></span><br><span class="line"><span class="comment">// document.getElementById(&#x27;textId&#x27;).textContent = &#x27;123&#x27;;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用變數縮短程式碼</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;textId&#x27;</span>);</span><br><span class="line">element.<span class="property">textContent</span> = <span class="string">&#x27;13579&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="範例-2-使用-querySelector"><a href="#範例-2-使用-querySelector" class="headerlink" title="範例 2. 使用 querySelector"></a>範例 2. 使用 querySelector</h3><ul>
+<li><code>querySelector()</code>  可以用來選取 ID ( 加井字號 <code>#</code> ) 或 CLASS ( 加點 <code>.</code> ) 的語法。</li>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/eYJKVqm">CodePen範例</a></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;textId&quot;</span> <span class="attr">class</span>=<span class="string">&quot;textClass&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">em</span>&gt;</span>text<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.textClass em&#x27;</span>)</span><br><span class="line">element.<span class="property">textContent</span> = <span class="string">&#x27;2468&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="getElementById-與-querySelector-差異"><a href="#getElementById-與-querySelector-差異" class="headerlink" title="getElementById() 與 querySelector() 差異 ?"></a><code>getElementById()</code> 與 <code>querySelector()</code> 差異 ?</h3><ul>
+<li>兩者相同點 : 選取 HTML 元素。</li>
+<li>相異點<ul>
+<li><code>getElementById()</code> 選取元素侷限於  ID</li>
+<li><code>querySelector()</code> 選取元素包含 HTML 標籤、 ID 元素 、 CLASS 元素 。</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-querySelectorAll-可重覆選取多個元素"><a href="#❒-querySelectorAll-可重覆選取多個元素" class="headerlink" title="❒ querySelectorAll 可重覆選取多個元素"></a>❒ querySelectorAll 可重覆選取多個元素</h2><h3 id="querySelector-與-querySelectorAll-差異"><a href="#querySelector-與-querySelectorAll-差異" class="headerlink" title="querySelector() 與 querySelectorAll() 差異 ?"></a><code>querySelector()</code> 與 <code>querySelectorAll()</code> 差異 ?</h3><blockquote>
+<p><code>querySelector()</code> 只會抓第一筆資料做更新<br><code>querySelectorAll()</code> 可選擇多筆資料做更新</p>
+</blockquote>
+<h3 id="範例-1-querySelector-只會抓第一筆資料做更新"><a href="#範例-1-querySelector-只會抓第一筆資料做更新" class="headerlink" title="範例 1. querySelector() 只會抓第一筆資料做更新"></a>範例 1. <code>querySelector()</code> 只會抓第一筆資料做更新</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;textId&quot;</span> <span class="attr">class</span>=<span class="string">&quot;textClass&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">em</span>&gt;</span>text<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;textId&quot;</span> <span class="attr">class</span>=<span class="string">&quot;textClass&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">em</span>&gt;</span>text<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.textClass em&#x27;</span>);</span><br><span class="line">element.<span class="property">textContent</span> =<span class="string">&#x27;123&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong></p>
+<ul>
+<li>因為<code>querySelector()</code> 只會抓第一筆資料做更新，所以只有第一筆有改到內容。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743PfhxchsEGP.png" alt="開發者工具截圖"></li>
+</ul>
+<h3 id="範例-2-不知陣列數量使用-querySelectorAll-選擇多筆資料做更新"><a href="#範例-2-不知陣列數量使用-querySelectorAll-選擇多筆資料做更新" class="headerlink" title="範例 2. 不知陣列數量使用 querySelectorAll 選擇多筆資料做更新"></a>範例 2. 不知陣列數量使用 <code>querySelectorAll</code> 選擇多筆資料做更新</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;.textClass em&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// element 數量</span></span><br><span class="line"><span class="keyword">const</span> elementTotal = element.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; elementTotal; i++) &#123;</span><br><span class="line">  <span class="comment">//不要把陣列內的數值寫死，所以寫i，讓他去跑小括號內的條件</span></span><br><span class="line">  element[i].<span class="property">textContent</span> = <span class="string">&quot;text一起做更改&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/GRoGxrX">CodePen 範例</a></p>
+<ul>
+<li><code>querySelectorAll</code> 可選擇多筆資料做更新，指定的東西會回傳陣列。<ul>
+<li>不知陣列數量 : 寫 for loop ( 迴圈 ) 。<ul>
+<li>用 <code>length</code> 查數量，再帶入迴圈中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="範例-3-知到陣列數量使用-querySelectorAll-選擇多筆資料做更新"><a href="#範例-3-知到陣列數量使用-querySelectorAll-選擇多筆資料做更新" class="headerlink" title="範例 3. 知到陣列數量使用 querySelectorAll 選擇多筆資料做更新"></a>範例 3. 知到陣列數量使用 <code>querySelectorAll</code> 選擇多筆資料做更新</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;textClass&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">em</span>&gt;</span>text<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;textClass&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">em</span>&gt;</span>text<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.textClass em&#x27;</span>)</span><br><span class="line">element[<span class="number">0</span>].<span class="property">textContent</span> = <span class="number">123</span>;</span><br><span class="line">element[<span class="number">1</span>].<span class="property">textContent</span> = <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/VwedXvr">CodePen 範例</a></p>
+<ul>
+<li>知道陣列數量 : 依序在 Array 中帶值進去 。<ul>
+<li><code>querySelectorAll</code> 指定的東西會回傳陣列。</li>
+<li>明確知道 <code>.textClass em</code> 數量，就可以依序帶值進去<br><img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743D5nlnSYZTS.png" alt="console.log(element); 回傳陣列 ( NodeList 為節點列表 ) ▲"></li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-setAttribute-增加、修改標籤屬性"><a href="#❒-setAttribute-增加、修改標籤屬性" class="headerlink" title="❒ setAttribute 增加、修改標籤屬性"></a>❒ setAttribute 增加、修改標籤屬性</h2><p><strong>結構：</strong> <code>setAttribute( &#39;要更改的屬性&#39; , &#39;更改的屬性值&#39; )</code></p>
+<h3 id="範例-1-透過-JS-動態新增-HTML-中-lt-a-gt-標籤的連結"><a href="#範例-1-透過-JS-動態新增-HTML-中-lt-a-gt-標籤的連結" class="headerlink" title="範例 1. 透過 JS 動態新增 HTML 中 &lt;a&gt; 標籤的連結"></a>範例 1. <strong>透過 JS 動態新增 HTML 中 <code>&lt;a&gt;</code> 標籤的連結</strong></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;textClass&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>title<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.textClass a&#x27;</span>);</span><br><span class="line">element.<span class="title function_">setAttribute</span>(<span class="string">&#x27;href&#x27;</span>,<span class="string">&#x27;https://google.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p> ****<a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/VwedxbN">CodePen範例</a></p>
+<h3 id="範例-2-透過-JS-動態增加屬性調整文字顏色，把文字由黑變紅"><a href="#範例-2-透過-JS-動態增加屬性調整文字顏色，把文字由黑變紅" class="headerlink" title="範例 2.  透過 JS 動態增加屬性調整文字顏色，把文字由黑變紅"></a>範例 2.  透過 JS 動態增加屬性調整文字顏色，把文字由黑變紅</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;textHere&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;textHere&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//動態改變 textHere 屬性</span></span><br><span class="line">element.<span class="title function_">setAttribute</span>(<span class="string">&#x27;ID&#x27;</span>,<span class="string">&#x27;textRed&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/wvMXjPW">CodePen 範例</a></p>
+<ul>
+<li>新增一個紅色文字 id 於 css 中，並使用 <code>setAttribute</code> 把此屬性新增於 <code>element</code> 上，Hello 文字由黑變紅。</li>
+<li>可由開發者工具看到 HTML 內由 JS 動態新增了 <code>id=&quot;strID&quot;</code><br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743pWwI35oRkw.png" alt="開發者工具截圖"></li>
+</ul>
+<h2 id="❒-從HTML-取出值的辦法-撈出屬性、結構、文字"><a href="#❒-從HTML-取出值的辦法-撈出屬性、結構、文字" class="headerlink" title="❒ 從HTML 取出值的辦法 ( 撈出屬性、結構、文字 )"></a>❒ 從HTML 取出值的辦法 ( 撈出屬性、結構、文字 )</h2><blockquote>
+<p><code>getAttribute</code> → 取出 HTML 中的屬性<br><code>innerHTML</code> → 取出 HTML 中的結構<br><code>textContent</code> → 取出 HTML 中的文字</p>
+</blockquote>
+<h3 id="範例-1-撈出-HTML-中-h2-標籤內的-a-連結網址"><a href="#範例-1-撈出-HTML-中-h2-標籤內的-a-連結網址" class="headerlink" title="範例 1. 撈出 HTML 中 h2 標籤內的 a 連結網址"></a>範例 1. 撈出 HTML 中 h2 標籤內的 a 連結網址</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;textTitle&quot;</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;textLink&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://google.com&quot;</span>&gt;</span>LINK<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;textTex&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法 1.</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.textLink a&#x27;</span>).<span class="title function_">getAttribute</span>(<span class="string">&#x27;href&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(element);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法 2</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.textLink a&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(element.<span class="title function_">getAttribute</span>(<span class="string">&#x27;href&#x27;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>getAttribute(&#39;屬性&#39;)</code> 方式可以撈出 a 標籤內的連結。</li>
+</ul>
+<h3 id="範例-2-取出-textLink-的-HTML-結構"><a href="#範例-2-取出-textLink-的-HTML-結構" class="headerlink" title="範例 2. 取出 .textLink 的 HTML 結構"></a>範例 2. <strong>取出 <code>.textLink</code> 的 HTML 結構</strong></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;textLink&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://google.com&quot;</span>&gt;</span>LINK<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式一</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.textLink&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(element.<span class="property">innerHTML</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//會撈出 h2 內的所有結構</span></span><br><span class="line"><span class="comment">//&lt;a href=&quot;https://google.com&quot;&gt;LINK&lt;/a&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式二 :先賦予在變數上</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.textLink&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> content = element.<span class="property">innerHTML</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(content);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>innerHTML</code> 取出 <code>h2</code> 標籤內的 <code>a</code> 結構。</li>
+</ul>
+<h3 id="範例-3-撈出-HTML-中-h1-標籤中的文字"><a href="#範例-3-撈出-HTML-中-h1-標籤中的文字" class="headerlink" title="範例 3. 撈出 HTML 中 h1 標籤中的文字"></a>範例 3. 撈出 HTML 中 h1 標籤中的文字</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;textTitle&quot;</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;textLink&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://google.com&quot;</span>&gt;</span>LINK<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;textTex&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.textTitle&#x27;</span>).<span class="property">textContent</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(element);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>textContent</code> : 只會抓節點內的 『 文字 』 資訊。</li>
+</ul>
+<h2 id="❒-表單取值與更改值方式-value"><a href="#❒-表單取值與更改值方式-value" class="headerlink" title="❒ 表單取值與更改值方式 value"></a>❒ 表單取值與更改值方式 value</h2><p>出處 : avaScript 工程師養成直播班 - 2021 春季班 影音</p>
+<h3 id="範例-1-取出-input-表單中-“-你好嗎-“-的文字"><a href="#範例-1-取出-input-表單中-“-你好嗎-“-的文字" class="headerlink" title="範例 1. 取出 input 表單中 “ 你好嗎 ? “ 的文字"></a>範例 1. 取出 input 表單中 “ 你好嗎 ? “ 的文字</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743GzD1IqXBjn.png" alt="表單示意圖"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;txt&quot;</span> <span class="attr">value</span>=<span class="string">&quot;你好嗎?&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> txt =<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.txt&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//文字寫在 value 上，直接用 txt 選取 value</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(txt.<span class="property">value</span>);  <span class="comment">// 你好嗎</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="範例-2-更改-input-表單中-“-你好嗎-“-的文字"><a href="#範例-2-更改-input-表單中-“-你好嗎-“-的文字" class="headerlink" title="範例 2. 更改 input 表單中 “ 你好嗎 ? “ 的文字"></a>範例 2. 更改 input 表單中 “ 你好嗎 ? “ 的文字</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;txt&quot;</span> <span class="attr">value</span>=<span class="string">&quot;你好嗎?&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改 list.value 的作用也不是給 select 賦予 value 值，而是更改它所指向的 option</span></span><br><span class="line"><span class="keyword">const</span> txt = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.txt&#x27;</span>);</span><br><span class="line">txt.<span class="property">value</span> = <span class="string">&quot;Hello !&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(txt.<span class="property">value</span>);  <span class="comment">// Hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="範例-3-取出-input-下拉選單表單中的文字"><a href="#範例-3-取出-input-下拉選單表單中的文字" class="headerlink" title="範例 3. 取出 input 下拉選單表單中的文字"></a>範例 3. 取出 input 下拉選單表單中的文字</h3><p><img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743F7beqeDMd3.png" alt="下拉選單示意圖"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;高雄市&quot;</span>&gt;</span>高雄市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;台北市&quot;</span>&gt;</span>台北市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list =<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(list.<span class="property">value</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="範例-4-設定-input-下拉選單顯示的-option-文字"><a href="#範例-4-設定-input-下拉選單顯示的-option-文字" class="headerlink" title="範例 4. 設定 input 下拉選單顯示的 option 文字"></a>範例 4. 設定 input 下拉選單顯示的 option 文字</h3><p>下拉式選單的文字釘在台北市上。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743tfxcnzzvkq.png" alt="下拉選單示意圖"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;高雄市&quot;</span>&gt;</span>高雄市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;台北市&quot;</span>&gt;</span>台北市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改 list.value 的作用也不是給 select 賦予 value 值，而是更改它所指向的 option，因此 console.log(list.value); 一次只會出現一個值。</span></span><br><span class="line"><span class="keyword">const</span> list =<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line">list.<span class="property">value</span> = <span class="string">&quot;台北市&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(list.<span class="property">value</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>為什麼 <code>console.log(list.value);</code> 只讀取到高雄市 ?</strong></p>
+<ul>
+<li><p><code>list</code> DOM 是選取到 <code>select</code> 這個標籤，<code>select</code> 本身是沒有 <code>value</code> 值的，它實際上只是回傳它所選取到的那個 <code>option</code> 的 <code>value</code>，並不是直接指向 <code>option</code>。<br>修改 <code>list.value</code> 的作用也不是給 <code>select</code> 賦予 <code>value</code> 值，而是更改它所指向的 <code>option</code>，因此 <code>console.log(list.value);</code> 一次只會出現一個值。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可看出 select 本身沒有 value 屬性，但可以回傳它所選取到的那個 option 的 value</span></span><br><span class="line"><span class="keyword">const</span> list =<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(list.<span class="title function_">getAttribute</span>(<span class="string">&#x27;value&#x27;</span>)); <span class="comment">//回傳 null</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="❒-插入-HTML-標籤的兩種方法"><a href="#❒-插入-HTML-標籤的兩種方法" class="headerlink" title="❒ 插入 HTML 標籤的兩種方法"></a>❒ 插入 HTML 標籤的兩種方法</h2><h3 id="用-JavaScript-操控-HTML-的方法"><a href="#用-JavaScript-操控-HTML-的方法" class="headerlink" title="用 JavaScript 操控 HTML 的方法"></a>用 JavaScript 操控 HTML 的方法</h3><ol>
+<li><code>innerHTML</code><ol>
+<li>方法 : 組完字串後，傳進語法進行渲染。</li>
+<li>優點 : 效能快。</li>
+<li>缺點 : 資安風險，要確保來源沒問題 。</li>
+<li>特性 : 會在指定的區域把原來的內容清空，放入新的值。</li>
+</ol>
+</li>
+<li><code>createElement(&#39;&#39;)</code><ol>
+<li>方法 : 以 DOM 節點來處理。</li>
+<li>優點 : 安全性高。</li>
+<li>缺點 : 效能差 。</li>
+<li>特性 : 會保留原本內容，新增的值會依序動態加在原內容後方。</li>
+</ol>
+</li>
+</ol>
+<h3 id="➊-innerHTML"><a href="#➊-innerHTML" class="headerlink" title="➊ innerHTML"></a>➊ innerHTML</h3><blockquote>
+<p><code>innerHTML</code> 有個特性，會在指定的區域把原來的內容清空，放入新的值。</p>
+</blockquote>
+<p><strong>範例 0. 在 main 標籤中使用 innerHTML</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> main = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.main&#x27;</span>);</span><br><span class="line">main.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;h1&gt;TITLE&lt;/h1&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/jOWKKqx">CodePen範例</a></p>
+<ul>
+<li>原本的 <code>TITLE</code> 被清空，以 <code>&lt;h1&gt;TITLE&lt;/h1&gt;</code> 取代。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743UXJ4MHyvwg.png" alt="截圖"></li>
+</ul>
+<p><strong>範例 1. 在 <code>&lt;div id=&quot;main&quot;&gt;&lt;/div&gt;</code> 內塞 H1 標籤</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;main&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1</span></span><br><span class="line"><span class="comment">//&#x27;&lt;h1&gt;TITLE&lt;/h1&gt;&#x27; 也可以寫入class</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;main&#x27;</span>);</span><br><span class="line">element.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;h1&gt;TITLE&lt;/h1&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;main&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> titleElement = <span class="string">&#x27;&lt;h1&gt;TITLE&lt;/h1&gt;&#x27;</span>;</span><br><span class="line">element.<span class="property">innerHTML</span> = titleElement ;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 試試 element.innerHTML = titleElement + titleElement; 會跑兩次唷!</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20221012/201197431PWuU3v4AN.png" alt="開發者工具截圖"><br>&#x2F;&#x2F; 從開發者工具可見，#main 內新增了 h1 標籤 ▲</p>
+<p>➤ <strong>ES6 之前的寫法</strong></p>
+<p><code>&quot;&lt;h1 class=&quot;blue&quot;&gt;123&lt;/h1&gt;&quot;</code>  - - - 錯誤</p>
+<p><code>&#39;&lt;h1 class=&quot;blue&quot;&gt;123&lt;/h1&gt;&#39;</code>  - - - 正確</p>
+<p>外與內的單引號和雙引號需不同，否則解釋器會因無法分辨開頭結尾而報錯誤。</p>
+<p>➤ <strong>ES6 樣板字面值寫法 ( 使用反引號 &#96;&#96;&#96;&#96; tab 上方的按鍵 )</strong></p>
+<p><code>&lt;h1 class=&quot;blue&quot;&gt;123&lt;/h1&gt;</code><br>字串使用反引號 &#96;&#96;&#96;&#96; 就是 ES6 的樣板字面值寫法，樣板字面值寫法的好處是可以用 <code>$&#123; &#125;</code> 直接帶入變數，不需使用 <code>+</code> 將每個字串及變數相加。</p>
+<h3 id="ES6-樣板字面值運用"><a href="#ES6-樣板字面值運用" class="headerlink" title="ES6 樣板字面值運用"></a><strong>ES6 樣板字面值運用</strong></h3><p>內容太龐大，可以使用變數以組字串方式帶入 innerHTML，這邊使用 <code>ul</code> <code>li</code> 為範例。</p>
+<p><strong>範例 1. 把 li 內容帶入 ul 中   <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/KKVeevG">Codepen範例</a> ( ES6 之前寫法 )</strong></p>
+<p><strong>HTML :</strong>  <code>&lt;ul class=&quot;list&quot;&gt;&lt;/ul&gt;</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;卡斯柏&#x27;</span></span><br><span class="line"><span class="keyword">let</span> webSite = <span class="string">&#x27;https://www.google.com&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注意內外雙單引號用法&amp; 變數帶入時前後以引號和加號包覆</span></span><br><span class="line"><span class="comment">//先在li外面用引號包起，再把裡面要帶入變數的用不同的引號包起，記得前後要有加號。</span></span><br><span class="line">element.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;li&gt;&lt;a href = &quot;&#x27;</span>+webSite+<span class="string">&#x27;&quot;&gt;&#x27;</span>+name+<span class="string">&#x27;&lt;/a&gt;&lt;/li&gt;&#x27;</span> ;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743jKNALdZ1lh.jpg" alt="截圖"></p>
+<p><strong>範例 1-1. 把 li 內容帶入 ul 中 ( ES6 樣板字面值寫法 )</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;卡斯柏&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> webSite = <span class="string">&#x27;https://www.google.com&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用樣板字面值寫法 - 不須擔心雙引號與單引號錯誤使用</span></span><br><span class="line">element.<span class="property">innerHTML</span> =<span class="string">`&lt;li&gt;&lt;a href=&#x27;<span class="subst">$&#123;webSite&#125;</span>&#x27;&gt;<span class="subst">$&#123;name&#125;</span>&lt;/a&gt;&lt;/li&gt;`</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>另外也可賦予字串變數，日後如果要新增很多個 li ，可以於 innerHTML 使用組字串的方式，如下 :</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;卡斯柏&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> webSite = <span class="string">&#x27;https://www.google.com&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> content = <span class="string">`&lt;li&gt;&lt;a href=&#x27;<span class="subst">$&#123;webSite&#125;</span>&#x27;&gt;<span class="subst">$&#123;name&#125;</span>&lt;/a&gt;&lt;/li&gt;`</span>;</span><br><span class="line"></span><br><span class="line">element.<span class="property">innerHTML</span> = content + content;</span><br></pre></td></tr></table></figure>
+
+<h3 id="➋-innerHTML-搭配-for-loop-運用"><a href="#➋-innerHTML-搭配-for-loop-運用" class="headerlink" title="➋ innerHTML 搭配 for loop 運用"></a>➋ innerHTML 搭配 for loop 運用</h3><p>從 Array 中撈出資料，顯示在網頁上。</p>
+<p><strong>範例 1. 列出每個農場農夫的名字。  <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/gOPKjzq">CODEPEN</a></strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//農場陣列資訊</span></span><br><span class="line"><span class="keyword">const</span> farms = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">farmer</span>: <span class="string">&#x27;卡斯伯&#x27;</span>,</span><br><span class="line">    <span class="attr">dogs</span>: [<span class="string">&#x27;詹姆士&#x27;</span>, <span class="string">&#x27;龐德&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">farmer</span>: <span class="string">&#x27;查理&#x27;</span>,</span><br><span class="line">    <span class="attr">dogs</span>: [<span class="string">&#x27;皮皮&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p><strong>防止資料被蓋掉</strong></p>
+<p><code>innerHTML</code> 特性 : 新帶入的值會把舊的值蓋過，所以查理會蓋過卡斯伯。迴圈內每把變數 <code>farmersTotal</code> 帶入跑一次迴圈，組好字串帶入又會把先前資料蓋過。</p>
+<ul>
+<li>先寫一個  <code>let farmersName = &#39;&#39;;</code> 空值的全域變數，來做累加字串。</li>
+<li><code>let farmersName = &#39;&#39;;</code> 本來是空字串，在迴圈內 <code>farmersName += farmersAllName;</code> 依序加入變數 farmersAllTotal 的內容 ( <code>&lt;li&gt;$&#123;farms[i].farmer&#125;&lt;/li&gt;;</code> )，就會有第一筆、第二筆依序跑出陣列中所有資料。</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 錯誤寫法</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> farmsLength=farms.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i=<span class="number">0</span>; i&lt;farmsLength; i++)&#123;</span><br><span class="line">    <span class="keyword">let</span> farmersAllName = <span class="string">`&lt;li&gt;<span class="subst">$&#123;farms[i].farmer&#125;</span>&lt;/li&gt;`</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// innerHTML 有新值會把舊值蓋掉的特性，所以每跑迴圈一次就會蓋掉之前的資料。網頁都只會顯示查理</span></span><br><span class="line">    element.<span class="property">innerHTML</span> = farmersAllName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正確：for 迴圈寫法</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> farmsLength=farms.<span class="property">length</span>;</span><br><span class="line"><span class="keyword">let</span> farmersName=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;farmsLength; i++)&#123;</span><br><span class="line">  <span class="keyword">let</span> farmersAllName = <span class="string">`&lt;li&gt;<span class="subst">$&#123;farms[i].farmer&#125;</span>&lt;/li&gt;`</span>;</span><br><span class="line">  farmersName+=farmersAllName;</span><br><span class="line">&#125;</span><br><span class="line">element.<span class="property">innerHTML</span>=farmersName;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// forEach 寫法</span></span><br><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.list&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> farmersName = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">farms.<span class="title function_">forEach</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> &#123;</span><br><span class="line">  farmersName += <span class="string">`&lt;li&gt;<span class="subst">$&#123;i.farmer&#125;</span>&lt;/li&gt;`</span>;</span><br><span class="line">&#125;)</span><br><span class="line">list.<span class="property">innerHTML</span> = farmersName;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-createElement-搭配-appendChild-寫法"><a href="#❒-createElement-搭配-appendChild-寫法" class="headerlink" title="❒ createElement 搭配 appendChild 寫法"></a>❒ createElement 搭配 appendChild 寫法</h2><blockquote>
+<p><code>createElement(&#39;&#39;)</code> 會保留原本內容，新增的值會依序動態加在原內容後方。 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/PoZaMYr">CODEPEN</a><br><code>appendChild()</code> 在節點增加最後一個子節點。</p>
+</blockquote>
+<ul>
+<li>下方範例可見，網頁中的 TITLE 並沒有被清空，新增的值 123 依序的排在 TITLE 後方。</li>
+</ul>
+<p><strong>拆解步驟</strong></p>
+<ol>
+<li>HTML 內新增一個節點。  <code>const str = document.createElement(&#39;em&#39;);</code></li>
+<li>新增節點內容 ( 動態新增文字內容 ) 。  <code>str.textContent = &#39;123&#39;;</code></li>
+<li>因為前方未設定節點位置，所以這邊把節點掛在 H1 ( <code>.title</code> ) 內。 <code>document.querySelector(&#39;.title&#39;).appendChild(str);</code></li>
+</ol>
+<p>使用 <code>appendChild()</code> 會動態掛在 HTML 裡面元素 <code>&lt;em&gt;TITLE&lt;/em&gt;</code> 的最後面位置。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">em</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//新增一個節點 (新增 p 元素)</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;p&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//動態增加內容 → 變數str 放置123文字內容。</span></span><br><span class="line">str.<span class="property">textContent</span> = <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//新增子節點 → 在 .title 的位置掛上子節點，子節點內放入上方新增的 p段落與文字內容 123。</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.title&#x27;</span>).<span class="title function_">appendChild</span>(str);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>範例 1. 在 HTML 內動態新增文字 567 ，並設定紅色。 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/Yzwvmyd">codepen</a></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.textRed</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">em</span>&gt;</span>TITLE<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//-------方法一</span></span><br><span class="line"><span class="comment">//取出容器</span></span><br><span class="line"><span class="keyword">var</span> space = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.title&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//新增p元素</span></span><br><span class="line"><span class="keyword">var</span> element = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;p&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//新增文字</span></span><br><span class="line">element.<span class="property">textContent</span> = <span class="string">&#x27;567&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//新增屬性</span></span><br><span class="line">element.<span class="title function_">setAttribute</span>(<span class="string">&#x27;class&#x27;</span>,<span class="string">&#x27;textRed&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//把 element(元素、文字、屬性都在裡面) 丟到容器內</span></span><br><span class="line">space.<span class="title function_">appendChild</span>(element);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//-------方法二</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新增節點標籤</span></span><br><span class="line"><span class="keyword">let</span> element = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;p&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//新增節點內容 &amp; 新增 class</span></span><br><span class="line">element.<span class="property">textContent</span> = <span class="string">&#x27;567&#x27;</span>;</span><br><span class="line">element.<span class="title function_">setAttribute</span>(<span class="string">&#x27;class&#x27;</span>,<span class="string">&#x27;textRed&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//設定節點位置 (在.title後方掛上子節點，加入上方新增的標籤與內容 )</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.title&#x27;</span>).<span class="title function_">appendChild</span>(element);</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-createElement-與-for-loop-運用"><a href="#❒-createElement-與-for-loop-運用" class="headerlink" title="❒ createElement 與 for loop 運用"></a>❒ createElement 與 for loop 運用</h2><h3 id="三步驟"><a href="#三步驟" class="headerlink" title="三步驟"></a><strong>三步驟</strong></h3><ol>
+<li>新增節點標籤</li>
+<li>新增節點內容</li>
+<li>設定節點位置</li>
+</ol>
+<p><strong>範例1. 列出每個農場農夫的名字。</strong>  </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//農場陣列資訊</span></span><br><span class="line"><span class="keyword">var</span> farms =[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">farmer</span>:<span class="string">&#x27;卡斯伯&#x27;</span>,</span><br><span class="line">        <span class="attr">dogs</span>:[<span class="string">&#x27;詹姆士&#x27;</span>,<span class="string">&#x27;龐德&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">farmer</span>:<span class="string">&#x27;查理&#x27;</span>,</span><br><span class="line">        <span class="attr">dogs</span>:[<span class="string">&#x27;皮皮&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/Yzwvmeo">CodePen 範例</a></p>
+<h2 id="❒-XSS-跨網站指令碼注意事項（Cross-site-scripting）"><a href="#❒-XSS-跨網站指令碼注意事項（Cross-site-scripting）" class="headerlink" title="❒ XSS 跨網站指令碼注意事項（Cross-site scripting）"></a>❒ XSS 跨網站指令碼注意事項（Cross-site scripting）</h2><p><strong>XSS ( Cross-site scripting ) 跨網站指令攻擊</strong> : <code>innerHTML</code> 只是其中一個可以使用 XSS 的方法。刻意在 HTML 標籤或 JavaScript 埋一些惡意程式碼，做攻擊的動作。</p>
+<p>不是讓使用者自己做操控 →</p>
+<p>例如 : 留言板等表單輸入的東西，A 用戶留完 B 用戶看的到，但 A 用戶在裡面塞 <code>&lt;script src=&#39;病毒.js&#39;&gt;&lt;/script&gt;</code> ，雖然網頁表面看不到，但在開發者工具查看會發現已被植入病毒。</p>
+<p>通常這些讓用戶自行輸入的留言板，會做一些排錯，過濾掉可疑的語法，都確認沒有錯了才會送入資料庫。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221012/20119743RcqQzETpAW.png" alt="截圖"></p>
+<p>可信任 → 政府提供的 open data 或自己建立的資料庫，例如 : 鄉鎮陣列資料庫 .. 等</p>
+<h2 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h2><ul>
+<li>JavaScript 入門篇 - 學徒的試煉</li>
+<li>W3school - <a target="_blank" rel="noopener" href="https://www.w3schools.com/js/js_htmldom.asp">JavaScript HTML DOM</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/DOM/" rel="tag"># DOM</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/1073492342/" rel="prev" title="Day26 | JS 箭頭函式">
+                  <i class="fa fa-chevron-left"></i> Day26 | JS 箭頭函式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/3727796361/" rel="next" title="Day28 | JS Event 事件">
+                  Day28 | JS Event 事件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

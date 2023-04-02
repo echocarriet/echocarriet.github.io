@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="開發者工具顯示 Uncaught SyntaxError 與 Uncaught ReferenceError 錯誤訊息的除錯方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day17 | JS 常見的錯誤類型">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/4130580881/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="開發者工具顯示 Uncaught SyntaxError 與 Uncaught ReferenceError 錯誤訊息的除錯方式">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-04-02T05:48:05.000Z">
+<meta property="article:modified_time" content="2023-04-02T05:52:46.185Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/4130580881/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/4130580881/","path":"javascript/20230402/4130580881/","title":"Day17 | JS 常見的錯誤類型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day17 | JS 常見的錯誤類型 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%90-JavaScript-%E5%B8%B8%E8%A6%8B%E7%9A%84%E9%8C%AF%E8%AA%A4%E9%A1%9E%E5%9E%8B-Error-Reference"><span class="nav-number">2.</span> <span class="nav-text">❐ JavaScript 常見的錯誤類型 ( Error Reference )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%90-SyntaxError-%E8%AA%9E%E6%B3%95%E9%8C%AF%E8%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">❐ SyntaxError 語法錯誤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%90-ReferenceError-%E5%8F%83%E8%80%83%E3%80%81%E5%BC%95%E7%94%A8%E9%8C%AF%E8%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">❐ ReferenceError 參考、引用錯誤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A4%E9%8C%AF%E9%87%8D%E9%BB%9E"><span class="nav-number">4.1.</span> <span class="nav-text">除錯重點</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%90-TypeError-%E5%9E%8B%E5%88%A5%E9%8C%AF%E8%AA%A4"><span class="nav-number">5.</span> <span class="nav-text">❐ TypeError 型別錯誤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A4%E9%8C%AF%E9%87%8D%E9%BB%9E-1"><span class="nav-number">5.1.</span> <span class="nav-text">除錯重點</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%90-RangeError-%E7%AF%84%E5%9C%8D%E9%8C%AF%E8%AA%A4"><span class="nav-number">6.</span> <span class="nav-text">❐ RangeError 範圍錯誤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%90-URIError-Url-%E9%8C%AF%E8%AA%A4"><span class="nav-number">7.</span> <span class="nav-text">❐ URIError  Url 錯誤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">8.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/4130580881/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day17 | JS 常見的錯誤類型 | Hi, I'm Carrie">
+      <meta itemprop="description" content="開發者工具顯示 Uncaught SyntaxError 與 Uncaught ReferenceError 錯誤訊息的除錯方式">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day17 | JS 常見的錯誤類型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 13:48:05 / 修改時間：13:52:46" itemprop="dateCreated datePublished" datetime="2023-04-02T13:48:05+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">開發者工具顯示 Uncaught SyntaxError 與 Uncaught ReferenceError 錯誤訊息的除錯方式</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在六角學院的「 JavaScript 核心篇 」中常遇到開發者工具顯示 <code>Uncaught SyntaxError</code> 與 <code>Uncaught ReferenceError</code> 錯誤訊息，藉此篇文章整理開發中常遇到的錯誤訊息們，方便日後除錯翻閱。</p>
+<h2 id="❐-JavaScript-常見的錯誤類型-Error-Reference"><a href="#❐-JavaScript-常見的錯誤類型-Error-Reference" class="headerlink" title="❐ JavaScript 常見的錯誤類型 ( Error Reference )"></a>❐ JavaScript 常見的錯誤類型 ( Error Reference )</h2><ul>
+<li>SyntaxError</li>
+<li>ReferenceError</li>
+<li>TypeError</li>
+<li>RangeError</li>
+<li>URIError</li>
+</ul>
+<h2 id="❐-SyntaxError-語法錯誤"><a href="#❐-SyntaxError-語法錯誤" class="headerlink" title="❐ SyntaxError 語法錯誤"></a>❐ SyntaxError 語法錯誤</h2><p><code>SyntaxError</code> 通常為語法結構的錯誤，此錯誤結構有時候也可以透過 VSCdoe 的提示來查看，結構有問題的地方 VSCode 會顯示紅色毛毛蟲樣式。</p>
+<p><strong>範例 1. 函式缺少結尾 <code>&#125;</code></strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">callName</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Hello, 媽&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>callName()</code> 結尾少了 <code>&#125;</code>，開發者工具會跳出 <code>Uncaught SyntaxError</code> 錯誤訊息。</p>
+<p><strong>範例 2. 結尾符號不正確</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myName = <span class="string">&#x27;Carrie&#x27;</span>,</span><br></pre></td></tr></table></figure>
+
+<p>正確寫法應為 <code>let myName = &#39;Carrie&#39;;</code> 而非逗號，開發者工具會跳出 <code>Uncaught SyntaxError</code> 錯誤訊息。</p>
+<h2 id="❐-ReferenceError-參考、引用錯誤"><a href="#❐-ReferenceError-參考、引用錯誤" class="headerlink" title="❐ ReferenceError 參考、引用錯誤"></a>❐ ReferenceError 參考、引用錯誤</h2><p><code>ReferenceError</code> 錯誤類型較常在執行階段才會看到錯誤，編輯器中不一定會顯示錯誤，除非裝 ESLint 工具，可透過下面方式進行除錯。</p>
+<h3 id="除錯重點"><a href="#除錯重點" class="headerlink" title="除錯重點"></a>除錯重點</h3><ul>
+<li>可透過 Chrome 開發者工具的錯誤訊息排錯。</li>
+<li>於 JS 撰寫的開發環境中 ( 例如 VSCode ) 裝 ESLint 工具。</li>
+</ul>
+<p><strong>範例1.</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Ming</span>);</span><br><span class="line"><span class="keyword">let</span> <span class="title class_">Ming</span> = <span class="string">&#x27;小明&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>因為 <code>let</code> 宣告變數，變數在創造階段會位於暫時性死區，而 <code>console.log(Ming);</code> 在 <code>Ming = &#39;小明&#39;;</code> 之前，自然讀取不到 <code>Ming</code> 的值，會顯示 <code>Uncaught ReferenceError: Cannot access &#39;Ming&#39; before initialization</code> 錯誤訊息。</p>
+<p><strong>範例 2. 呼叫為宣告的變數</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Ming</span>);</span><br></pre></td></tr></table></figure>
+
+<p>會顯示錯誤訊息 <code>Uncaught ReferenceError: Ming is not defined</code>。</p>
+<h2 id="❐-TypeError-型別錯誤"><a href="#❐-TypeError-型別錯誤" class="headerlink" title="❐ TypeError 型別錯誤"></a>❐ TypeError 型別錯誤</h2><p><code>TypeError</code> 錯誤訊息不會顯示於編輯器中，也是須於執行環境中才會看到錯誤訊息。</p>
+<h3 id="除錯重點-1"><a href="#除錯重點-1" class="headerlink" title="除錯重點"></a>除錯重點</h3><ul>
+<li>可透過 Chrome 開發者工具的錯誤訊息排錯。</li>
+<li>在要取變數、重新賦予變數新值，先確認此變數的資料型別與結構。<ul>
+<li><code>const</code> 不能重新賦予值。</li>
+<li><code>undefined</code>  與 <code>null</code>  無法再增加屬性。</li>
+</ul>
+</li>
+</ul>
+<p><strong>範例 1. const 重新賦予值</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Ming</span> = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="title class_">Ming</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>由於 <code>const</code> 不能重新賦予值，所以會顯示錯誤訊息 <code>Uncaught TypeError: Assignment to constant variable</code> 。</p>
+<p><strong>範例 2. undefined  與 null 新增屬性</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span>.<span class="property">name</span> = <span class="string">&#x27;Hi&#x27;</span>;</span><br><span class="line"><span class="literal">undefined</span>.<span class="property">callMe</span> = <span class="string">&#x27;Hello&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>由於 <code>undefined</code>  與 <code>null</code>  無法再增加屬性，所以分別會顯示錯誤訊息：</p>
+<ul>
+<li><code>Uncaught TypeError: Cannot set properties of null (setting &#39;name&#39;)</code></li>
+<li><code>Uncaught TypeError: Cannot set properties of undefined (setting &#39;callMe&#39;)</code></li>
+</ul>
+<p><strong>範例 3. 對 undefined 的值新增屬性</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">dog</span>: <span class="number">2</span>,</span><br><span class="line">&#125;</span><br><span class="line">family.<span class="property">father</span>.<span class="property">child</span> = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>錯誤訊息：<code>Uncaught TypeError: Cannot set properties of undefined (setting &#39;child&#39;)</code></p>
+<ul>
+<li>因為 <code>father</code> 並沒有定義 ( 不存在 )，所以它的值為 <code>undefined</code> ，在 <code>undefined</code> 上是無法新增任何屬性。</li>
+</ul>
+<h2 id="❐-RangeError-範圍錯誤"><a href="#❐-RangeError-範圍錯誤" class="headerlink" title="❐ RangeError 範圍錯誤"></a>❐ RangeError 範圍錯誤</h2><p><code>RangeError</code> 錯誤訊息的原因為</p>
+<ul>
+<li>無效的陣列長度</li>
+<li>過度執行函式，會產生過多執行堆疊<ul>
+<li>需檢視程式碼的邏輯找出問題點，否則會過去消耗硬體資源。</li>
+</ul>
+</li>
+</ul>
+<p><strong>範例 1. 無效的陣列長度</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ary = [<span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">ary.<span class="property">length</span> = ary.<span class="property">length</span> - <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>錯誤訊息 <code>Uncaught RangeError: Invalid array length</code></p>
+<p><strong>範例 2. 函式自己呼叫自己</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="title function_">fn</span>();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>執行堆疊超過環境限制，錯誤訊息 <code>Uncaught RangeError: Maximum call stack size exceeded</code></p>
+<h2 id="❐-URIError-Url-錯誤"><a href="#❐-URIError-Url-錯誤" class="headerlink" title="❐ URIError  Url 錯誤"></a>❐ URIError  Url 錯誤</h2><p>Url 解析不成功的原因為：傳遞給「 decodeURI、encodeURL、encodeURIComponent、decodeURIComponent 」這些函數的參數不合格，導致函數無法正確對它進行解析。</p>
+<p><strong>範例1. decodeURL</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 錯誤: Uncaught URIError: URI malformed at decodeURI</span></span><br><span class="line"><span class="built_in">decodeURI</span>(<span class="string">&#x27;%carrie&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="built_in">decodeURI</span>(<span class="string">&#x27;%25carrie&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://israynotarray.com/javascript/20211126/12988607/">JavaScript 錯誤類型 ( JavaScript Error Reference )</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2020/09/16/chrome-js-alert/">JavaScript 開發中常見錯誤解決辦法</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Errors/Malformed_URI">MDN - URIError: malformed URI sequence</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/1554806580git/" rel="prev" title="Day16 | JS的Hoisting提升與執行環境">
+                  <i class="fa fa-chevron-left"></i> Day16 | JS的Hoisting提升與執行環境
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/408647625/" rel="next" title="Day18 | JS 關於 let、 const、var">
+                  Day18 | JS 關於 let、 const、var <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

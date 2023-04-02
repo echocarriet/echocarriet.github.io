@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="JS 函式中 this 的運作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day25 | JS 函式 This 的運作">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/2853334793/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="JS 函式中 this 的運作">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743Zd6JDu1ymN.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743k9JGgLKF99.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743ZCrYyO886K.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743945158YBcK.png">
+<meta property="article:published_time" content="2023-04-02T06:14:15.000Z">
+<meta property="article:modified_time" content="2023-04-02T06:14:52.496Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="this">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743Zd6JDu1ymN.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/2853334793/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/2853334793/","path":"javascript/20230402/2853334793/","title":"Day25 | JS 函式 This 的運作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day25 | JS 函式 This 的運作 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%A4%A7%E9%83%A8%E5%88%86-this-%E7%9A%84%E9%81%8B%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">❒ 大部分 this 的運作模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-1-%E4%B8%80%E5%80%8B%E5%87%BD%E5%BC%8F%E4%B8%AD%E5%8C%85%E5%90%AB%E5%A4%9A%E5%B0%91%E5%8F%83%E6%95%B8"><span class="nav-number">2.</span> <span class="nav-text">❒  #1 一個函式中包含多少參數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-2-this-%E7%9A%84%E6%8C%87%E5%90%91%E7%82%BA%E4%BD%95"><span class="nav-number">3.</span> <span class="nav-text">❒  #2 this 的指向為何</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-3-%E6%B3%A8%E6%84%8F%EF%BC%9Athis-%E7%9A%84%E6%8C%87%E5%90%91%E7%9B%B8%E7%95%B6%E8%A4%87%E9%9B%9C%EF%BC%8C%E5%A4%A7%E9%83%A8%E5%88%86%E6%83%85%E5%A2%83%E5%8F%AA%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E5%85%B6%E4%B8%AD%E4%B8%80%E7%A8%AE%E5%8D%B3%E5%8F%AF-95"><span class="nav-number">4.</span> <span class="nav-text">❒  #3 注意：this 的指向相當複雜，大部分情境只需要了解其中一種即可(95%)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-4-this-%E7%9A%84%E5%90%84%E7%A8%AE%E9%81%8B%E7%94%A8%E8%AE%8A%E5%8C%96-this-%E7%9A%84%E5%88%A4%E6%96%B7%E6%96%B9%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">❒  #4 this 的各種運用變化 | this 的判斷方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-number">5.1.</span> <span class="nav-text">範例 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2"><span class="nav-number">5.2.</span> <span class="nav-text">範例 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3"><span class="nav-number">5.3.</span> <span class="nav-text">範例 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-4"><span class="nav-number">5.4.</span> <span class="nav-text">範例 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-5"><span class="nav-number">5.5.</span> <span class="nav-text">範例 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-6-%E8%AB%8B%E5%95%8F%E4%BB%A5%E4%B8%8B-this-%E7%9A%84%E7%B5%90%E6%9E%9C%E6%98%AF%E7%94%9A%E9%BA%BC"><span class="nav-number">5.6.</span> <span class="nav-text">範例 6. 請問以下 this 的結果是甚麼 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-7-%E8%AB%8B%E5%95%8F%E4%BB%A5%E4%B8%8B-this-%E7%9A%84%E7%B5%90%E6%9E%9C%E6%98%AF%E7%94%9A%E9%BA%BC"><span class="nav-number">5.7.</span> <span class="nav-text">範例 7. 請問以下 this 的結果是甚麼 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-8"><span class="nav-number">5.8.</span> <span class="nav-text">範例 8</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">6.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/2853334793/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day25 | JS 函式 This 的運作 | Hi, I'm Carrie">
+      <meta itemprop="description" content="JS 函式中 this 的運作">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day25 | JS 函式 This 的運作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 14:14:15 / 修改時間：14:14:52" itemprop="dateCreated datePublished" datetime="2023-04-02T14:14:15+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">JS 函式中 this 的運作</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-大部分-this-的運作模式"><a href="#❒-大部分-this-的運作模式" class="headerlink" title="❒ 大部分 this 的運作模式"></a>❒ 大部分 this 的運作模式</h2><p>先判斷程式碼是傳統函式或箭頭函式</p>
+<ul>
+<li><strong>傳統函式中的 <code>this</code> 只與調用方式有關，與怎麼定義 <code>this</code> 無關</strong> 。<ul>
+<li>呼叫函式時，前面有任何物件 <code>this</code> 就會指向它，如果 <code>this</code> 前沒有任何物件會指向全域。( 下方會有範例 )</li>
+<li><code>setTimeout</code> 為 callback function 是 simple call 的一種形式，在傳統函式寫法下 <code>this</code> 會指向全域，為了避免 <code>setTimeout</code> 的 <code>this</code> 指向全域可使用「 箭頭函式 」或是「 指向其他變數 」。( 最後範例 8 )</li>
+</ul>
+</li>
+<li><strong>箭頭函式沒有自己的 <code>this</code>，會看外層函式的 <code>this</code> 指向。</strong></li>
+<li>宣告方式不同 ( <code>var</code>、<code>const</code>、<code>let</code> ) ，<code>this</code> 也會不同，要留意。</li>
+</ul>
+<h2 id="❒-1-一個函式中包含多少參數"><a href="#❒-1-一個函式中包含多少參數" class="headerlink" title="❒  #1 一個函式中包含多少參數"></a>❒  #1 一個函式中包含多少參數</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&#x27;全域&#x27;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">params</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(params, <span class="variable language_">this</span>, <span class="variable language_">window</span>, <span class="variable language_">arguments</span>);</span><br><span class="line">  <span class="keyword">debugger</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743Zd6JDu1ymN.png" alt="執行 debugger ，開發者工具會跳到 Sources 區域"><br>&#x2F;&#x2F; 執行 debugger ，開發者工具會跳到 Sources 區域 ▲</p>
+<p><code>console.log(params, this, window, arguments);</code> → 中為運行函數本身就可以執行的參數內容</p>
+<ul>
+<li><code>params</code> 為外部傳入的參數。<ul>
+<li>下方程式碼中預設參數只接收一個所以顯示 1。</li>
+</ul>
+</li>
+<li><code>this</code> 目前是指向 <code>windows</code> ，但實際在運作時可能會有很多種不同的指向，此指向會影響在使用框架時指到哪，如果想要指向特定的元件但卻指向錯誤，就會出錯。</li>
+<li><code>window</code> 瀏覽器本身就存在的全域變數。</li>
+<li><code>arguments</code> 傳統函式會帶入的參數，為類陣列會帶入所有傳入的參數內容。<ul>
+<li>程式中 <code>fn(1, 2, 3);</code>  有三個參數 <code>arguments</code> 會列出所有參數值。</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-2-this-的指向為何"><a href="#❒-2-this-的指向為何" class="headerlink" title="❒  #2 this 的指向為何"></a>❒  #2 this 的指向為何</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(params, <span class="variable language_">this</span>, <span class="variable language_">window</span>, <span class="variable language_">arguments</span>);</span><br><span class="line">    <span class="comment">// debugger;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">fn</span>(<span class="number">1</span> , <span class="number">2</span> , <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>fn:</code> 的函式程式碼與 #1 範例相同，但卻只有 <code>this</code> 有所不同。</p>
+<ul>
+<li>1 為外部傳入的參數</li>
+<li><code>&#123;name: &quot;小明&quot;, fn: ƒ&#125;</code> 為 <code>this</code>。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743k9JGgLKF99.png" alt="開發者工具截圖"></li>
+</ul>
+<h2 id="❒-3-注意：this-的指向相當複雜，大部分情境只需要了解其中一種即可-95"><a href="#❒-3-注意：this-的指向相當複雜，大部分情境只需要了解其中一種即可-95" class="headerlink" title="❒  #3 注意：this 的指向相當複雜，大部分情境只需要了解其中一種即可(95%)"></a>❒  #3 注意：this 的指向相當複雜，大部分情境只需要了解其中一種即可(95%)</h2><blockquote>
+<p>傳統函式中的 <code>this</code> 只與調用方式有關，與怎麼定義 <code>this</code> 無關 。</p>
+</blockquote>
+<p>大部分情境只須了解其中一種，請看下方 #4 this 的各種運用變化 | this 的判斷方式</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用 const 與 let 結果會有所不同，所以變數someone 請使用 var 來設定全域變數。</span></span><br><span class="line"><span class="keyword">var</span> someone = <span class="string">&#x27;全域&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callSomeone</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">someone</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">callSomeone</span>();  <span class="comment">//這種呼叫方式稱 simple call</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// output 全域。</span></span><br><span class="line"><span class="comment">// 如下方所述呼叫函式 callSomeone(); 時前方沒有任何物件，所以指向全域。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-4-this-的各種運用變化-this-的判斷方式"><a href="#❒-4-this-的各種運用變化-this-的判斷方式" class="headerlink" title="❒  #4 this 的各種運用變化 | this 的判斷方式"></a>❒  #4 this 的各種運用變化 | this 的判斷方式</h2><p><strong><code>this</code> 的判斷 : ( 此判斷方式以傳統函式為主，箭頭函式的判斷法請看 #5 <code>this</code> 陷阱 )</strong></p>
+<ul>
+<li>呼叫函式時，前面有任何物件 <code>this</code> 就會指向它  ( 例 : #4 )；</li>
+<li>呼叫函式時，如果前方沒任何物件就會指向全域 ( 例 : #3 的 simple call )。</li>
+</ul>
+<h3 id="範例-1"><a href="#範例-1" class="headerlink" title="範例 1"></a>範例 1</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someone = <span class="string">&#x27;全域&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callSomeone</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">someone</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">someone</span>: <span class="string">&#x27;物件&#x27;</span>,</span><br><span class="line">  <span class="title function_">callSomeone</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">someone</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">callSomeone</span>();   </span><br><span class="line"></span><br><span class="line"><span class="comment">// output 物件。入上述判斷callSomeone()前方有物件 obj所以指向&#x27;物件&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743ZCrYyO886K.png" alt="呼叫函式時，前面有任何物件 this 就會指向它"><br>&#x2F;&#x2F; 呼叫函式時，前面有任何物件 this 就會指向它 ▲</p>
+<h3 id="範例-2"><a href="#範例-2" class="headerlink" title="範例 2"></a>範例 2</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someone = <span class="string">&#x27;全域&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callSomeone</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">someone</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line"> someone : <span class="string">&#x27;物件2&#x27;</span>,</span><br><span class="line"> callSomeone   <span class="comment">//ES6 縮寫 ，原始為 callSomeone : callSomeone()</span></span><br><span class="line">&#125;</span><br><span class="line">obj2.<span class="title function_">callSOmeone</span>();   </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">//output 物件2</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>變數 obj2 裡的 <code>callSomeone</code> 指向 <code>function callSomeone()</code>。</li>
+<li>呼叫函式時，前面有任何物件 <code>this</code> 就會指向它，所以 <code>this</code> 指向變數 obj2。</li>
+</ul>
+<h3 id="範例-3"><a href="#範例-3" class="headerlink" title="範例 3"></a>範例 3</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someone = <span class="string">&#x27;全域&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callSomeone</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">someone</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> wrapObj = &#123;</span><br><span class="line">  <span class="attr">someone</span>: <span class="string">&#x27;外層物件&#x27;</span>,</span><br><span class="line">  callSomeone,</span><br><span class="line">  <span class="attr">innerObj</span>: &#123;</span><br><span class="line">    <span class="attr">someone</span>: <span class="string">&#x27;內層物件&#x27;</span>,</span><br><span class="line">    callSomeone,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">wrapObj.<span class="title function_">callSomeone</span>();</span><br><span class="line">wrapObj.<span class="property">innerObj</span>.<span class="title function_">callSomeone</span>();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>下方程式碼中，外層與內層的物件 <code>callSomeone</code> 皆使用函式 <code>callSomeone()</code>。</li>
+<li>呼叫函式時，前面有任何物件 <code>this</code> 就會指向它。<ul>
+<li><code>wrapObj.callSomeone();</code> → 所以 <code>this</code> 指向 <code>wrapObj</code>，輸出 <code>外層物件</code>。</li>
+<li><code>wrapObj.innerObj.callSomeone();</code> → 所以 <code>this</code> 指向 <code>innerObj</code>，輸出 <code>內層物件</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="範例-4"><a href="#範例-4" class="headerlink" title="範例 4"></a>範例 4</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someone = <span class="string">&#x27;全域&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callSomeone</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">someone</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj3 = &#123;</span><br><span class="line"> <span class="attr">someone</span>: <span class="string">`物件 3`</span>,</span><br><span class="line"> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">callSomeone</span>();    <span class="comment">//通常不會這樣去取用 this</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj3.<span class="title function_">fn</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>this</code> 與怎麼定義無關，只和調用方式有關，調用這個 <code>fn()</code> 內的 <code>callSomeone()</code> 函式時前方沒有看到任何物件，就屬於 simple call 會指向全域。<ul>
+<li><code>obj3.fn();</code> → output 全域</li>
+<li>‼️ 注意 : 通常會於物件下的方式調用 this，不會使用 simple call 方式去取得 <code>this</code>，結果可能會不如預期，這邊解說範例用。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743945158YBcK.png" alt="https://ithelp.ithome.com.tw/upload/images/20221009/20119743945158YBcK.png"></li>
+</ul>
+</li>
+</ul>
+<h3 id="範例-5"><a href="#範例-5" class="headerlink" title="範例 5"></a>範例 5</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someone = <span class="string">&#x27;全域&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callSomeone</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">someone</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj4 = &#123;</span><br><span class="line">  <span class="attr">someone</span>: <span class="string">&#x27;物件 4&#x27;</span>,</span><br><span class="line">  <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//callback  function</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">someone</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj4.<span class="title function_">fn</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>callback  function 大部分屬於 simple call 形式，所以 <code>this</code> 大多會指向全域，少數會重新定義。<br>所以 callback  function 也盡可能不要調用 <code>this</code>。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/Callback_function">MDN - 回呼函式（callback function）</a><ul>
+<li><code>obj4.fn();</code> → output 全域</li>
+</ul>
+</li>
+</ul>
+<h3 id="範例-6-請問以下-this-的結果是甚麼"><a href="#範例-6-請問以下-this-的結果是甚麼" class="headerlink" title="範例 6. 請問以下 this 的結果是甚麼 ?"></a>範例 6. 請問以下 this 的結果是甚麼 ?</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">myName</span>: <span class="string">&#x27;hexschool&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">getName</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">myName</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">getName</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>getName: function ()</code> 為傳統函式，傳統函式的 this 都會看前方呼叫它的是誰。</li>
+<li><code>obj.getName();</code> 結果為 hexschool。</li>
+</ul>
+<h3 id="範例-7-請問以下-this-的結果是甚麼"><a href="#範例-7-請問以下-this-的結果是甚麼" class="headerlink" title="範例 7. 請問以下 this 的結果是甚麼 ?"></a>範例 7. 請問以下 this 的結果是甚麼 ?</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">myName</span>: <span class="string">&#x27;hexschool&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">getName</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">myName</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">getName</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>箭頭函式沒有自己的 <code>this</code>。它會看外層函式作用域中的 <code>this</code> 指向，如果外層沒有函式則會指向全域。<br>這邊全域沒東西，所以結果如下。</li>
+<li><code>obj.getName();</code> 結果為 <code>TypeError: Cannot read property &#39;myName&#39; of undefined</code>。</li>
+</ul>
+<h3 id="範例-8"><a href="#範例-8" class="headerlink" title="範例 8"></a>範例 8</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myName = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">myName</span>: <span class="string">&#x27;小美&#x27;</span>,</span><br><span class="line">    <span class="attr">x</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> myName = <span class="string">&#x27;小王&#x27;</span>;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">myName</span>);</span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">y</span>: <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">x</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>setTimeout(function ()&#123;&#125;)</code> 為 callback function ( 大部分屬於 simple call 形式 )，會指向全域。<br>但要注意，如果 callback function 這邊改為箭頭函式指向就會改變。</li>
+<li><code>obj.getName();</code> 結果為 小明。</li>
+</ul>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li>Vue 3 實戰影音課程 2021</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/this/" rel="tag"># this</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/2820114571/" rel="prev" title="Day24 | JS 關於物件的傳參考、淺層拷貝、深層拷貝">
+                  <i class="fa fa-chevron-left"></i> Day24 | JS 關於物件的傳參考、淺層拷貝、深層拷貝
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/1073492342/" rel="next" title="Day26 | JS 箭頭函式">
+                  Day26 | JS 箭頭函式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

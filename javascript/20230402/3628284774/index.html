@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="針對 &quot; 物件本身 &quot; 操作的方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day22 | 物件方法介紹 - 針對物件本身操作的方法">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/3628284774/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="針對 &quot; 物件本身 &quot; 操作的方法">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221007/20119743smGRDiER2o.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221007/20119743WoOMTs5Kum.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221007/20119743PlNSIIThjb.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221007/20119743wbsPrP5g7s.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221007/20119743EcH0FEwCfh.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221007/20119743GpfqLIxNAt.png">
+<meta property="article:published_time" content="2023-04-02T06:04:33.000Z">
+<meta property="article:modified_time" content="2023-04-02T06:05:14.026Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20221007/20119743smGRDiER2o.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/3628284774/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/3628284774/","path":"javascript/20230402/3628284774/","title":"Day22 | 物件方法介紹 - 針對物件本身操作的方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day22 | 物件方法介紹 - 針對物件本身操作的方法 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">❒ 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%B0%8D%E7%89%A9%E4%BB%B6%E6%9C%AC%E8%BA%AB%E8%AA%BF%E6%95%B4%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">❒ 對物件本身調整的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#preventExtension%E3%80%81seal%E3%80%81freeze-%E7%9A%84%E5%85%B1%E5%90%8C%E9%BB%9E%E8%88%87%E5%B7%AE%E7%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">preventExtension、seal、freeze 的共同點與差異</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-preventExtension-%E9%98%B2%E6%AD%A2%E6%93%B4%E5%85%85"><span class="nav-number">3.</span> <span class="nav-text">❒ preventExtension 防止擴充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E4%BD%BF%E7%94%A8-preventExtensions-%E7%89%A9%E4%BB%B6%E5%B1%AC%E6%80%A7%E7%89%B9%E5%BE%B5%E4%B8%8D%E6%9C%83%E8%A2%AB%E6%94%B9%E8%AE%8A"><span class="nav-number">3.1.</span> <span class="nav-text">範例 1. 使用 preventExtensions 物件屬性特徵不會被改變</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E5%8F%AA%E8%83%BD%E9%87%9D%E5%B0%8D%E7%89%A9%E4%BB%B6%E6%9C%AC%E8%BA%AB%E5%81%9A%E9%99%90%E5%88%B6%EF%BC%8C%E7%84%A1%E6%B3%95%E5%B0%8D%E5%B7%A2%E7%8B%80%E5%B1%AC%E6%80%A7%E5%81%9A%E9%99%90%E5%88%B6"><span class="nav-number">3.2.</span> <span class="nav-text">範例 2. 只能針對物件本身做限制，無法對巢狀屬性做限制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-seal-%E5%B0%81%E8%A3%9D"><span class="nav-number">4.</span> <span class="nav-text">❒ seal 封裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#seal-%E7%89%B9%E6%80%A7"><span class="nav-number">4.1.</span> <span class="nav-text">seal 特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seal-%E7%B5%90%E6%A7%8B"><span class="nav-number">4.2.</span> <span class="nav-text">seal 結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-number">4.3.</span> <span class="nav-text">範例 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-seal-%E5%B0%81%E8%A3%9D%E5%BE%8C%E6%98%AF%E4%B8%8D%E8%83%BD%E8%AA%BF%E6%95%B4%E5%B1%AC%E6%80%A7%E7%89%B9%E5%BE%B5%EF%BC%8C%E4%BD%86-writable-%E7%89%B9%E5%BE%B5%E4%BE%8B%E5%A4%96"><span class="nav-number">4.4.</span> <span class="nav-text">範例 2. seal 封裝後是不能調整屬性特徵，但 writable 特徵例外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-freeze-%E5%87%8D%E7%B5%90"><span class="nav-number">5.</span> <span class="nav-text">❒ freeze 凍結</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">5.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E6%A7%8B"><span class="nav-number">5.2.</span> <span class="nav-text">結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-freeze-%E5%85%B7%E5%82%99%E7%84%A1%E6%B3%95%E8%A2%AB%E6%93%B4%E5%B1%95%E3%80%81%E5%B0%81%E8%A3%9D%E3%80%81%E5%87%8D%E7%B5%90%E7%89%B9%E6%80%A7"><span class="nav-number">5.3.</span> <span class="nav-text">範例 1. freeze 具備無法被擴展、封裝、凍結特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E7%89%A9%E4%BB%B6-freeze-%E5%BE%8C%E5%98%97%E8%A9%A6%E8%AA%BF%E6%95%B4%E3%80%81%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7%E8%88%87%E8%AA%BF%E6%95%B4%E5%B7%A2%E7%8B%80%E5%B1%AC%E6%80%A7"><span class="nav-number">5.4.</span> <span class="nav-text">範例 2. 物件 freeze 後嘗試調整、新增屬性與調整巢狀屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3-%E7%89%A9%E4%BB%B6%E5%87%8D%E7%B5%90%E5%BE%8C%E5%98%97%E8%A9%A6%E8%AA%BF%E6%95%B4%E5%B1%AC%E6%80%A7%E7%89%B9%E5%BE%B5"><span class="nav-number">5.5.</span> <span class="nav-text">範例 3. 物件凍結後嘗試調整屬性特徵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">6.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/3628284774/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day22 | 物件方法介紹 - 針對物件本身操作的方法 | Hi, I'm Carrie">
+      <meta itemprop="description" content="針對 " 物件本身 " 操作的方法">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day22 | 物件方法介紹 - 針對物件本身操作的方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 14:04:33 / 修改時間：14:05:14" itemprop="dateCreated datePublished" datetime="2023-04-02T14:04:33+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">針對 " 物件本身 " 操作的方法</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-前言"><a href="#❒-前言" class="headerlink" title="❒ 前言"></a>❒ 前言</h2><p>上篇提到的 <code>Object.defineProperty</code>、<code>Object.defineProperties</code> 為調整物件本身的的屬性特徵方法，這篇將説說 <strong>preventExtensions ( 防止擴充 )<strong>、</strong>seal ( 封裝 )<strong>、</strong>Freeze ( 凍結 )</strong> 這三種針對物件本身做限制的方法。</p>
+<h2 id="❒-對物件本身調整的方法"><a href="#❒-對物件本身調整的方法" class="headerlink" title="❒ 對物件本身調整的方法"></a>❒ 對物件本身調整的方法</h2><ul>
+<li>preventExtensions ( 防止擴充 )</li>
+<li>seal ( 封裝 )</li>
+<li>Freeze ( 凍結 )</li>
+</ul>
+<h3 id="preventExtension、seal、freeze-的共同點與差異"><a href="#preventExtension、seal、freeze-的共同點與差異" class="headerlink" title="preventExtension、seal、freeze 的共同點與差異"></a><code>preventExtension</code>、<code>seal</code>、<code>freeze</code> 的共同點與差異</h3><ul>
+<li>這三種方式都只能對物件本身做限制，無法對物件本身的巢狀屬性做限制。因為這三種方式只有淺層拷貝，物件本身的巢狀屬性就還是具有傳參考特性。</li>
+<li><code>preventExtension</code> 可以調整屬性特徵，<code>seal</code>、<code>freeze</code> 不能調整屬性特徵。<ul>
+<li>備註：<code>seal</code> 屬性特徵中 <code>writable</code> 經測試是可以被調整的，似乎是 <code>seal</code> 有調整過導致，須留意。</li>
+</ul>
+</li>
+<li>限制程度：<code>freeze</code> &gt; <code>seal</code> &gt; <code>preventExtension</code></li>
+</ul>
+<h2 id="❒-preventExtension-防止擴充"><a href="#❒-preventExtension-防止擴充" class="headerlink" title="❒ preventExtension 防止擴充"></a>❒ preventExtension 防止擴充</h2><p><strong>特性：</strong> 不能「 新增 」物件本身屬性。</p>
+<p><strong>結構：</strong><code>Object.preventExtensions(物件)</code></p>
+<p><strong>Others :</strong></p>
+<ul>
+<li><p><code>Object.preventExtensions(物件)</code> 可搭配 <code>Object.isExtensible(物件)</code> 做驗證看使用了 <code>preventExtensions</code> 後的物件是否可被擴充。</p>
+</li>
+<li><p><code>Object.preventExtensions(物件)</code> 可搭 <code>Object.getOwnPropertyDescriptor(物件, &#39;屬性&#39;)</code> 查看物件裡的特定屬性特徵。</p>
+</li>
+<li><p>物件使用 <code>preventExtensions</code> 後的屬性特徵  ( 可使用 <code>Object.getOwnPropertyDescriptor(物件, &#39;物件屬性&#39;);</code> 查詢 )</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">value</span>: 屬性本身的值</span><br><span class="line"><span class="attr">writable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="範例-1-使用-preventExtensions-物件屬性特徵不會被改變"><a href="#範例-1-使用-preventExtensions-物件屬性特徵不會被改變" class="headerlink" title="範例 1. 使用 preventExtensions 物件屬性特徵不會被改變"></a>範例 1. 使用 <code>preventExtensions</code> 物件屬性特徵不會被改變</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">preventExtensions</span>(person);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`是否可被擴充 <span class="subst">$&#123;<span class="built_in">Object</span>.isExtensible(person)&#125;</span>`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(person, <span class="string">&#x27;a&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Object.isExtensible(person)</code> 印出 <code>false</code>，可見 <code>preventExtensions</code> 的物件是不可被擴充的。</li>
+<li>以物件 <code>a</code> 屬性為例，<code>Object.getOwnPropertyDescriptor(person, &#39;a&#39;)</code> 可見 <code>a</code> 屬性的特徵們一樣為預設。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221007/20119743smGRDiER2o.png" alt="截圖"></li>
+</ul>
+<h3 id="範例-2-只能針對物件本身做限制，無法對巢狀屬性做限制"><a href="#範例-2-只能針對物件本身做限制，無法對巢狀屬性做限制" class="headerlink" title="範例 2. 只能針對物件本身做限制，無法對巢狀屬性做限制"></a>範例 2. 只能針對物件本身做限制，無法對巢狀屬性做限制</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">preventExtensions</span>(person);</span><br><span class="line"><span class="comment">// 調整屬性</span></span><br><span class="line">person.<span class="property">a</span> = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">// 新增屬性</span></span><br><span class="line">person.<span class="property">d</span> = <span class="string">&#x27;d&#x27;</span>;</span><br><span class="line"><span class="comment">// 調整巢狀屬性(新增)</span></span><br><span class="line">person.<span class="property">c</span>.<span class="property">inC</span> = <span class="string">&#x27;C is Here&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 調整特徵</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person, <span class="string">&#x27;a&#x27;</span> , &#123;</span><br><span class="line">  <span class="attr">configurable</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">delete</span> person.<span class="property">a</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>調整物件原有屬性：把物件內的 <code>a</code> 屬性的屬性值調整為 <code>a</code> 是沒問題的。</li>
+<li>於物件新增屬性：物件新增 <code>d</code> 屬性後，並沒有在物件中看見新增的 <code>d</code> 屬性，因為 <code>preventExtensions</code> 的用意就是無法新增屬性。</li>
+<li>調整物件內的巢狀屬性：<code>preventExtensions</code> 只能對物件本身做限制，無法對物件本身的巢狀屬性做限制，所以在巢狀屬性 <code>c</code> 內再新增 <code>inC</code> 屬性是沒問題的。</li>
+<li>調整物件屬性特徵：調整 a 的屬性特徵為 <code>configurable: false</code>，是沒問題的，可見 <code>preventExtensions</code> 是可以再次調整屬性特徵。</li>
+</ul>
+<h2 id="❒-seal-封裝"><a href="#❒-seal-封裝" class="headerlink" title="❒ seal 封裝"></a>❒ seal 封裝</h2><h3 id="seal-特性"><a href="#seal-特性" class="headerlink" title="seal 特性"></a>seal 特性</h3><ul>
+<li><p>物件屬性「無法新增刪除」，也無法重新配置特徵，但是可以調整目前屬性值。</p>
+<ul>
+<li>例外：<code>seal</code> 屬性特徵中 <code>writable</code> 經測試是可以被調整的，似乎是 <code>seal</code> 有調整過導致，須留意。</li>
+</ul>
+</li>
+<li><p><code>seal</code> 與 <code>preventExtensions</code> 是有關聯性的，所以 <code>seal</code> 預設狀態為物件會被加上 <code>preventExtensions</code>，再把 「無法新增刪除，也無法重新配置特徵 」的特性加上。</p>
+</li>
+<li><p>物件使用 seal 後的屬性特徵為 ( 可使用 <code>Object.getOwnPropertyDescriptor(物件, &#39;物件屬性&#39;);</code> 查詢 )</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">configurable</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">value</span>: 屬性本身的值</span><br><span class="line"><span class="attr">writable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="seal-結構"><a href="#seal-結構" class="headerlink" title="seal 結構"></a>seal 結構</h3><p> <strong><code>Object.seal(物件);</code></strong></p>
+<h3 id="範例-1"><a href="#範例-1" class="headerlink" title="範例 1"></a>範例 1</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">seal</span>(person);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`是否可被封裝 <span class="subst">$&#123;<span class="built_in">Object</span>.isSealed(person)&#125;</span>`</span>);</span><br><span class="line"><span class="comment">// 調整屬性</span></span><br><span class="line">person.<span class="property">a</span> = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">// 新增屬性</span></span><br><span class="line">person.<span class="property">d</span> = <span class="string">&#x27;d&#x27;</span>;</span><br><span class="line"><span class="comment">// 調整巢狀屬性(新增)</span></span><br><span class="line">person.<span class="property">c</span>.<span class="property">inC</span> = <span class="string">&#x27;C is Here&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>調整物件原有屬性：把物件內的 <code>a</code> 屬性的屬性值調整為 <code>a</code> 是沒問題的。</li>
+<li>於物件新增屬性：物件新增 <code>d</code> 屬性後，並沒有在物件中看見新增的 <code>d</code> 屬性，因為 <code>preventExtensions</code> 的用意就是無法新增屬性。</li>
+<li>調整物件內的巢狀屬性：<code>preventExtensions</code> 只能對物件本身做限制，無法對物件本身的巢狀屬性做限制，所以在巢狀屬性 <code>c</code> 內再新增 <code>inC</code> 屬性是沒問題的。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221007/20119743WoOMTs5Kum.png" alt="截圖"></li>
+</ul>
+<h3 id="範例-2-seal-封裝後是不能調整屬性特徵，但-writable-特徵例外"><a href="#範例-2-seal-封裝後是不能調整屬性特徵，但-writable-特徵例外" class="headerlink" title="範例 2. seal 封裝後是不能調整屬性特徵，但 writable 特徵例外"></a>範例 2. seal 封裝後是不能調整屬性特徵，但 <code>writable</code> 特徵例外</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">seal</span>(person);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`是否可被封裝 <span class="subst">$&#123;<span class="built_in">Object</span>.isSealed(person)&#125;</span>`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(person, <span class="string">&#x27;a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 調整特徵</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person, <span class="string">&#x27;a&#x27;</span> , &#123;</span><br><span class="line">  <span class="attr">writable</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.defineProperty(person, &#x27;a&#x27; , &#123;</span></span><br><span class="line"><span class="comment">//   configurable: true,</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(person, <span class="string">&#x27;a&#x27;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person);</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>writable</code> 特徵例外：</strong></p>
+<ul>
+<li><p>修改了物件 <code>a</code> 的屬性特徵 <code>writable</code> 由 <code>true</code> 變 <code>false</code>，並使用 <code>Object.getOwnPropertyDescriptor</code> 查看封裝後物件的屬性特徵，開發者工具依舊顯示 <code>writable: false</code>，驗證<strong>「 seal 封裝後的物件是無法調整屬性特徵 」</strong>。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221007/20119743PlNSIIThjb.png" alt="未調整 a 屬性的屬性特徵狀態 ↑"></p>
+<p>  <img src="https://ithelp.ithome.com.tw/upload/images/20221007/20119743wbsPrP5g7s.png" alt="調整 a 屬性的writable屬性特徵狀態，被覆蓋為false"></p>
+</li>
+</ul>
+<p><strong>調整其他特徵：</strong></p>
+<ul>
+<li>試圖改變其他特徵，會顯示錯誤訊息 <code>Uncaught TypeError</code>。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221007/20119743EcH0FEwCfh.png" alt="錯誤訊息 Uncaught TypeError"></li>
+</ul>
+<h2 id="❒-freeze-凍結"><a href="#❒-freeze-凍結" class="headerlink" title="❒ freeze 凍結"></a>❒ freeze 凍結</h2><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li><p>物件使用 <code>freeze</code> 會讓此物件被凍結並且，</p>
+<ul>
+<li>無法新增刪除屬性。</li>
+<li>無法被修改屬性值。</li>
+<li>無法調整屬性特徵。</li>
+</ul>
+</li>
+<li><p>物件使用 <code>freeze</code> 的屬性特徵 ( 可使用 <code>Object.getOwnPropertyDescriptor(物件, &#39;物件屬性&#39;);</code> 查詢 )</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">configurable</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">value</span>: 屬性本身的值</span><br><span class="line"><span class="attr">writable</span>: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>freeze</code> 與 <code>seal</code> 和 <code>preventExtensions</code> 是有關聯性的，所以 <code>freeze</code> 預設狀態為物件會被加上 <code>preventExtensions</code> ( 無法被擴展 ) 和 <code>seal</code> ( 封裝 ) 的特性，也無法被調整值。</p>
+</li>
+</ul>
+<h3 id="結構"><a href="#結構" class="headerlink" title="結構"></a>結構</h3><p><code>Object.freeze(物件);</code></p>
+<h3 id="範例-1-freeze-具備無法被擴展、封裝、凍結特性"><a href="#範例-1-freeze-具備無法被擴展、封裝、凍結特性" class="headerlink" title="範例 1. freeze 具備無法被擴展、封裝、凍結特性"></a>範例 1. freeze 具備無法被擴展、封裝、凍結特性</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">freeze</span>(person);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`是否可被擴展 <span class="subst">$&#123;<span class="built_in">Object</span>.isExtensible(person)&#125;</span>`</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`是否可被封裝 <span class="subst">$&#123;<span class="built_in">Object</span>.isSealed(person)&#125;</span>`</span>);  <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`是否可被凍結 <span class="subst">$&#123;<span class="built_in">Object</span>.isFrozen(person)&#125;</span>`</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="範例-2-物件-freeze-後嘗試調整、新增屬性與調整巢狀屬性"><a href="#範例-2-物件-freeze-後嘗試調整、新增屬性與調整巢狀屬性" class="headerlink" title="範例 2. 物件 freeze 後嘗試調整、新增屬性與調整巢狀屬性"></a>範例 2. 物件 freeze 後嘗試調整、新增屬性與調整巢狀屬性</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">freeze</span>(person);</span><br><span class="line"><span class="comment">// 調整屬性</span></span><br><span class="line">person.<span class="property">a</span> = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">// 新增屬性</span></span><br><span class="line">person.<span class="property">d</span> = <span class="string">&#x27;d&#x27;</span>;</span><br><span class="line"><span class="comment">// 調整巢狀屬性(新增)</span></span><br><span class="line">person.<span class="property">c</span>.<span class="property">inC</span> = <span class="string">&#x27;C is Here&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>調整屬性與新增屬性：失敗。</li>
+<li>調整巢狀屬性：成功。<ul>
+<li>因為物件傳參考特性外加淺層拷貝，所以 <code>freeze</code> 只能針對當下物件凍結，無法對物件屬性的巢狀屬性做凍結。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221007/20119743GpfqLIxNAt.png" alt="截圖"></li>
+</ul>
+</li>
+</ul>
+<h3 id="範例-3-物件凍結後嘗試調整屬性特徵"><a href="#範例-3-物件凍結後嘗試調整屬性特徵" class="headerlink" title="範例 3. 物件凍結後嘗試調整屬性特徵"></a>範例 3. 物件凍結後嘗試調整屬性特徵</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">freeze</span>(person);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 調整 writable 特徵</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person, <span class="string">&#x27;a&#x27;</span> , &#123;</span><br><span class="line">  <span class="attr">writable</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>此範例以調整 writable 特徵為例，會出現錯誤訊息 <code>Uncaught TypeError</code>。</li>
+<li>另外嘗試調整其他屬性特徵 ( <code>configurable</code>、<code>enumerable</code>、<code>value</code>  )，一樣會跳出錯誤訊息。</li>
+</ul>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li>JavaScript 核心篇</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/820185280/" rel="prev" title="Day21 | 物件的方法介紹-針對物件本身屬性操作的方法">
+                  <i class="fa fa-chevron-left"></i> Day21 | 物件的方法介紹-針對物件本身屬性操作的方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/1942469313/" rel="next" title="Day23 | 物件方法介紹 - 屬性特徵列舉與原型的關係、Setter 與 Getter 運用">
+                  Day23 | 物件方法介紹 - 屬性特徵列舉與原型的關係、Setter 與 Getter 運用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

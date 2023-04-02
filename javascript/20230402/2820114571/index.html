@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="物件的傳參考、淺層拷貝與深層拷貝">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day24 | JS 關於物件的傳參考、淺層拷貝、深層拷貝">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/2820114571/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="物件的傳參考、淺層拷貝與深層拷貝">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/201197439fST2tPxSZ.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743R7zdOtJ4tO.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/201197439J6vMACbDQ.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743hLIcmuKTz0.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743FyX81smW7U.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743VwasY6M2pO.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743HdIWoeXkRZ.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743GaKv9jlaZF.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/201197432QHHN1UDqL.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743Eak4i3ysnE.jpg">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/20119743wZjO2fszKV.png">
+<meta property="article:published_time" content="2023-04-02T06:10:13.000Z">
+<meta property="article:modified_time" content="2023-04-02T06:11:04.773Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta property="article:tag" content="淺層拷貝">
+<meta property="article:tag" content="深層拷貝">
+<meta property="article:tag" content="傳參考">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20221009/201197439fST2tPxSZ.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/2820114571/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/2820114571/","path":"javascript/20230402/2820114571/","title":"Day24 | JS 關於物件的傳參考、淺層拷貝、深層拷貝"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day24 | JS 關於物件的傳參考、淺層拷貝、深層拷貝 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%89%A9%E4%BB%B6%E5%82%B3%E5%8F%83%E8%80%83%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">❒ 物件傳參考的特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-%E8%B3%A6%E4%BA%88%E4%B8%80%E5%80%8B%E5%80%BC%E5%88%B0%E8%AE%8A%E6%95%B8%E4%B8%8A%E6%99%82%E6%9C%83%E6%9C%89%E5%85%A9%E5%80%8B%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript 賦予一個值到變數上時會有兩個特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E5%82%B3%E5%80%BC-Call-by-Reference"><span class="nav-number">1.2.</span> <span class="nav-text">➊ 傳值 ( Call by Reference )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E5%82%B3%E5%8F%83%E8%80%83-Call-by-Sharing"><span class="nav-number">1.3.</span> <span class="nav-text">➋ 傳參考 ( Call by Sharing )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%89%A9%E4%BB%B6%E5%82%B3%E5%8F%83%E8%80%83%E5%AF%A6%E4%BD%9C%E7%AF%84%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">❒ 物件傳參考實作範例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C-1"><span class="nav-number">2.1.</span> <span class="nav-text">實作 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C-2"><span class="nav-number">2.2.</span> <span class="nav-text">實作 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C-3"><span class="nav-number">2.3.</span> <span class="nav-text">實作 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C-4"><span class="nav-number">2.4.</span> <span class="nav-text">實作 4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%B7%BA%E5%B1%A4%E8%A4%87%E8%A3%BD%E8%88%87%E6%B7%B1%E5%B1%A4%E8%A4%87%E8%A3%BD"><span class="nav-number">3.</span> <span class="nav-text">❒ 淺層複製與深層複製</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%B7%BA%E5%B1%A4%E6%8B%B7%E8%B2%9D-shallow-Copy"><span class="nav-number">4.</span> <span class="nav-text">❒ 淺層拷貝 ( shallow Copy )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-for-in"><span class="nav-number">4.1.</span> <span class="nav-text">➊  for in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E4%BD%BF%E7%94%A8-jQuery-%E6%96%B9%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text">➋ 使用 jQuery 方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8C-Object-assign-ES6-%E6%96%B9%E5%BC%8F"><span class="nav-number">4.3.</span> <span class="nav-text">➌  Object.assign ( ES6 方式 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B9-%E2%80%A6-%E5%B1%95%E9%96%8B%E7%9A%84%E6%96%B9%E5%BC%8F-%E7%AD%86%E8%80%85%E8%BC%83%E5%B8%B8%E7%94%A8%E6%AD%A4%E6%96%B9%E5%BC%8F"><span class="nav-number">4.4.</span> <span class="nav-text">❹ … 展開的方式 ( 筆者較常用此方式 )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%B7%B1%E5%B1%A4%E6%8B%B7%E8%B2%9D"><span class="nav-number">5.</span> <span class="nav-text">❒ 深層拷貝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BA%E5%B1%A4%E6%8B%B7%E8%B2%9D%E7%AF%84%E4%BE%8B"><span class="nav-number">5.1.</span> <span class="nav-text">淺層拷貝範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">6.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/2820114571/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day24 | JS 關於物件的傳參考、淺層拷貝、深層拷貝 | Hi, I'm Carrie">
+      <meta itemprop="description" content="物件的傳參考、淺層拷貝與深層拷貝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day24 | JS 關於物件的傳參考、淺層拷貝、深層拷貝
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 14:10:13 / 修改時間：14:11:04" itemprop="dateCreated datePublished" datetime="2023-04-02T14:10:13+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">物件的傳參考、淺層拷貝與深層拷貝</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-物件傳參考的特性"><a href="#❒-物件傳參考的特性" class="headerlink" title="❒ 物件傳參考的特性"></a>❒ 物件傳參考的特性</h2><h3 id="JavaScript-賦予一個值到變數上時會有兩個特性"><a href="#JavaScript-賦予一個值到變數上時會有兩個特性" class="headerlink" title="JavaScript 賦予一個值到變數上時會有兩個特性"></a>JavaScript 賦予一個值到變數上時會有兩個特性</h3><ol>
+<li>傳值 ( Call by Reference )<ul>
+<li>Boolean</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Number</li>
+<li>String</li>
+<li>…</li>
+</ul>
+</li>
+<li>傳參考 ( Call by Sharing )<ul>
+<li>物件 ( 陣列、函式 )</li>
+</ul>
+</li>
+</ol>
+<h3 id="➊-傳值-Call-by-Reference"><a href="#➊-傳值-Call-by-Reference" class="headerlink" title="➊ 傳值 ( Call by Reference )"></a>➊ 傳值 ( Call by Reference )</h3><blockquote>
+<p><strong>純值賦值是透過複製的方式</strong>，所以前者與後者各自獨立，當後者修改時不會影響前者。</p>
+</blockquote>
+<p>純值：為基本型別 ( number、string、boolean、null、undefined )。</p>
+<p><strong>範例</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> person2 = person;</span><br><span class="line">person2 = <span class="string">&#x27;杰倫&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>var person2 = person;</code> 為把 <code>person</code> 的值帶過去 <code>person2</code> 就為傳值，純值傳值是一種複製的方式。</li>
+<li><code>person2</code> 接收了 <code>person</code> 的值後再另外賦予 <code>person2</code> 新的值就不會和 <code>person</code> 有關聯性。</li>
+</ul>
+<h3 id="➋-傳參考-Call-by-Sharing"><a href="#➋-傳參考-Call-by-Sharing" class="headerlink" title="➋ 傳參考 ( Call by Sharing )"></a>➋ 傳參考 ( Call by Sharing )</h3><blockquote>
+<p><strong>物件賦值是透過傳參考的特性</strong>，所以前者與後者都<strong>共用</strong>同一個記憶體空間的參考路徑，後者修改時前者也會跟著修改。</p>
+</blockquote>
+<ul>
+<li>「 物件、陣列、函式 」皆為傳參考特性，會先另外建立一個記憶體空間把值寫入。</li>
+<li>❗ 注意：物件變數新增一個新的物件 <code>&#123;&#125;</code> 就會產生一個新的記憶體空間，就不會相互影響 ( 如下方範例 2. 3 )。</li>
+</ul>
+<p><strong>範例1. 物件傳參考</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line"> <span class="attr">money</span>: <span class="number">1000</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person2 = person;</span><br><span class="line">person2.<span class="property">name</span> = <span class="string">&#x27;杰倫&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( person === person2 );</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析：</strong></p>
+<ul>
+<li><p>程式碼中我們宣告了一個 <code>person</code> ( <code>var person = &#123; name: &#39;小明&#39;, money: 1000,&#125;;</code> ) 表示在記憶體準備了一個參考路徑，這個參考位置包含了 <code>name</code> 和 <code>money</code>。( 如下右圖，0x01 是為了記憶自訂義名稱 )<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221009/201197439fST2tPxSZ.png" alt="示意圖"></p>
+</li>
+<li><p>當定義 person 為一個物件時，person 帶入的會是 0x01 這個記憶體的參考路徑，並不是帶入一個完整的物件內容。當參考路徑指向此物件時  ( 傳參考 ) 就可透過這種方式來取得裡面的 <code>name</code> 與 <code>money</code> 屬性。所以 <code>person</code> 並不會把 <code>name</code> 與 <code>money</code> 存到它的記憶體空間，只會傳入一個參考。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743R7zdOtJ4tO.png" alt="示意圖"></p>
+</li>
+<li><p><code>var person2 = person;</code> 時會把 <code>person</code> 原本的參考位置一樣傳到 <code>person2</code>，所以 <code>person</code> 和 <code>person2</code> 共用的是同一個參考路徑 ( 右邊格子 0x01 )，所以 <code>person2</code> 修改時也會一併修改到 <code>person</code>。</p>
+<ul>
+<li>這段程式碼只有產生一個參考路徑，這個參考路徑對應一個物件，所以只有產生一個物件，<code>person2</code> <code>person</code> 兩者皆共用同一物件。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221009/201197439J6vMACbDQ.png" alt="示意圖"></li>
+</ul>
+</li>
+<li><p>物件賦予值是以傳參考方式進行。</p>
+</li>
+<li><p>所以答案為 <code>true</code>。</p>
+</li>
+</ul>
+<p><strong>範例 2. 物件傳參考</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line"> <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line"> <span class="attr">money</span>: <span class="number">1000</span>,</span><br><span class="line">&#125; </span><br><span class="line">****<span class="keyword">var</span> person2 = person;</span><br><span class="line">person2 = &#123; ... &#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( person === person2 );</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743hLIcmuKTz0.png" alt="示意圖"></p>
+<p><strong>解析：</strong></p>
+<ul>
+<li>把 <code>person2</code> 指向一個新的空物件 <code>&#123; … &#125;</code>，它就會產生另一個參考路徑 0x02，這時產生另一個物件也就是產生另一個參考路徑，所以 <code>person</code> 與 <code>person2</code> 就不會有任何關聯，互不影響。</li>
+<li>所以答案為 <code>false</code>。</li>
+</ul>
+<p><strong>範例 3. 物件傳參考</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line"> <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">&#125; </span><br><span class="line">****<span class="keyword">var</span> person2 = person;</span><br><span class="line">person2 = &#123;</span><br><span class="line"> <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( person === person2 );</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>person2 = &#123; name: &#39;小明&#39; &#125;</code> 中就算 <code>person2</code> 與 <code>person</code> 內屬性與屬性值相同，但因分別為獨立的兩個物件兩個參考路徑，所以不會互相影響。</li>
+<li>所以答案為 <code>false</code>。</li>
+</ul>
+<h2 id="❒-物件傳參考實作範例"><a href="#❒-物件傳參考實作範例" class="headerlink" title="❒ 物件傳參考實作範例"></a>❒ 物件傳參考實作範例</h2><p>❗ 注意：新增一個新的物件就會產生一個新的記憶體空間，前者與後者不會相互影響。</p>
+<h3 id="實作-1"><a href="#實作-1" class="headerlink" title="實作 1"></a>實作 1</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明家&#x27;</span>,</span><br><span class="line">  <span class="attr">members</span>: &#123;</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;老爸&#x27;</span>,</span><br><span class="line">    <span class="attr">mother</span>: <span class="string">&#x27;老媽&#x27;</span>,</span><br><span class="line">    <span class="attr">ming</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> member = family.<span class="property">members</span>;</span><br><span class="line">member = &#123;</span><br><span class="line">  <span class="attr">ming</span>: <span class="string">&#x27;大明&#x27;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family);</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析：</strong></p>
+<ul>
+<li><p>在 <code>var member = family.members;</code> 時，<code>member</code> 與 <code>family.members</code> 都還是同個參考路徑。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743FyX81smW7U.png" alt="示意圖"></p>
+</li>
+<li><p><code>member</code> 賦予一個新的物件 <code>member = &#123; ming: &#39;大明&#39; &#125;</code> 開始，就拆成兩個參考路徑了，因為「 物件變數中看到新的 <code>&#123;&#125;</code> 就表示會產生一個新的記憶體空間 」。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743VwasY6M2pO.png" alt="示意圖"></p>
+</li>
+<li><p>但是換成另種寫法 ：<code>member</code> 直接修改屬性而非產生 <code>&#123;&#125;</code> ，<code>member</code> 就會和 <code>family.members</code> 使用同一個參考路徑，而它們兩個也會相互影響。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明家&#x27;</span>,</span><br><span class="line">  <span class="attr">members</span>: &#123;</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;老爸&#x27;</span>,</span><br><span class="line">    <span class="attr">mother</span>: <span class="string">&#x27;老媽&#x27;</span>,</span><br><span class="line">    <span class="attr">ming</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> member = family.<span class="property">members</span>;</span><br><span class="line">member.<span class="property">ming</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="實作-2"><a href="#實作-2" class="headerlink" title="實作 2"></a>實作 2</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line"> <span class="attr">x</span>: <span class="number">1</span>,</span><br><span class="line">&#125;</span><br><span class="line">a.<span class="property">y</span> = a;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析：</strong></p>
+<ul>
+<li><p>此寫法會造成無限循環，不斷指向自己。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="attr">x</span>: <span class="number">1</span>,</span><br><span class="line"> <span class="attr">y</span>: &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="number">1</span>, </span><br><span class="line">  <span class="attr">y</span>: &#123;</span><br><span class="line">   <span class="attr">x</span>: <span class="number">1</span>,</span><br><span class="line">   <span class="attr">y</span>: &#123;.... 無限循環&#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>a</code> 產生一個參考路徑 0x01 屬性為 <code>x</code> → <code>a</code> 指向 0x01 參考路徑 → <code>a</code> 新增一個 <code>y</code> 屬性且屬性值為 <code>a</code>，指回原參考路徑 0x01。從 <code>a</code> 裡面找 <code>y</code> 就會指回原參考路徑一直指向自己造成無限循環。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743HdIWoeXkRZ.png" alt="示意圖"></p>
+</li>
+</ul>
+<h3 id="實作-3"><a href="#實作-3" class="headerlink" title="實作 3"></a>實作 3</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="number">1</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a.<span class="property">y</span> = a = &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="number">2</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">y</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a === b.<span class="property">y</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>拆解：</strong></p>
+<ul>
+<li><p><code>var b = a;</code> 這時變數 <code>b</code> 與 <code>a</code> 都還是同一個參考路徑 0x01。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743GaKv9jlaZF.jpg" alt="物件傳參考拆解01"></p>
+</li>
+<li><p><code>a.y = a = &#123; x: 2 &#125;;</code></p>
+<ul>
+<li><code>a = &#123; x: 2 &#125;;</code> 為運算式，所以 <code>x: 2</code> 會賦予到 <code>y</code> 上，</li>
+<li><code>a.y = a = &#123; x: 2 &#125;;</code> 這行是同時執行的沒有執行順序的問題，會等於 <code>a = a.y = &#123; x: 2 &#125;;</code> 。所以 <code>a.y</code> 的參考路徑會是原本的 <code>a</code> 參考路徑 0x01 而非 <code>a</code> 新的參考路徑 0x02。</li>
+<li><code>a</code> 新增一個 <code>y</code> 屬性，其屬性值為 a ( 參考物件 0x01 ) → 屬性值 <code>a</code> 新增一個物件，只要新增物件就會新增一個參考路徑，這邊 <code>a</code> 新增物件的新參考路徑為 0x02 裡面有 <code>x</code> 屬性與屬性值 2 ( <code>a.y</code> 參考路徑由 0x01 變 0x02 )。<br><img src="https://ithelp.ithome.com.tw/upload/images/20221009/201197432QHHN1UDqL.jpg" alt="物件傳參考拆解02"></li>
+</ul>
+</li>
+</ul>
+<p><strong>答案：</strong></p>
+<ul>
+<li><code>console.log(a.y);</code> 印出 <code>undefined</code>。<ul>
+<li>a 參考路徑變 0x02 而裡面並沒有 y 屬性，所以為 <code>undefined</code>。</li>
+</ul>
+</li>
+<li><code>console.log(b);</code> 印出 <code>&#123; x:1, y: &#123; x:2 &#125; &#125;</code>。</li>
+<li><code>console.log(a === b.y);</code> 印出 <code>true</code>。</li>
+</ul>
+<h3 id="實作-4"><a href="#實作-4" class="headerlink" title="實作 4"></a>實作 4</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">x</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a.<span class="property">x</span> = &#123; <span class="attr">x</span>: <span class="number">2</span> &#125;;</span><br><span class="line">a.<span class="property">y</span> = a = &#123; <span class="attr">y</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 結果？</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// 結果？</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解析：</strong><br><img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743Eak4i3ysnE.jpg" alt="物件傳參考範例四拆解"></p>
+<ul>
+<li>到 <code>var b = a;</code> 時，<code>a</code> 與 <code>b</code> 都還是同個參考路徑 0x01。</li>
+<li><code>a.x = &#123; x: 2 &#125;;</code> ，<code>a.x</code> 被賦予新物件，當有新物件就會產生一個新的參考路徑，所以 0x01 的 <code>x</code> 屬性值參考路徑變成 0x02。</li>
+<li><code>a.y = a = &#123; y: 1&#125;;</code> 為運算式所以它們會同時執行沒有順序問題，而 <code>a.y = a</code> 為最原始的 a 參考路徑 0x01，所以 0x01 多一個 <code>y</code> 屬性，<code>y</code> 的屬性值為新的參考路徑 0x03 ( 有新物件就會產生一個新的參考路徑 )。</li>
+</ul>
+<p><strong>答案：</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a</span></span><br><span class="line">&#123; <span class="attr">y</span>: <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//b</span></span><br><span class="line"><span class="attr">x</span>: &#123;</span><br><span class="line"> <span class="attr">x</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="attr">y</span>: &#123;</span><br><span class="line"> <span class="attr">y</span>:<span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-淺層複製與深層複製"><a href="#❒-淺層複製與深層複製" class="headerlink" title="❒ 淺層複製與深層複製"></a>❒ 淺層複製與深層複製</h2><p>由於物件有傳參考的特性，所以當兩物件需要拆開處理，就會產生一些困擾，這時就可使用 for in、淺層複製、深層複製來解決這個問題。</p>
+<h2 id="❒-淺層拷貝-shallow-Copy"><a href="#❒-淺層拷貝-shallow-Copy" class="headerlink" title="❒ 淺層拷貝 ( shallow Copy )"></a>❒ 淺層拷貝 ( shallow Copy )</h2><p><strong>缺點：</strong> <code>for in</code> 方式只能做到第一層的複製，第一層以上的都還是會有傳參考特性。</p>
+<h3 id="➊-for-in"><a href="#➊-for-in" class="headerlink" title="➊  for in"></a>➊  for in</h3><p><strong>結構：</strong> <code>for ( var key in 原物件名稱 ) &#123;&#125;</code>，當中的 <code>key</code> 為原物件的屬性。</p>
+<p><strong>範例 1.</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明家&#x27;</span>,</span><br><span class="line">  <span class="attr">members</span>: &#123;</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;老爸&#x27;</span>,</span><br><span class="line">    <span class="attr">mom</span>: <span class="string">&#x27;老媽&#x27;</span>,</span><br><span class="line">    <span class="attr">ming</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newFamily = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> family) &#123;</span><br><span class="line">  newFamily[key] = family[key];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 物件內第一層成功拷貝，family與newFamily各自獨立</span></span><br><span class="line">newFamily.<span class="property">name</span> = <span class="string">&#x27;大明家&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family, newFamily);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 物件內第二層還是有傳參考特性，所以會一併修改到 family.members.ming </span></span><br><span class="line">newFamily.<span class="property">members</span>.<span class="property">ming</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family.<span class="property">members</span>.<span class="property">ming</span> === newFamily.<span class="property">members</span>.<span class="property">ming</span>); </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/ZEoooNe">CodePen 範例</a></p>
+<ul>
+<li>因為淺層拷貝只能移除第一層的傳參考特性，所以 <code>console.log(family.members.ming === newFamily.members.ming);</code>  會為 <code>true</code>。</li>
+</ul>
+<h3 id="➋-使用-jQuery-方式"><a href="#➋-使用-jQuery-方式" class="headerlink" title="➋ 使用 jQuery 方式"></a>➋ 使用 jQuery 方式</h3><p>記得先載入 jQuery CDN</p>
+<p><strong>結構：</strong> <code>jQuery.extent(&#123;&#125;, 原物件名稱)</code></p>
+<p><strong>範例</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明家&#x27;</span>,</span><br><span class="line">  <span class="attr">members</span>: &#123;</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;老爸&#x27;</span>,</span><br><span class="line">    <span class="attr">mom</span>: <span class="string">&#x27;老媽&#x27;</span>,</span><br><span class="line">    <span class="attr">ming</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newFamily = jQuery.<span class="title function_">extend</span>(&#123;&#125;, family);</span><br><span class="line">newFamily.<span class="property">name</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family, newFamily);</span><br><span class="line">newFamily.<span class="property">members</span>.<span class="property">ming</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family.<span class="property">members</span>.<span class="property">ming</span> === newFamily.<span class="property">members</span>.<span class="property">ming</span>); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>因為淺層拷貝只能移除第一層的傳參考特性，所以 <code>console.log(family.members.ming === newFamily.members.ming);</code>  會為 <code>true</code>。</li>
+</ul>
+<h3 id="➌-Object-assign-ES6-方式"><a href="#➌-Object-assign-ES6-方式" class="headerlink" title="➌  Object.assign ( ES6 方式 )"></a>➌  Object.assign ( ES6 方式 )</h3><p><strong>結構：</strong> <code>Object.assign(&#123;&#125;, 原物件名稱)</code></p>
+<p><strong>範例</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明家&#x27;</span>,</span><br><span class="line">  <span class="attr">members</span>: &#123;</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;老爸&#x27;</span>,</span><br><span class="line">    <span class="attr">mom</span>: <span class="string">&#x27;老媽&#x27;</span>,</span><br><span class="line">    <span class="attr">ming</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newFamily = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, family);</span><br><span class="line">newFamily.<span class="property">name</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family, newFamily);</span><br><span class="line">newFamily.<span class="property">members</span>.<span class="property">ming</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family.<span class="property">members</span>.<span class="property">ming</span> === newFamily.<span class="property">members</span>.<span class="property">ming</span>); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>因為淺層拷貝只能移除第一層的傳參考特性，所以 <code>console.log(family.members.ming === newFamily.members.ming);</code>  會為 <code>true</code>。</li>
+</ul>
+<h3 id="❹-…-展開的方式-筆者較常用此方式"><a href="#❹-…-展開的方式-筆者較常用此方式" class="headerlink" title="❹ … 展開的方式 ( 筆者較常用此方式 )"></a>❹ <code>…</code> 展開的方式 ( 筆者較常用此方式 )</h3><p><strong>結構：</strong> <code>&#123; ...原物件名稱 &#125;</code></p>
+<p><strong>範例</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明家&#x27;</span>,</span><br><span class="line">  <span class="attr">members</span>: &#123;</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;老爸&#x27;</span>,</span><br><span class="line">    <span class="attr">mom</span>: <span class="string">&#x27;老媽&#x27;</span>,</span><br><span class="line">    <span class="attr">ming</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newFamily = &#123; ...family &#125;;</span><br><span class="line">newFamily.<span class="property">name</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family, newFamily);</span><br><span class="line">newFamily.<span class="property">members</span>.<span class="property">ming</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family.<span class="property">members</span>.<span class="property">ming</span> === newFamily.<span class="property">members</span>.<span class="property">ming</span>); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>因為淺層拷貝只能移除第一層的傳參考特性，所以 <code>console.log(family.members.ming === newFamily.members.ming);</code>  會為 <code>true</code>。</li>
+</ul>
+<h2 id="❒-深層拷貝"><a href="#❒-深層拷貝" class="headerlink" title="❒ 深層拷貝"></a>❒ 深層拷貝</h2><p>不論物件裡面有幾層，都可透過深層拷貝的方式移除物件傳參考的特性。</p>
+<p><strong>使用方式：</strong> 把原本物件轉為字串再轉回物件，這種方式可以移除傳參考的特性。</p>
+<p><strong>結構：</strong></p>
+<ul>
+<li>使用 JSON 方式把原物件轉為字串 → <code>JSON.stringify(原物件名稱)</code></li>
+<li>透過 <code>JSON.parse</code> 把字串再轉回物件 → <code>JSON.parse(JSON.stringify(原物件名稱))</code></li>
+</ul>
+<p><strong>範例</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明家&#x27;</span>,</span><br><span class="line">  <span class="attr">members</span>: &#123;</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;老爸&#x27;</span>,</span><br><span class="line">    <span class="attr">mom</span>: <span class="string">&#x27;老媽&#x27;</span>,</span><br><span class="line">    <span class="attr">ming</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> newFamily = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(family));</span><br><span class="line"></span><br><span class="line">newFamily.<span class="property">name</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family, newFamily);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 深層拷貝後，改了原物件第二層內的值也不會影響原物值，兩物件 family 與 newFamily各自獨立</span></span><br><span class="line">newFamily.<span class="property">members</span>.<span class="property">ming</span> = <span class="string">&#x27;大明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family.<span class="property">members</span>.<span class="property">ming</span> === newFamily.<span class="property">members</span>.<span class="property">ming</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/QWrrxKK">CodePen 範例</a></p>
+<ul>
+<li>因為深層拷貝可以移除物件內所有層的傳參考特性，所以 <code>console.log(family.members.ming === newFamily.members.ming);</code>  會為 <code>false</code>。</li>
+</ul>
+<h3 id="淺層拷貝範例"><a href="#淺層拷貝範例" class="headerlink" title="淺層拷貝範例"></a>淺層拷貝範例</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">changeName</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  data.<span class="property">name</span> = <span class="string">&#x27;杰倫家&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  <span class="attr">home</span>: <span class="string">&#x27;小明家&#x27;</span>,</span><br><span class="line">  <span class="attr">members</span>: &#123;</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;老爸&#x27;</span>,</span><br><span class="line">    <span class="attr">mom</span>: <span class="string">&#x27;老媽&#x27;</span>,</span><br><span class="line">    <span class="attr">ming</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> family2 = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, <span class="title function_">changeName</span>(family));</span><br><span class="line">family2.<span class="property">members</span>.<span class="property">jay</span> = <span class="string">&#x27;杰倫&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`family.name, <span class="subst">$&#123;family.name&#125;</span>`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`family.members.jay, <span class="subst">$&#123;family.members.jay&#125;</span>`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family === family2);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family.<span class="property">members</span> === family2.<span class="property">members</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20221009/20119743wZjO2fszKV.png" alt="示意圖"></p>
+<ul>
+<li>在 <code>Object.assign</code> 執行淺層拷貝時，先執行了 <code>changeName(data)</code>，物件是傳參考概念而函式也是物件所以也具有傳參考特性。</li>
+<li><code>changeName(data)</code> 中 data 參數換成 family，<code>changeName(family)</code> 裡面執行了 <code>family.name = &#39;杰倫家&#39;;</code> 會一併修改到 <code>family</code> 的參考路徑中 <code>name</code> 的屬性值，所以 <code>family.name</code> 會印出 <code>杰倫家</code>。</li>
+<li>因為淺層拷貝只會移除第一層的傳參考特性 ( 複製 0x01 第一層到 0x03 )，所以 <code>family2.members.jay = &#39;杰倫&#39;;</code> 中 <code>members</code> 內為第二層還是保有傳參考特性 ( 0x03 中的 members 參考路徑還是 0 )。</li>
+</ul>
+<p><strong>答案：</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`family.name, <span class="subst">$&#123;family.name&#125;</span>`</span>); <span class="comment">// 杰倫家</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`family.members.jay, <span class="subst">$&#123;family.members.jay&#125;</span>`</span>); <span class="comment">//杰倫</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family === family2); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family.<span class="property">members</span> === family2.<span class="property">members</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li>六角學院 - JavaScript 核心篇</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+              <a href="/tags/%E6%B7%BA%E5%B1%A4%E6%8B%B7%E8%B2%9D/" rel="tag"># 淺層拷貝</a>
+              <a href="/tags/%E6%B7%B1%E5%B1%A4%E6%8B%B7%E8%B2%9D/" rel="tag"># 深層拷貝</a>
+              <a href="/tags/%E5%82%B3%E5%8F%83%E8%80%83/" rel="tag"># 傳參考</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/1942469313/" rel="prev" title="Day23 | 物件方法介紹 - 屬性特徵列舉與原型的關係、Setter 與 Getter 運用">
+                  <i class="fa fa-chevron-left"></i> Day23 | 物件方法介紹 - 屬性特徵列舉與原型的關係、Setter 與 Getter 運用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/2853334793/" rel="next" title="Day25 | JS 函式 This 的運作">
+                  Day25 | JS 函式 This 的運作 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="陣列與物件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day19 | JS 陣列與物件">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/3874156074/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="陣列與物件">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221004/20119743nacCuOzKjM.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221004/201197437iinR8uT2F.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221004/20119743xsU5uKMgC0.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221004/20119743yg64RKJp7A.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221004/20119743cKof6z2cMf.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221004/20119743yxnyJpDeW2.png">
+<meta property="article:published_time" content="2023-04-02T05:54:57.000Z">
+<meta property="article:modified_time" content="2023-04-02T05:55:36.872Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20221004/20119743nacCuOzKjM.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/3874156074/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/3874156074/","path":"javascript/20230402/3874156074/","title":"Day19 | JS 陣列與物件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day19 | JS 陣列與物件 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%89%A9%E4%BB%B6%E7%B5%90%E6%A7%8B"><span class="nav-number">1.</span> <span class="nav-text">❒ 物件結構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A3%E5%91%8A%E7%89%A9%E4%BB%B6%E7%9A%84%E5%85%A9%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">宣告物件的兩種方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E7%89%A9%E4%BB%B6%E5%AF%A6%E5%AD%97"><span class="nav-number">1.2.</span> <span class="nav-text">➊ 物件實字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E5%BB%BA%E6%A7%8B%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">➋ 建構式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%89%A9%E4%BB%B6%E5%8F%96%E5%80%BC%E3%80%81%E6%96%B0%E5%A2%9E%E3%80%81%E5%88%AA%E9%99%A4"><span class="nav-number">2.</span> <span class="nav-text">❒ 物件取值、新增、刪除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%80%BC"><span class="nav-number">2.1.</span> <span class="nav-text">取值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E"><span class="nav-number">2.2.</span> <span class="nav-text">新增</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4"><span class="nav-number">2.3.</span> <span class="nav-text">刪除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E8%AE%8A%E6%95%B8%E5%8F%8A%E7%89%A9%E4%BB%B6%E5%B1%AC%E6%80%A7%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="nav-number">3.</span> <span class="nav-text">❒ 變數及物件屬性的差異</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%89%A9%E4%BB%B6%E8%88%87%E7%B4%94%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">❒ 物件與純值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E7%B4%94%E5%80%BC%E7%84%A1%E6%B3%95%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7%EF%BC%8C%E7%89%A9%E4%BB%B6%E5%8F%AF%E4%BB%A5"><span class="nav-number">4.1.</span> <span class="nav-text">範例 1. 純值無法新增屬性，物件可以</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-%E5%87%BD%E5%BC%8F%E4%B9%9F%E7%82%BA%E7%89%A9%E4%BB%B6%E5%9E%8B%E5%88%A5%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7"><span class="nav-number">4.2.</span> <span class="nav-text">範例 2. 函式也為物件型別，可以新增屬性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E6%9C%AA%E5%AE%9A%E7%BE%A9%E7%9A%84%E7%89%A9%E4%BB%B6%E5%B1%AC%E6%80%A7%E9%A0%90%E8%A8%AD%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text">❒ 未定義的物件屬性預設值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E5%9C%A8%E7%89%A9%E4%BB%B6%E4%B8%8B%E6%96%BC%E6%9C%AA%E5%AE%9A%E7%BE%A9%E7%9A%84%E5%B1%AC%E6%80%A7%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7%E5%80%BC"><span class="nav-number">5.1.</span> <span class="nav-text">範例 1. 在物件下於未定義的屬性新增屬性值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E7%9A%84%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">範例 1. 的解決方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E9%99%A3%E5%88%97%E7%B5%90%E6%A7%8B"><span class="nav-number">6.</span> <span class="nav-text">❒ 陣列結構</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A3%E5%91%8A%E9%99%A3%E5%88%97%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">6.1.</span> <span class="nav-text">宣告陣列的方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E9%99%A3%E5%88%97%E5%AF%A6%E5%AD%97"><span class="nav-number">6.2.</span> <span class="nav-text">➊ 陣列實字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E9%99%A3%E5%88%97%E5%8F%96%E5%80%BC%E3%80%81%E6%96%B0%E5%A2%9E%E3%80%81%E5%8F%96%E9%95%B7%E5%BA%A6"><span class="nav-number">7.</span> <span class="nav-text">❒ 陣列取值、新增、取長度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%80%BC-1"><span class="nav-number">7.1.</span> <span class="nav-text">取值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E-1"><span class="nav-number">7.2.</span> <span class="nav-text">新增</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E9%99%A3%E5%88%97%E9%95%B7%E5%BA%A6"><span class="nav-number">7.3.</span> <span class="nav-text">取陣列長度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E4%B8%AD%E6%96%B0%E5%A2%9E%E5%B1%AC%E6%80%A7%E4%B8%8D%E5%BD%B1%E9%9F%BF%E9%99%A3%E5%88%97%E9%95%B7%E5%BA%A6"><span class="nav-number">7.4.</span> <span class="nav-text">陣列中新增屬性不影響陣列長度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E6%B2%92%E6%9C%89%E4%BE%9D%E7%85%A7%E7%B4%A2%E5%BC%95%E9%A0%86%E5%BA%8F%E6%96%B0%E5%A2%9E%EF%BC%8C%E8%B7%B3%E9%81%8E%E5%B9%BE%E5%80%8B%E7%B4%A2%E5%BC%95%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99%E6%9C%83%E7%99%BC%E7%94%9F%E4%BB%80%E9%BA%BC%E4%BA%8B%EF%BC%9F"><span class="nav-number">7.5.</span> <span class="nav-text">陣列沒有依照索引順序新增，跳過幾個索引新增資料會發生什麼事？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B0%E5%87%BA%E9%99%A3%E5%88%97%E7%9A%84%E6%89%80%E6%9C%89%E5%85%A7%E5%AE%B9"><span class="nav-number">7.6.</span> <span class="nav-text">印出陣列的所有內容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">8.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/3874156074/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day19 | JS 陣列與物件 | Hi, I'm Carrie">
+      <meta itemprop="description" content="陣列與物件">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day19 | JS 陣列與物件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 13:54:57 / 修改時間：13:55:36" itemprop="dateCreated datePublished" datetime="2023-04-02T13:54:57+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">陣列與物件</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-物件結構"><a href="#❒-物件結構" class="headerlink" title="❒ 物件結構"></a>❒ 物件結構</h2><h3 id="宣告物件的兩種方式："><a href="#宣告物件的兩種方式：" class="headerlink" title="宣告物件的兩種方式："></a><strong>宣告物件的兩種方式：</strong></h3><ul>
+<li>物件實字 ( 較常用 )</li>
+<li>建構式</li>
+</ul>
+<h3 id="➊-物件實字"><a href="#➊-物件實字" class="headerlink" title="➊ 物件實字"></a>➊ <strong>物件實字</strong></h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 結構</span></span><br><span class="line"><span class="keyword">var</span> family = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>透過物件實字定義物件，就可於物件中加入值：</strong></p>
+<ul>
+<li>物件內分別加入屬性 ( property ) 及屬性值 ( value )，如要增加多個可使用逗號隔開。<ul>
+<li><code>property</code><ul>
+<li>一個屬性對應一個屬性值。</li>
+<li>屬性名稱不論是否為數字都會是字串型別。</li>
+</ul>
+</li>
+<li><code>value</code> : 可以是物件、函式、純值。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 透過物件實字定義物件，就可於物件中加入值</span></span><br><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line"> <span class="attr">property</span>: value,</span><br><span class="line"> <span class="attr">property2</span>: value</span><br><span class="line"> ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="➋-建構式"><a href="#➋-建構式" class="headerlink" title="➋ 建構式"></a>➋ 建構式</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 架構</span></span><br><span class="line"><span class="keyword">var</span> family = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>建構式與物件實字不同使用上要注意的部分：</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> number = <span class="keyword">new</span> <span class="title class_">Object</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> text = <span class="keyword">new</span> <span class="title class_">Object</span>(<span class="string">&#x27;hey&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入數字在 <code>new Object</code> 括號內，會產生 number 的為包裹物件。</li>
+<li>插入字串在 <code>new Object</code> 括號內，會產生 string 的為包裹物件。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221004/20119743nacCuOzKjM.png" alt="截圖"></li>
+</ul>
+<h2 id="❒-物件取值、新增、刪除"><a href="#❒-物件取值、新增、刪除" class="headerlink" title="❒ 物件取值、新增、刪除"></a>❒ 物件取值、新增、刪除</h2><p>關於物件與陣列的更多方法可參考下篇文章：Day20 | 陣列與物件常用的方法</p>
+<h3 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h3><ol>
+<li><code>.</code> 的方式 → <code>object.屬性</code></li>
+<li>字串取值的方式 → <code>object[&#39;屬性&#39;]</code></li>
+</ol>
+<h3 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h3><ol>
+<li><code>.</code> 的方式 → <code>object.屬性</code></li>
+<li>字串取值的方式 → <code>object[&#39;屬性&#39;]</code></li>
+</ol>
+<h3 id="刪除"><a href="#刪除" class="headerlink" title="刪除"></a>刪除</h3><ol>
+<li><code>delete object.屬性</code></li>
+<li><code>delete object[&#39;屬性&#39;]</code></li>
+</ol>
+<h2 id="❒-變數及物件屬性的差異"><a href="#❒-變數及物件屬性的差異" class="headerlink" title="❒ 變數及物件屬性的差異"></a>❒ <strong><strong>變數及物件屬性的差異</strong></strong></h2><blockquote>
+<p>變數無法被刪除，屬性才可以被刪除</p>
+</blockquote>
+<p><strong>範例</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">b = <span class="number">2</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">window</span>); </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>開發者工具中以 <code>console.log(window);</code> 可見 <code>a</code> 與 <code>b</code> 都在 window 根目錄下。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221004/201197437iinR8uT2F.png" alt="開發者工具截圖"></p>
+</li>
+<li><p><code>a</code> 是透過變數的方式新增 ( <code>var</code> 、<code>let</code>、<code>const</code> 宣告的變數 )。</p>
+</li>
+<li><p><code>b</code> 是透過屬性的方式新增，等同於 <code>window.b</code> ( window 內的屬性 )。</p>
+</li>
+<li><p>承上，所以使用 <code>delete b;</code> 是可刪除 <code>b</code> 屬性，但使用 <code>delete a;</code> 是無法刪除 <code>a</code> 變數。</p>
+</li>
+</ul>
+<h2 id="❒-物件與純值"><a href="#❒-物件與純值" class="headerlink" title="❒ 物件與純值"></a>❒ 物件與純值</h2><blockquote>
+<p>純值無法新增屬性，物件 ( 陣列、函式 ) 可以。</p>
+</blockquote>
+<ul>
+<li>JavaScript 有兩種型別，分別為物件與純值。<ul>
+<li>純值：基本型別 ( number、string、boolean、null、undefined )。</li>
+</ul>
+</li>
+<li>除了物件外，陣列、函式也都是物件型別，所以可以新增屬性。<ul>
+<li>函式比較特別的部分為使用 <code>typeof</code> 會印出 function，因為函式屬於物件型別下的一個子型別，可透過下方範例2 來驗證函式為物件型別。</li>
+</ul>
+</li>
+</ul>
+<h3 id="範例-1-純值無法新增屬性，物件可以"><a href="#範例-1-純值無法新增屬性，物件可以" class="headerlink" title="範例 1. 純值無法新增屬性，物件可以"></a>範例 1. 純值無法新增屬性，物件可以</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nameIs = &#123;&#125;;</span><br><span class="line">nameIs.<span class="property">dog</span> = <span class="string">&#x27;小黑&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(nameIs);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> nameString = <span class="string">&#x27;小白&#x27;</span>;</span><br><span class="line">nameString.<span class="property">dog</span> = <span class="string">&#x27;小小白&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(nameString);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>console.log(nameIs);</code> 印出 <code>&#123;dog: &#39;小黑&#39;&#125;</code>。</li>
+<li><code>console.log(nameString);</code> 印出 <code>小白</code>。因為純值無法新增屬性。</li>
+</ul>
+<h3 id="範例-2-函式也為物件型別，可以新增屬性"><a href="#範例-2-函式也為物件型別，可以新增屬性" class="headerlink" title="範例 2. 函式也為物件型別，可以新增屬性"></a>範例 2. 函式也為物件型別，可以新增屬性</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">callName</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;呼叫小明&#x27;</span>);</span><br><span class="line">&#125; </span><br><span class="line">callName.<span class="property">ming</span> = <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">dir</span>(callName);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>console.dir</code> 可看見物件的所有屬性內容，使用此方式可看到開發者工具中函式變成一個物件形式，裡面多了一個 <code>caller</code> ( 被呼叫的能力 )。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221004/20119743xsU5uKMgC0.png" alt="開發者工具截圖"></p>
+</li>
+<li><p>於 <code>callName</code>  函式新增屬性，再看看開發者工具，裡面多了一個剛剛新增個屬性。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221004/20119743yg64RKJp7A.png" alt="開發者工具截圖"></p>
+</li>
+<li><p>❗ 注意：函式裡 <code>name</code> 屬性是無法被覆蓋的，所以函式新增屬性不可為 <code>name</code>。</p>
+</li>
+</ul>
+<h2 id="❒-未定義的物件屬性預設值"><a href="#❒-未定義的物件屬性預設值" class="headerlink" title="❒ 未定義的物件屬性預設值"></a>❒ <strong><strong>未定義的物件屬性預設值</strong></strong></h2><p>在物件下未定義的屬性它的屬性值會是 <code>undefined</code>，在 <code>undefined</code> 上是無法新增任何屬性，如下範例 1。</p>
+<h3 id="範例-1-在物件下於未定義的屬性新增屬性值"><a href="#範例-1-在物件下於未定義的屬性新增屬性值" class="headerlink" title="範例 1. 在物件下於未定義的屬性新增屬性值"></a>範例 1. 在物件下於未定義的屬性新增屬性值</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">dog</span>: <span class="number">2</span>,</span><br><span class="line">&#125;</span><br><span class="line">family.<span class="property">father</span>.<span class="property">child</span> = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>會顯示錯誤訊息：<code>Uncaught TypeError: Cannot set properties of undefined (setting &#39;child&#39;)</code></li>
+<li>因為 <code>father</code> 並沒有定義 ( 不存在 )，所以它的值為 <code>undefined</code> ，在 <code>undefined</code> 上是無法新增任何屬性。</li>
+</ul>
+<h3 id="範例-1-的解決方法"><a href="#範例-1-的解決方法" class="headerlink" title="範例 1. 的解決方法"></a>範例 1. 的解決方法</h3><p>➊ 於物件內新增 <code>father</code> 屬性，屬性值為空物件。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">dog</span>: <span class="number">2</span>,</span><br><span class="line"> <span class="attr">father</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">family.<span class="property">father</span>.<span class="property">child</span> = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>➋ 在物件上新增屬性，此屬性直接定義物件結構</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family = &#123;</span><br><span class="line">  <span class="attr">dog</span>: <span class="number">2</span>,</span><br><span class="line">&#125;</span><br><span class="line">family.<span class="property">father</span> = &#123;</span><br><span class="line">  <span class="attr">child</span>: <span class="number">3</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(family);</span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-陣列結構"><a href="#❒-陣列結構" class="headerlink" title="❒ 陣列結構"></a>❒ 陣列結構</h2><p>陣列也是物件型別的一種，但使用上還是有些不同。</p>
+<h3 id="宣告陣列的方式："><a href="#宣告陣列的方式：" class="headerlink" title="宣告陣列的方式："></a><strong>宣告陣列的方式：</strong></h3><ul>
+<li>陣列實字</li>
+</ul>
+<h3 id="➊-陣列實字"><a href="#➊-陣列實字" class="headerlink" title="➊ 陣列實字"></a>➊ 陣列<strong>實字</strong></h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以中括號來定義一個陣列</span></span><br><span class="line"><span class="keyword">var</span> newArray = [ </span><br><span class="line"> <span class="number">1</span>, </span><br><span class="line"> <span class="string">&#x27;text&#x27;</span>, </span><br><span class="line"> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line"> &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>與物件不同的是陣列不需要屬性與屬性值，可直接插入數值或其他型別。</li>
+<li>另外陣列內也可以插入一個物件。</li>
+</ul>
+<h2 id="❒-陣列取值、新增、取長度"><a href="#❒-陣列取值、新增、取長度" class="headerlink" title="❒ 陣列取值、新增、取長度"></a>❒ 陣列取值、新增、取長度</h2><p>關於物件與陣列的更多方法可參考下篇文章：Day20 | 陣列與物件常用的方法</p>
+<h3 id="取值-1"><a href="#取值-1" class="headerlink" title="取值"></a>取值</h3><p><strong>方式：</strong> 透過索引取值</p>
+<ul>
+<li><p>陣列中資料的索引位置從第 <code>0</code> 開始，要取得某筆資料就直接取陣列中第 <code>n</code> 筆資料 → <code>Array[n]</code>。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果要取得陣列中的 true</span></span><br><span class="line"><span class="keyword">var</span> newArray = [ <span class="number">1</span>, <span class="string">&#x27;text&#x27;</span>, <span class="literal">true</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray[<span class="number">2</span>]);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="新增-1"><a href="#新增-1" class="headerlink" title="新增"></a>新增</h3><p><strong>方式：<code>push()</code></strong></p>
+<ul>
+<li><p>此新增方式會新增至陣列的最後一筆 → <code>Array.push(放置要新增的資料);</code></p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newArray = [ <span class="number">1</span>, <span class="string">&#x27;text&#x27;</span>, <span class="literal">true</span>];</span><br><span class="line">newArray.<span class="title function_">push</span>(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="取陣列長度"><a href="#取陣列長度" class="headerlink" title="取陣列長度"></a>取陣列長度</h3><p><strong>方式：</strong><code>Array.length</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newArray = [ <span class="number">1</span>, <span class="string">&#x27;text&#x27;</span>, <span class="literal">true</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray.<span class="property">length</span>); <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="陣列中新增屬性不影響陣列長度"><a href="#陣列中新增屬性不影響陣列長度" class="headerlink" title="陣列中新增屬性不影響陣列長度"></a>陣列中新增屬性不影響陣列長度</h3><p><strong>範例：</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newArray = [ <span class="number">1</span>, <span class="string">&#x27;text&#x27;</span>, <span class="literal">true</span>];</span><br><span class="line">newArray.<span class="title function_">push</span>(<span class="number">5</span>);</span><br><span class="line">newArray.<span class="property">dog</span> = <span class="number">2</span>; <span class="comment">// 陣列中新增屬性</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>newArray</code> 中新增 <code>dog</code> 屬性，可見陣列並沒有把此屬性列入陣列長度。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221004/20119743cKof6z2cMf.png" alt="開發者工具截圖"></li>
+</ul>
+<h3 id="陣列沒有依照索引順序新增，跳過幾個索引新增資料會發生什麼事？"><a href="#陣列沒有依照索引順序新增，跳過幾個索引新增資料會發生什麼事？" class="headerlink" title="陣列沒有依照索引順序新增，跳過幾個索引新增資料會發生什麼事？"></a>陣列沒有依照索引順序新增，跳過幾個索引新增資料會發生什麼事？</h3><ul>
+<li>使用中括號新增值時，如果中間有空的部分 ( 跳過某幾個索引位置 )， JS 會自動在這些位置補上空值 <code>undefined</code>，這會影響到陣列長度 ( 那些空值也會加入到索引長度中 )。</li>
+<li>陣列沒有依照索引順序新增跳過幾個索引，陣列長度會自動補齊但跳過的那幾個索引值會為 <code>empty</code> ( 不存在的空的陣列內容 )，取值時會呈現 <code>undefined</code>。</li>
+</ul>
+<p><strong>範例：</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newArray = [ <span class="number">1</span>, <span class="string">&#x27;text&#x27;</span>, <span class="literal">true</span>];</span><br><span class="line">newArray[<span class="number">4</span>] = <span class="string">&#x27;我是索引4&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray[<span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>newArray</code> 陣列中跳過索引 3 直接在索引 4 新增一串文字 <code>我是索引4</code>，會看到索引 3 部分呈現 <code>empty</code> ，展開後也不會看到索引位置 3 的部分。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221004/20119743yxnyJpDeW2.png" alt="開發者工具截圖"></p>
+</li>
+<li><p><code>console.log(newArray[3]);</code> 取索引 3 的值會印出 <code>undefined</code>。</p>
+</li>
+</ul>
+<h3 id="印出陣列的所有內容"><a href="#印出陣列的所有內容" class="headerlink" title="印出陣列的所有內容"></a>印出陣列的所有內容</h3><p><strong>方式：</strong> 使用 for 迴圈</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newArray = [ <span class="number">1</span>, <span class="string">&#x27;text&#x27;</span>, <span class="literal">true</span>];</span><br><span class="line">newArray[<span class="number">3</span>] = <span class="string">&#x27;我是索引4&#x27;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; newArray.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(newArray[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>let i = 0;</code><ul>
+<li>先宣告一個 <code>i</code> 索引，位置等於 0 。</li>
+</ul>
+</li>
+<li><code>i &lt; newArray.length;</code>  <code>i++</code><ul>
+<li>當索引位置沒有比陣列長度長時，就會依序增加上去 ( 從 0 1 2 3 加上去 )。</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li>六角學院 - JavaScript 核心篇</li>
+<li>陣列物件處理方法<ul>
+<li><a target="_blank" rel="noopener" href="https://www.hexschool.com/2017/09/01/2017-09-01-javascript-for/">JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/closest">MDN - Element.closest()</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">MDN - Array.prototype.slice()</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10224915">輕鬆淺拷貝的陣列 Array 方法 slice()</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@bebebobohaha/slice-splice-split-%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85-46d9c8992729">[ JavaScript ] slice()、splice()、split() 傻傻分不清</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/408647625/" rel="prev" title="Day18 | JS 關於 let、 const、var">
+                  <i class="fa fa-chevron-left"></i> Day18 | JS 關於 let、 const、var
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/2857193530/" rel="next" title="Day20-JS陣列與物件常用的方法">
+                  Day20-JS陣列與物件常用的方法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

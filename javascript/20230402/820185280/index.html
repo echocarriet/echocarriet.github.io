@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="針對 &quot; 物件本身屬性 &quot; 操作的方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day21 | 物件的方法介紹-針對物件本身屬性操作的方法">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/820185280/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="針對 &quot; 物件本身屬性 &quot; 操作的方法">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221006/20119743fTEEHpV3mu.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20221006/20119743P6Xu3M5ejx.png">
+<meta property="article:published_time" content="2023-04-02T06:03:24.000Z">
+<meta property="article:modified_time" content="2023-04-02T06:04:17.230Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20221006/20119743fTEEHpV3mu.png">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/820185280/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/820185280/","path":"javascript/20230402/820185280/","title":"Day21 | 物件的方法介紹-針對物件本身屬性操作的方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day21 | 物件的方法介紹-針對物件本身屬性操作的方法 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E5%B1%AC%E6%80%A7%E7%89%B9%E5%BE%B5"><span class="nav-number">1.</span> <span class="nav-text">❒ 屬性特徵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%BF%E6%95%B4%E7%89%A9%E4%BB%B6%E6%9C%AC%E8%BA%AB%E5%B1%AC%E6%80%A7%E7%89%B9%E5%BE%B5-%E5%8F%83%E6%95%B8-%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">調整物件本身屬性特徵( 參數 ) 的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defineProperty-%E8%88%87-defineProperties-%E5%8F%AF%E8%AA%BF%E6%95%B4%E7%9A%84%E5%B1%AC%E6%80%A7%E7%89%B9%E5%BE%B5-%E5%8F%83%E6%95%B8"><span class="nav-number">1.2.</span> <span class="nav-text">defineProperty 與 defineProperties 可調整的屬性特徵 ( 參數 )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Object-defineProperty-%E4%B8%80%E6%AC%A1%E8%A8%AD%E5%AE%9A%E4%B8%80%E5%80%8B%E5%B1%AC%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">❒ Object.defineProperty  ( 一次設定一個屬性 )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-number">2.1.</span> <span class="nav-text">範例 1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Object-defineProperty-%E5%85%B6%E4%BB%96%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">❒ Object.defineProperty 其他使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1-%E6%96%B0%E5%A2%9E%E7%89%A9%E4%BB%B6%E5%B1%AC%E6%80%A7"><span class="nav-number">3.1.</span> <span class="nav-text">範例 1. 新增物件屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2-Object-defineProperty-%E5%8F%AA%E8%83%BD%E5%81%9A%E5%88%B0%E6%B7%BA%E5%B1%A4%E4%BF%9D%E8%AD%B7"><span class="nav-number">3.2.</span> <span class="nav-text">範例 2. Object.defineProperty 只能做到淺層保護</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-Object-defineProperties-%E4%B8%80%E6%AC%A1%E8%A8%AD%E5%AE%9A%E5%A4%9A%E5%80%8B%E5%B1%AC%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">❒ Object.defineProperties ( 一次設定多個屬性 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">5.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/820185280/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day21 | 物件的方法介紹-針對物件本身屬性操作的方法 | Hi, I'm Carrie">
+      <meta itemprop="description" content="針對 " 物件本身屬性 " 操作的方法">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day21 | 物件的方法介紹-針對物件本身屬性操作的方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 14:03:24 / 修改時間：14:04:17" itemprop="dateCreated datePublished" datetime="2023-04-02T14:03:24+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">針對 " 物件本身屬性 " 操作的方法</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-屬性特徵"><a href="#❒-屬性特徵" class="headerlink" title="❒ 屬性特徵"></a>❒ 屬性特徵</h2><p>有很多原型是無法透過 chrome console 查看它的特徵，下方會依序介紹物件屬性比較特別的特徵，這些特徵也可以運用於框架間作出特別的效果。</p>
+<h3 id="調整物件本身屬性特徵-參數-的方法"><a href="#調整物件本身屬性特徵-參數-的方法" class="headerlink" title="調整物件本身屬性特徵( 參數 ) 的方法"></a>調整物件本身屬性特徵( 參數 ) 的方法</h3><ul>
+<li><code>Object.defineProperty</code>：一次調整一個屬性。</li>
+<li><code>Object.defineProperties</code>：一次調整多個屬性。</li>
+</ul>
+<h3 id="defineProperty-與-defineProperties-可調整的屬性特徵-參數"><a href="#defineProperty-與-defineProperties-可調整的屬性特徵-參數" class="headerlink" title="defineProperty 與 defineProperties 可調整的屬性特徵 ( 參數 )"></a><code>defineProperty</code> 與 <code>defineProperties</code> 可調整的屬性特徵 ( 參數 )</h3><ol>
+<li><code>value</code>：屬性本身的值，預設會為原來的值。</li>
+<li><code>writable</code>：可否寫入，預設為 true。</li>
+<li><code>configurable</code>：可否被刪除，預設為 true。</li>
+<li><code>enumerable</code>：可否被列舉，預設為 true。</li>
+</ol>
+<h2 id="❒-Object-defineProperty-一次設定一個屬性"><a href="#❒-Object-defineProperty-一次設定一個屬性" class="headerlink" title="❒ Object.defineProperty  ( 一次設定一個屬性 )"></a>❒ Object.defineProperty  ( 一次設定一個屬性 )</h2><p><strong>結構：</strong><code>Object.defineProperty(物件, 屬性, 參數);</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 參數可以只帶入要設定的即可</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(物件, 屬性, &#123;</span><br><span class="line"> <span class="attr">value</span>: , <span class="comment">// 預設會為原來的值</span></span><br><span class="line"> <span class="attr">writable</span>: , <span class="comment">// 預設為 true</span></span><br><span class="line"> <span class="attr">configurable</span>: , <span class="comment">// 預設為 true</span></span><br><span class="line"> <span class="attr">enumerable</span>: , <span class="comment">// 預設為 true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>屬性</code> 依字串形式帶入。</li>
+<li><code>參數</code>為 <code>defineProperty</code> 可以調整的屬性特徵( 參數 )，分別有：<ol>
+<li>屬性的值 <code>value</code>：可以去讀取或寫入這個值。</li>
+<li>可否寫入 <code>writable</code>：一般來說值都可以被寫入，但可以使用 <code>defineProperty</code> 去限制屬性跟值是否可以被寫入。</li>
+<li>可否被刪除 <code>configurable</code>：可設定此屬性是否可被刪除。</li>
+<li>可否被列舉 <code>enumerable</code>：當不知道物件內有哪些屬性，可使用 <code>for (變數 in 物件) &#123;&#125;</code> 方法一一讀出物件內的屬性，一般來說這些屬性都可被讀出，可否被列舉意思為可限制哪些屬性是不可被列舉，當使用 <code>for in</code> 就不會讀到禁止被列舉的一些屬性。</li>
+</ol>
+</li>
+<li><code>Object.defineProperty</code> 只能做到淺層保護，當屬性為物件時 <code>defineProperty</code> 只能對當下屬性做限制，不能對物件裡面的屬性做限制。可參考下方「 Object.defineProperty 其他使用方式 - 範例 2 」。</li>
+</ul>
+<h3 id="範例-1"><a href="#範例-1" class="headerlink" title="範例 1"></a>範例 1</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line"> <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line"> <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line"> <span class="attr">c</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person);</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person, <span class="string">&#x27;a&#x27;</span>, &#123;</span><br><span class="line"> <span class="attr">value</span>: <span class="number">4</span>, </span><br><span class="line"> <span class="attr">writable</span>: <span class="literal">true</span>,</span><br><span class="line"> <span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line"> <span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>writable: false</code> 屬性無法被寫入</strong></p>
+<ul>
+<li><code>person</code> 中的 <code>a</code> 屬性就無法被寫入其他值。<a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/abGGryj">CodePen 範例</a><ul>
+<li>但因為是靜默的錯誤，所以並不會跳出錯誤訊息。</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>configurable: true</code> 屬性無法被刪除</strong></p>
+<ul>
+<li>範例中可見 b 屬性設定了 <code>configurable: true,</code> ，使用 <code>delete person.b;</code> 是無法被刪除的。 <a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/rNvvgrv">CodePen 範例</a><ul>
+<li>但因為是靜默的錯誤，所以並不會跳出錯誤訊息。</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>enumerable: false</code> 屬性無法被列舉</strong></p>
+<ul>
+<li>白話來說就是被設定的屬性當要一一列出時，是不會被顯示出來的。</li>
+<li>範例中 c 屬性被設定無法被列舉，所以當使用 <code>for (變數 in 物件) &#123;&#125;</code>  把物件屬性一一列出時，屬性 c 就不會出現。<a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/bGMMyJq">CodePen 範例</a><ul>
+<li><code>for (var key in person) &#123;&#125;</code> 此方式會把 <code>person</code> 屬性帶到 <code>key</code> 上。</li>
+</ul>
+</li>
+</ul>
+<h2 id="❒-Object-defineProperty-其他使用方式"><a href="#❒-Object-defineProperty-其他使用方式" class="headerlink" title="❒ Object.defineProperty 其他使用方式"></a>❒ Object.defineProperty 其他使用方式</h2><h3 id="範例-1-新增物件屬性"><a href="#範例-1-新增物件屬性" class="headerlink" title="範例 1. 新增物件屬性"></a>範例 1. 新增物件屬性</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person, <span class="string">&#x27;d&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">value</span>: <span class="number">4</span>,</span><br><span class="line">   <span class="attr">writable</span>: <span class="literal">true</span>, <span class="comment">//可否寫入</span></span><br><span class="line">   <span class="attr">configurable</span>:<span class="literal">true</span>, <span class="comment">//可否刪除</span></span><br><span class="line">   <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="comment">//可否列舉</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>屬性中使用物件內沒有的屬性，並於參數 value 加入值，可直接把新的屬性與屬性值加入物件中。</li>
+</ul>
+<h3 id="範例-2-Object-defineProperty-只能做到淺層保護"><a href="#範例-2-Object-defineProperty-只能做到淺層保護" class="headerlink" title="範例 2. Object.defineProperty 只能做到淺層保護"></a>範例 2. <code>Object.defineProperty</code> 只能做到淺層保護</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(person, <span class="string">&#x27;d&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">value</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">writable</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;)</span><br><span class="line">person.<span class="property">d</span>.<span class="property">dOne</span> = <span class="string">&#x27;D1&#x27;</span>;</span><br><span class="line">person.<span class="property">d</span>.<span class="property">dTwo</span> = <span class="string">&#x27;D2&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>Object.defineProperty</code> 只能做到淺層保護，當屬性為物件時 <code>defineProperty</code> 只能對當下屬性做限制，不能對物件裡面的屬性做限制。</p>
+</li>
+<li><p>範例中新增 d 屬性，屬性值為空物件，並設定不能寫入。<code>console.log(person);</code> 查看 d 為淺色，<code>writable: false</code> 在 d 屬性上有效。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221006/20119743fTEEHpV3mu.png" alt="截圖"></p>
+</li>
+<li><p>在 d 的物件裡面新增屬性 <code>dOne</code> <code>dTwo</code> ，<code>console.log(person);</code> 查看 d 物件裡面的屬性為深色，<code>writable: false</code> 在 d 屬性裡面的物件是無效的。<br>  <img src="https://ithelp.ithome.com.tw/upload/images/20221006/20119743P6Xu3M5ejx.png" alt="截圖"></p>
+</li>
+</ul>
+<h2 id="❒-Object-defineProperties-一次設定多個屬性"><a href="#❒-Object-defineProperties-一次設定多個屬性" class="headerlink" title="❒ Object.defineProperties ( 一次設定多個屬性 )"></a>❒ Object.defineProperties ( 一次設定多個屬性 )</h2><p><strong>結構：</strong><code>Object.defineProperty(物件, &#123;屬性們加上特徵&#125;);</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperties</span>(物件, &#123;</span><br><span class="line">  屬性<span class="number">1</span>: &#123;</span><br><span class="line">   <span class="comment">// --- 調整屬性的特徵</span></span><br><span class="line"> <span class="attr">value</span>: , <span class="comment">// 預設會為原來的值</span></span><br><span class="line"> <span class="attr">writable</span>: , <span class="comment">// 預設為 true</span></span><br><span class="line"> <span class="attr">configurable</span>: , <span class="comment">// 預設為 true</span></span><br><span class="line"> <span class="attr">enumerable</span>: , <span class="comment">// 預設為 true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  屬性<span class="number">2</span>: &#123;</span><br><span class="line">    <span class="comment">// 承上</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>範例1. 以調整屬性 a 與 b 的屬性值為例</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperties</span>(person, &#123;</span><br><span class="line">  <span class="attr">a</span>: &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">b</span>: &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">7</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person);</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li>JavaScript 核心篇</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/2857193530/" rel="prev" title="Day20-JS陣列與物件常用的方法">
+                  <i class="fa fa-chevron-left"></i> Day20-JS陣列與物件常用的方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/3628284774/" rel="next" title="Day22 | 物件方法介紹 - 針對物件本身操作的方法">
+                  Day22 | 物件方法介紹 - 針對物件本身操作的方法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

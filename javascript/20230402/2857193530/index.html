@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"echocarriet.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="陣列與物件常用的方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day20-JS陣列與物件常用的方法">
+<meta property="og:url" content="https://echocarriet.github.io/javascript/20230402/2857193530/index.html">
+<meta property="og:site_name" content="Hi, I&#39;m Carrie">
+<meta property="og:description" content="陣列與物件常用的方法">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-04-02T06:01:45.000Z">
+<meta property="article:modified_time" content="2023-04-02T06:02:21.193Z">
+<meta property="article:author" content="Carrie Tseng">
+<meta property="article:tag" content="2022年iThome鐵人賽">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://echocarriet.github.io/javascript/20230402/2857193530/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://echocarriet.github.io/javascript/20230402/2857193530/","path":"javascript/20230402/2857193530/","title":"Day20-JS陣列與物件常用的方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Day20-JS陣列與物件常用的方法 | Hi, I'm Carrie</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hi, I'm Carrie</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E9%99%A3%E5%88%97%E5%AF%AB%E5%85%A5%E3%80%81%E6%96%B0%E5%A2%9E%E3%80%81%E5%88%AA%E9%99%A4%E8%B3%87%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">❒ 陣列寫入、新增、刪除資料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E9%80%8F%E9%81%8E%E7%B4%A2%E5%BC%95%E4%BD%8D%E7%BD%AE-%E5%8F%96%E4%BB%A3%E5%8E%9F%E5%80%BC%E3%80%81%E6%96%B0%E5%A2%9E%E3%80%81%E5%8F%96%E5%80%BC"><span class="nav-number">1.1.</span> <span class="nav-text">➊ 透過索引位置 取代原值、新增、取值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E6%96%B0%E5%A2%9E-push"><span class="nav-number">1.2.</span> <span class="nav-text">➋ 新增 push()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8C-%E6%96%B0%E5%A2%9E-unshift"><span class="nav-number">1.3.</span> <span class="nav-text">➌  新增 unshift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B9-%E5%88%AA%E9%99%A4-pop"><span class="nav-number">1.4.</span> <span class="nav-text">❹ 刪除 pop()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%BA-%E5%88%AA%E9%99%A4-shift"><span class="nav-number">1.5.</span> <span class="nav-text">❺ 刪除 shift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%BB-%E5%88%AA%E9%99%A4-splice-%E5%8F%83%E6%95%B81-%E5%8F%83%E6%95%B82"><span class="nav-number">1.6.</span> <span class="nav-text">❻ 刪除 splice(參數1,參數2)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%BC-%E6%9B%B4%E5%A4%9A%E9%99%A3%E5%88%97%E8%AA%9E%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">❼ 更多陣列語法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E7%89%A9%E4%BB%B6%E8%AE%80%E5%8F%96%E3%80%81%E6%96%B0%E5%A2%9E%E3%80%81%E4%BF%AE%E6%94%B9%E3%80%81%E5%88%AA%E9%99%A4%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">❒ 物件讀取、新增、修改、刪除方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8A-%E8%AE%80%E5%8F%96%E7%89%A9%E4%BB%B6%E7%9A%84%E5%80%BC-%E9%BB%9E%E8%A8%98%E6%B3%95-object-%E5%B1%AC%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">➊ 讀取物件的值 - 點記法 object.屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8B-%E8%AE%80%E5%8F%96-amp-%E6%96%B0%E5%A2%9E%E7%89%A9%E4%BB%B6%E7%9A%84%E5%80%BC-39-39-%E6%8B%AC%E8%99%9F-%E5%AD%97%E4%B8%B2%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">➋ 讀取 &amp; 新增物件的值 [&#39;&#39;] 括號+字串方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9E%8C-%E6%96%B0%E5%A2%9E%E7%89%A9%E4%BB%B6%E5%B1%AC%E6%80%A7-object-%E5%B1%AC%E6%80%A7-%E5%B1%AC%E6%80%A7%E5%80%BC"><span class="nav-number">2.3.</span> <span class="nav-text">➌ 新增物件屬性 object.屬性 &#x3D; 屬性值;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%B9-%E4%BF%AE%E6%94%B9%E7%89%A9%E4%BB%B6%E5%80%BC-object-%E8%A6%81%E4%BF%AE%E6%94%B9%E7%9A%84%E5%B1%AC%E6%80%A7%E5%90%8D-%E5%B1%AC%E6%80%A7%E5%80%BC"><span class="nav-number">2.4.</span> <span class="nav-text">❹ 修改物件值 object.要修改的屬性名 &#x3D; 屬性值;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%BA-%E5%88%AA%E9%99%A4%E7%89%A9%E4%BB%B6%E8%B3%87%E6%96%99-delete-object-%E5%B1%AC%E6%80%A7"><span class="nav-number">2.5.</span> <span class="nav-text">❺ 刪除物件資料 delete object.屬性;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-closest"><span class="nav-number">3.</span> <span class="nav-text">❒ closest()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-target-closest-selector"><span class="nav-number">3.1.</span> <span class="nav-text">e.target.closest(selector)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#element-closest-selectors"><span class="nav-number">3.2.</span> <span class="nav-text">element.closest(selectors)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C%E7%AF%84%E4%BE%8B"><span class="nav-number">3.3.</span> <span class="nav-text">實作範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%92-%E8%A3%9C%E5%85%85-slice-%E5%8F%831-%E5%8F%832"><span class="nav-number">4.</span> <span class="nav-text">❒ 補充 slice(參1,參2)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">範例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E8%A8%8A"><span class="nav-number">5.</span> <span class="nav-text">參考資訊</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Carrie Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/echocarriet" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;echocarriet" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:echocarriet@gmail.com" title="E-Mail → mailto:echocarriet@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://echocarriet.github.io/javascript/20230402/2857193530/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Carrie Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hi, I'm Carrie">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Day20-JS陣列與物件常用的方法 | Hi, I'm Carrie">
+      <meta itemprop="description" content="陣列與物件常用的方法">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day20-JS陣列與物件常用的方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2023-04-02 14:01:45 / 修改時間：14:02:21" itemprop="dateCreated datePublished" datetime="2023-04-02T14:01:45+08:00">2023-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">陣列與物件常用的方法</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="❒-陣列寫入、新增、刪除資料"><a href="#❒-陣列寫入、新增、刪除資料" class="headerlink" title="❒ 陣列寫入、新增、刪除資料"></a>❒ 陣列寫入、新增、刪除資料</h2><h3 id="➊-透過索引位置-取代原值、新增、取值"><a href="#➊-透過索引位置-取代原值、新增、取值" class="headerlink" title="➊ 透過索引位置 取代原值、新增、取值"></a>➊ 透過索引位置 取代原值、新增、取值</h3><ol>
+<li><p><strong>取代原值 <code>Array[n] = 新值;</code></strong></p>
+<ul>
+<li><p>「 索引位置 」為每個元素的位置，從第 0 筆開始，如下方陣列範例中的索引位置分別為：第 0 筆為 <code>&#39;A&#39;</code>，第 1 筆為 <code>&#39;B&#39;</code>，第 2 筆為 <code>&#39;C&#39;</code>。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newArray = [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>n</code> 帶入索引位置，新值為要取代陣列中原有的內容。</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把索引位置1的值取代成 B2</span></span><br><span class="line"><span class="keyword">let</span> newArray = [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>];</span><br><span class="line">newArray[<span class="number">1</span>] = <span class="string">&#x27;B2&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray); <span class="comment">// [&#x27;A&#x27;, &#x27;B2&#x27;, &#x27;C&#x27;]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>在陣列中新增值</strong> <strong><code>Array[n] = 值;</code></strong></p>
+<ul>
+<li><p>此方式會新增至陣列中第 <code>n</code> 個索引位置</p>
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newArray = [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>];</span><br><span class="line">newArray[<span class="number">3</span>] = <span class="string">&#x27;D&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray); [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果陣列沒有依照索引順序新增，跳過幾個索引位置去新增資料，JS 會自動在這些位置補上空值 <code>undefined</code>，這會影響到陣列長度 ( 那些空值也會加入到索引長度中 )。</p>
+<ul>
+<li>可參考<a target="_blank" rel="noopener" href="https://www.notion.so/03-6a0b3e0ed0aa497fb3063373482e34df">筆記</a>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>取陣列中第 n 筆的值 <code>Array[n]</code></strong></p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newArray = [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray[<span class="number">2</span>]);  <span class="comment">//C</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="➋-新增-push"><a href="#➋-新增-push" class="headerlink" title="➋ 新增 push()"></a>➋ 新增 <code>push()</code></h3><p>新增至陣列中的最後一筆資料。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">array.<span class="title function_">push</span>(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array);   <span class="comment">// [0, 1, 2, 5]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="➌-新增-unshift"><a href="#➌-新增-unshift" class="headerlink" title="➌  新增 unshift()"></a>➌  新增 <code>unshift()</code></h3><p>新增至陣列中的索引位置第 0 筆資料。( 新增至陣列最開始那筆 )</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">array.<span class="title function_">unshift</span>(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array);   <span class="comment">// [5, 0, 1, 2]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="❹-刪除-pop"><a href="#❹-刪除-pop" class="headerlink" title="❹ 刪除 pop()"></a>❹ 刪除 <code>pop()</code></h3><p>刪除陣列中最後一筆索引資料</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">array.<span class="title function_">pop</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array);   <span class="comment">// [0, 1]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="❺-刪除-shift"><a href="#❺-刪除-shift" class="headerlink" title="❺ 刪除 shift()"></a>❺ 刪除 <code>shift()</code></h3><p>刪除陣列中第 0 筆索引資料</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">array.<span class="title function_">shift</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array);   <span class="comment">// [1, 2]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="❻-刪除-splice-參數1-參數2"><a href="#❻-刪除-splice-參數1-參數2" class="headerlink" title="❻ 刪除 splice(參數1,參數2)"></a>❻ 刪除 <code>splice(參數1,參數2)</code></h3><ul>
+<li>刪除陣列中指定資料</li>
+<li><code>參數 1</code> → 陣列中起始位置</li>
+<li><code>參數 2</code> → 從參數 1 的位置要往後刪除幾筆資料，包含參數 1 本身。</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">5</span>, <span class="number">8</span>, <span class="number">2</span>];</span><br><span class="line">array.<span class="title function_">splice</span>(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(array);   <span class="comment">// [5]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="❼-更多陣列語法"><a href="#❼-更多陣列語法" class="headerlink" title="❼ 更多陣列語法"></a>❼ 更多陣列語法</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.hexschool.com/2017/09/01/2017-09-01-javascript-for/">JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]</a></li>
+</ul>
+<h2 id="❒-物件讀取、新增、修改、刪除方式"><a href="#❒-物件讀取、新增、修改、刪除方式" class="headerlink" title="❒ 物件讀取、新增、修改、刪除方式"></a>❒ 物件讀取、新增、修改、刪除方式</h2><h3 id="➊-讀取物件的值-點記法-object-屬性"><a href="#➊-讀取物件的值-點記法-object-屬性" class="headerlink" title="➊ 讀取物件的值 - 點記法 object.屬性"></a>➊ 讀取物件的值 - 點記法 <code>object.屬性</code></h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> home = &#123;</span><br><span class="line">  <span class="attr">mother</span>: <span class="string">&quot;Linda&quot;</span>,</span><br><span class="line">  <span class="attr">father</span>: <span class="string">&quot;David&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(home.<span class="property">mother</span>); <span class="comment">//Linda</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="➋-讀取-amp-新增物件的值-39-39-括號-字串方式"><a href="#➋-讀取-amp-新增物件的值-39-39-括號-字串方式" class="headerlink" title="➋ 讀取 &amp; 新增物件的值 [&#39;&#39;] 括號+字串方式"></a>➋ 讀取 &amp; 新增物件的值 <code>[&#39;&#39;]</code> 括號+字串方式</h3><p>通常情況下會使用 <code>.</code> 取值，但某些情況無法用 <code>.</code> 取值，例如：屬性為數字開頭時 ( 物件的屬性不論是否為數字都會視為字串 )、讀取變數的情況下、JSON 格式有些屬性名稱會使用 <code>&quot;isName&quot;</code> 字串方式包起，就會需要使用括號方式 <code>[]</code> 來讀取或新增。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">myName</span>: <span class="string">&quot;王小花&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//讀取物件屬性</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj[<span class="string">&#x27;myName&#x27;</span>]);  <span class="comment">//王小花</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//新增物件屬性</span></span><br><span class="line">obj[<span class="string">&#x27;key&#x27;</span>] = <span class="string">&#x27;value&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj); <span class="comment">//&#123;myName: &quot;王小花&quot;, key: &quot;value&quot;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//讀取變數</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;myName&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj[a]);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字串取值</span></span><br><span class="line"><span class="keyword">const</span> family = &#123;</span><br><span class="line">  <span class="attr">dog</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">callFamily</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;呼叫家庭群組&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">family[<span class="string">&#x27;callFamily&#x27;</span>]();  <span class="comment">// 印出 呼叫家庭群組</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="➌-新增物件屬性-object-屬性-屬性值"><a href="#➌-新增物件屬性-object-屬性-屬性值" class="headerlink" title="➌ 新增物件屬性 object.屬性 = 屬性值;"></a>➌ 新增物件屬性 <code>object.屬性 = 屬性值;</code></h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> home = &#123;&#125;;</span><br><span class="line">home.<span class="property">mother</span> = <span class="string">&quot;Linda&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(home); <span class="comment">//&#123;mother: &quot;Linda&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>❗注意：不能在物件下於未定義的屬性新增屬性值，會顯示錯誤訊息 <code>Uncaught TypeError</code>。可參考<a target="_blank" rel="noopener" href="https://www.notion.so/03-6a0b3e0ed0aa497fb3063373482e34df">筆記</a>。</p>
+<h3 id="❹-修改物件值-object-要修改的屬性名-屬性值"><a href="#❹-修改物件值-object-要修改的屬性名-屬性值" class="headerlink" title="❹ 修改物件值 object.要修改的屬性名 = 屬性值;"></a>❹ 修改物件值 <code>object.要修改的屬性名 = 屬性值;</code></h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> home = &#123;</span><br><span class="line">  <span class="attr">mother</span>: <span class="string">&quot;Linda&quot;</span>,</span><br><span class="line">  <span class="attr">father</span>: <span class="string">&quot;David&quot;</span>,</span><br><span class="line"> <span class="attr">dogName</span>: <span class="string">&quot;啾咪&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line">home.<span class="property">dogName</span> = <span class="string">&quot;小啾&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(home.<span class="property">dogName</span>); <span class="comment">//小啾</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="❺-刪除物件資料-delete-object-屬性"><a href="#❺-刪除物件資料-delete-object-屬性" class="headerlink" title="❺ 刪除物件資料 delete object.屬性;"></a>❺ 刪除物件資料 <code>delete object.屬性;</code></h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> home = &#123;</span><br><span class="line">  <span class="attr">mother</span>: <span class="string">&quot;Linda&quot;</span>,</span><br><span class="line">  <span class="attr">father</span>: <span class="string">&quot;David&quot;</span>,</span><br><span class="line"> <span class="attr">dogName</span>: <span class="string">&quot;啾咪&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">delete</span> home.<span class="property">dogName</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(home.<span class="property">dogName</span>); <span class="comment">//&#123;mother: &quot;Linda&quot;, father: &quot;David&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="❒-closest"><a href="#❒-closest" class="headerlink" title="❒ closest()"></a>❒ closest()</h2><h3 id="e-target-closest-selector"><a href="#e-target-closest-selector" class="headerlink" title="e.target.closest(selector)"></a><code>e.target.closest(selector)</code></h3><ul>
+<li><p>選取到指定的選擇器 <code>selector</code> 最近的元素</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://codepen.io/echocarriet/pen/vYZyGGd">練習 codepen</a></p>
+</li>
+<li><p><strong>程式碼</strong></p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;typeContent&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;請填入文字&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sendBtn&quot;</span> <span class="attr">value</span>=<span class="string">&quot;送出&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> typeContent = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.typeContent&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> sendBtn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.sendBtn&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> list = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.list&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> data = [];</span><br><span class="line"><span class="comment">// 1.渲染畫面</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">arr</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    str += <span class="string">`&lt;li data-id=&quot;<span class="subst">$&#123;item.id&#125;</span>&quot;&gt;<span class="subst">$&#123;item.content&#125;</span>&lt;/li&gt;`</span></span><br><span class="line">  &#125;)</span><br><span class="line">  list.<span class="property">innerHTML</span> = str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2.新增資料</span></span><br><span class="line">sendBtn.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span>(typeContent.<span class="property">value</span>.<span class="title function_">trim</span>() !== <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">    data.<span class="title function_">push</span>(&#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>(),</span><br><span class="line">      <span class="attr">content</span>: typeContent.<span class="property">value</span>.<span class="title function_">trim</span>(),</span><br><span class="line">    &#125;);</span><br><span class="line">    typeContent.<span class="property">value</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="title function_">render</span>(data);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.選取 li 的 id</span></span><br><span class="line"><span class="comment">// 使用 closest 印出 li 的 id</span></span><br><span class="line">list.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line"> <span class="comment">// 取出離我們點擊到最近的 li 的 data-id</span></span><br><span class="line">  <span class="keyword">let</span> listId = e.<span class="property">target</span>.<span class="title function_">closest</span>(<span class="string">&quot;li&quot;</span>).<span class="property">dataset</span>.<span class="property">id</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(listId);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>線上課程</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/202011122/lectures/34213327">JavaScript 必修篇 - 前端修練全攻略 : Vtuber x Coding 蹦出新滋味 ⚙️</a> ( 約 44:00 )</li>
+</ul>
+<hr>
+<h3 id="element-closest-selectors"><a href="#element-closest-selectors" class="headerlink" title="element.closest(selectors)"></a><code>element.closest(selectors)</code></h3><ul>
+<li>參數 <code>selectors</code> 為指定的選擇器。</li>
+<li>用來選取特定選取器且離當前元素最近的祖先元素 ( 也可以是當前元素本身 )，如果匹配不到就返回 <code>null</code>。</li>
+</ul>
+<h3 id="實作範例"><a href="#實作範例" class="headerlink" title="實作範例"></a>實作範例</h3><ul>
+<li><p><strong>程式碼</strong></p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;div-01&quot;</span>&gt;</span>Here is div-01</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;div-02&quot;</span>&gt;</span>Here is div-02</span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;div-03&quot;</span>&gt;</span>Here is div-03<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> el = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;div-03&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> r1 = el.<span class="title function_">closest</span>(<span class="string">&quot;#div-02&quot;</span>);</span><br><span class="line"><span class="comment">// 返回 id 为 div-02 的那个元素</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> r2 = el.<span class="title function_">closest</span>(<span class="string">&quot;div div&quot;</span>);</span><br><span class="line"><span class="comment">// 返回最近的拥有 div 祖先元素的 div 祖先元素，这里的话就是 div-03 元素本身</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> r3 = el.<span class="title function_">closest</span>(<span class="string">&quot;article &gt; div&quot;</span>);</span><br><span class="line"><span class="comment">// 返回最近的拥有父元素 article 的 div 祖先元素，这里的话就是 div-01</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> r4 = el.<span class="title function_">closest</span>(<span class="string">&quot;:not(div)&quot;</span>);</span><br><span class="line"><span class="comment">// 返回最近的非 div 的祖先元素，这里的话就是最外层的 article</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>參考文章 : <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/closest">MDN - Element.closest()</a></p>
+<h2 id="❒-補充-slice-參1-參2"><a href="#❒-補充-slice-參1-參2" class="headerlink" title="❒ 補充 slice(參1,參2)"></a>❒ 補充 <code>slice(參1,參2)</code></h2><ul>
+<li>回傳一個新陣列物件，為原陣列選擇的 begin 至 end（不含 end）部分的淺拷貝（shallow copy）。( 可用來預設每頁顯示 x 筆資料，用來生成每頁的資料。 <a target="_blank" rel="noopener" href="https://www.notion.so/Vue-9a28d448940340548d6bc1da95f8efe2">範例</a> )</li>
+<li><code>slice(參1,參2)</code><ul>
+<li>參數 1 ，是要從哪個索引值開始切</li>
+<li>參數 2 ，指要在哪一個索引值結束，但要注意參數 2 如果是 3 那就會取到索引值 2 就停止。</li>
+<li>參數為負數，會從陣列的尾值開始往前算。如果這個負數超過陣列的長度，<code>slice()</code> 就會把所有能給我們都給出來。</li>
+</ul>
+</li>
+</ul>
+<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> alphabet =[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(alphabet.<span class="title function_">slice</span>(<span class="number">1</span>,<span class="number">3</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(alphabet.<span class="title function_">slice</span>(<span class="number">1</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(alphabet.<span class="title function_">slice</span>(-<span class="number">4</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(alphabet.<span class="title function_">slice</span>(-<span class="number">3</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(alphabet.<span class="title function_">slice</span>(-<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>答案</strong><ol>
+<li>從第 1 個索引值 b 開始，到第 3 個索引值停止也就是取到索引值 3 的前一個 c。<br>  <code>[&#39;b&#39;, &#39;c&#39;]</code></li>
+<li>回傳一個新陣列，從第一個索引值開始做淺層拷貝。<br>  <code>[&#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</code></li>
+<li>變數 alphabet 有五個值 alphabet(5+(-4)) → 拿掉第一個值 a<br>  <code>[&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]</code></li>
+<li>尾值 <code>&#39;e&#39;</code> 往前算 3 個值 : <code>&#39;e&#39;</code> → <code>&#39;d&#39;</code> → <code>&#39;c&#39;</code><br>  <code>[&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]</code></li>
+<li>負數超過陣列的長度，slice() 就會把所有能給我們都給出來。<br>  <code>[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="參考資訊"><a href="#參考資訊" class="headerlink" title="參考資訊"></a>參考資訊</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.hexschool.com/2017/09/01/2017-09-01-javascript-for/">JavaScript 陣列處理方法 [filter(), find(), forEach(), map(), every(), some(), reduce()]</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/closest">MDN - Element.closest()</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">MDN - Array.prototype.slice()</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10224915">輕鬆淺拷貝的陣列 Array 方法 slice()</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@bebebobohaha/slice-splice-split-%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85-46d9c8992729">[ JavaScript ] slice()、splice()、split() 傻傻分不清</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2022%E5%B9%B4iThome%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2022年iThome鐵人賽</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/3874156074/" rel="prev" title="Day19 | JS 陣列與物件">
+                  <i class="fa fa-chevron-left"></i> Day19 | JS 陣列與物件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/javascript/20230402/820185280/" rel="next" title="Day21 | 物件的方法介紹-針對物件本身屬性操作的方法">
+                  Day21 | 物件的方法介紹-針對物件本身屬性操作的方法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Carrie Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>
